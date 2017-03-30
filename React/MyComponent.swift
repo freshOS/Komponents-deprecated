@@ -75,18 +75,6 @@ import UIKit
 //}
 
 
-
-
-
-class SubComponent {
-    
-    static func build(text:String) -> Component {
-        return CustomComponent.newWith(
-            Text(text, layout: { $0.centerInContainer() })
-        )
-    }
-}
-
 //class SubComponent {
 //  
 //    static func build(text:String) -> Component {
@@ -212,39 +200,6 @@ class SubComponent {
 //}
 
 // selectors
-
-
-
-class APost:UIView {
-    
-    convenience init() {
-        self.init(frame:CGRect.zero)
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 20
-        
-        
-        addSubview(stack)
-        
-        let t1 = UILabel()
-        t1.text = "Hello, There"
-        let t2 = UILabel()
-        t2.text = "Hello, Here"
-        let t3 = UILabel()
-        t3.text = "Hello, There"
-        let t4 = UILabel()
-        t4.text = "Hello, There"
-        let t5 = UILabel()
-        t5.text = "Hello, There"
-        
-        stack.addArrangedSubview(t1)
-        stack.addArrangedSubview(t2)
-        stack.addArrangedSubview(t3)
-        
-        backgroundColor = .white
-    }
-    
-}
 
 // React / DEclarative is less error prone taht imperative. Describe your layout rather than code it
 // LOCAL Reasoning
