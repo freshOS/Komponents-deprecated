@@ -17,7 +17,7 @@ protocol Component:class, Renderable {
     
     associatedtype State
     var state: State { get set }
-    func render(state: State) -> Node
+    func render(state: State) -> Renderable
     func updateState(_ block:(inout State) -> Void)
 }
 

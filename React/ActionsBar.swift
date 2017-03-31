@@ -12,7 +12,7 @@ class ActionsBar: Component {
     
     var state: Photo = Photo()
     
-    func render(state post: Photo) -> Node {
+    func render(state post: Photo) -> Renderable {
         return
             View(layout: { |$0.height(100)|.centerVertically() }, [
                 HorizontalStack(style: { $0.spacing = 20 }, layout: { |-20-$0.fillVertically() }, [

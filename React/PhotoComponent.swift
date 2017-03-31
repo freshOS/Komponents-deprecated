@@ -13,7 +13,7 @@ class PhotoComponent: Component {
     
     var state: Photo = Photo()
     
-    func render(state photo: Photo) -> Node {
+    func render(state photo: Photo) -> Renderable {
         
         return
             VerticalStack(style: { $0.spacing = 50 }, layout: { $0.centerInContainer() }, [
