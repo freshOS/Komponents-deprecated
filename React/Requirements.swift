@@ -18,10 +18,17 @@ Requirements :
 - View is returned in function of a state
 - Both components and Nodes need to be renderable
 - test render every second
- 
+ - Componenet can call "upadte state method" 
+ - Calls to "upadtestate" which cahnges state and triggers rerender.
+ - test change state button
+ - No timer, triger state updates
+ - Open to using whatever layout system you need
+ (our favorite is Stevia (native autolayout))
+ - Works with NATIVE Autolayout
 =========== TODO
  
- - test change state button
+ - Support sub componenets
+ 
  
  
  - INject source == Rerender Component.
@@ -30,48 +37,11 @@ Requirements :
 - local reasoning
 - changing one thing or updating one constraint needs to be in only one place.
  
- - test if state
- - test update state
-
-- Open to using whatever layout system you need
-(our favorite is Stevia (native autolayout))
-
-- Works with NATIVE Autolayout
-
 support live reload
 
 
 - First rerender all on state change. is this dependent?
 - Diif algorithm ?
-
-
-Componennt<A State > ?? test
-
-== func render(aState)
-
-
-return NodeType
-
-Node<UIImageView> etc
-
-
-save on github private? first
-
-
-separat node from UIViews>
-
-
-viewForComponent(c) -> UIVIew {
-    
-}
-
-
-MyComponenet: CompositeCOmponenet <aState, aProps, aView>
-
-
-override func render() -> Element {
-    
-}
 
 
 UIKitRenderer.render(component(MyComponent.self), container: self.view, context: self) { component in

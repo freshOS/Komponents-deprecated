@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EB71E8E64A6005D7674 /* ActionsBar.swift */; };
 		99C3C4CE1E8D014500F7F5B5 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CD1E8D014500F7F5B5 /* Requirements.swift */; };
 		99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CF1E8D018700F7F5B5 /* Node.swift */; };
 		99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		991B5EB71E8E64A6005D7674 /* ActionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
 		99C3C4CD1E8D014500F7F5B5 /* Requirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requirements.swift; sourceTree = "<group>"; };
 		99C3C4CF1E8D018700F7F5B5 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				99C3C4D51E8D560800F7F5B5 /* Weact.swift */,
 				99C3C4CF1E8D018700F7F5B5 /* Node.swift */,
 				99C3C4D71E8D5C7A00F7F5B5 /* States.swift */,
+				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
 				99D226D81E8BA734009416AA /* Assets.xcassets */,
 				99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */,
 				99D226DD1E8BA734009416AA /* Info.plist */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99C3C4D61E8D560800F7F5B5 /* Weact.swift in Sources */,
+				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
 				99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
 				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,

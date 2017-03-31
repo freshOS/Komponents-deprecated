@@ -9,44 +9,19 @@
 import Foundation
 import Stevia
 
-struct PhotoComponent: Component {  //: AComponent {
+class PhotoComponent: Component {
     
     var state: Photo = Photo()
     
-    func render(state: Photo) -> Node {
+    func render(state photo: Photo) -> Node {
+        
         return
             VerticalStack(style: { $0.spacing = 50 }, layout: { $0.centerInContainer() }, [
-                Button("Tap Me", tap: {
-                    print("HELL YEAAAH")
-                }),
+                Button("Tap Me", tap: { self.updateState { $0.numberOfYummys += 1} }),
                 Text("There"),
                 Text("How"),
                 Text("Are"),
-                Text("\(state.title)")
+                Text("\(photo.numberOfYummys)")
             ])
     }
 }
-
-
-
-//
-struct FeedBottomComponent2: Component {
-    
-    var state: Post = Photo()
-    
-    func render(state post: Post) -> Node {
-        return
-            View([
-                HorizontalStack(style: { $0.spacing = 20 }, layout: { |-20-$0.fillVertically() }, [
-                    Button(image: #imageLiteral(resourceName: "FeedYummyIcon"), tap: { print("Yummied!!!!! Tapppppppped") }),
-                    Text("\(post.numberOfYummys)"),
-                    Button(image: #imageLiteral(resourceName: "Comment icon")),
-                    Text("\(post.numberOfcomments)")
-                    ]),
-                Button(image: #imageLiteral(resourceName: "More"), layout: {
-                    $0.fillVertically()-20-|
-                } )
-            ])
-    }
-}
-

@@ -16,17 +16,27 @@ class UIKitRenderer: Renderer {
         viewFor(renderable: renderable, in:rootView) //recursive
     }
 
+
     @discardableResult
     func viewFor(renderable: Renderable, in parentView:UIView) -> UIView {
         
         var theView:UIView?
+        
+        
+        
+        
+//        let comp = renderable as! Component 
+        
+//            return viewFor(component: comp, in: parentView)
+//         
+//        }
+        print(renderable)
         
         if var node = renderable as? Node {
             
     
             if let viewNode = node as? View {
                 let v = UIView()
-                v.backgroundColor = .yellow
                 theView = v
                 node.applyLayout = {
                     viewNode.layoutBlock?(v)
@@ -45,6 +55,18 @@ class UIKitRenderer: Renderer {
                 }
                 node.applyStyle = {
                     vStackNode.styleBlock?(stack)
+                }
+            }
+            
+            if let hStackNode = node as? HorizontalStack {
+                let stack = UIStackView()
+                stack.axis = .horizontal
+                theView = stack
+                node.applyLayout = {
+                    hStackNode.layoutBlock?(stack)
+                }
+                node.applyStyle = {
+                    hStackNode.styleBlock?(stack)
                 }
             }
             

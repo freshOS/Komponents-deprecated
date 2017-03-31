@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Classic RootVC Setup
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = UIViewController()
-        vc.view.backgroundColor = .white
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
@@ -26,28 +25,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Load our component
         let engine = WeactEngine()
-        
-        engine.render(component: PhotoComponent(), with: Photo(), in:vc.view)
+        engine.render(component: ActionsBar(), in:vc.view)
         return true
     }
 }
 
-struct TestC: Component {
-    
-    var state: Int = 0
-    
-    func render(state: Int) -> Node {
-        return
-            View(style: { $0.backgroundColor = .blue }, layout: { v in
-                v.size(200)
-                v.centerInContainer()
-            }, [
-                Button("Hello",
-                       tap: { print("hello you") },
-                       layout: { $0.centerInContainer() })
-            ])
-    }
-}
+//struct TestC: Component {
+//    
+//    var state: Int = 0
+//    
+//    func render(state: Int) -> Node {
+//        return
+//            View(style: { $0.backgroundColor = .blue }, layout: { v in
+//                v.size(200)
+//                v.centerInContainer()
+//            }, [
+//                Button("Hello",
+//                       tap: { print("hello you") },
+//                       layout: { $0.centerInContainer() })
+//            ])
+//    }
+//}
 
 
 

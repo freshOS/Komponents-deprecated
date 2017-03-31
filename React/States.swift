@@ -12,6 +12,7 @@ import Foundation
 protocol Post {
     var title:String { get }
     var detail:String { get }
+    var isYummied: Bool { get }
     var numberOfYummys: Int { get }
     var numberOfcomments: Int { get }
 }
@@ -20,5 +21,6 @@ struct Photo: Post {
     var title = "JOhn Doe"
     var detail = "Super Cool bro"
     var numberOfYummys = 973
+    var isYummied: Bool = false
     var numberOfcomments = 12
 }
