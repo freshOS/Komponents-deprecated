@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EB71E8E64A6005D7674 /* ActionsBar.swift */; };
-		99C3C4CE1E8D014500F7F5B5 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CD1E8D014500F7F5B5 /* Requirements.swift */; };
+		991B5EBC1E8E9610005D7674 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBB1E8E9610005D7674 /* Renderable.swift */; };
+		991B5EBE1E8E9621005D7674 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBD1E8E9621005D7674 /* Component.swift */; };
+		991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBF1E8E9636005D7674 /* Renderer.swift */; };
+		991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EC11E8E968B005D7674 /* DefaultNodes.swift */; };
 		99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CF1E8D018700F7F5B5 /* Node.swift */; };
 		99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */; };
 		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
@@ -20,7 +23,6 @@
 		99D226DC1E8BA734009416AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */; };
 		99D226E71E8BA734009416AA /* ReactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226E61E8BA734009416AA /* ReactTests.swift */; };
 		99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D226F21E8BB1C5009416AA /* Stevia.framework */; };
-		99D226F61E8BB322009416AA /* MyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226F51E8BB322009416AA /* MyComponent.swift */; };
 		99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +38,10 @@
 
 /* Begin PBXFileReference section */
 		991B5EB71E8E64A6005D7674 /* ActionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
-		99C3C4CD1E8D014500F7F5B5 /* Requirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requirements.swift; sourceTree = "<group>"; };
+		991B5EBB1E8E9610005D7674 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		991B5EBD1E8E9621005D7674 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		991B5EBF1E8E9636005D7674 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		991B5EC11E8E968B005D7674 /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
 		99C3C4CF1E8D018700F7F5B5 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
 		99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComponent.swift; sourceTree = "<group>"; };
@@ -52,7 +57,6 @@
 		99D226E61E8BA734009416AA /* ReactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactTests.swift; sourceTree = "<group>"; };
 		99D226E81E8BA734009416AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
-		99D226F51E8BB322009416AA /* MyComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyComponent.swift; sourceTree = "<group>"; };
 		99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		991B5EB91E8E95A7005D7674 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				99C3C4D51E8D560800F7F5B5 /* Weact.swift */,
+				991B5EBB1E8E9610005D7674 /* Renderable.swift */,
+				99C3C4CF1E8D018700F7F5B5 /* Node.swift */,
+				991B5EBD1E8E9621005D7674 /* Component.swift */,
+				991B5EBF1E8E9636005D7674 /* Renderer.swift */,
+				99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */,
+				991B5EC11E8E968B005D7674 /* DefaultNodes.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		991B5EBA1E8E95CF005D7674 /* TrashTests */ = {
+			isa = PBXGroup;
+			children = (
+				99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */,
+				99D226D31E8BA734009416AA /* ViewController.swift */,
+			);
+			name = TrashTests;
+			sourceTree = "<group>";
+		};
 		99D226C51E8BA734009416AA = {
 			isa = PBXGroup;
 			children = (
@@ -97,17 +124,12 @@
 		99D226D01E8BA734009416AA /* React */ = {
 			isa = PBXGroup;
 			children = (
-				99C3C4CD1E8D014500F7F5B5 /* Requirements.swift */,
 				99D226D11E8BA734009416AA /* AppDelegate.swift */,
-				99D226D31E8BA734009416AA /* ViewController.swift */,
-				99D226F51E8BB322009416AA /* MyComponent.swift */,
-				99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */,
-				99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */,
-				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
-				99C3C4D51E8D560800F7F5B5 /* Weact.swift */,
-				99C3C4CF1E8D018700F7F5B5 /* Node.swift */,
 				99C3C4D71E8D5C7A00F7F5B5 /* States.swift */,
+				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
 				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
+				991B5EB91E8E95A7005D7674 /* Core */,
+				991B5EBA1E8E95CF005D7674 /* TrashTests */,
 				99D226D81E8BA734009416AA /* Assets.xcassets */,
 				99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */,
 				99D226DD1E8BA734009416AA /* Info.plist */,
@@ -253,16 +275,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				99C3C4D61E8D560800F7F5B5 /* Weact.swift in Sources */,
+				991B5EBE1E8E9621005D7674 /* Component.swift in Sources */,
 				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
 				99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
+				991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */,
 				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,
+				991B5EBC1E8E9610005D7674 /* Renderable.swift in Sources */,
 				99D226D41E8BA734009416AA /* ViewController.swift in Sources */,
+				991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */,
 				99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
 				99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */,
-				99D226F61E8BB322009416AA /* MyComponent.swift in Sources */,
-				99C3C4CE1E8D014500F7F5B5 /* Requirements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

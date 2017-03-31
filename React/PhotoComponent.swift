@@ -6,7 +6,6 @@
 //  Copyright © 2017 Octopepper. All rights reserved.
 //
 
-import Foundation
 import Stevia
 
 class PhotoComponent: Component {
