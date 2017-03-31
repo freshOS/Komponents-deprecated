@@ -9,7 +9,9 @@
 import Foundation
 import Stevia
 
-struct PhotoComponent: TestComponent {  //: AComponent {
+struct PhotoComponent: Component {  //: AComponent {
+    
+    var state: Photo = Photo()
     
     func render(state: Photo) -> Node {
         return
@@ -28,7 +30,9 @@ struct PhotoComponent: TestComponent {  //: AComponent {
 
 
 //
-struct FeedBottomComponent2: TestComponent {
+struct FeedBottomComponent2: Component {
+    
+    var state: Post = Photo()
     
     func render(state post: Post) -> Node {
         return

@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 
-protocol Node {
+
+
+protocol Node:Renderable {
 //    var layoutBlock: ((Any) -> ())? { get set }
 //    var styleBlock: ((Any) -> ())? { get set }
     var children: [Node] { get set }
@@ -21,11 +23,11 @@ protocol Node {
 }
 
 
-protocol Component {
-    associatedtype State
-    func render(state:State) -> Node
+extension Node {
+    func render() -> Renderable {
+        return self
+    }
 }
-
 
 struct View: Node {
     
@@ -135,7 +137,6 @@ class Button: Node {
     @objc func didTap() {
         tapCallback?()
     }
-    
 }
 
 

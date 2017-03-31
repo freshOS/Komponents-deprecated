@@ -27,17 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Load our component
         let engine = WeactEngine()
         
-        
-        let view = engine.render(component: PhotoComponent(), with: Photo())
-        
-//        let view = engine.render(component: TestC(), with: 143)
-        
-        vc.view = view
+        engine.render(component: PhotoComponent(), with: Photo(), in:vc.view)
         return true
     }
 }
 
-struct TestC: TestComponent {
+struct TestC: Component {
+    
+    var state: Int = 0
     
     func render(state: Int) -> Node {
         return

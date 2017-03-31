@@ -8,19 +8,31 @@
 
 import UIKit
 
-protocol TestComponent {
+
+protocol Renderable {
+    func render() -> Renderable
+}
+
+protocol Component:Renderable {
+    
     associatedtype State
+    var state: State { get }
     func render(state: State) -> Node
 }
 
+extension Component {
+    
+    func render() -> Renderable {
+        return render(state: state)
+    }
+}
+
 protocol Renderer {
-    func render(_ node: Node, in rootView: UIView)
+    func render(_ renderable: Renderable, in rootView: UIView)
 }
 
 
 class WeactEngine {
-    
-    let rootView = UIView()
     
     convenience init() {
         self.init(renderer:UIKitRenderer())
@@ -31,8 +43,26 @@ class WeactEngine {
         self.renderer = renderer
     }
     
-    func render<C: TestComponent, State>(component:C, with state:State) -> UIView where C.State == State {
-        rootView.backgroundColor = .white
+    func render<C: Component, State>(component:C, with state:State, in view: UIView) where C.State == State {
+        view.backgroundColor = .white
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { t in
+            
+            // Clean
+            for sv in view.subviews {
+                sv.removeFromSuperview()
+            }
+            
+            // Rerender
+            let renderedView = self.render(component: component, with: state)
+            
+            renderedView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(renderedView)
+            renderedView.fillContainer()
+        }
+    }
+    
+    func render<C: Component, State>(component:C, with state:State) -> UIView where C.State == State {
+        let rootView = UIView()
         renderer.render(component.render(state: state), in: rootView)
         return rootView
     }

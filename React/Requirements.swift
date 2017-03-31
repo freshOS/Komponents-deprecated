@@ -16,13 +16,15 @@ Requirements :
 - Pure SWIFT
 - No dependency of layout library
 - View is returned in function of a state
- 
+- Both components and Nodes need to be renderable
+- test render every second
  
 =========== TODO
  
+ - test change state button
+ 
  
  - INject source == Rerender Component.
- 
  
 - Need to be able to implement it gradually in a n implementation
 - local reasoning
