@@ -23,6 +23,10 @@ class WeactEngine {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue:"WeactStateChanged"), object: nil, queue: nil) { n in
             self.renderBlock()
         }
+        
+//        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+//            self.renderBlock()
+//        }
     }
     
     func render<C: Component>(component:C, in view: UIView) {

@@ -15,7 +15,7 @@ class PhotoComponent: Component {
     func render(state photo: Photo) -> Renderable {
         
         return
-            VerticalStack(style: { $0.spacing = 50 }, layout: { $0.centerInContainer() }, [
+            VerticalStack(style: { $0.spacing = 20 }, layout: { $0.centerInContainer() }, [
                 Button("Tap Me", tap: { self.updateState { $0.numberOfYummys += 1} }),
                 Text("There"),
                 Text("How"),

@@ -41,6 +41,47 @@ struct Text: Node {
     }
 }
 
+class Field: Node {
+    
+    var applyStyle: (() -> ())?
+    var applyLayout: (() -> ())?
+    var layoutBlock: ((UITextField) -> ())?
+    var styleBlock: ((UITextField) -> ())?
+    var children = [Node]()
+    var placeholder = ""
+    var wording = ""
+    var isFocused = true
+    
+    var textChangedCallback:((String) -> Void)?
+    
+    
+    
+    var registerTextChanged: ((UITextField) -> ())?
+    
+    init(_ placeholder: String = "", wording:String = "", textChanged: ((String) -> Void)? = nil, style:((UITextField)->())? = nil, layout:((UITextField)->())? = nil , children:[Node] = [Node]() ) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.children = children
+        self.placeholder = placeholder
+        self.wording = wording
+        
+        
+        textChangedCallback = textChanged
+        
+        
+        registerTextChanged = { tf in
+            tf.addTarget(self, action: #selector(self.textDidChange(tf:)), for: .editingChanged)
+        }
+    }
+    
+    @objc func textDidChange(tf:UITextField) {
+        if let t = tf.text {
+            wording = t
+            textChangedCallback?(t)
+        }
+    }
+}
+
 
 struct VerticalStack: Node {
     
@@ -105,10 +146,9 @@ class Button: Node {
         self.wording = wording
         self.layoutBlock = layout
         self.styleBlock = style
-        tapCallback = tap
+        
         
         tapCallback = tap
-        
         registerTap = { b in
             b.addTarget(self, action: #selector(self.didTap), for: .touchUpInside)
         }

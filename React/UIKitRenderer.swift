@@ -21,7 +21,6 @@ class UIKitRenderer: Renderer {
         
         if var node = renderable as? Node {
             
-
             if let viewNode = node as? View {
                 let v = UIView()
                 theView = v
@@ -69,6 +68,19 @@ class UIKitRenderer: Renderer {
                 }
             }
             
+            if let fieldNode = node as? Field {
+                let field = UITextField()
+                field.placeholder = fieldNode.placeholder
+                field.text  = fieldNode.wording
+                theView = field
+                node.applyLayout = {
+                    fieldNode.layoutBlock?(field)
+                }
+                node.applyStyle = {
+                    fieldNode.styleBlock?(field)
+                }
+            }
+            
             if let buttonNode = node as? Button {
                 let button = UIButton()
                 button.setTitle(buttonNode.wording, for: .normal)
@@ -108,6 +120,14 @@ class UIKitRenderer: Renderer {
             //Register taps ?? need to be at the end ? after adding to view Hierarchy?
             if let bNode = node as? Button {
                 bNode.registerTap?(theView as! UIButton)
+            }
+            
+            if let tfNode = node as? Field {
+                tfNode.registerTextChanged?(theView as! UITextField)
+                
+                if tfNode.isFocused {
+//                    (theView as! UITextField).becomeFirstResponder()
+                }
             }
         
         }

@@ -23,7 +23,12 @@ Pure Swift React/ ComponentKit implementation
 - Need to be able to implement it gradually in a n implementation
 - First rerender all on state change. is this dependent?
 - Diif algorithm ?
+- Explore how to handle navigation and VC presenting/pushing
 
+-- add references of objects for defered global layout.
+
+- how would we attach Gesture recognizers?
+- relayout/ refresh render/ but keep current selected field?
 
 ## Example
 
