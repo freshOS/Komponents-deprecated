@@ -24,6 +24,7 @@
 		99D226E71E8BA734009416AA /* ReactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226E61E8BA734009416AA /* ReactTests.swift */; };
 		99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D226F21E8BB1C5009416AA /* Stevia.framework */; };
 		99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */; };
+		F0E6A87A1E92A50C00F82566 /* Reconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E6A8791E92A50C00F82566 /* Reconcilier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		99D226E81E8BA734009416AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
+		F0E6A8791E92A50C00F82566 /* Reconcilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reconcilier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				99C3C4D51E8D560800F7F5B5 /* Weact.swift */,
+				F0E6A8791E92A50C00F82566 /* Reconcilier.swift */,
 				991B5EBB1E8E9610005D7674 /* Renderable.swift */,
 				99C3C4CF1E8D018700F7F5B5 /* Node.swift */,
 				991B5EBD1E8E9621005D7674 /* Component.swift */,
@@ -287,6 +290,7 @@
 				99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
 				99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */,
+				F0E6A87A1E92A50C00F82566 /* Reconcilier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
