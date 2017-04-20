@@ -174,3 +174,29 @@ class Button: Node {
         tapCallback?()
     }
 }
+
+struct Image: Node {
+    
+    var applyStyle: (() -> ())?
+    var applyLayout: (() -> ())?
+    var layoutBlock: ((UIImageView) -> ())?
+    var styleBlock: ((UIImageView) -> ())?
+    var children = [Node]()
+    var childrenLayout = [Any]()
+    var ref:UnsafeMutablePointer<UIImageView>?
+    
+    init(style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
+         ref: UnsafeMutablePointer<UIImageView>? = nil, _ children:[Any]) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.childrenLayout = children
+        self.ref = ref
+    }
+    
+    init(style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
+         ref: UnsafeMutablePointer<UIImageView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
+    }
+}
