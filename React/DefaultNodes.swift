@@ -155,13 +155,16 @@ class Button: Node {
     var image:UIImage?
     
     var registerTap: ((UIButton) -> ())?
+    var ref:UnsafeMutablePointer<UIButton>?
     
     
-    init(_ wording: String = "", image: UIImage? = nil, tap: (() -> Void)? = nil, style:((UIButton)->())? = nil, layout:((UIButton)->())? = nil) {
+    init(_ wording: String = "", image: UIImage? = nil, tap: (() -> Void)? = nil, style:((UIButton)->())? = nil, layout:((UIButton)->())? = nil,
+         ref: UnsafeMutablePointer<UIButton>? = nil) {
         self.image = image
         self.wording = wording
         self.layoutBlock = layout
         self.styleBlock = style
+        self.ref = ref
         
         
         tapCallback = tap
@@ -200,3 +203,56 @@ struct Image: Node {
         self.ref = ref
     }
 }
+
+struct ScrollView: Node {
+    
+    var applyStyle: (() -> ())?
+    var applyLayout: (() -> ())?
+    var layoutBlock: ((UIScrollView) -> ())?
+    var styleBlock: ((UIScrollView) -> ())?
+    var children = [Node]()
+    var childrenLayout = [Any]()
+    var ref:UnsafeMutablePointer<UIScrollView>?
+    
+    init(style:((UIScrollView)->())? = nil, layout:((UIScrollView)->())? = nil,
+         ref: UnsafeMutablePointer<UIScrollView>? = nil, _ children:[Any]) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.childrenLayout = children
+        self.ref = ref
+    }
+    
+    init(style:((UIScrollView)->())? = nil, layout:((UIScrollView)->())? = nil,
+         ref: UnsafeMutablePointer<UIScrollView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
+    }
+}
+
+struct PageControl: Node {
+    
+    var applyStyle: (() -> ())?
+    var applyLayout: (() -> ())?
+    var layoutBlock: ((UIPageControl) -> ())?
+    var styleBlock: ((UIPageControl) -> ())?
+    var children = [Node]()
+    var childrenLayout = [Any]()
+    var ref:UnsafeMutablePointer<UIPageControl>?
+    
+    init(style:((UIPageControl)->())? = nil, layout:((UIPageControl)->())? = nil,
+         ref: UnsafeMutablePointer<UIPageControl>? = nil, _ children:[Any]) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.childrenLayout = children
+        self.ref = ref
+    }
+    
+    init(style:((UIPageControl)->())? = nil, layout:((UIPageControl)->())? = nil,
+         ref: UnsafeMutablePointer<UIPageControl>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
+    }
+}
+

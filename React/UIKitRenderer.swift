@@ -28,6 +28,7 @@ class UIKitRenderer: Renderer {
                 
                 // call the  layout block on the top view object
                 nodeView.layoutPass()
+                nodeView.didRender()
             }
             
         }
@@ -107,8 +108,6 @@ class UIKitRenderer: Renderer {
             if let buttonNode = node as? Button {
                 let button = UIButton()
                 button.setTitle(buttonNode.wording, for: .normal)
-                button.setTitleColor(.red, for: .normal)
-                button.setTitleColor(.blue, for: .highlighted)
                 if let img = buttonNode.image {
                     button.setImage(img, for: .normal)
                 }
@@ -119,6 +118,7 @@ class UIKitRenderer: Renderer {
                 node.applyStyle = {
                     buttonNode.styleBlock?(button)
                 }
+                buttonNode.ref?.pointee = button
             }
         
             if let imageNode = node as? Image {
@@ -133,8 +133,32 @@ class UIKitRenderer: Renderer {
                 imageNode.ref?.pointee = v
             }
         
+            if let scrollViewNode = node as? ScrollView {
+                let v = UIScrollView()
+                theView = v
+                node.applyLayout = {
+                    scrollViewNode.layoutBlock?(v)
+                }
+                node.applyStyle = {
+                    scrollViewNode.styleBlock?(v)
+                }
+                scrollViewNode.ref?.pointee = v
+            }
+        
+            if let pageControlNode = node as? PageControl {
+                let v = UIPageControl()
+                theView = v
+                node.applyLayout = {
+                    pageControlNode.layoutBlock?(v)
+                }
+                node.applyStyle = {
+                    pageControlNode.styleBlock?(v)
+                }
+                pageControlNode.ref?.pointee = v
+            }
+        
             var testLayoutBlock = { }
-            
+        
             if let theView = theView {
                 for c in node.children {
                     viewFor(renderable: c, in: theView)

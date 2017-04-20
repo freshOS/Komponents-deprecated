@@ -65,6 +65,7 @@ class WeactEngine {
 class NodeView: UIView, IsNodeView {
     convenience init() {
         self.init(frame: CGRect.zero)
+        backgroundColor = .white
         renderNode()
     }
     
@@ -73,6 +74,8 @@ class NodeView: UIView, IsNodeView {
     }
     
     func layoutPass() { }
+    
+    func didRender() { }
 }
 
 extension IsNodeView where Self: UIView {
@@ -86,5 +89,6 @@ extension IsNodeView where Self: UIView {
 protocol IsNodeView {
     func render() -> Node
     func layoutPass()
+    func didRender()
 }
 
