@@ -13,6 +13,7 @@
 		991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBF1E8E9636005D7674 /* Renderer.swift */; };
 		991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EC11E8E968B005D7674 /* DefaultNodes.swift */; };
 		9921678E1E92334F00979FC1 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9921678D1E92334F00979FC1 /* LoginScreen.swift */; };
+		99B74C831EA7C26000BAADCF /* TutorialItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B74C821EA7C26000BAADCF /* TutorialItemView.swift */; };
 		99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CF1E8D018700F7F5B5 /* Node.swift */; };
 		99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */; };
 		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
@@ -44,6 +45,7 @@
 		991B5EBF1E8E9636005D7674 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		991B5EC11E8E968B005D7674 /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
 		9921678D1E92334F00979FC1 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		99B74C821EA7C26000BAADCF /* TutorialItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialItemView.swift; sourceTree = "<group>"; };
 		99C3C4CF1E8D018700F7F5B5 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
 		99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComponent.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
 				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
 				9921678D1E92334F00979FC1 /* LoginScreen.swift */,
+				99B74C821EA7C26000BAADCF /* TutorialItemView.swift */,
 				991B5EB91E8E95A7005D7674 /* Core */,
 				991B5EBA1E8E95CF005D7674 /* TrashTests */,
 				99D226D81E8BA734009416AA /* Assets.xcassets */,
@@ -289,6 +292,7 @@
 				991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */,
 				99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */,
 				9921678E1E92334F00979FC1 /* LoginScreen.swift in Sources */,
+				99B74C831EA7C26000BAADCF /* TutorialItemView.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
 				99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */,
 			);

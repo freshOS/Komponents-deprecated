@@ -66,6 +66,9 @@ class UIKitRenderer: Renderer {
                 node.applyStyle = {
                     textNode.styleBlock?(label)
                 }
+                
+                // TEST REF
+                textNode.ref?.pointee = label
             }
             
             if let fieldNode = node as? Field {
@@ -98,9 +101,141 @@ class UIKitRenderer: Renderer {
                 }
             }
             
+            var testLayoutBlock = { }
+            
             if let theView = theView {
                 for c in node.children {
                     viewFor(renderable: c, in: theView)
+                }
+                
+                if let viewNode = node as? View {
+//                    for a in viewNode.childrenLayout {
+//                        print(a)
+//                        
+//                        
+//                        
+//                        if let c = a as? CGFloat {
+//                            print(c)
+//                        }
+//                    }
+                    
+                    
+                    if !viewNode.childrenLayout.isEmpty {
+                        var newArray:[Any] = [Any]()
+                        for a in viewNode.childrenLayout {
+                            if let c = a as? Int {
+                                newArray.append(CGFloat(c))
+                            } else if let n = a as? Node {
+                                newArray.append(viewFor(renderable: n, in: theView))
+                            } else if let array = a as? [Any] {
+                                print(array)
+//                                for value in array {
+//                                    if let n = value as? Node {
+//                                        newArray.append(viewFor(renderable: n, in: theView))
+//                                    }
+//                                }
+                                
+                                let transformedArray:[Any] = array.map { x in
+                                    if let i = x as? Int {
+                                        return CGFloat(i)
+                                    } else if let n = x as? Node {
+                                        return viewFor(renderable: n, in: theView)
+                                    }
+                                    return ""
+                                }
+                                
+                                print(transformedArray)
+                                
+                                newArray.append(transformedArray)
+                            }
+                            print(newArray)
+                        }
+                        
+                        
+                        print(newArray)
+                        
+                        // Test verical margins
+                        var previousMargin: CGFloat?
+                        var previousView: UIView?
+                        for v in newArray {
+                            if let m = v as? CGFloat {
+                                previousMargin = m
+                            }
+                            
+                            if let av = v as? UIView {
+                                
+                                if let pv = previousView, let pm = previousMargin   {
+                                    theView.layout(
+                                        pv,
+                                        pm,
+                                        av
+                                    )
+                                    previousView = nil
+                                    previousMargin = nil
+                                }
+                                
+                                if let pm = previousMargin {
+                                    av.top(pm)
+                                    previousMargin = nil
+                                }
+//                            print(av)
+//                            print(av.superview)
+//                                av.bottom(200)
+                                previousView = av
+                            }
+                            
+                            if let horizontalArray = v as? [Any] {
+                                
+                                var previousHMargin: CGFloat?
+                                var previousHView: UIView?
+                                for x in horizontalArray {
+                                    
+                                    if let m = x as? CGFloat {
+                                        previousHMargin = m
+                                        
+                                        if let av = previousHView {
+                                            av.right(m)
+                                        }
+                                        
+                                    }
+                                    if let av = x as? UIView {
+                                        if let phm = previousHMargin {
+                                            av.left(phm)
+                                        }
+                                        
+                                        
+                                        //copied
+                                        if let pv = previousView, let pm = previousMargin   {
+                                            theView.layout(
+                                                pv,
+                                                pm,
+                                                av
+                                            )
+                                            previousView = nil
+                                            previousMargin = nil
+                                        }
+                                       
+                                        previousHView = av
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
+                        
+//                        theView.layout(newArray)
+                        
+//                        testLayoutBlock = {
+////                            theView.layout(newArray)
+//                            
+//                            for v in newArray {
+//                                if let av = v as? UIView {
+//                                    av.bottom(100)
+////                                    print(av.superview)
+//                                }
+//                            }
+//                        }
+                    }
                 }
             }
             
@@ -115,6 +250,9 @@ class UIKitRenderer: Renderer {
             }
 
             node.applyLayout?()
+            
+            testLayoutBlock()
+            
             node.applyStyle?()
             
             //Register taps ?? need to be at the end ? after adding to view Hierarchy?

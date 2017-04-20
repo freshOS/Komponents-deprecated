@@ -13,7 +13,6 @@ class PhotoComponent: Component {
     var state: Photo = Photo()
     
     func render(state photo: Photo) -> Renderable {
-        
         return
             VerticalStack(style: { $0.spacing = 20 }, layout: { $0.centerInContainer() }, [
                 Button("Tap Me", tap: { self.updateState { $0.numberOfYummys += 1} }),
@@ -23,4 +22,14 @@ class PhotoComponent: Component {
                 Text("\(photo.numberOfYummys)")
             ])
     }
+}
+
+// Can use global funcs that return the underlying
+
+func verticalStack(style:((UIStackView)->())? = nil, layout:((UIStackView)->())? = nil , _ children: [Node]) -> VerticalStack {
+    var o = VerticalStack()
+    o.layoutBlock = layout
+    o.styleBlock = style
+    o.children = children
+    return o
 }

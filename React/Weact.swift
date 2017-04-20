@@ -54,3 +54,21 @@ class WeactEngine {
         return rootView
     }
 }
+
+extension UIView {
+    
+    func render(node: Node) {
+        let renderer = UIKitRenderer()
+        renderer.render(node, in: self)
+    }
+}
+
+extension NodeView where Self: UIView {
+    func render() {
+        render(node: node())
+    }
+}
+
+protocol NodeView {
+    func node() -> Node
+}

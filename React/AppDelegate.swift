@@ -6,7 +6,33 @@
 //  Copyright © 2017 Freshos. All rights reserved.
 //
 
+
+//TODO
+// 1 - Use syntax Without React, just to create static view hierachies.
+// 1 bis use in a render block but renered only once then poke at views.
+// 2 - Use in parallel with a react engine.
+// 3 Both independent of the layout system, can use native autolayout or other (Stevia?)
+
 import UIKit
+
+class TestVC: UIViewController {
+    
+    var v = TutorialItemView()
+    override func loadView() { view =  v }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        v.backgroundColor = .white
+        
+        v.title.text = "Hello"
+        v.detail.text = "This is the explanation !"
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue:"INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { n in
+            self.view = TutorialItemView()
+        }
+        
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,8 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Classic RootVC Setup
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LoginScreen()
+        window?.rootViewController = TestVC()//LoginScreen()
         window?.makeKeyAndVisible()
+        
+        
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue:"INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { n in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: nil)
+        }
+        
         return true
     }
 }

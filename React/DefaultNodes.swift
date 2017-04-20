@@ -17,10 +17,13 @@ struct View: Node {
     var styleBlock: ((UIView) -> ())?
     var children = [Node]()
     
-    init(style:((UIView)->())? = nil, layout:((UIView)->())? = nil , _ children:[Node]) {
+    var childrenLayout = [Any]()
+    
+    init(style:((UIView)->())? = nil, layout:((UIView)->())? = nil , _ children:[Any]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.children = children
+        
+        self.childrenLayout = children
     }
 }
 
@@ -32,12 +35,17 @@ struct Text: Node {
     var styleBlock: ((UILabel) -> ())?
     var children = [Node]()
     var wording = ""
+    var ref:UnsafeMutablePointer<UILabel>?
     
-    init(_ wording: String = "", style:((UILabel)->())? = nil, layout:((UILabel)->())? = nil , children:[Node] = [Node]() ) {
+    init(_ wording: String = "",
+         style:((UILabel)->())? = nil,
+         layout:((UILabel)->())? = nil,
+         ref: UnsafeMutablePointer<UILabel>? = nil, children:[Node] = [Node]() ) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
         self.wording = wording
+        self.ref = ref
     }
 }
 
