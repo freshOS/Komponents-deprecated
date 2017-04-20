@@ -62,29 +62,29 @@ class WeactEngine {
 ///
 
 
-class DefaultNodeView: UIView, NodeView {
+class NodeView: UIView, IsNodeView {
     convenience init() {
         self.init(frame: CGRect.zero)
-        render()
+        renderNode()
     }
     
-    func node() -> Node {
+    func render() -> Node {
         return View([])
     }
     
     func layoutPass() { }
 }
 
-extension NodeView where Self: UIView {
+extension IsNodeView where Self: UIView {
     
-    func render() {
+    func renderNode() {
         let renderer = UIKitRenderer()
         renderer.render(nodeView: self)
     }
 }
 
-protocol NodeView {
-    func node() -> Node
+protocol IsNodeView {
+    func render() -> Node
     func layoutPass()
 }
 

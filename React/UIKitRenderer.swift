@@ -10,8 +10,8 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
-    func render(nodeView: NodeView) {
-        let node = nodeView.node()
+    func render(nodeView: IsNodeView) {
+        let node = nodeView.render()
         if let rootView = nodeView as? UIView {
             for c in node.children {
                 print(c)
@@ -120,7 +120,19 @@ class UIKitRenderer: Renderer {
                     buttonNode.styleBlock?(button)
                 }
             }
-            
+        
+            if let imageNode = node as? Image {
+                let v = UIImageView()
+                theView = v
+                node.applyLayout = {
+                    imageNode.layoutBlock?(v)
+                }
+                node.applyStyle = {
+                    imageNode.styleBlock?(v)
+                }
+                imageNode.ref?.pointee = v
+            }
+        
             var testLayoutBlock = { }
             
             if let theView = theView {
