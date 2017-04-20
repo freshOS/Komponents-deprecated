@@ -16,14 +16,22 @@ struct View: Node {
     var layoutBlock: ((UIView) -> ())?
     var styleBlock: ((UIView) -> ())?
     var children = [Node]()
-    
     var childrenLayout = [Any]()
+    var ref:UnsafeMutablePointer<UIView>?
     
-    init(style:((UIView)->())? = nil, layout:((UIView)->())? = nil , _ children:[Any]) {
+    init(style:((UIView)->())? = nil, layout:((UIView)->())? = nil,
+         ref: UnsafeMutablePointer<UIView>? = nil, _ children:[Any]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        
         self.childrenLayout = children
+        self.ref = ref
+    }
+    
+    init(style:((UIView)->())? = nil, layout:((UIView)->())? = nil,
+         ref: UnsafeMutablePointer<UIView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
     }
 }
 

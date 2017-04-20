@@ -12,13 +12,13 @@ protocol Component:class, Renderable {
     
     associatedtype State
     var state: State { get set }
-    func render(state: State) -> Renderable
+    func render(state: State) -> Node
     func updateState(_ block:(inout State) -> Void)
 }
 
 extension Component {
     
-    func render() -> Renderable {
+    func render() -> Node {
         print(state)
         return render(state: state)
     }

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Renderable {
-    func render() -> Renderable
+    func render() -> Node
 }

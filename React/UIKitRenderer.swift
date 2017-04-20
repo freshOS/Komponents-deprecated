@@ -10,16 +10,37 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
+    func render(nodeView: NodeView) {
+        let node = nodeView.node()
+        if let rootView = nodeView as? UIView {
+            for c in node.children {
+                print(c)
+                render(c, in: rootView)
+            }
+            
+            if let viewNode = node as? View {
+                
+                let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
+                for c in childern {
+                    print(c)
+                    render(c, in: rootView)
+                }
+                
+                // call the  layout block on the top view object
+                nodeView.layoutPass()
+            }
+            
+        }
+    }
+    
     func render(_ renderable: Renderable, in rootView: UIView) {
         viewFor(renderable: renderable, in:rootView) //recursive
     }
 
     @discardableResult
     func viewFor(renderable: Renderable, in parentView:UIView) -> UIView {
-        
         var theView:UIView?
-        
-        if var node = renderable as? Node {
+        var node = renderable.render()
             
             if let viewNode = node as? View {
                 let v = UIView()
@@ -30,6 +51,7 @@ class UIKitRenderer: Renderer {
                 node.applyStyle = {
                     viewNode.styleBlock?(v)
                 }
+                viewNode.ref?.pointee = v
             }
             
             if let vStackNode = node as? VerticalStack {
@@ -66,8 +88,6 @@ class UIKitRenderer: Renderer {
                 node.applyStyle = {
                     textNode.styleBlock?(label)
                 }
-                
-                // TEST REF
                 textNode.ref?.pointee = label
             }
             
@@ -267,8 +287,6 @@ class UIKitRenderer: Renderer {
 //                    (theView as! UITextField).becomeFirstResponder()
                 }
             }
-        
-        }
         return theView ?? UIView()
     }
 }

@@ -15,11 +15,9 @@ protocol Node:Renderable {
 }
 
 extension Node {
-    func render() -> Renderable {
+    func render() -> Node {
         return self
     }
 }
-
-
 
 

@@ -6,6 +6,8 @@
 //  Copyright © 2017 Octopepper. All rights reserved.
 //
 
+// test kotlin apply layout(when isTest , size = 20 for instatnce)
+
 import UIKit
 
 class WeactEngine {
@@ -55,20 +57,34 @@ class WeactEngine {
     }
 }
 
-extension UIView {
-    
-    func render(node: Node) {
-        let renderer = UIKitRenderer()
-        renderer.render(node, in: self)
+
+
+///
+
+
+class DefaultNodeView: UIView, NodeView {
+    convenience init() {
+        self.init(frame: CGRect.zero)
+        render()
     }
+    
+    func node() -> Node {
+        return View([])
+    }
+    
+    func layoutPass() { }
 }
 
 extension NodeView where Self: UIView {
+    
     func render() {
-        render(node: node())
+        let renderer = UIKitRenderer()
+        renderer.render(nodeView: self)
     }
 }
 
 protocol NodeView {
     func node() -> Node
+    func layoutPass()
 }
+

@@ -12,7 +12,7 @@ class PhotoComponent: Component {
     
     var state: Photo = Photo()
     
-    func render(state photo: Photo) -> Renderable {
+    func render(state photo: Photo) -> Node {
         return
             VerticalStack(style: { $0.spacing = 20 }, layout: { $0.centerInContainer() }, [
                 Button("Tap Me", tap: { self.updateState { $0.numberOfYummys += 1} }),
