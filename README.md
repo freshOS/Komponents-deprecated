@@ -1,42 +1,36 @@
 # Weact
+
+
+## Inspiration
+Facebook's React, ComponentsKit, AlexDrone's render, Angular...
 Pure Swift React/ ComponentKit implementation
 
-- Facebook's great ComponentKit is in Objc-C objc++, here we can leverage swift awesoemness.
-
 ## Requirements
+- [x] Pure **Swift** (no JS, no XML)
+- [x] Can be used **Incrementally**
+- [x] Can be used **Without React** ( only the cool view building syntax if you want to)
+- [x] Can use **Autolayout or any autolayout** lib for the layout (we like
+  [Stevia](https://github.com/freshOS/Stevia))
+- [x] Support **Hot Reload** with [💉 injectionForXcode](http://johnholdsworth.com/injection.html)
 
-- [x] Can be used Incrementally
-- [x] Can be used without React ( only the cool view building syntax )
 
-
-### Ok
-- Pure Swift
-- No dependency of layout library (often flexbox in other impl)
-- View is returned in function of a state
-- Both Components and Nodes are Renderable
+### Details
+- Component's view is rendered for a given state
 - Components can call `upadateState`
 - Calls to `upadteState` triggers a relayout.
 - Open to using whatever layout system you need
  (our favorite is Stevia (native autolayout))
 
 ### TODO
- - Support sub componenets
+ - Support sub components
  - INject source == Rerender Component.
-
-- Need to be able to implement it gradually in a n implementation
 - First rerender all on state change. is this dependent?
 - Diif algorithm ?
 - Explore how to handle navigation and VC presenting/pushing
-
--- add references of objects for defered global layout.
-
 - how would we attach Gesture recognizers?
 - relayout/ refresh render/ but keep current selected field?
 
-
-// 3 Both independent of the layout system, can use native autolayout or other (Stevia?)
-
-## Example
+## Component = View + State
 
 ```swift
 class PhotoComponent: Component {
@@ -56,7 +50,7 @@ class PhotoComponent: Component {
 }
 ```
 
-### Use View building without React.
+### NodeView = View Only (without React continous state change thing aka poke the views)
 
 As a first step, you might want to migrate your classic UIView subclass to support the cool syntax. You're not ready to jump into react logic and break your app that works, Amen!
 The following technique enables you to migrate your existing views to the new syntax, while staying plain UIViews. This means you won't have to change a single line of Controller code. YAY! \o/
