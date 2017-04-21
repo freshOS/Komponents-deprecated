@@ -57,11 +57,6 @@ class WeactEngine {
     }
 }
 
-
-
-///
-
-
 class NodeView: UIView, IsNodeView {
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -86,9 +81,60 @@ extension IsNodeView where Self: UIView {
     }
 }
 
+extension IsPropsView where Self: UIView {
+    
+    func renderNode() {
+        let renderer = UIKitRenderer()
+        renderer.render(nodeView: self)
+    }
+}
+
 protocol IsNodeView {
     func render() -> Node
     func layoutPass()
     func didRender()
+}
+
+
+protocol IsPropsView {
+    associatedtype Props
+    var props: Props { get }
+    func render(props: Props) -> Node
+    func layoutPass()
+    func didRender()
+}
+
+
+class PropsView<Props>: UIView, IsPropsView {
+    
+    var props: Props
+    
+    init(props: Props) {
+        self.props = props
+        super.init(frame: CGRect.zero)
+        
+        backgroundColor = .white
+        renderNode()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func render(props: Props) -> Node {
+        return View([])
+    }
+    
+    func layoutPass() { }
+    
+    func didRender() { }
+}
+
+
+extension IsPropsView where Self: UIView {
+    
+    func didRender() {}
+    
+    func layoutPass() { }
 }
 

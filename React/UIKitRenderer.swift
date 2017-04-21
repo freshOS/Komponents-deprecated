@@ -34,6 +34,29 @@ class UIKitRenderer: Renderer {
         }
     }
     
+    func render<T:IsPropsView>(nodeView: T) {
+        let node = nodeView.render(props: nodeView.props)
+        if let rootView = nodeView as? UIView {
+            for c in node.children {
+                print(c)
+                render(c, in: rootView)
+            }
+            
+            if let viewNode = node as? View {
+                
+                let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
+                for c in childern {
+                    print(c)
+                    render(c, in: rootView)
+                }
+                
+                // call the  layout block on the top view object
+                nodeView.layoutPass()
+                nodeView.didRender()
+            }
+        }
+    }
+    
     func render(_ renderable: Renderable, in rootView: UIView) {
         viewFor(renderable: renderable, in:rootView) //recursive
     }
@@ -131,6 +154,7 @@ class UIKitRenderer: Renderer {
                     imageNode.styleBlock?(v)
                 }
                 imageNode.ref?.pointee = v
+                v.image = imageNode.image
             }
         
             if let scrollViewNode = node as? ScrollView {

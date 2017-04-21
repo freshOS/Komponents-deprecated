@@ -187,20 +187,23 @@ struct Image: Node {
     var children = [Node]()
     var childrenLayout = [Any]()
     var ref:UnsafeMutablePointer<UIImageView>?
+    var image: UIImage?
     
-    init(style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
+    init(_ image:UIImage? = nil, style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
          ref: UnsafeMutablePointer<UIImageView>? = nil, _ children:[Any]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.childrenLayout = children
         self.ref = ref
+        self.image = image
     }
     
-    init(style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
+    init(_ image:UIImage? = nil, style:((UIView)->())? = nil, layout:((UIImageView)->())? = nil,
          ref: UnsafeMutablePointer<UIImageView>? = nil) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.ref = ref
+        self.image = image
     }
 }
 
