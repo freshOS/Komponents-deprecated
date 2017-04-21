@@ -259,3 +259,32 @@ struct PageControl: Node {
     }
 }
 
+struct Spinner: Node {
+    
+    var applyStyle: (() -> ())?
+    var applyLayout: (() -> ())?
+    var layoutBlock: ((UIActivityIndicatorView) -> ())?
+    var styleBlock: ((UIActivityIndicatorView) -> ())?
+    var children = [Node]()
+    var childrenLayout = [Any]()
+    var ref:UnsafeMutablePointer<UIActivityIndicatorView>?
+    var activityIndicatorStyle = UIActivityIndicatorViewStyle.gray
+    
+    init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .gray, style:((UIView)->())? = nil, layout:((UIActivityIndicatorView)->())? = nil,
+         ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil, _ children:[Any]) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.childrenLayout = children
+        self.ref = ref
+        self.activityIndicatorStyle = activityIndicatorStyle
+    }
+    
+    init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .gray, style:((UIActivityIndicatorView)->())? = nil, layout:((UIActivityIndicatorView)->())? = nil,
+         ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
+        self.activityIndicatorStyle = activityIndicatorStyle
+    }
+}
+
