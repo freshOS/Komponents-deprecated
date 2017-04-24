@@ -14,7 +14,6 @@ class UIKitRenderer: Renderer {
         let node = nodeView.render()
         if let rootView = nodeView as? UIView {
             for c in node.children {
-                print(c)
                 render(c, in: rootView)
             }
             
@@ -22,7 +21,6 @@ class UIKitRenderer: Renderer {
                 
                 let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
                 for c in childern {
-                    print(c)
                     render(c, in: rootView)
                 }
                 
@@ -41,7 +39,6 @@ class UIKitRenderer: Renderer {
         let node = nodeView.render(props: nodeView.props)
         if let rootView = nodeView as? UIView {
             for c in node.children {
-                print(c)
                 render(c, in: rootView)
             }
             
@@ -49,7 +46,6 @@ class UIKitRenderer: Renderer {
                 
                 let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
                 for c in childern {
-                    print(c)
                     render(c, in: rootView)
                 }
                 
@@ -224,7 +220,6 @@ class UIKitRenderer: Renderer {
                         } else if let n = a as? Node {
                             newArray.append(viewFor(renderable: n, in: theView))
                         } else if let array = a as? [Any] {
-                            print(array)
                             //                                for value in array {
                             //                                    if let n = value as? Node {
                             //                                        newArray.append(viewFor(renderable: n, in: theView))
@@ -239,16 +234,9 @@ class UIKitRenderer: Renderer {
                                 }
                                 return ""
                             }
-                            
-                            print(transformedArray)
-                            
                             newArray.append(transformedArray)
                         }
-                        print(newArray)
                     }
-                    
-                    
-                    print(newArray)
                     
                     // Test verical margins
                     var previousMargin: CGFloat?
