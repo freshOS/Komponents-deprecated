@@ -173,9 +173,33 @@ class ComponentView<T:Component> :UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override var intrinsicContentSize: CGSize {
-//        return component.size()
-//    }
 }
 
+class ComponentVC<T:Component>: UIViewController {
+    
+    let component: T!
+    
+    init(component: T) {
+        self.component = component
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    var componentsView: ComponentView<T>!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
+            self.componentsView = ComponentView(component: self.component)
+            self.view = self.componentsView
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        componentsView = ComponentView(component: component)
+        view = componentsView
+    }
+}
