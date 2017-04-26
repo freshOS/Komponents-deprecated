@@ -42,13 +42,13 @@ func SignupButton(text: String) -> Button {
 
 
 
-class LoginComponent: CustomComponent<LoginState> {
+class LoginComponent: Component {
     
-    override func initialState() -> LoginState! { return LoginState() }
+    var state = LoginState()
     
     // MARK - View
     
-    override func render(state: LoginState) -> Node {
+    func render() -> Node {
         return View(layout: { $0.fillContainer() }, [
             VerticalStack(style: { $0.spacing = 8 }, layout: { |-$0-|.top(80) }, [
                 Field("Email", wording: state.email, textChanged: emailChanged, style: emailStyle, layout: { $0.height(80) }),

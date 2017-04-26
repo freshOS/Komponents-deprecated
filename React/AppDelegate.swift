@@ -15,6 +15,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -29,10 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = UIViewController()
         window?.rootViewController = vc
         
-        let engine = WeactEngine()
-        engine.render(component: LoginComponent(), in:vc.view)
         
-//        window?.rootViewController = LoginComponent()
+        // Using engine.
+//        let engine = WeactEngine()
+//        engine.render(component: LoginComponent(), in:vc.view)
+    
+        
+        // Using wrapper
+        let loginView = ComponentView(component: LoginComponent())
+        loginView.frame = vc.view.frame
+        vc.view.addSubview(loginView)
+        
+        
         window?.makeKeyAndVisible()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue:"INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { n in

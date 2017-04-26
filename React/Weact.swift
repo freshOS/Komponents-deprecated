@@ -33,7 +33,6 @@ class WeactEngine {
     }
     
     func render<C: Component>(component:C, in view: UIView) {
-        view.backgroundColor = .white
         renderBlock = {
             // Clean
             for sv in view.subviews {
@@ -41,11 +40,28 @@ class WeactEngine {
             }
             
             // Rerender
-            let renderedView = self.render(component: component)
+//            let renderedView = self.render(component: component)
             
-            renderedView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(renderedView)
-            renderedView.fillContainer()
+            
+            ///
+//            let rootView = UIView()
+            let node = component.render()
+            self.renderer.render(node, in: view)
+            
+            
+            
+            //fill first node in container view
+            if let firstNodeView = view.subviews.first {
+                firstNodeView.fillContainer()
+            }
+            
+
+            
+            ///
+            
+//            renderedView.translatesAutoresizingMaskIntoConstraints = false
+//            view.addSubview(renderedView)
+//            renderedView.fillContainer()
         }
         renderBlock()
     }
@@ -137,5 +153,29 @@ extension IsPropsView where Self: UIView {
     func didRender() {}
     
     func layoutPass() { }
+}
+
+
+// Helper to render a given compoennet in a UIView.
+// By using this wrap, you can use componenets incrementally by migrating your UIView subclasses in your App.
+class ComponentView<T:Component> :UIView {
+    
+    let component: T!
+    
+    let engine = WeactEngine()
+    
+    init(component: T) {
+        self.component = component
+        super.init(frame: CGRect.zero)
+        engine.render(component:component, in: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+//    override var intrinsicContentSize: CGSize {
+//        return component.size()
+//    }
 }
 
