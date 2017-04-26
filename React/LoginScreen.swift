@@ -27,6 +27,21 @@ import Stevia
 
 // Cannot inject generic comp?? (injection$Xcode?
 
+
+// Functional Component Example
+
+func SignupButton() -> Button {
+    return SignupButton(text:"Hello") // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
+}
+
+// Functional Component with props Example
+
+func SignupButton(text: String) -> Button {
+    return Button(text, style: { $0.backgroundColor = .red }, layout: { $0.height(80) }) // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
+}
+
+
+
 class LoginComponent: CustomComponent<LoginState> {
     
     override func initialState() -> LoginState! { return LoginState() }
@@ -41,7 +56,9 @@ class LoginComponent: CustomComponent<LoginState> {
             ]),
             VerticalStack(layout: { |$0|.bottom(0) }, [
                 Button("Vous n'avez pas de compte Yummypets ?", style: signUpButtonStyle, layout: { $0.height(80) }),
-                Button(buttonTextForState(state.status), tap: login, style: loginButtonStyle, layout: { $0.height(80) })
+                Button(buttonTextForState(state.status), tap: login, style: loginButtonStyle, layout: { $0.height(80) }),
+                SignupButton(),
+                SignupButton(text: "Coucou")
             ])
         ])
     }
@@ -80,27 +97,29 @@ class LoginComponent: CustomComponent<LoginState> {
     
     // MARK - Styles
     
-    func emailStyle(f: UITextField) {
+    func inputStyle(_ f:UITextField) {
         f.borderStyle = .roundedRect
+        f.font = UIFont(name: "HelveticaNeue-Light", size: 26)
+        f.layer.borderWidth = 1
+    }
+    
+    func emailStyle(f: UITextField) {
+        inputStyle(f)
         f.autocorrectionType = .no
         f.keyboardType = .emailAddress
         f.autocapitalizationType = .none
-        f.font = UIFont(name: "HelveticaNeue-Light", size: 26)
         f.returnKeyType = .next
         f.layer.borderColor = state.emailValid == .invalid ? UIColor.red.cgColor : UIColor.green.cgColor
-        f.layer.borderWidth = 1
         if state.emailFieldFocused {
             f.becomeFirstResponder()
         }
     }
     
     func passwordStyle(f: UITextField) {
-        f.borderStyle = .roundedRect
-        f.font = UIFont(name: "HelveticaNeue-Light", size: 26)
+        inputStyle(f)
 //        f.isSecureTextEntry = true // Bug text reset everytime :/
         f.returnKeyType = .done
         f.layer.borderColor = state.passwordValid == .invalid ? UIColor.red.cgColor : UIColor.green.cgColor
-        f.layer.borderWidth = 1
         if state.passwordFieldFocused {
             f.becomeFirstResponder()
         }
