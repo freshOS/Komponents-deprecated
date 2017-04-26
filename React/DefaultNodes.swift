@@ -35,15 +35,15 @@ struct View: Node {
     }
 }
 
-struct Text: Node {
+struct Label: Node {
     
     var applyStyle: (() -> ())?
     var applyLayout: (() -> ())?
-    var layoutBlock: ((UILabel) -> ())?
-    var styleBlock: ((UILabel) -> ())?
+    public var layoutBlock: ((UILabel) -> ())?
+    public var styleBlock: ((UILabel) -> ())?
     var children = [Node]()
     var wording = ""
-    var ref:UnsafeMutablePointer<UILabel>?
+    public var ref:UnsafeMutablePointer<UILabel>?
     
     init(_ wording: String = "",
          style:((UILabel)->())? = nil,
@@ -259,7 +259,7 @@ struct PageControl: Node {
     }
 }
 
-struct Spinner: Node {
+struct ActivityIndicatorView: Node {
     
     var applyStyle: (() -> ())?
     var applyLayout: (() -> ())?

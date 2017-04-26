@@ -25,37 +25,7 @@ import Stevia
 
 // layout externally
 
-// MARK - State
-
-struct LoginState {
-    var email = "" { didSet { validate() } }
-    var password = "" { didSet { validate() } }
-    var status = LoginStatus.unknown
-    var emailValid = FieldValidationStatus.unknown
-    var passwordValid = FieldValidationStatus.unknown
-    func isFormvalid() -> Bool  { return emailValid == . valid && passwordValid == .valid }
-    var emailFieldFocused = true
-    var passwordFieldFocused = false
-    private mutating func validate() {
-        emailValid = email.contains("@") ? .valid : .invalid
-        passwordValid = password.characters.count >= 6 ? .valid : .invalid
-        status = .unknown
-    }
-}
-enum FieldValidationStatus {
-    case unknown
-    case valid
-    case invalid
-}
-
-enum LoginStatus {
-    case unknown
-    case loading
-    case success
-    case error
-}
-
-// MARK - Component
+// Cannot inject generic comp?? (injection$Xcode?
 
 class LoginComponent: CustomComponent<LoginState> {
     
@@ -65,7 +35,7 @@ class LoginComponent: CustomComponent<LoginState> {
     
     override func render(state: LoginState) -> Node {
         return View(layout: { $0.fillContainer() }, [
-            VerticalStack(style: { (stack:UIStackView) in stack.spacing = 8 }, layout: { |-$0-|.top(80) }, [
+            VerticalStack(style: { $0.spacing = 8 }, layout: { |-$0-|.top(80) }, [
                 Field("Email", wording: state.email, textChanged: emailChanged, style: emailStyle, layout: { $0.height(80) }),
                 Field("Password", wording: state.password, textChanged: passwordChanged, style: passwordStyle, layout: { $0.height(80) }),
             ]),

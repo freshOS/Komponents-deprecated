@@ -8,6 +8,7 @@
 
 import Stevia
 
+
 //class ActionsBar: Component {
 //    
 //    var state: Photo = Photo()

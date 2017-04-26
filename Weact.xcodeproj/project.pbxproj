@@ -19,6 +19,7 @@
 		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
 		99C3C4D61E8D560800F7F5B5 /* Weact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D51E8D560800F7F5B5 /* Weact.swift */; };
 		99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D71E8D5C7A00F7F5B5 /* States.swift */; };
+		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
 		99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D11E8BA734009416AA /* AppDelegate.swift */; };
 		99D226D41E8BA734009416AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D31E8BA734009416AA /* ViewController.swift */; };
 		99D226D91E8BA734009416AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D226D81E8BA734009416AA /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComponent.swift; sourceTree = "<group>"; };
 		99C3C4D51E8D560800F7F5B5 /* Weact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weact.swift; sourceTree = "<group>"; };
 		99C3C4D71E8D5C7A00F7F5B5 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		99CE3F6A1EAE6B77001049CF /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		99D226CE1E8BA734009416AA /* Weact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D226D11E8BA734009416AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99D226D31E8BA734009416AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
 				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
 				9921678D1E92334F00979FC1 /* LoginScreen.swift */,
+				99CE3F6A1EAE6B77001049CF /* LoginState.swift */,
 				99B74C821EA7C26000BAADCF /* TutorialItemView.swift */,
 				991B5EB91E8E95A7005D7674 /* Core */,
 				991B5EBA1E8E95CF005D7674 /* TrashTests */,
@@ -285,6 +288,7 @@
 				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
 				99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
+				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
 				991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */,
 				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,
 				991B5EBC1E8E9610005D7674 /* Renderable.swift in Sources */,

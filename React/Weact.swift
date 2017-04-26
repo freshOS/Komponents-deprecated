@@ -6,7 +6,8 @@
 //  Copyright © 2017 Octopepper. All rights reserved.
 //
 
-// test kotlin apply layout(when isTest , size = 20 for instatnce)
+// TODO 
+//compoenent  fixed size ? override var intrinsicContentSize: CGSize { return CGSize(width: 79, height: 32) }
 
 import UIKit
 

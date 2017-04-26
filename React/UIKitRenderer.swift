@@ -102,7 +102,7 @@ class UIKitRenderer: Renderer {
             }
         }
         
-        if let textNode = node as? Text {
+        if let textNode = node as? Label {
             let label = UILabel()
             label.text = textNode.wording
             theView = label
@@ -181,7 +181,7 @@ class UIKitRenderer: Renderer {
             pageControlNode.ref?.pointee = v
         }
         
-        if let spinnerNode = node as? Spinner {
+        if let spinnerNode = node as? ActivityIndicatorView {
             let spinner = UIActivityIndicatorView(activityIndicatorStyle: spinnerNode.activityIndicatorStyle)
             theView = spinner
             node.applyLayout = {
