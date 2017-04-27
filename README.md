@@ -3,10 +3,7 @@ Weact = Swift + React
 
 ```swift
 func render() -> Node {
-    return
-        View(style: { $0.backgroundColor = .white }, [
-            Label("Hello Components!", layout: { $0.centerInContainer() })
-        ])
+    return Label("Hello, Component !")
 }
 ```
 Weact is a Swift framework for building component-oriented interfaces.
