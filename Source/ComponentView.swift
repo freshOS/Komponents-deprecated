@@ -13,7 +13,7 @@ import UIKit
 
 public class ComponentView<T: Component> :UIView {
     
-    let component: T!
+    public let component: T!
     
     let engine = WeactEngine()
     

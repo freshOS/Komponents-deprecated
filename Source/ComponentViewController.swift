@@ -8,21 +8,21 @@
 
 import UIKit
 
-class ComponentViewController: UIViewController, Component {
-    var state = true
+open class ComponentViewController: UIViewController, Component {
+    public var state = true
     
-    func render() -> Node {
+    open func render() -> Node {
         return View([])
     }
     
     let engine = WeactEngine()
     
-    override func loadView() {
+    override open func loadView() {
         view = UIView()
         engine.render(component:self, in: view)
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),

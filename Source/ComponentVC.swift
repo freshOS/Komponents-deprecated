@@ -14,7 +14,7 @@ import UIKit
 
 public class ComponentVC<T: Component>: UIViewController {
     
-    let component: T!
+    public let component: T!
     
     public init(component: T) {
         self.component = component
