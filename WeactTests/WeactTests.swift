@@ -1,15 +1,15 @@
 //
-//  ReactTests.swift
-//  ReactTests
+//  WeactTests.swift
+//  WeactTests
 //
-//  Created by Sacha Durand Saint Omer on 29/03/2017.
-//  Copyright © 2017 Freshos. All rights reserved.
+//  Created by Sacha Durand Saint Omer on 27/04/2017.
+//  Copyright © 2017 freshOS. All rights reserved.
 //
 
 @testable import Weact
 import XCTest
 
-class ReactTests: XCTestCase {
+class WeactTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

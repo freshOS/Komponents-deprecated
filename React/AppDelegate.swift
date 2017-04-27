@@ -10,6 +10,7 @@
 // TODO ViewLayout with spacies and margins in the childrne's aray ??
 
 import UIKit
+import Weact
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         // Using View Controller wrapper.
-        window?.rootViewController = ComponentVC(component: LoginComponent())
+        window?.rootViewController = ComponentVC(component: TestLoop())//LoginComponent())
         
         // Using UIView wrapper.
 //        let vc = UIViewController()

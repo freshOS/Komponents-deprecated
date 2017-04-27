@@ -8,6 +8,7 @@
 
 import Stevia
 import UIKit
+import Weact
 
 // TODO bind to state. email  textChanged
 // TODO Keep Field states by default?

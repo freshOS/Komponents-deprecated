@@ -12,18 +12,18 @@ import UIKit
 /// By using this wrapper, you can use components incrementally by migrating
 /// your UIViewControllers subclasses in your App.
 
-class ComponentVC<T: Component>: UIViewController {
+public class ComponentVC<T: Component>: UIViewController {
     
     let component: T!
     
-    init(component: T) {
+    public init(component: T) {
         self.component = component
         super.init(nibName: nil, bundle: nil)
     }
     
     var componentsView: ComponentView<T>!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
@@ -32,11 +32,11 @@ class ComponentVC<T: Component>: UIViewController {
             }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
+    override public func loadView() {
         componentsView = ComponentView(component: component)
         view = componentsView
     }

@@ -7,259 +7,233 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EB71E8E64A6005D7674 /* ActionsBar.swift */; };
-		991B5EBC1E8E9610005D7674 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBB1E8E9610005D7674 /* Renderable.swift */; };
-		991B5EBE1E8E9621005D7674 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBD1E8E9621005D7674 /* Component.swift */; };
-		991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EBF1E8E9636005D7674 /* Renderer.swift */; };
-		991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EC11E8E968B005D7674 /* DefaultNodes.swift */; };
-		9921678E1E92334F00979FC1 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9921678D1E92334F00979FC1 /* LoginScreen.swift */; };
-		996ADD5C1EB1007100364F7B /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD5B1EB1007100364F7B /* ComponentView.swift */; };
-		996ADD5E1EB100AC00364F7B /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD5D1EB100AC00364F7B /* ComponentViewController.swift */; };
-		996ADD601EB100DF00364F7B /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD5F1EB100DF00364F7B /* ComponentVC.swift */; };
-		99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4CF1E8D018700F7F5B5 /* Node.swift */; };
-		99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */; };
-		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
-		99C3C4D61E8D560800F7F5B5 /* Weact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D51E8D560800F7F5B5 /* Weact.swift */; };
-		99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D71E8D5C7A00F7F5B5 /* States.swift */; };
-		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
-		99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D11E8BA734009416AA /* AppDelegate.swift */; };
-		99D226D41E8BA734009416AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D31E8BA734009416AA /* ViewController.swift */; };
-		99D226D91E8BA734009416AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D226D81E8BA734009416AA /* Assets.xcassets */; };
-		99D226DC1E8BA734009416AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */; };
-		99D226E71E8BA734009416AA /* ReactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226E61E8BA734009416AA /* ReactTests.swift */; };
-		99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D226F21E8BB1C5009416AA /* Stevia.framework */; };
-		99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */; };
+		996ADD991EB1C50A00364F7B /* Weact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Weact.framework */; };
+		996ADD9E1EB1C50A00364F7B /* WeactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD9D1EB1C50A00364F7B /* WeactTests.swift */; };
+		996ADDA01EB1C50A00364F7B /* Weact.h in Headers */ = {isa = PBXBuildFile; fileRef = 996ADD921EB1C50A00364F7B /* Weact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99F6E1651EB1C568004391DD /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15B1EB1C568004391DD /* Component.swift */; };
+		99F6E1661EB1C568004391DD /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15C1EB1C568004391DD /* ComponentVC.swift */; };
+		99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15D1EB1C568004391DD /* ComponentView.swift */; };
+		99F6E1681EB1C568004391DD /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15E1EB1C568004391DD /* ComponentViewController.swift */; };
+		99F6E1691EB1C568004391DD /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15F1EB1C568004391DD /* DefaultNodes.swift */; };
+		99F6E16A1EB1C568004391DD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1601EB1C568004391DD /* Node.swift */; };
+		99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1611EB1C568004391DD /* Renderable.swift */; };
+		99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1621EB1C568004391DD /* Renderer.swift */; };
+		99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1631EB1C568004391DD /* UIKitRenderer.swift */; };
+		99F6E16E1EB1C568004391DD /* Weact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1641EB1C568004391DD /* Weact.swift */; };
+		99F6E1721EB1C605004391DD /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F6E1711EB1C605004391DD /* Stevia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		99D226E31E8BA734009416AA /* PBXContainerItemProxy */ = {
+		996ADD9A1EB1C50A00364F7B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 99D226C61E8BA734009416AA /* Project object */;
+			containerPortal = 996ADD861EB1C50A00364F7B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 99D226CD1E8BA734009416AA;
-			remoteInfo = React;
+			remoteGlobalIDString = 996ADD8E1EB1C50A00364F7B;
+			remoteInfo = Weact;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		991B5EB71E8E64A6005D7674 /* ActionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
-		991B5EBB1E8E9610005D7674 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
-		991B5EBD1E8E9621005D7674 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		991B5EBF1E8E9636005D7674 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		991B5EC11E8E968B005D7674 /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DefaultNodes.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		9921678D1E92334F00979FC1 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		996ADD5B1EB1007100364F7B /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
-		996ADD5D1EB100AC00364F7B /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
-		996ADD5F1EB100DF00364F7B /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
-		99C3C4CF1E8D018700F7F5B5 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
-		99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComponent.swift; sourceTree = "<group>"; };
-		99C3C4D51E8D560800F7F5B5 /* Weact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weact.swift; sourceTree = "<group>"; };
-		99C3C4D71E8D5C7A00F7F5B5 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
-		99CE3F6A1EAE6B77001049CF /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
-		99D226CE1E8BA734009416AA /* Weact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weact.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		99D226D11E8BA734009416AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99D226D31E8BA734009416AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		99D226D81E8BA734009416AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		99D226DB1E8BA734009416AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		99D226DD1E8BA734009416AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99D226E21E8BA734009416AA /* WeactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		99D226E61E8BA734009416AA /* ReactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactTests.swift; sourceTree = "<group>"; };
-		99D226E81E8BA734009416AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
-		99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
+		996ADD8F1EB1C50A00364F7B /* Weact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Weact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		996ADD921EB1C50A00364F7B /* Weact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weact.h; sourceTree = "<group>"; };
+		996ADD931EB1C50A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		996ADD981EB1C50A00364F7B /* WeactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		996ADD9D1EB1C50A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
+		996ADD9F1EB1C50A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99F6E15B1EB1C568004391DD /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		99F6E15C1EB1C568004391DD /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
+		99F6E15D1EB1C568004391DD /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		99F6E15E1EB1C568004391DD /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
+		99F6E15F1EB1C568004391DD /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
+		99F6E1601EB1C568004391DD /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		99F6E1611EB1C568004391DD /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		99F6E1621EB1C568004391DD /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		99F6E1631EB1C568004391DD /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
+		99F6E1641EB1C568004391DD /* Weact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weact.swift; sourceTree = "<group>"; };
+		99F6E1711EB1C605004391DD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		99D226CB1E8BA734009416AA /* Frameworks */ = {
+		996ADD8B1EB1C50A00364F7B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */,
+				99F6E1721EB1C605004391DD /* Stevia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99D226DF1E8BA734009416AA /* Frameworks */ = {
+		996ADD951EB1C50A00364F7B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996ADD991EB1C50A00364F7B /* Weact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		991B5EB91E8E95A7005D7674 /* Core */ = {
+		996ADD851EB1C50A00364F7B = {
 			isa = PBXGroup;
 			children = (
-				99C3C4D51E8D560800F7F5B5 /* Weact.swift */,
-				991B5EBB1E8E9610005D7674 /* Renderable.swift */,
-				991B5EBF1E8E9636005D7674 /* Renderer.swift */,
-				99C3C4CF1E8D018700F7F5B5 /* Node.swift */,
-				991B5EBD1E8E9621005D7674 /* Component.swift */,
-				996ADD5B1EB1007100364F7B /* ComponentView.swift */,
-				996ADD5F1EB100DF00364F7B /* ComponentVC.swift */,
-				996ADD5D1EB100AC00364F7B /* ComponentViewController.swift */,
-				99C3C4D11E8D151600F7F5B5 /* UIKitRenderer.swift */,
-				991B5EC11E8E968B005D7674 /* DefaultNodes.swift */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		991B5EBA1E8E95CF005D7674 /* TrashTests */ = {
-			isa = PBXGroup;
-			children = (
-				99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */,
-				99D226D31E8BA734009416AA /* ViewController.swift */,
-			);
-			name = TrashTests;
-			sourceTree = "<group>";
-		};
-		99D226C51E8BA734009416AA = {
-			isa = PBXGroup;
-			children = (
-				99D226D01E8BA734009416AA /* React */,
-				99D226E51E8BA734009416AA /* ReactTests */,
-				99D226CF1E8BA734009416AA /* Products */,
-				99D226F11E8BB1C5009416AA /* Frameworks */,
+				996ADD911EB1C50A00364F7B /* Weact */,
+				996ADD9C1EB1C50A00364F7B /* WeactTests */,
+				996ADD901EB1C50A00364F7B /* Products */,
+				99F6E1701EB1C605004391DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		99D226CF1E8BA734009416AA /* Products */ = {
+		996ADD901EB1C50A00364F7B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99D226CE1E8BA734009416AA /* Weact.app */,
-				99D226E21E8BA734009416AA /* WeactTests.xctest */,
+				996ADD8F1EB1C50A00364F7B /* Weact.framework */,
+				996ADD981EB1C50A00364F7B /* WeactTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		99D226D01E8BA734009416AA /* React */ = {
+		996ADD911EB1C50A00364F7B /* Weact */ = {
 			isa = PBXGroup;
 			children = (
-				99D226D11E8BA734009416AA /* AppDelegate.swift */,
-				99C3C4D71E8D5C7A00F7F5B5 /* States.swift */,
-				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
-				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
-				9921678D1E92334F00979FC1 /* LoginScreen.swift */,
-				99CE3F6A1EAE6B77001049CF /* LoginState.swift */,
-				991B5EB91E8E95A7005D7674 /* Core */,
-				991B5EBA1E8E95CF005D7674 /* TrashTests */,
-				99D226D81E8BA734009416AA /* Assets.xcassets */,
-				99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */,
-				99D226DD1E8BA734009416AA /* Info.plist */,
+				996ADD921EB1C50A00364F7B /* Weact.h */,
+				996ADD931EB1C50A00364F7B /* Info.plist */,
+				99F6E15A1EB1C568004391DD /* Source */,
 			);
-			path = React;
+			path = Weact;
 			sourceTree = "<group>";
 		};
-		99D226E51E8BA734009416AA /* ReactTests */ = {
+		996ADD9C1EB1C50A00364F7B /* WeactTests */ = {
 			isa = PBXGroup;
 			children = (
-				99D226E61E8BA734009416AA /* ReactTests.swift */,
-				99D226E81E8BA734009416AA /* Info.plist */,
+				996ADD9D1EB1C50A00364F7B /* WeactTests.swift */,
+				996ADD9F1EB1C50A00364F7B /* Info.plist */,
 			);
-			path = ReactTests;
+			path = WeactTests;
 			sourceTree = "<group>";
 		};
-		99D226F11E8BB1C5009416AA /* Frameworks */ = {
+		99F6E15A1EB1C568004391DD /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				99D226F21E8BB1C5009416AA /* Stevia.framework */,
+				99F6E1641EB1C568004391DD /* Weact.swift */,
+				99F6E1611EB1C568004391DD /* Renderable.swift */,
+				99F6E1601EB1C568004391DD /* Node.swift */,
+				99F6E15F1EB1C568004391DD /* DefaultNodes.swift */,
+				99F6E15B1EB1C568004391DD /* Component.swift */,
+				99F6E1621EB1C568004391DD /* Renderer.swift */,
+				99F6E1631EB1C568004391DD /* UIKitRenderer.swift */,
+				99F6E15C1EB1C568004391DD /* ComponentVC.swift */,
+				99F6E15D1EB1C568004391DD /* ComponentView.swift */,
+				99F6E15E1EB1C568004391DD /* ComponentViewController.swift */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		99F6E1701EB1C605004391DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99F6E1711EB1C605004391DD /* Stevia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		996ADD8C1EB1C50A00364F7B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				996ADDA01EB1C50A00364F7B /* Weact.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		99D226CD1E8BA734009416AA /* Weact */ = {
+		996ADD8E1EB1C50A00364F7B /* Weact */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99D226EB1E8BA734009416AA /* Build configuration list for PBXNativeTarget "Weact" */;
+			buildConfigurationList = 996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Weact" */;
 			buildPhases = (
-				99D226CA1E8BA734009416AA /* Sources */,
-				99D226CB1E8BA734009416AA /* Frameworks */,
-				99D226CC1E8BA734009416AA /* Resources */,
-				99D226F41E8BB1CB009416AA /* ShellScript */,
-				996ADD611EB1018E00364F7B /* ShellScript */,
+				996ADD8A1EB1C50A00364F7B /* Sources */,
+				996ADD8B1EB1C50A00364F7B /* Frameworks */,
+				996ADD8C1EB1C50A00364F7B /* Headers */,
+				996ADD8D1EB1C50A00364F7B /* Resources */,
+				99F6E16F1EB1C5D7004391DD /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Weact;
-			productName = React;
-			productReference = 99D226CE1E8BA734009416AA /* Weact.app */;
-			productType = "com.apple.product-type.application";
+			productName = Weact;
+			productReference = 996ADD8F1EB1C50A00364F7B /* Weact.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		99D226E11E8BA734009416AA /* WeactTests */ = {
+		996ADD971EB1C50A00364F7B /* WeactTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99D226EE1E8BA734009416AA /* Build configuration list for PBXNativeTarget "WeactTests" */;
+			buildConfigurationList = 996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "WeactTests" */;
 			buildPhases = (
-				99D226DE1E8BA734009416AA /* Sources */,
-				99D226DF1E8BA734009416AA /* Frameworks */,
-				99D226E01E8BA734009416AA /* Resources */,
+				996ADD941EB1C50A00364F7B /* Sources */,
+				996ADD951EB1C50A00364F7B /* Frameworks */,
+				996ADD961EB1C50A00364F7B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				99D226E41E8BA734009416AA /* PBXTargetDependency */,
+				996ADD9B1EB1C50A00364F7B /* PBXTargetDependency */,
 			);
 			name = WeactTests;
-			productName = ReactTests;
-			productReference = 99D226E21E8BA734009416AA /* WeactTests.xctest */;
+			productName = WeactTests;
+			productReference = 996ADD981EB1C50A00364F7B /* WeactTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		99D226C61E8BA734009416AA /* Project object */ = {
+		996ADD861EB1C50A00364F7B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = Octopepper;
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = freshOS;
 				TargetAttributes = {
-					99D226CD1E8BA734009416AA = {
-						CreatedOnToolsVersion = 8.2.1;
+					996ADD8E1EB1C50A00364F7B = {
+						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
-					99D226E11E8BA734009416AA = {
-						CreatedOnToolsVersion = 8.2.1;
+					996ADD971EB1C50A00364F7B = {
+						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 99D226CD1E8BA734009416AA;
 					};
 				};
 			};
-			buildConfigurationList = 99D226C91E8BA734009416AA /* Build configuration list for PBXProject "Weact" */;
+			buildConfigurationList = 996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Weact" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 99D226C51E8BA734009416AA;
-			productRefGroup = 99D226CF1E8BA734009416AA /* Products */;
+			mainGroup = 996ADD851EB1C50A00364F7B;
+			productRefGroup = 996ADD901EB1C50A00364F7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				99D226CD1E8BA734009416AA /* Weact */,
-				99D226E11E8BA734009416AA /* WeactTests */,
+				996ADD8E1EB1C50A00364F7B /* Weact */,
+				996ADD971EB1C50A00364F7B /* WeactTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		99D226CC1E8BA734009416AA /* Resources */ = {
+		996ADD8D1EB1C50A00364F7B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D226DC1E8BA734009416AA /* LaunchScreen.storyboard in Resources */,
-				99D226D91E8BA734009416AA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99D226E01E8BA734009416AA /* Resources */ = {
+		996ADD961EB1C50A00364F7B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,20 +243,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		996ADD611EB1018E00364F7B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		99D226F41E8BB1CB009416AA /* ShellScript */ = {
+		99F6E16F1EB1C5D7004391DD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -299,66 +260,48 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		99D226CA1E8BA734009416AA /* Sources */ = {
+		996ADD8A1EB1C50A00364F7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99C3C4D61E8D560800F7F5B5 /* Weact.swift in Sources */,
-				991B5EBE1E8E9621005D7674 /* Component.swift in Sources */,
-				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
-				99C3C4D21E8D151600F7F5B5 /* UIKitRenderer.swift in Sources */,
-				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
-				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
-				991B5EC01E8E9636005D7674 /* Renderer.swift in Sources */,
-				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,
-				991B5EBC1E8E9610005D7674 /* Renderable.swift in Sources */,
-				99D226D41E8BA734009416AA /* ViewController.swift in Sources */,
-				991B5EC21E8E968B005D7674 /* DefaultNodes.swift in Sources */,
-				996ADD5C1EB1007100364F7B /* ComponentView.swift in Sources */,
-				99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */,
-				9921678E1E92334F00979FC1 /* LoginScreen.swift in Sources */,
-				996ADD5E1EB100AC00364F7B /* ComponentViewController.swift in Sources */,
-				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
-				996ADD601EB100DF00364F7B /* ComponentVC.swift in Sources */,
-				99C3C4D01E8D018700F7F5B5 /* Node.swift in Sources */,
+				99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */,
+				99F6E1691EB1C568004391DD /* DefaultNodes.swift in Sources */,
+				99F6E1661EB1C568004391DD /* ComponentVC.swift in Sources */,
+				99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */,
+				99F6E1651EB1C568004391DD /* Component.swift in Sources */,
+				99F6E16A1EB1C568004391DD /* Node.swift in Sources */,
+				99F6E16E1EB1C568004391DD /* Weact.swift in Sources */,
+				99F6E1681EB1C568004391DD /* ComponentViewController.swift in Sources */,
+				99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */,
+				99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99D226DE1E8BA734009416AA /* Sources */ = {
+		996ADD941EB1C50A00364F7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D226E71E8BA734009416AA /* ReactTests.swift in Sources */,
+				996ADD9E1EB1C50A00364F7B /* WeactTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		99D226E41E8BA734009416AA /* PBXTargetDependency */ = {
+		996ADD9B1EB1C50A00364F7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 99D226CD1E8BA734009416AA /* Weact */;
-			targetProxy = 99D226E31E8BA734009416AA /* PBXContainerItemProxy */;
+			target = 996ADD8E1EB1C50A00364F7B /* Weact */;
+			targetProxy = 996ADD9A1EB1C50A00364F7B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		99D226DA1E8BA734009416AA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99D226DB1E8BA734009416AA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		99D226E91E8BA734009416AA /* Debug */ = {
+		996ADDA11EB1C50A00364F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -377,6 +320,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -394,21 +338,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		99D226EA1E8BA734009416AA /* Release */ = {
+		996ADDA21EB1C50A00364F7B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -427,6 +374,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -438,108 +386,118 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		99D226EC1E8BA734009416AA /* Debug */ = {
+		996ADDA41EB1C50A00364F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = React/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.React;
+				INFOPLIST_FILE = Weact/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Weact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		99D226ED1E8BA734009416AA /* Release */ = {
+		996ADDA51EB1C50A00364F7B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = React/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.React;
+				INFOPLIST_FILE = Weact/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Weact;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		99D226EF1E8BA734009416AA /* Debug */ = {
+		996ADDA71EB1C50A00364F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ReactTests/Info.plist;
+				INFOPLIST_FILE = WeactTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.ReactTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weact.app/Weact";
 			};
 			name = Debug;
 		};
-		99D226F01E8BA734009416AA /* Release */ = {
+		996ADDA81EB1C50A00364F7B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ReactTests/Info.plist;
+				INFOPLIST_FILE = WeactTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.ReactTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weact.app/Weact";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		99D226C91E8BA734009416AA /* Build configuration list for PBXProject "Weact" */ = {
+		996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Weact" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				99D226E91E8BA734009416AA /* Debug */,
-				99D226EA1E8BA734009416AA /* Release */,
+				996ADDA11EB1C50A00364F7B /* Debug */,
+				996ADDA21EB1C50A00364F7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		99D226EB1E8BA734009416AA /* Build configuration list for PBXNativeTarget "Weact" */ = {
+		996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Weact" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				99D226EC1E8BA734009416AA /* Debug */,
-				99D226ED1E8BA734009416AA /* Release */,
+				996ADDA41EB1C50A00364F7B /* Debug */,
+				996ADDA51EB1C50A00364F7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		99D226EE1E8BA734009416AA /* Build configuration list for PBXNativeTarget "WeactTests" */ = {
+		996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "WeactTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				99D226EF1E8BA734009416AA /* Debug */,
-				99D226F01E8BA734009416AA /* Release */,
+				996ADDA71EB1C50A00364F7B /* Debug */,
+				996ADDA81EB1C50A00364F7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 99D226C61E8BA734009416AA /* Project object */;
+	rootObject = 996ADD861EB1C50A00364F7B /* Project object */;
 }

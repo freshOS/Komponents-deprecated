@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-protocol Component:class, Renderable {
+public protocol Component:class, Renderable {
     associatedtype State
     var state: State { get set }
     func updateState(_ block:(inout State) -> Void)
 }
 
-extension Component {
+public extension Component {
     func updateState(_ block:(inout State) -> Void) {
         block(&state)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: nil)

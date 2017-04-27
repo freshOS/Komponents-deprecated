@@ -6,13 +6,14 @@
 //  Copyright © 2017 Octopepper. All rights reserved.
 //
 
+import Stevia
 import UIKit
 
-class WeactEngine {
+public class WeactEngine {
     
     var renderBlock = {}
     
-    convenience init() {
+    public convenience init() {
         self.init(renderer:UIKitRenderer())
     }
     
@@ -27,7 +28,7 @@ class WeactEngine {
             }
     }
     
-    func render<C: Component>(component: C, in view: UIView) {
+    public func render<C: Component>(component: C, in view: UIView) {
         renderBlock = {
             for sv in view.subviews {
                 sv.removeFromSuperview()

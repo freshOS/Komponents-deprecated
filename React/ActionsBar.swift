@@ -7,6 +7,7 @@
 //
 
 import Stevia
+import Weact
 
 class ActionsBar: Component {
     

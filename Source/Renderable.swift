@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Renderable {
+public protocol Renderable {
     func render() -> Node
 }
