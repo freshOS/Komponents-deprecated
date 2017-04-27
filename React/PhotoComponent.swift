@@ -25,11 +25,3 @@ import Stevia
 //}
 
 // Can use global funcs that return the underlying
-
-func verticalStack(style:((UIStackView)->())? = nil, layout:((UIStackView)->())? = nil , _ children: [Node]) -> VerticalStack {
-    var o = VerticalStack()
-    o.layoutBlock = layout
-    o.styleBlock = style
-    o.children = children
-    return o
-}

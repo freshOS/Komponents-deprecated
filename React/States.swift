@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 protocol Post {
-    var title:String { get }
-    var detail:String { get }
+    var title: String { get }
+    var detail: String { get }
     var isYummied: Bool { get }
     var numberOfYummys: Int { get }
     var numberOfcomments: Int { get }

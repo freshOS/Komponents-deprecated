@@ -6,8 +6,8 @@
 //  Copyright © 2017 Freshos. All rights reserved.
 //
 
+@testable import Weact
 import XCTest
-@testable import React
 
 class ReactTests: XCTestCase {
     

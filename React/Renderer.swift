@@ -11,4 +11,3 @@ import UIKit
 protocol Renderer {
     func render(_ renderable: Renderable, in rootView: UIView)
 }
-

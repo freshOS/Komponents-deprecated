@@ -6,8 +6,8 @@
 //  Copyright © 2017 Octopepper. All rights reserved.
 //
 
-import UIKit
 import Stevia
+import UIKit
 
 // TODO bind to state. email  textChanged
 // TODO Keep Field states by default?
@@ -24,23 +24,20 @@ import Stevia
 // dismiss keyboard
 
 // layout externally
-
 // Cannot inject generic comp?? (injection$Xcode?
-
-
 // Functional Component Example
 
 func SignupButton() -> Button {
-    return SignupButton(text:"Hello") // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
+    return SignupButton(text: "Hello")
+    // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
 }
 
 // Functional Component with props Example
 
 func SignupButton(text: String) -> Button {
-    return Button(text, style: { $0.backgroundColor = .red }, layout: { $0.height(80) }) // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
+    return Button(text, style: { $0.backgroundColor = .red }, layout: { $0.height(80) })
+    // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
 }
-
-
 
 class LoginComponent: Component {
     
@@ -49,14 +46,30 @@ class LoginComponent: Component {
     // MARK - View
     
     func render() -> Node {
-        return View(layout: { $0.fillContainer() }, [
+        return View(style: { $0.backgroundColor = .white }, [
             VerticalStack(style: { $0.spacing = 8 }, layout: { |-$0-|.top(80) }, [
-                Field("Email", wording: state.email, textChanged: emailChanged, style: emailStyle, layout: { $0.height(80) }),
-                Field("Password", wording: state.password, textChanged: passwordChanged, style: passwordStyle, layout: { $0.height(80) }),
+                Field("Email",
+                      wording: state.email,
+                      textChanged: emailChanged,
+                      style: emailStyle,
+                      layout: { $0.height(80) }
+                ),
+                Field("Password",
+                      wording: state.password,
+                      textChanged: passwordChanged,
+                      style: passwordStyle,
+                      layout: { $0.height(80) }
+                )
             ]),
             VerticalStack(layout: { |$0|.bottom(0) }, [
-                Button("Vous n'avez pas de compte Yummypets ?", style: signUpButtonStyle, layout: { $0.height(80) }),
-                Button(buttonTextForState(state.status), tap: login, style: loginButtonStyle, layout: { $0.height(80) }),
+                Button("Vous n'avez pas de compte Yummypets ?",
+                       style: signUpButtonStyle,
+                       layout: { $0.height(80) }
+                ),
+                Button(buttonTextForState(state.status),
+                       tap: login, style: loginButtonStyle,
+                       layout: { $0.height(80) }
+                ),
                 SignupButton(),
                 SignupButton(text: "Coucou")
             ])
@@ -97,7 +110,7 @@ class LoginComponent: Component {
     
     // MARK - Styles
     
-    func inputStyle(_ f:UITextField) {
+    func inputStyle(_ f: UITextField) {
         f.borderStyle = .roundedRect
         f.font = UIFont(name: "HelveticaNeue-Light", size: 26)
         f.layer.borderWidth = 1
@@ -128,8 +141,13 @@ class LoginComponent: Component {
     func signUpButtonStyle(b: UIButton) {
         b.setTitleColor(UIColor(red: 0.6588, green: 0.702, blue: 0.1725, alpha: 1.0), for: .normal)
         b.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
-        b.titleLabel?.attributedText = NSAttributedString(string: b.titleLabel!.text!,
-                                                          attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+        if let text = b.titleLabel?.text {
+        b.titleLabel?.attributedText = NSAttributedString(string: text,
+                                                          attributes: [
+                                                            NSUnderlineStyleAttributeName:
+                                                            NSUnderlineStyle.styleSingle.rawValue
+            ])
+        }
     }
     
     func loginButtonStyle(b: UIButton) {

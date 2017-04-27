@@ -10,60 +10,13 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
-    func render(nodeView: IsNodeView) {
-        let node = nodeView.render()
-        if let rootView = nodeView as? UIView {
-            for c in node.children {
-                render(c, in: rootView)
-            }
-            
-            if let viewNode = node as? View {
-                
-                let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
-                for c in childern {
-                    render(c, in: rootView)
-                }
-                
-                // call the  layout block on the top view object
-                viewNode.styleBlock?(rootView)
-                nodeView.layoutPass()
-                nodeView.didRender()
-                
-                
-            }
-            
-        }
-    }
-    
-    func render<T:IsPropsView>(nodeView: T) {
-        let node = nodeView.render(props: nodeView.props)
-        if let rootView = nodeView as? UIView {
-            for c in node.children {
-                render(c, in: rootView)
-            }
-            
-            if let viewNode = node as? View {
-                
-                let childern:[Node] = viewNode.childrenLayout.map { $0 as? Node }.flatMap{ $0 }
-                for c in childern {
-                    render(c, in: rootView)
-                }
-                
-                // call the  layout block on the top view object
-                viewNode.styleBlock?(rootView)
-                nodeView.layoutPass()
-                nodeView.didRender()
-            }
-        }
-    }
-    
     func render(_ renderable: Renderable, in rootView: UIView) {
         viewFor(renderable: renderable, in:rootView) //recursive
     }
     
     @discardableResult
-    func viewFor(renderable: Renderable, in parentView:UIView) -> UIView {
-        var theView:UIView?
+    func viewFor(renderable: Renderable, in parentView: UIView) -> UIView {
+        var theView: UIView?
         var node = renderable.render()
         
         if let viewNode = node as? View {
@@ -193,7 +146,7 @@ class UIKitRenderer: Renderer {
             spinnerNode.ref?.pointee = spinner
         }
         
-        var testLayoutBlock = { }
+        let testLayoutBlock = { }
         
         if let theView = theView {
             for c in node.children {
@@ -201,17 +154,6 @@ class UIKitRenderer: Renderer {
             }
             
             if let viewNode = node as? View {
-                //                    for a in viewNode.childrenLayout {
-                //                        print(a)
-                //
-                //
-                //
-                //                        if let c = a as? CGFloat {
-                //                            print(c)
-                //                        }
-                //                    }
-                
-                
                 if !viewNode.childrenLayout.isEmpty {
                     var newArray:[Any] = [Any]()
                     for a in viewNode.childrenLayout {
@@ -220,12 +162,6 @@ class UIKitRenderer: Renderer {
                         } else if let n = a as? Node {
                             newArray.append(viewFor(renderable: n, in: theView))
                         } else if let array = a as? [Any] {
-                            //                                for value in array {
-                            //                                    if let n = value as? Node {
-                            //                                        newArray.append(viewFor(renderable: n, in: theView))
-                            //                                    }
-                            //                                }
-                            
                             let transformedArray:[Any] = array.map { x in
                                 if let i = x as? Int {
                                     return CGFloat(i)
@@ -245,10 +181,8 @@ class UIKitRenderer: Renderer {
                         if let m = v as? CGFloat {
                             previousMargin = m
                         }
-                        
                         if let av = v as? UIView {
-                            
-                            if let pv = previousView, let pm = previousMargin   {
+                            if let pv = previousView, let pm = previousMargin {
                                 theView.layout(
                                     pv,
                                     pm,
@@ -262,9 +196,6 @@ class UIKitRenderer: Renderer {
                                 av.top(pm)
                                 previousMargin = nil
                             }
-                            //                            print(av)
-                            //                            print(av.superview)
-                            //                                av.bottom(200)
                             previousView = av
                         }
                         
@@ -286,10 +217,9 @@ class UIKitRenderer: Renderer {
                                     if let phm = previousHMargin {
                                         av.left(phm)
                                     }
-                                    
-                                    
+                                        
                                     //copied
-                                    if let pv = previousView, let pm = previousMargin   {
+                                    if let pv = previousView, let pm = previousMargin {
                                         theView.layout(
                                             pv,
                                             pm,
@@ -300,25 +230,10 @@ class UIKitRenderer: Renderer {
                                     }
                                     
                                     previousHView = av
-                                }
-                                
-                                
+                                }  
                             }
                         }
                     }
-                    
-                    //                        theView.layout(newArray)
-                    
-                    //                        testLayoutBlock = {
-                    ////                            theView.layout(newArray)
-                    //
-                    //                            for v in newArray {
-                    //                                if let av = v as? UIView {
-                    //                                    av.bottom(100)
-                    ////                                    print(av.superview)
-                    //                                }
-                    //                            }
-                    //                        }
                 }
             }
         }
@@ -346,9 +261,7 @@ class UIKitRenderer: Renderer {
         
         if let tfNode = node as? Field {
             tfNode.registerTextChanged?(theView as! UITextField)
-            
             if tfNode.isFocused {
-                //                    (theView as! UITextField).becomeFirstResponder()
             }
         }
         return theView ?? UIView()

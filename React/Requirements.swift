@@ -44,11 +44,10 @@ UIKitRenderer.render(component(MyComponent.self), container: self.view, context:
 
 componenet.udpateState -> rerender = dirty
 
-// Test update state in button
+
 */
-
-
-// Compoenetn == node?
 
 // - ListView / collections view ?
 // Sub componenets
+
+// test map Text in Vertical Stack!

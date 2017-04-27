@@ -8,34 +8,36 @@
 
 import Stevia
 
-
-//class ActionsBar: Component {
-//    
-//    var state: Photo = Photo()
-//    
-//    func render(state post: Photo) -> Node {
-//        return
-//            View(layout: { |$0.height(100)|.centerVertically() }, [
-//                HorizontalStack(style: { $0.spacing = 20 }, layout: { |-20-$0.fillVertically() }, [
-//                    Button(image:#imageLiteral(resourceName: "FeedYummyIcon"),
-//                           tap: {
-//                                self.updateState {
-//                                    $0.numberOfYummys += 1
-//                                    $0.isYummied = true
-//                                }
-//                        }, style: {
-//                            $0.backgroundColor = post.isYummied ? .green : .clear
-//                        }
-//                    ),
-//                    Text("\(post.numberOfYummys)"),
-//                    Button(image: #imageLiteral(resourceName: "Comment icon"), tap: { print("navigate to Comments view") }),
-//                    Text("\(post.numberOfcomments)")
-//                    ]),
-//                Button(image: #imageLiteral(resourceName: "More"), tap: { print("show More sheet") }, layout: {
-//                    $0.fillVertically()-20-|
-//                } )
-//            ])
-//    }
-//}
-//
-
+class ActionsBar: Component {
+    
+    var state = Photo()
+    
+    func render() -> Node {
+        return
+            View(
+                layout: { |$0.height(100)|.centerVertically() }, [
+                HorizontalStack(
+                    style: { $0.spacing = 20 },
+                    layout: { |-20-$0.fillVertically() }, [
+                    Button(
+                        image:#imageLiteral(resourceName: "FeedYummyIcon"),
+                        tap: {
+                                self.updateState {
+                                    $0.numberOfYummys += 1
+                                    $0.isYummied = true
+                                }
+                        },
+                        style: { $0.backgroundColor = self.state.isYummied ? .green : .clear }
+                    ),
+                    Label("\(self.state.numberOfYummys)"),
+                    Button(image: #imageLiteral(resourceName: "Comment icon"), tap: { print("navigate to Comments view") }),
+                    Label("\(self.state.numberOfcomments)")
+                ]),
+                Button(
+                    image: #imageLiteral(resourceName: "More"),
+                    tap: { print("show More sheet") },
+                    layout: { $0.fillVertically()-20-| }
+                )
+            ])
+    }
+}

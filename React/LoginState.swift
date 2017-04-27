@@ -14,7 +14,7 @@ struct LoginState {
     var status = LoginStatus.unknown
     var emailValid = FieldValidationStatus.unknown
     var passwordValid = FieldValidationStatus.unknown
-    func isFormvalid() -> Bool  { return emailValid == . valid && passwordValid == .valid }
+    func isFormvalid() -> Bool { return emailValid == . valid && passwordValid == .valid }
     var emailFieldFocused = true
     var passwordFieldFocused = false
     private mutating func validate() {

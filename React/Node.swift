@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol Node:Renderable {
+protocol Node: Renderable {
     var children: [Node] { get set }
-    var applyStyle: (() -> ())? { get set }
-    var applyLayout: (() -> ())? { get set }
+    var applyStyle: (() -> Void)? { get set }
+    var applyLayout: (() -> Void)? { get set }
 }
 
 extension Node {
@@ -19,5 +19,3 @@ extension Node {
         return self
     }
 }
-
-
