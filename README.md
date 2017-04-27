@@ -1,4 +1,22 @@
-# Weact
+# Weact ⚛ ⚛️
+
+
+```swift
+import Stevia
+import Weact
+
+class HelloWorldComponent: Component {
+
+    var state = true // TODO stateless Component?
+
+    func render() -> Node {
+        return
+            View(style: { $0.backgroundColor = .white }, [
+                Label("Hello Components!", layout: { $0.centerInContainer() })
+            ])
+    }
+}
+```
 
 
 ## Inspiration
@@ -96,3 +114,18 @@ let myView = ActivityLine()
 
 ### How does it work?
 Simple on `init`, `DefaultNodeView` just calls `node()` and renders the node hierarchy it inside itself :)
+
+
+### Looping !
+
+```swift
+func render() -> Node {
+    let items = ["Hello", "How", "Are", "You?"]
+    return
+        View(style: { $0.backgroundColor = .white }, [
+            VerticalStack(style: { $0.spacing = 40 }, layout: { $0.centerInContainer() },
+                items.map { Label($0) }
+            )
+        ])
+}
+```
