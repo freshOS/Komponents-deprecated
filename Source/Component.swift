@@ -34,3 +34,14 @@ public extension Component where Self: UIViewController {
         }
     }
 }
+
+public extension Component where Self: UIView {
+    func loadComponent() {
+        let engine = WeactEngine()
+        engine.render(component:self, in: self)
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
+                engine.render(component:self, in: self)
+        }
+    }
+}
