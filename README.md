@@ -54,17 +54,17 @@ class MyButton: Component {
 }
 ```
 
-### View-Backed Component
+## View-Backed Component
 Display your component in a UIView and use it wherever You want!
 ```swift
 let view = ComponentView(component: MyComponent())
 ```
-### ViewController-Backed Component
+## ViewController-Backed Component
 Embbed your component in view Controller and present it anyway you want :)
 ```swift
 let vc = ComponentVC(component: MyComponent())
 ```
-### Looping !
+## Looping !
 
 ```swift
 func render() -> Node {
