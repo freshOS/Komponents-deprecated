@@ -27,8 +27,6 @@ A component is pretty simple :
 That's All!
 
 ```swift
-import UIKit
-import Stevia
 import Weact
 
 class MyFirstComponent: Component {
