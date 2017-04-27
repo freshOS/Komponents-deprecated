@@ -18,35 +18,25 @@ Weact is a Swift framework for building component-oriented interfaces.
 |   📐  |Can use **Autolayout or any autolayout** lib for the layout (we like [Stevia](https://github.com/freshOS/Stevia)) |
 | 💉 | Supports **Hot Reload** with [💉 injectionForXcode](http://johnholdsworth.com/injection.html)|
 
-## Your first Component
+## A Bare Component
+
+A component is pretty simple :
+- It has a `render` function that returns a `Node`.
+- It has a `state` property.
+
+That's All!
 
 ```swift
 import UIKit
 import Stevia
 import Weact
 
-class MyButton: Component {
+class MyFirstComponent: Component {
 
-    var state = true // On/ Off
+    var state = MyState()
 
     func render() -> Node {
-        let icon = state ? #imageLiteral(resourceName: "buttonIconOn") : #imageLiteral(resourceName: "buttonIconOff")
-        return
-            Button(
-                tap: { [weak self] in self?.tapped() },
-                style: { $0.setBackgroundImage(icon, for: .normal) }
-            )
-    }
-
-    private var tapped = {}
-    func tap(_ cb: @escaping () -> Void) { tapped = cb }
-
-    func setPositionNotCentered() {
-        updateState { $0 = false } // Calls to `upadteState` triggers a relayout.
-    }
-
-    func setPositionCentered() {
-        updateState { $0 = true } // Calls to `upadteState` triggers a relayout.
+        return Label("Hello!")
     }
 }
 ```
@@ -54,6 +44,64 @@ class MyButton: Component {
 ## View Controller Component
 To use a component as a `UIViewController` and play nicely with UIKit apis, just subclass
 `UIViewController` and call  `loadComponent` in `loadView` :)
+
+```swift
+class LoadingScreen: UIViewController, Component {
+
+    // Just call `loadComponent` in loadView :)
+    override func loadView() { loadComponent() }
+
+    func render() -> Node {
+        return ...
+    }
+}
+
+```
+
+## View Component
+To use a component as a `UIView` and play nicely with UIKit apis, just subclass
+`UIView` and call  `loadComponent` in an `init` function :)
+```swift
+class MyCoolButton: UIView, Component {
+
+    // Here we load the component
+    convenience init() {
+        self.init(frame:CGRect.zero)
+        loadComponent()
+    }
+
+    func render() -> Node {
+        return ...
+    }
+}
+
+```
+
+## View-Wrapped Component
+Display your component in a UIView and use it wherever You want!
+```swift
+let view = ComponentView(component: MyComponent())
+```
+## ViewController-Wrapped Component
+Embbed your component in view Controller and present it anyway you want :)
+```swift
+let vc = ComponentVC(component: MyComponent())
+```
+## Looping !
+
+```swift
+func render() -> Node {
+    let items = ["Hello", "How", "Are", "You?"]
+    return
+        View(style: { $0.backgroundColor = .white }, [
+            VerticalStack(style: { $0.spacing = 40 }, layout: { $0.centerInContainer() },
+                items.map { Label($0) }
+            )
+        ])
+}
+```
+
+## Example:  A Loading Screen
 
 ```swift
 import UIKit
@@ -84,33 +132,7 @@ class LoadingScreen: UIViewController, Component {
             ])
     }
 }
-
 ```
-
-## View-Wrapped Component
-Display your component in a UIView and use it wherever You want!
-```swift
-let view = ComponentView(component: MyComponent())
-```
-## ViewController-Wrapped Component
-Embbed your component in view Controller and present it anyway you want :)
-```swift
-let vc = ComponentVC(component: MyComponent())
-```
-## Looping !
-
-```swift
-func render() -> Node {
-    let items = ["Hello", "How", "Are", "You?"]
-    return
-        View(style: { $0.backgroundColor = .white }, [
-            VerticalStack(style: { $0.spacing = 40 }, layout: { $0.centerInContainer() },
-                items.map { Label($0) }
-            )
-        ])
-}
-```
-
 
 ## Inspiration
 [Facebook's React](https://facebook.github.io/react/), [ComponentKit](https://github.com/facebook/componentkit),
