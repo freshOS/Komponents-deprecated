@@ -21,3 +21,16 @@ public extension Component {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
     }
 }
+
+
+public extension Component where Self: UIViewController {
+    func loadComponent() {
+        view = UIView()
+        let engine = WeactEngine()
+        engine.render(component:self, in: view)
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
+                engine.render(component:self, in: self.view)
+        }
+    }
+}
