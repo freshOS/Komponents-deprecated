@@ -23,24 +23,46 @@ public class WeactEngine {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name(rawValue:"WeactStateChanged"),
                          object: nil,
-                         queue: nil) { _ in
+                         queue: nil) { n in
+                self.notificationObject = n.object
                 self.renderBlock()
             }
     }
     
+    var notificationObject:Any?
+    
     public func render<C: Component>(component: C, in view: UIView) {
         renderBlock = {
-            for sv in view.subviews {
-                sv.removeFromSuperview()
+            if let object = self.notificationObject {
+                if object is C {
+                    print("⚛️ Re-Rendering \(component)")
+                    for sv in view.subviews {
+                        sv.removeFromSuperview()
+                    }
+                    
+                    let node = component.render()
+                    self.renderer.render(node, in: view)
+                    
+                    // Fill first node in container view
+                    if let firstNodeView = view.subviews.first {
+                        firstNodeView.fillContainer()
+                    }
+                }
+            } else {
+                print("⚛️ Rendering \(component)")
+                for sv in view.subviews {
+                    sv.removeFromSuperview()
+                }
+                
+                let node = component.render()
+                self.renderer.render(node, in: view)
+                
+                // Fill first node in container view
+                if let firstNodeView = view.subviews.first {
+                    firstNodeView.fillContainer()
+                }
             }
             
-            let node = component.render()
-            self.renderer.render(node, in: view)
-        
-            // Fill first node in container view
-            if let firstNodeView = view.subviews.first {
-                firstNodeView.fillContainer()
-            }
         }
         renderBlock()
     }

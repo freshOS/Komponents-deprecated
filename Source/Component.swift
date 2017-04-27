@@ -18,6 +18,6 @@ public protocol Component:class, Renderable {
 public extension Component {
     func updateState(_ block:(inout State) -> Void) {
         block(&state)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
     }
 }
