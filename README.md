@@ -51,12 +51,48 @@ class MyButton: Component {
 }
 ```
 
-## View-Backed Component
+## View Controller Component
+To use a component as a `UIViewController` and play nicely with UIKit apis, just subclass
+`UIViewController` and call  `loadComponent` in `loadView` :)
+
+```swift
+import UIKit
+import Stevia
+import Weact
+
+class LoadingScreen: UIViewController, Component {
+
+    var state = true // no state
+
+    // Just call `loadComponent` in loadView :)
+    override func loadView() { loadComponent() }
+
+    func render() -> Node {
+        return
+            View(
+                style: { $0.backgroundColor = .gray }, [
+                HorizontalStack(
+                    style: { $0.spacing = 8 },
+                    layout: { $0.centerInContainer() }, [
+                    Label("Loading...",
+                        style: { $0.textColor = .white }
+                    ),
+                    ActivityIndicatorView(.white,
+                        style: { $0.startAnimating() }
+                    )
+                ])
+            ])
+    }
+}
+
+```
+
+## View-Wrapped Component
 Display your component in a UIView and use it wherever You want!
 ```swift
 let view = ComponentView(component: MyComponent())
 ```
-## ViewController-Backed Component
+## ViewController-Wrapped Component
 Embbed your component in view Controller and present it anyway you want :)
 ```swift
 let vc = ComponentVC(component: MyComponent())
