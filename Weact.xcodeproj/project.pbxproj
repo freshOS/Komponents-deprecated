@@ -10,6 +10,7 @@
 		996ADD991EB1C50A00364F7B /* Weact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Weact.framework */; };
 		996ADD9E1EB1C50A00364F7B /* WeactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD9D1EB1C50A00364F7B /* WeactTests.swift */; };
 		996ADDA01EB1C50A00364F7B /* Weact.h in Headers */ = {isa = PBXBuildFile; fileRef = 996ADD921EB1C50A00364F7B /* Weact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998740AB1EB23EFB00750421 /* Stevia.framework */; };
 		99F6E1651EB1C568004391DD /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15B1EB1C568004391DD /* Component.swift */; };
 		99F6E1661EB1C568004391DD /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15C1EB1C568004391DD /* ComponentVC.swift */; };
 		99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15D1EB1C568004391DD /* ComponentView.swift */; };
@@ -20,7 +21,6 @@
 		99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1621EB1C568004391DD /* Renderer.swift */; };
 		99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1631EB1C568004391DD /* UIKitRenderer.swift */; };
 		99F6E16E1EB1C568004391DD /* Weact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1641EB1C568004391DD /* Weact.swift */; };
-		99F6E1721EB1C605004391DD /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F6E1711EB1C605004391DD /* Stevia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,7 @@
 		996ADD981EB1C50A00364F7B /* WeactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		996ADD9D1EB1C50A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
 		996ADD9F1EB1C50A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		99F6E15B1EB1C568004391DD /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		99F6E15C1EB1C568004391DD /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
 		99F6E15D1EB1C568004391DD /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		99F6E1621EB1C568004391DD /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		99F6E1631EB1C568004391DD /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
 		99F6E1641EB1C568004391DD /* Weact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weact.swift; sourceTree = "<group>"; };
-		99F6E1711EB1C605004391DD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F6E1721EB1C605004391DD /* Stevia.framework in Frameworks */,
+				998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +131,7 @@
 		99F6E1701EB1C605004391DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99F6E1711EB1C605004391DD /* Stevia.framework */,
+				998740AB1EB23EFB00750421 /* Stevia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,7 +158,6 @@
 				996ADD8B1EB1C50A00364F7B /* Frameworks */,
 				996ADD8C1EB1C50A00364F7B /* Headers */,
 				996ADD8D1EB1C50A00364F7B /* Resources */,
-				99F6E16F1EB1C5D7004391DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -241,23 +240,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		99F6E16F1EB1C5D7004391DD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Stevia.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		996ADD8A1EB1C50A00364F7B /* Sources */ = {
