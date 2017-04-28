@@ -79,6 +79,7 @@ class UIKitRenderer: Renderer {
             node.applyStyle = {
                 fieldNode.styleBlock?(field)
             }
+            fieldNode.ref?.pointee = field
         }
         
         if let buttonNode = node as? Button {

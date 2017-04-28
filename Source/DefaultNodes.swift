@@ -71,6 +71,7 @@ public class Field: Node {
     var placeholder = ""
     var wording = ""
     var isFocused = true
+    var ref: UnsafeMutablePointer<UITextField>?
     
     var textChangedCallback: ((String) -> Void)?
     
@@ -81,12 +82,14 @@ public class Field: Node {
                 textChanged: ((String) -> Void)? = nil,
                 style: ((UITextField) -> Void)? = nil,
                 layout: ((UITextField) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UITextField>? = nil,
                 children: [Node] = [Node]()) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
         self.placeholder = placeholder
         self.wording = wording
+        self.ref = ref
         textChangedCallback = textChanged
         
         registerTextChanged = { tf in
