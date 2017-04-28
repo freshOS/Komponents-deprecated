@@ -131,7 +131,7 @@ class LoadingScreen: UIViewController, Component {
     }
 }
 ```
-![Weact](loadingScreen.png)
+<img src="loadingScreen.png" alt="Loading" width="250">
 
 
 ## Inspiration
