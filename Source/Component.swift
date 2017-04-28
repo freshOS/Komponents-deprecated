@@ -13,12 +13,17 @@ public protocol Component:class, Renderable {
     associatedtype State
     var state: State { get set }
     func updateState(_ block:(inout State) -> Void)
+    func didRender()
 }
 
 public extension Component {
     func updateState(_ block:(inout State) -> Void) {
         block(&state)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
+    }
+    
+    func didRender() {
+        print("didRender \(self)")
     }
 }
 
@@ -39,6 +44,7 @@ public extension Component where Self: UIView {
     func loadComponent() {
         let engine = WeactEngine()
         engine.render(component:self, in: self)
+        
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
                 engine.render(component:self, in: self)

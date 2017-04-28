@@ -34,5 +34,5 @@ open class ComponentViewController: UIViewController, Component {
         didRender()
     }
     
-    func didRender() { }
+    public func didRender() { }
 }
