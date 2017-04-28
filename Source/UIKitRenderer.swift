@@ -150,7 +150,7 @@ class UIKitRenderer: Renderer {
         let testLayoutBlock = { }
         
         if let theView = theView {
-            for c in node.children {
+            for c in node.children {                
                 viewFor(renderable: c, in: theView)
             }
             

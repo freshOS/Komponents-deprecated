@@ -15,7 +15,7 @@ public struct View: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIView) -> Void)?
     var styleBlock: ((UIView) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     var childrenLayout = [Any]()
     var ref: UnsafeMutablePointer<UIView>?
     
@@ -44,7 +44,7 @@ public struct Label: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UILabel) -> Void)?
     var styleBlock: ((UILabel) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     var wording = ""
     var ref: UnsafeMutablePointer<UILabel>?
     
@@ -52,7 +52,7 @@ public struct Label: Node {
                 style: ((UILabel) -> Void)? = nil,
                 layout: ((UILabel) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UILabel>? = nil,
-                children: [Node] = [Node]() ) {
+                children: [Renderable] = [Renderable]() ) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -67,7 +67,7 @@ public class Field: Node {
     public  var applyLayout: (() -> Void)?
     var layoutBlock: ((UITextField) -> Void)?
     var styleBlock: ((UITextField) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     var placeholder = ""
     var wording = ""
     var isFocused = true
@@ -83,7 +83,7 @@ public class Field: Node {
                 style: ((UITextField) -> Void)? = nil,
                 layout: ((UITextField) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UITextField>? = nil,
-                children: [Node] = [Node]()) {
+                children: [Renderable] = [Renderable]()) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -112,11 +112,11 @@ public struct VerticalStack: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIStackView) -> Void)?
     var styleBlock: ((UIStackView) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     
     public init(style: ((UIStackView) -> Void)? = nil,
                 layout: ((UIStackView) -> Void)? = nil,
-                children: [Node] = [Node]()) {
+                children: [Renderable] = [Renderable]()) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -124,7 +124,7 @@ public struct VerticalStack: Node {
     
     public init(style: ((UIStackView) -> Void)? = nil,
                 layout: ((UIStackView) -> Void)? = nil,
-                _ children: [Node]) {
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -137,11 +137,11 @@ public struct HorizontalStack: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIStackView) -> Void)?
     var styleBlock: ((UIStackView) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     
     public init(style: ((UIStackView) -> Void)? = nil,
                 layout: ((UIStackView) -> Void)? = nil,
-                children: [Node] = [Node]()) {
+                children: [Renderable] = [Renderable]()) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -149,7 +149,7 @@ public struct HorizontalStack: Node {
     
     public init(style: ((UIStackView) -> Void)? = nil,
                 layout: ((UIStackView) -> Void)? = nil,
-                _ children: [Node]) {
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -164,7 +164,7 @@ public class Button: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIButton) -> Void)?
     var styleBlock: ((UIButton) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     var wording = ""
     var image: UIImage?
     
@@ -201,18 +201,17 @@ public struct Image: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIImageView) -> Void)?
     var styleBlock: ((UIImageView) -> Void)?
-    public var children = [Node]()
-    var childrenLayout = [Any]()
+    public var children = [Renderable]()
     var ref: UnsafeMutablePointer<UIImageView>?
     var image: UIImage?
     
     public init(_ image: UIImage? = nil,
                 style: ((UIView) -> Void)? = nil,
                 layout: ((UIImageView) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UIImageView>? = nil, _ children:[Any]) {
+                ref: UnsafeMutablePointer<UIImageView>? = nil, _ children:[Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.childrenLayout = children
+        self.children = children
         self.ref = ref
         self.image = image
     }
@@ -234,17 +233,17 @@ public struct ScrollView: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIScrollView) -> Void)?
     var styleBlock: ((UIScrollView) -> Void)?
-    public var children = [Node]()
+    public var children = [Renderable]()
     var childrenLayout = [Any]()
     var ref: UnsafeMutablePointer<UIScrollView>?
     
     public init(style: ((UIScrollView) -> Void)? = nil,
                 layout: ((UIScrollView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIScrollView>? = nil,
-                _ children:[Any]) {
+                _ children:[Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.childrenLayout = children
+        self.children = children
         self.ref = ref
     }
     
@@ -263,17 +262,16 @@ public struct PageControl: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIPageControl) -> Void)?
     var styleBlock: ((UIPageControl) -> Void)?
-    public var children = [Node]()
-    var childrenLayout = [Any]()
+    public var children = [Renderable]()
     var ref: UnsafeMutablePointer<UIPageControl>?
     
     public init(style: ((UIPageControl) -> Void)? = nil,
                 layout: ((UIPageControl) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIPageControl>? = nil,
-                _ children: [Any]) {
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.childrenLayout = children
+        self.children = children
         self.ref = ref
     }
     
@@ -292,8 +290,8 @@ public struct ActivityIndicatorView: Node {
     public var applyLayout: (() -> Void)?
     var layoutBlock: ((UIActivityIndicatorView) -> Void)?
     var styleBlock: ((UIActivityIndicatorView) -> Void)?
-    public var children = [Node]()
-    var childrenLayout = [Any]()
+    public var children = [Renderable]()
+
     var ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     var activityIndicatorStyle = UIActivityIndicatorViewStyle.gray
     
@@ -301,10 +299,10 @@ public struct ActivityIndicatorView: Node {
                 style: ((UIView) -> Void)? = nil,
                 layout: ((UIActivityIndicatorView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil,
-                _ children:[Any]) {
+                _ children:[Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.childrenLayout = children
+        self.children = children
         self.ref = ref
         self.activityIndicatorStyle = activityIndicatorStyle
     }

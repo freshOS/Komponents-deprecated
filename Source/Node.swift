@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol Node: Renderable {
-    var children: [Node] { get set }
+    var children: [Renderable] { get set }
     var applyStyle: (() -> Void)? { get set }
     var applyLayout: (() -> Void)? { get set }
 }
