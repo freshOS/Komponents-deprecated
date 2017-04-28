@@ -1,4 +1,4 @@
-![Weact](https://raw.githubusercontent.com/s4cha/weact/master/banner.png)
+![Weact](banner.png)
 
 # Weact
 [![Language: Swift 3](https://img.shields.io/badge/language-swift3-f48041.svg?style=flat)](https://developer.apple.com/swift)
