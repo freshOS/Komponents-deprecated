@@ -112,11 +112,9 @@ import UIKit
 import Stevia
 import Weact
 
-class LoadingScreen: UIViewController, Component {
+class LoadingScreen: UIViewController, StatelessComponent {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-
-    var state = true // no state
 
     override func loadView() { loadComponent() }
 

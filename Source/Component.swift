@@ -9,11 +9,26 @@
 import Foundation
 import UIKit
 
-public protocol Component:class, Renderable {
+public protocol IsComponent: Renderable {
+    func didRender()
+}
+
+
+public protocol StatelessComponent: IsComponent { }
+
+public protocol Component:IsComponent, HasState { }
+
+public protocol HasState: class {
     associatedtype State
     var state: State { get set }
     func updateState(_ block:(inout State) -> Void)
-    func didRender()
+}
+
+public extension IsComponent {
+    
+    func didRender() {
+        print("didRender \(self)")
+    }
 }
 
 public extension Component {
@@ -21,14 +36,9 @@ public extension Component {
         block(&state)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
     }
-    
-    func didRender() {
-        print("didRender \(self)")
-    }
 }
 
-
-public extension Component where Self: UIViewController {
+public extension IsComponent where Self: UIViewController {
     func loadComponent() {
         view = UIView()
         let engine = WeactEngine()
@@ -40,7 +50,7 @@ public extension Component where Self: UIViewController {
     }
 }
 
-public extension Component where Self: UIView {
+public extension IsComponent where Self: UIView {
     func loadComponent() {
         let engine = WeactEngine()
         engine.render(component:self, in: self)

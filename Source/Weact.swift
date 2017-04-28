@@ -31,7 +31,7 @@ public class WeactEngine {
     
     var notificationObject:Any?
     
-    public func render<C: Component>(component: C, in view: UIView) {
+    public func render<C: IsComponent>(component: C, in view: UIView) {
         renderBlock = {
             if let object = self.notificationObject {
                 if object is C {
