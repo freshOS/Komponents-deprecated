@@ -15,7 +15,7 @@ class LoadingVC: UIViewController, StatelessComponent {
     override func loadView() { loadComponent() }
     
     func render() -> Node {
-        return View(style: { $0.backgroundColor = .red }, [
+        return View(style: { $0.backgroundColor = .white }, [
             HorizontalStack(  layout: { $0.centerInContainer() }, [
                 Label("Loading..."),
                 ActivityIndicatorView(style: { $0.startAnimating() })
