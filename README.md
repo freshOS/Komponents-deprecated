@@ -246,7 +246,7 @@ class LoadingScreen: UIViewController, StatelessComponent {
 [Preact](https://github.com/developit/preact), [Vue.js](https://vuejs.org) AlexDrone's render, Angular...
 Pure Swift React/ ComponentKit implementation
 
-## Other great Swift libraries
-[Alexdrone's render](https://github.com/alexdrone/Render)
-
-[BendingSpoons' katana](https://github.com/BendingSpoons/katana-swift)
+## Other great libraries
+ - [Alexdrone's render](https://github.com/alexdrone/Render)
+ - [joshaber's Few.swift](https://github.com/joshaber/Few.swift/tree/master/FewDemo)
+ - [BendingSpoons' katana](https://github.com/BendingSpoons/katana-swift)
