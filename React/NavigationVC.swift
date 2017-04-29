@@ -25,6 +25,7 @@ class NavigationVC: UIViewController, StatelessComponent {
         
         let sections: [(String, UIViewController)] = [
             ("Hello World", HelloWorldVC()),
+            ("Hello Props", HelloPropsVC(name:"Chuck Norris")),
             ("LoadingScreen", LoadingVC()),
             ("Counter ", CounterVC()),
             ("Login Screen", LoginVC()),

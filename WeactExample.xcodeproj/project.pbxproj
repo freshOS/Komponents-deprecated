@@ -15,6 +15,7 @@
 		99410C021EB4CAEF007164CF /* NestedComponentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C011EB4CAEF007164CF /* NestedComponentsVC.swift */; };
 		99410C041EB4D69E007164CF /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C031EB4D69E007164CF /* NavigationVC.swift */; };
 		99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C051EB4DD60007164CF /* HelloWorldVC.swift */; };
+		999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */; };
 		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
 		99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D71E8D5C7A00F7F5B5 /* States.swift */; };
 		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
@@ -76,6 +77,7 @@
 		996ADD6A1EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996ADD761EB1C44A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
 		996ADD781EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloPropsVC.swift; sourceTree = "<group>"; };
 		99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComponent.swift; sourceTree = "<group>"; };
 		99C3C4D71E8D5C7A00F7F5B5 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		99CE3F6A1EAE6B77001049CF /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				99D226D11E8BA734009416AA /* AppDelegate.swift */,
+				999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */,
 				99410BF81EB4B57A007164CF /* LoadingVC.swift */,
 				99410C051EB4DD60007164CF /* HelloWorldVC.swift */,
 				99410C031EB4D69E007164CF /* NavigationVC.swift */,
@@ -337,6 +340,7 @@
 				99410C001EB4CAC7007164CF /* Counter.swift in Sources */,
 				99410BF91EB4B57A007164CF /* LoadingVC.swift in Sources */,
 				99F6E1831EB1CB77004391DD /* LoopExample.swift in Sources */,
+				999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */,
 				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
 				99410BFE1EB4C59D007164CF /* CounterVC.swift in Sources */,
 				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,
