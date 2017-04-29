@@ -17,6 +17,7 @@ class CounterVC: UIViewController, Component {
     override func loadView() { loadComponent() }
     
     func render() -> Node {
+        title = "Counter"
         return
             View(style: { $0.backgroundColor = .white }, [
                 VerticalStack(layout: { $0.centerInContainer() }, [
@@ -29,4 +30,3 @@ class CounterVC: UIViewController, Component {
             ])
     }
 }
-

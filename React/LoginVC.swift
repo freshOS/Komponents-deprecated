@@ -23,7 +23,6 @@ import Weact
 // email return Keyboard -> select pass.
 // Toggle Ok button in nav bar? UIBarButtonItem
 // dismiss keyboard
-
 // layout externally
 // Cannot inject generic comp?? (injection$Xcode?
 // Functional Component Example
@@ -40,13 +39,16 @@ func SignupButton(text: String) -> Button {
     // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
 }
 
-class LoginComponent: Component {
+class LoginVC: UIViewController, Component {
     
     var state = LoginState()
+    
+    override func loadView() { loadComponent() }
     
     // MARK - View
     
     func render() -> Node {
+        title = "Login Screen"
         return View(style: { $0.backgroundColor = .white }, [
             VerticalStack(style: { $0.spacing = 8 }, layout: { |-$0-|.top(80) }, [
                 Field("Email",
@@ -63,16 +65,14 @@ class LoginComponent: Component {
                 )
             ]),
             VerticalStack(layout: { |$0|.bottom(0) }, [
-                Button("Vous n'avez pas de compte Yummypets ?",
+                Button("Vous n'avez pas de compte ?",
                        style: signUpButtonStyle,
                        layout: { $0.height(80) }
                 ),
                 Button(buttonTextForState(state.status),
                        tap: login, style: loginButtonStyle,
                        layout: { $0.height(80) }
-                ),
-                SignupButton(),
-                SignupButton(text: "Coucou")
+                )
             ])
         ])
     }
