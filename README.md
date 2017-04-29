@@ -241,12 +241,32 @@ class LoadingScreen: UIViewController, StatelessComponent {
 <img src="loadingScreen.png" alt="Loading" width="250">
 
 
+## Installation
+
+### Carthage
+```
+github "s4cha/Weact"
+```
+
+### Manually
+Simply Copy and Paste all the `.swift` files from the `Source` folder  in your Xcode Project :)
+
+### Cocoapods
+Coming soon
+
+## Contributors
+[YannickDot](https://github.com/YannickDot),
+[S4cha](https://github.com/S4cha), YOU ?!  
+We'd love to hear what you think so don't hesitate to reach out through an issue or via twitter
+[@sachadso](https://twitter.com/sachadso)
+
 ## Inspiration
 [Facebook's React](https://facebook.github.io/react/), [ComponentKit](https://github.com/facebook/componentkit),
 [Preact](https://github.com/developit/preact), [Vue.js](https://vuejs.org) AlexDrone's render, Angular...
 Pure Swift React/ ComponentKit implementation
 
 ## Other great libraries
+We're not the first to tackle the great endeavor of swift components and here are some other very cool projects :
  - [Alexdrone's render](https://github.com/alexdrone/Render)
  - [joshaber's Few.swift](https://github.com/joshaber/Few.swift/tree/master/FewDemo)
  - [BendingSpoons' katana](https://github.com/BendingSpoons/katana-swift)
