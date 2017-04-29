@@ -20,7 +20,6 @@ opt_in_rules:
 - prohibited_super_call
 - redundant_nil_coalescing
 - switch_case_on_newline
-- sorted_imports
 - first_where
 - closure_end_indentation
 - force_unwrapping
