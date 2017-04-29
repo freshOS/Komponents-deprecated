@@ -3,7 +3,7 @@
 //  Weact
 //
 //  Created by Sacha Durand Saint Omer on 31/03/2017.
-//  Copyright © 2017 Octopepper. All rights reserved.
+//  Copyright © 2017 freshOS. All rights reserved.
 //
 
 import Foundation
@@ -13,10 +13,9 @@ public protocol IsComponent: Renderable {
     func didRender()
 }
 
-
 public protocol StatelessComponent: IsComponent { }
 
-public protocol Component:IsComponent, HasState { }
+public protocol Component: IsComponent, HasState { }
 
 public protocol HasState: class {
     associatedtype State
@@ -46,7 +45,7 @@ public extension IsComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
                 engine.render(component:self, in: self.view)
-        }
+            }
     }
 }
 
@@ -58,6 +57,6 @@ public extension IsComponent where Self: UIView {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
                 engine.render(component:self, in: self)
-        }
+            }
     }
 }

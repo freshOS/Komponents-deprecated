@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EB71E8E64A6005D7674 /* ActionsBar.swift */; };
 		9921678E1E92334F00979FC1 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9921678D1E92334F00979FC1 /* LoginScreen.swift */; };
+		99410BF91EB4B57A007164CF /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410BF81EB4B57A007164CF /* LoadingVC.swift */; };
 		99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */; };
 		99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D71E8D5C7A00F7F5B5 /* States.swift */; };
 		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		991B5EB71E8E64A6005D7674 /* ActionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
 		9921678D1E92334F00979FC1 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		99410BF81EB4B57A007164CF /* LoadingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
 		996ADD691EB1C44A00364F7B /* Weact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weact.h; sourceTree = "<group>"; };
 		996ADD6A1EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996ADD761EB1C44A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				99D226D11E8BA734009416AA /* AppDelegate.swift */,
+				99410BF81EB4B57A007164CF /* LoadingVC.swift */,
 				99C3C4D71E8D5C7A00F7F5B5 /* States.swift */,
 				99C3C4D31E8D162800F7F5B5 /* PhotoComponent.swift */,
 				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
@@ -279,14 +282,14 @@
 /* Begin PBXShellScriptBuildPhase section */
 		996ADD611EB1018E00364F7B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
@@ -313,6 +316,7 @@
 			files = (
 				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
+				99410BF91EB4B57A007164CF /* LoadingVC.swift in Sources */,
 				99F6E1831EB1CB77004391DD /* LoopExample.swift in Sources */,
 				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
 				99C3C4D41E8D162800F7F5B5 /* PhotoComponent.swift in Sources */,
@@ -447,7 +451,7 @@
 				);
 				INFOPLIST_FILE = React/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.React;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +468,7 @@
 				);
 				INFOPLIST_FILE = React/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.React;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

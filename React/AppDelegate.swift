@@ -19,32 +19,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = LoadingVC() // Using a UIViewController Component.
+        window?.makeKeyAndVisible()
+        return true
+    }
+}
 
-        // Using View Controller wrapper.
-        window?.rootViewController = ComponentVC(component: TestLoop())//LoginComponent())
-        
-        // Using UIView wrapper.
+// Other ways to display components:
+
+//        // Using View Controller wrapper.
+//        window?.rootViewController = ComponentVC(component: TestLoop())
+
+//        // Using UIView wrapper.
 //        let vc = UIViewController()
 //        window?.rootViewController = vc
 //        let loginView = ComponentView(component: LoginComponent())
 //        loginView.frame = vc.view.frame
 //        vc.view.addSubview(loginView)
-        
-        // Using bare Weact engine.
+
+//        // Using bare Weact engine.
 //        let vc = UIViewController()
 //        window?.rootViewController = vc
 //        let engine = WeactEngine()
 //        engine.render(component: LoginComponent(), in:vc.view)
-        
-        // Tell Weact engine to re-render when we inject code through injection4Xcode plugin.
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name(rawValue:"INJECTION_BUNDLE_NOTIFICATION"),
-                                               object: nil,
-                                               queue: nil) { _ in
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: nil)
-            }
-        
-        window?.makeKeyAndVisible()
-        return true
-    }
-}

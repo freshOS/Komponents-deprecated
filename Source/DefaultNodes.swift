@@ -3,7 +3,7 @@
 //  Weact
 //
 //  Created by Sacha Durand Saint Omer on 31/03/2017.
-//  Copyright © 2017 Octopepper. All rights reserved.
+//  Copyright © 2017 freshOS. All rights reserved.
 //
 
 import Foundation
@@ -208,7 +208,8 @@ public struct Image: Node {
     public init(_ image: UIImage? = nil,
                 style: ((UIView) -> Void)? = nil,
                 layout: ((UIImageView) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UIImageView>? = nil, _ children:[Renderable]) {
+                ref: UnsafeMutablePointer<UIImageView>? = nil,
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -240,7 +241,7 @@ public struct ScrollView: Node {
     public init(style: ((UIScrollView) -> Void)? = nil,
                 layout: ((UIScrollView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIScrollView>? = nil,
-                _ children:[Renderable]) {
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
@@ -299,7 +300,7 @@ public struct ActivityIndicatorView: Node {
                 style: ((UIView) -> Void)? = nil,
                 layout: ((UIActivityIndicatorView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil,
-                _ children:[Renderable]) {
+                _ children: [Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
