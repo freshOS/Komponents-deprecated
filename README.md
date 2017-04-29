@@ -9,6 +9,9 @@
 
 Weact is a Swift framework for building component-oriented interfaces.  
 Because it's unfair to need javascript to enjoy Components ! 😎
+
+![Demo](demo.gif)
+
 ```swift
 func render() -> Node {
     return Label("Hello, Component !")
