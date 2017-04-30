@@ -41,8 +41,6 @@ func SignupButton(text: String) -> Button {
 
 class LoginVC: UIViewController, Component {
     
-    public var uniqueIdentifier: Int { return 94863 }
-    
     var state = LoginState()
     
     override func loadView() { loadComponent() }
@@ -102,13 +100,13 @@ class LoginVC: UIViewController, Component {
     
     func login() {
         updateState { $0.status = .loading }
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-            if self.state.email == "sacha" {
-                self.updateState { $0.status = .success }
-            } else {
-                self.updateState { $0.status = .error }
-            }
-        }
+//        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+//            if self.state.email == "sacha" {
+//                self.updateState { $0.status = .success }
+//            } else {
+//                self.updateState { $0.status = .error }
+//            }
+//        }
     }
     
     // MARK - Styles

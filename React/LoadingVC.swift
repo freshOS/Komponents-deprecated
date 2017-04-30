@@ -12,8 +12,6 @@ import Weact
 
 class LoadingVC: UIViewController, StatelessComponent {
     
-    public var uniqueIdentifier: Int { return 672 }
-    
     override func loadView() { loadComponent() }
     
     func render() -> Node {

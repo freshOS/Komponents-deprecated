@@ -12,8 +12,6 @@ import Weact
 
 class HelloWorldVC: UIViewController, StatelessComponent {
     
-    public var uniqueIdentifier: Int { return 10 }
-    
     override func loadView() { loadComponent() }
     
     func render() -> Node {
@@ -22,5 +20,9 @@ class HelloWorldVC: UIViewController, StatelessComponent {
             View(style: { $0.backgroundColor = .white }, [
                 Label("Hello World", layout: { $0.centerInContainer() })
             ])
+    }
+    
+    deinit {
+        print("😀 DEstroying HelloWorldVC")
     }
 }

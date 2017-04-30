@@ -12,8 +12,7 @@ import Weact
 
 class NavigationVC: UIViewController, StatelessComponent {
     
-    public var uniqueIdentifier: Int { return 12 }
-    
+
     override func loadView() { loadComponent() }
     
     func render() -> Node {
@@ -25,13 +24,13 @@ class NavigationVC: UIViewController, StatelessComponent {
             b.titleLabel?.textAlignment = .right
         }
         
-        let sections: [(String, UIViewController)] = [
-            ("Hello World", HelloWorldVC()),
-            ("Hello Props", HelloPropsVC(name:"Chuck Norris")),
-            ("LoadingScreen", LoadingVC()),
-            ("Counter ", CounterVC()),
-            ("Login Screen", LoginVC()),
-            ("Nested Components", NestedComponentsVC())
+        let sections: [(String, (() ->(UIViewController)) )] = [
+            ("Hello World", { HelloWorldVC() }),
+//            ("Hello Props", { HelloPropsVC(name:"Chuck Norris") }),
+//            ("LoadingScreen", { LoadingVC() }),
+//            ("Counter ", { CounterVC() }),
+//            ("Login Screen", { LoginVC() }),
+//            ("Nested Components", { NestedComponentsVC() } )
         ]
 
         return
@@ -43,7 +42,8 @@ class NavigationVC: UIViewController, StatelessComponent {
                                     [
                             View(style: { $0.backgroundColor = UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1) },
                                  layout: { |$0.top(0).height(1)| }, []),
-                            Button("\(wording)", tap: { self.push(vc) },
+                            Button("\(wording)", tap: { [weak self] in
+                                 self?.push(HelloWorldVC()) },
                                    style: buttonStyle,
                                    layout: { $0.fillContainer() })
                         ])

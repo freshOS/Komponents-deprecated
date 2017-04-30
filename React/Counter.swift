@@ -12,14 +12,27 @@ import Weact
 
 class Counter: Component {
     
-    public var uniqueIdentifier: Int { return 527 }
-    
     var state = 0
     
+    var layout = { (v:UIView) in }
+    
+//    init(layout: @escaping (UIView) -> Void) {
+//        self.layout = layout
+//    }
+    
+    var color = UIColor.red
+    
+    init(color: UIColor) {
+        self.color = color
+    }
+    
     func render() -> Node {
-        return View(style: { $0.backgroundColor = .white },
-                    layout: { $0.size(200) }, [
-            VerticalStack(layout: { $0.fillContainer() }, [
+        return View(style: { $0.backgroundColor = self.color },
+                    layout: {
+                        $0.size(100)
+                        self.layout($0)
+        }, [
+            VerticalStack(layout: { $0.centerInContainer() }, [
                 Label("Counter : \(state)"),
                 Button("Tap me",
                        tap: {

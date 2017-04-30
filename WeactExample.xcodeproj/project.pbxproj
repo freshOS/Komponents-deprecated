@@ -24,6 +24,8 @@
 		99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D226F21E8BB1C5009416AA /* Stevia.framework */; };
 		99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D47A371E8C0FB6003F14A2 /* PhotoFeedCell.swift */; };
 		99F6E1831EB1CB77004391DD /* LoopExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1821EB1CB77004391DD /* LoopExample.swift */; };
+		99FB2FC11EB613C600F95985 /* Weact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F6E1791EB1C667004391DD /* Weact.framework */; };
+		99FB2FC21EB613C600F95985 /* Weact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99F6E1791EB1C667004391DD /* Weact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,13 @@
 			remoteGlobalIDString = 996ADD8E1EB1C50A00364F7B;
 			remoteInfo = Weact;
 		};
+		99FB2FC31EB613C600F95985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99F6E1731EB1C667004391DD /* Weact.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 996ADD8E1EB1C50A00364F7B;
+			remoteInfo = Weact;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				99FB2FC21EB613C600F95985 /* Weact.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99D226F31E8BB1C5009416AA /* Stevia.framework in Frameworks */,
+				99FB2FC11EB613C600F95985 /* Weact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +230,7 @@
 			);
 			dependencies = (
 				99F6E1811EB1C718004391DD /* PBXTargetDependency */,
+				99FB2FC41EB613C600F95985 /* PBXTargetDependency */,
 			);
 			name = WeactExampleExample;
 			productName = React;
@@ -237,6 +249,7 @@
 				TargetAttributes = {
 					99D226CD1E8BA734009416AA = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4TATSTJ3J3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -354,6 +367,11 @@
 			name = Weact;
 			targetProxy = 99F6E1801EB1C718004391DD /* PBXContainerItemProxy */;
 		};
+		99FB2FC41EB613C600F95985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Weact;
+			targetProxy = 99FB2FC31EB613C600F95985 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -464,12 +482,15 @@
 		99D226EC1E8BA734009416AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4TATSTJ3J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = React/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,12 +502,15 @@
 		99D226ED1E8BA734009416AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4TATSTJ3J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = React/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

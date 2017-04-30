@@ -10,12 +10,17 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
-    var engine: WeactEngine!
+    weak var engine: WeactEngine!
     
-    func render(_ renderable: Renderable, in rootView: UIView, withEngine: WeactEngine) {
-        print("⚛️ Rendering \(renderable)")
+    func render(_ renderable: Renderable, in rootView: UIView, withEngine: WeactEngine, atIndex: Int? = nil) {
+        
+        if let c = renderable as? IsComponent {
+            print("⚛️ Rendering \(c) : \(c.uniqueIdentifier)")
+        }
+        
+        
         engine = withEngine
-        viewFor(renderable: renderable, in:rootView) //recursive
+        viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
         
         if let c = renderable as? IsComponent {
             c.didRender()
@@ -23,7 +28,7 @@ class UIKitRenderer: Renderer {
     }
     
     @discardableResult
-    func viewFor(renderable: Renderable, in parentView: UIView) -> UIView {
+    func viewFor(renderable: Renderable, in parentView: UIView, atIndex: Int? = nil) -> UIView {
         var theView: UIView?
         var node = renderable.render()
         
@@ -251,10 +256,10 @@ class UIKitRenderer: Renderer {
         if let theView = theView {
             
             if let aComponent = renderable as? IsComponent {
-//                print(aComponent)
                 
+                // Reains the componenent
                 let cId = aComponent.uniqueIdentifier
-                engine.componentsMap[cId] = aComponent
+                engine.componentsMap[cId] = aComponent //// Reains the componenent
                 engine.viewMap[cId] = theView
             }
             
@@ -262,7 +267,12 @@ class UIKitRenderer: Renderer {
             
             theView.translatesAutoresizingMaskIntoConstraints = false
             if let stackView = parentView as? UIStackView {
-                stackView.addArrangedSubview(theView)
+                
+                if let atIndex = atIndex {
+                    stackView.insertArrangedSubview(theView, at: atIndex)
+                } else {
+                    stackView.addArrangedSubview(theView)
+                }
             } else {
                 parentView.addSubview(theView)
             }

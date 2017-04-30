@@ -22,10 +22,11 @@ public struct View: Node {
     public init(style: ((UIView) -> Void)? = nil,
                 layout: ((UIView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIView>? = nil,
-                _ children:[Any]) {
+                _ children:[Renderable]) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.childrenLayout = children
+        self.children = children
+//        self.childrenLayout = children
         self.ref = ref
     }
     

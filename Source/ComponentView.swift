@@ -15,12 +15,10 @@ public class ComponentView<T: Component> :UIView {
     
     public let component: T!
     
-    let engine = WeactEngine()
-    
     public init(component: T) {
         self.component = component
         super.init(frame: CGRect.zero)
-        engine.render(component:component, in: self)
+        WeactEngine.shared.render(component:component, in: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {

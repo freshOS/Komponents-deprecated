@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
-public protocol IsComponent: Renderable {
-    var uniqueIdentifier:Int { get }
+public protocol IsComponent:class, Renderable {
+    var uniqueIdentifier:String { get }
     func didRender()
+}
+
+public extension IsComponent {
+    public var uniqueIdentifier: String {
+        return "\(ObjectIdentifier(self).hashValue)"
+    }
 }
 
 public protocol StatelessComponent: IsComponent { }
@@ -27,7 +33,7 @@ public protocol HasState: class {
 public extension IsComponent {
     
     func didRender() {
-        print("didRender \(self)")
+//        print("didRender \(self)")
     }
 }
 
@@ -38,26 +44,30 @@ public extension Component {
     }
 }
 
+class TestComp : IsComponent {
+    func render() -> Node {
+        return View([])
+    }
+}
+
 public extension IsComponent where Self: UIViewController {
     func loadComponent() {
         view = UIView()
-        let engine = WeactEngine()
-        engine.render(component:self, in: view)
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
-                engine.render(component:self, in: self.view)
-            }
+        WeactEngine.shared.render(component: self, in: view)
+//        NotificationCenter.default
+//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak engine] _ in
+//                engine?.render(component:self, in: self.view)
+//            }
     }
 }
 
 public extension IsComponent where Self: UIView {
     func loadComponent() {
-        let engine = WeactEngine()
-        engine.render(component:self, in: self)
+        WeactEngine.shared.render(component: self, in: self)
         
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
-                engine.render(component:self, in: self)
-            }
+//        NotificationCenter.default
+//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
+//                engine.render(component:self, in: self)
+//            }
     }
 }

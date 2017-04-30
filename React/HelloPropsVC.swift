@@ -12,8 +12,6 @@ import Weact
 
 class HelloPropsVC: UIViewController, StatelessComponent {
     
-    public var uniqueIdentifier: Int { return 15 }
-    
     private var name = ""
     
     convenience init(name: String) {

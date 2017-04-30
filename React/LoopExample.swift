@@ -11,8 +11,6 @@ import Weact
 
 class TestLoop: StatelessComponent {
     
-    public var uniqueIdentifier: Int { return 8 }
-    
     func render() -> Node {
         let items = ["Hello", "How", "Are", "You?"]
         return

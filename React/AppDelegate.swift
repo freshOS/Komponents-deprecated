@@ -19,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = NestedComponentsVC()
-            
-            //UINavigationController(rootViewController: NavigationVC()) // Using a UIViewController Component.
+        //UINavigationController(rootViewController: NavigationVC()) //
+        
+        let navVC = UINavigationController(rootViewController: UIViewController()) //
+        navVC.pushViewController(HelloWorldVC(), animated: true)
+        window?.rootViewController = navVC
+        
+        //Using a UIViewController Component.
         window?.makeKeyAndVisible()
         return true
     }
