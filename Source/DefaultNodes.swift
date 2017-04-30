@@ -26,7 +26,6 @@ public struct View: Node {
         self.layoutBlock = layout
         self.styleBlock = style
         self.children = children
-//        self.childrenLayout = children
         self.ref = ref
     }
     

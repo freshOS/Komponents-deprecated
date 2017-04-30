@@ -14,11 +14,6 @@ class Counter: Component {
     
     var state = 0
     
-    var layout = { (v:UIView) in }
-    
-//    init(layout: @escaping (UIView) -> Void) {
-//        self.layout = layout
-//    }
     
     var color = UIColor.red
     
@@ -27,19 +22,24 @@ class Counter: Component {
     }
     
     func render() -> Node {
-        return View(style: { $0.backgroundColor = self.color },
-                    layout: {
-                        $0.size(100)
-                        self.layout($0)
-        }, [
-            VerticalStack(layout: { $0.centerInContainer() }, [
-                Label("Counter : \(state)"),
-                Button("Tap me",
-                       tap: {
-                        self.updateState{ $0 += 1 } },
-                       style: { $0.setTitleColor(.red, for: .normal) }
-                )
+        return
+            View(
+                style: {
+                    $0.layer.borderColor = self.color.cgColor
+                    $0.layer.borderWidth = 1
+                },
+                layout: { $0.size(100) }, [
+                VerticalStack(layout: { $0.centerInContainer() }, [
+                    Label("Counter : \(state)"),
+                    Button("Tap me",
+                            tap: { [weak self] in self?.updateState{ $0 += 1 } },
+                            style: { $0.setTitleColor(.red, for: .normal) }
+                    )
                 ])
             ])
+    }
+    
+    deinit {
+        print("😀 DEstroying Counter")
     }
 }

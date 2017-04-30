@@ -39,6 +39,7 @@ public extension IsComponent {
 
 public extension Component {
     func updateState(_ block:(inout State) -> Void) {
+        print("☝️ COMPONENT TO UPDATE : \(self.uniqueIdentifier)")
         block(&state)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
     }
@@ -54,10 +55,12 @@ public extension IsComponent where Self: UIViewController {
     func loadComponent() {
         view = UIView()
         WeactEngine.shared.render(component: self, in: view)
-//        NotificationCenter.default
-//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak engine] _ in
-//                engine?.render(component:self, in: self.view)
-//            }
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+                if let weakSelf = self {
+                    WeactEngine.shared.render(component:weakSelf, in: weakSelf.view)
+                }
+            }
     }
 }
 

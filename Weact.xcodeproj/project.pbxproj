@@ -20,7 +20,7 @@
 		99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1611EB1C568004391DD /* Renderable.swift */; };
 		99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1621EB1C568004391DD /* Renderer.swift */; };
 		99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1631EB1C568004391DD /* UIKitRenderer.swift */; };
-		99F6E16E1EB1C568004391DD /* Weact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1641EB1C568004391DD /* Weact.swift */; };
+		99F6E16E1EB1C568004391DD /* WeactEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1641EB1C568004391DD /* WeactEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		99F6E1611EB1C568004391DD /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		99F6E1621EB1C568004391DD /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		99F6E1631EB1C568004391DD /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
-		99F6E1641EB1C568004391DD /* Weact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weact.swift; sourceTree = "<group>"; };
+		99F6E1641EB1C568004391DD /* WeactEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeactEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 		99F6E15A1EB1C568004391DD /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				99F6E1641EB1C568004391DD /* Weact.swift */,
+				99F6E1641EB1C568004391DD /* WeactEngine.swift */,
 				99F6E1611EB1C568004391DD /* Renderable.swift */,
 				99F6E1601EB1C568004391DD /* Node.swift */,
 				99F6E15F1EB1C568004391DD /* DefaultNodes.swift */,
@@ -252,7 +252,7 @@
 				99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */,
 				99F6E1651EB1C568004391DD /* Component.swift in Sources */,
 				99F6E16A1EB1C568004391DD /* Node.swift in Sources */,
-				99F6E16E1EB1C568004391DD /* Weact.swift in Sources */,
+				99F6E16E1EB1C568004391DD /* WeactEngine.swift in Sources */,
 				99F6E1681EB1C568004391DD /* ComponentViewController.swift in Sources */,
 				99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */,
 				99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */,

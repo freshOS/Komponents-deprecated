@@ -20,7 +20,11 @@ class UIKitRenderer: Renderer {
         
         
         engine = withEngine
-        viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
+        let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
+        
+        if renderable is UIViewController {
+            compoenentRootView.fillContainer()
+        }
         
         if let c = renderable as? IsComponent {
             c.didRender()
@@ -255,12 +259,18 @@ class UIKitRenderer: Renderer {
         // Hierarchy
         if let theView = theView {
             
-            if let aComponent = renderable as? IsComponent {
-                
-                // Reains the componenent
+            if let aComponent = renderable as? IsComponent, !(aComponent is UIViewController) {
                 let cId = aComponent.uniqueIdentifier
-                engine.componentsMap[cId] = aComponent //// Reains the componenent
-                engine.viewMap[cId] = theView
+                
+                // only if not present
+                
+                if let entry = engine.componentsMap[cId] {
+                    print("Do nothing")
+                } else {
+                    engine.componentsMap[cId] = aComponent //// Reains the componenent
+                }
+                engine.viewMap[cId] = theView // update view entry.
+                
             }
             
             

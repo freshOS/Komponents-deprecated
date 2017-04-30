@@ -23,7 +23,9 @@ class CounterVC: UIViewController, Component {
                 VerticalStack(layout: { $0.centerInContainer() }, [
                     Label("Counter : \(state)"),
                     Button("Tap me",
-                           tap: { self.updateState{ $0 += 1 } },
+                           tap: { [weak self] in //be careful of the strong Ref ! (document this)
+                            self?.updateState{ $0 += 1 }
+                        },
                            style: { $0.setTitleColor(.red, for: .normal) }
                     )
                 ])

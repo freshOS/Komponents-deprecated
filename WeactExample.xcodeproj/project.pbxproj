@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B5EB71E8E64A6005D7674 /* ActionsBar.swift */; };
 		9921678E1E92334F00979FC1 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9921678D1E92334F00979FC1 /* LoginVC.swift */; };
 		99410BF91EB4B57A007164CF /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410BF81EB4B57A007164CF /* LoadingVC.swift */; };
 		99410BFE1EB4C59D007164CF /* CounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410BFD1EB4C59D007164CF /* CounterVC.swift */; };
@@ -16,7 +15,6 @@
 		99410C041EB4D69E007164CF /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C031EB4D69E007164CF /* NavigationVC.swift */; };
 		99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C051EB4DD60007164CF /* HelloWorldVC.swift */; };
 		999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */; };
-		99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C3C4D71E8D5C7A00F7F5B5 /* States.swift */; };
 		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
 		99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D11E8BA734009416AA /* AppDelegate.swift */; };
 		99D226D91E8BA734009416AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D226D81E8BA734009416AA /* Assets.xcassets */; };
@@ -74,7 +72,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		991B5EB71E8E64A6005D7674 /* ActionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
 		9921678D1E92334F00979FC1 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		99410BF81EB4B57A007164CF /* LoadingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
 		99410BFD1EB4C59D007164CF /* CounterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterVC.swift; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 		996ADD761EB1C44A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
 		996ADD781EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloPropsVC.swift; sourceTree = "<group>"; };
-		99C3C4D71E8D5C7A00F7F5B5 /* States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		99CE3F6A1EAE6B77001049CF /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		99D226CE1E8BA734009416AA /* WeactExampleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeactExampleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D226D11E8BA734009416AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,8 +168,6 @@
 				99410BFF1EB4CAC7007164CF /* Counter.swift */,
 				99410C011EB4CAEF007164CF /* NestedComponentsVC.swift */,
 				99410BFD1EB4C59D007164CF /* CounterVC.swift */,
-				99C3C4D71E8D5C7A00F7F5B5 /* States.swift */,
-				991B5EB71E8E64A6005D7674 /* ActionsBar.swift */,
 				9921678D1E92334F00979FC1 /* LoginVC.swift */,
 				99CE3F6A1EAE6B77001049CF /* LoginState.swift */,
 				99F6E1821EB1CB77004391DD /* LoopExample.swift */,
@@ -342,7 +336,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				991B5EB81E8E64A6005D7674 /* ActionsBar.swift in Sources */,
 				99410C021EB4CAEF007164CF /* NestedComponentsVC.swift in Sources */,
 				99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
@@ -353,7 +346,6 @@
 				999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */,
 				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
 				99410BFE1EB4C59D007164CF /* CounterVC.swift in Sources */,
-				99C3C4D81E8D5C7A00F7F5B5 /* States.swift in Sources */,
 				9921678E1E92334F00979FC1 /* LoginVC.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
 			);

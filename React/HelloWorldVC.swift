@@ -21,8 +21,4 @@ class HelloWorldVC: UIViewController, StatelessComponent {
                 Label("Hello World", layout: { $0.centerInContainer() })
             ])
     }
-    
-    deinit {
-        print("😀 DEstroying HelloWorldVC")
-    }
 }
