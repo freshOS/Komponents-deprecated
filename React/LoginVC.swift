@@ -41,6 +41,8 @@ func SignupButton(text: String) -> Button {
 
 class LoginVC: UIViewController, Component {
     
+    public var uniqueIdentifier: Int { return 94863 }
+    
     var state = LoginState()
     
     override func loadView() { loadComponent() }

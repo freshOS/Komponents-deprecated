@@ -12,6 +12,8 @@ import Weact
 
 class HelloWorldVC: UIViewController, StatelessComponent {
     
+    public var uniqueIdentifier: Int { return 10 }
+    
     override func loadView() { loadComponent() }
     
     func render() -> Node {

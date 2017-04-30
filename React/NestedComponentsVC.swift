@@ -12,6 +12,8 @@ import Weact
 
 class NestedComponentsVC: UIViewController, StatelessComponent {
     
+    public var uniqueIdentifier: Int { return 13}
+    
     override func loadView() { loadComponent() }
     
     func render() -> Node {
@@ -21,9 +23,9 @@ class NestedComponentsVC: UIViewController, StatelessComponent {
                 VerticalStack(style: { $0.spacing = 10 },
                               layout: { $0.centerInContainer() }, [
                                 Counter(),
-                                Counter(),
-                                Counter(),
                                 Counter()
+//                                Counter(),
+//                                Counter()
                 ])
             ])
     }

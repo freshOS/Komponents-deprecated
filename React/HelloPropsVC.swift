@@ -12,6 +12,8 @@ import Weact
 
 class HelloPropsVC: UIViewController, StatelessComponent {
     
+    public var uniqueIdentifier: Int { return 15 }
+    
     private var name = ""
     
     convenience init(name: String) {
@@ -21,7 +23,7 @@ class HelloPropsVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
     
-    func render() -> Node {
+    func render() -> Node {        
         title = "Hello \(name)"
         return
             View(style: { $0.backgroundColor = .white }, [

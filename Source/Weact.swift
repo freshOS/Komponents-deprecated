@@ -11,6 +11,19 @@ import UIKit
 
 public class WeactEngine {
     
+    
+    var componentsMap = [Int: IsComponent]()
+    var viewMap = [Int: UIView]()
+    var nodeMap = [Int: Node]()
+    
+    func nodeForComponentId(_ id :Int) -> Node {
+        return nodeMap[id]!
+    }
+    
+    func viewForComponentId(_ id :Int) -> UIView {
+        return viewMap[id]!
+    }
+    
     var renderBlock = {}
     
     public convenience init() {
@@ -34,14 +47,32 @@ public class WeactEngine {
     public func render<C: IsComponent>(component: C, in view: UIView) {
         renderBlock = {
             if let object = self.notificationObject {
+                
+                if let componentToUpdate = object as? IsComponent {
+//                    print(componentToUpdate.uniqueIdentifier)
+                    let associatedView = self.viewForComponentId(componentToUpdate.uniqueIdentifier)
+//                    print(associatedView)
+                    
+                    if let superview = associatedView.superview {
+                        
+                        // Remove previous view hierarchy.
+                        associatedView.removeFromSuperview()
+                        
+                        // Re-render compoenent in superview.
+                        
+                        self.renderer.render(componentToUpdate, in: superview, withEngine: self)
+                    }
+                    
+                }
+                
                 if object is C {
-                    print("⚛️ Re-Rendering \(component)")
+//                    print("⚛️ Re-Rendering \(component)")
                     for sv in view.subviews {
                         sv.removeFromSuperview()
                     }
                     
                     let node = component.render()
-                    self.renderer.render(node, in: view)
+                    self.renderer.render(node, in: view, withEngine: self)
                     
                     // Fill first node in container view
                     if let firstNodeView = view.subviews.first {
@@ -49,20 +80,20 @@ public class WeactEngine {
                     }
                 }
             } else {
-                print("⚛️ Rendering \(component)")
+//                print("⚛️ Rendering \(component)")
                 for sv in view.subviews {
                     sv.removeFromSuperview()
                 }
                 
-                let node = component.render()
-                self.renderer.render(node, in: view)
+//                let node = component.render()
+                self.renderer.render(component, in: view, withEngine: self)
                 
                 // Fill first node in container view
                 if let firstNodeView = view.subviews.first {
                     firstNodeView.fillContainer()
                 }
             }
-            component.didRender()
+            
             
         }
         renderBlock()

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public protocol IsComponent: Renderable {
+    var uniqueIdentifier:Int { get }
     func didRender()
 }
 

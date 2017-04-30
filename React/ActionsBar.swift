@@ -11,6 +11,8 @@ import Weact
 
 class ActionsBar: Component {
     
+    public var uniqueIdentifier: Int { return 19 }
+    
     var state = Photo()
     
     func render() -> Node {

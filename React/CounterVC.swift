@@ -12,6 +12,9 @@ import Weact
 
 class CounterVC: UIViewController, Component {
     
+    
+    public var uniqueIdentifier: Int { return 974 }
+    
     var state = 0
     
     override func loadView() { loadComponent() }

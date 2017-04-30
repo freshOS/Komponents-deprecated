@@ -9,6 +9,9 @@
 import UIKit
 
 open class ComponentViewController: UIViewController, Component {
+    
+    public var uniqueIdentifier: Int { return 19 }
+    
     public var state = true
     
     open func render() -> Node {
@@ -29,9 +32,7 @@ open class ComponentViewController: UIViewController, Component {
                          object: nil, queue: nil) {_ in
                 self.view = UIView()
                 self.engine.render(component:self, in: self.view)
-                self.didRender()
             }
-        didRender()
     }
     
     public func didRender() { }

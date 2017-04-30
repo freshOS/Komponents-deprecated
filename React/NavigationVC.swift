@@ -12,6 +12,8 @@ import Weact
 
 class NavigationVC: UIViewController, StatelessComponent {
     
+    public var uniqueIdentifier: Int { return 12 }
+    
     override func loadView() { loadComponent() }
     
     func render() -> Node {

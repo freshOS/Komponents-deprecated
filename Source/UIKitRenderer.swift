@@ -10,8 +10,16 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
-    func render(_ renderable: Renderable, in rootView: UIView) {
+    var engine: WeactEngine!
+    
+    func render(_ renderable: Renderable, in rootView: UIView, withEngine: WeactEngine) {
+        print("⚛️ Rendering \(renderable)")
+        engine = withEngine
         viewFor(renderable: renderable, in:rootView) //recursive
+        
+        if let c = renderable as? IsComponent {
+            c.didRender()
+        }
     }
     
     @discardableResult
@@ -241,6 +249,17 @@ class UIKitRenderer: Renderer {
         
         // Hierarchy
         if let theView = theView {
+            
+            if let aComponent = renderable as? IsComponent {
+//                print(aComponent)
+                
+                let cId = aComponent.uniqueIdentifier
+                engine.componentsMap[cId] = aComponent
+                engine.viewMap[cId] = theView
+            }
+            
+            
+            
             theView.translatesAutoresizingMaskIntoConstraints = false
             if let stackView = parentView as? UIStackView {
                 stackView.addArrangedSubview(theView)
