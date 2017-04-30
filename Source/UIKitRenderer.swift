@@ -22,7 +22,7 @@ class UIKitRenderer: Renderer {
         engine = withEngine
         let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
         
-        if renderable is UIViewController {
+        if renderable is UIViewController || renderable is UIView {
             compoenentRootView.fillContainer()
         }
         
