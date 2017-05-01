@@ -48,6 +48,11 @@ public class WeactEngine {
             // Re-render compoenent in superview.
             self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil)
             
+        } else if let viewComponent = component as? UIView { // UIView Component
+            for sv in viewComponent.subviews {
+                sv.removeFromSuperview()
+            }
+            self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil)
         } else {
             // Non-VC Component
             let associatedView = self.viewForComponentId(component.uniqueIdentifier)
