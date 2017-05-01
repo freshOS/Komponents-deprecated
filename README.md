@@ -245,6 +245,11 @@ class LoadingScreen: UIViewController, StatelessComponent {
 <img src="loadingScreen.png" alt="Loading" width="250">
 
 
+## More Examples
+Take a look at the example Project `WeactExample.xcodeproj` and play around !
+
+<img src="examples.png" alt="Examples" width="250">
+
 ## Installation
 
 ### Carthage
