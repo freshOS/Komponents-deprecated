@@ -41,7 +41,7 @@ public extension Component {
     func updateState(_ block:(inout State) -> Void) {
         print("☝️ COMPONENT TO UPDATE : \(self.uniqueIdentifier)")
         block(&state)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
+        askForRefresh()
     }
 }
 
@@ -58,7 +58,7 @@ public extension IsComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: weakSelf)
+                    weakSelf.askForRefresh()
                 }
         }
     }
@@ -70,8 +70,15 @@ public extension IsComponent where Self: UIView {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: weakSelf)
+                    weakSelf.askForRefresh()
                 }
         }
+    }
+}
+
+
+extension IsComponent {
+    func askForRefresh() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
     }
 }
