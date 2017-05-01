@@ -99,6 +99,19 @@ class UIKitRenderer: Renderer {
             fieldNode.ref?.pointee = field
         }
         
+        if let textViewNode = node as? TextView {
+            let textView = BlockBasedUITextView()
+            textView.text  = textViewNode.wording
+            theView = textView
+            node.applyLayout = {
+                textViewNode.layoutBlock?(textView)
+            }
+            node.applyStyle = {
+                textViewNode.styleBlock?(textView)
+            }
+            textViewNode.ref?.pointee = textView
+        }
+        
         if let buttonNode = node as? Button {
             let button = BlockBasedUIButton()
             button.setTitle(buttonNode.wording, for: .normal)
@@ -327,6 +340,10 @@ class UIKitRenderer: Renderer {
             tfNode.registerTextChanged?(theView as! UITextField)
             if tfNode.isFocused {
             }
+        }
+        
+        if let tfNode = node as? TextView {
+            tfNode.registerTextChanged?(theView as! UITextView)
         }
         
         if let sliderNode = node as? Slider {

@@ -99,6 +99,7 @@ Here is the complete list of provided nodes :
 `View`  
 `Label`  
 `Field`(TextField)  
+`TextView`  
 `Button`  
 `Image`  
 `ScrollView`  
@@ -117,7 +118,6 @@ TableView
 CollectionView
 TableViewCell
 CollectionViewCell
-TextView
 DatePicker
 PickerView
 VisualEffectView

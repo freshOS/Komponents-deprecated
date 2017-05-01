@@ -110,6 +110,38 @@ public struct Field: Node {
     }
 }
 
+public struct TextView: Node {
+    
+    public var applyStyle: (() -> Void)?
+    public  var applyLayout: (() -> Void)?
+    var layoutBlock: ((UITextView) -> Void)?
+    var styleBlock: ((UITextView) -> Void)?
+    public var children = [Renderable]()
+    var wording = ""
+    var isFocused = true
+    var ref: UnsafeMutablePointer<UITextView>?
+    
+    var textChangedCallback: ((String) -> Void)?
+    
+    var registerTextChanged: ((UITextView) -> Void)?
+    
+    public init(_ wording: String = "",
+                textChanged: ((String) -> Void)? = nil,
+                style: ((UITextView) -> Void)? = nil,
+                layout: ((UITextView) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UITextView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.wording = wording
+        self.ref = ref
+        registerTextChanged = { field in
+            if let field = field as? BlockBasedUITextView, let textChanged = textChanged {
+                field.setCallback(textChanged)
+            }
+        }
+    }
+}
+
 public struct VerticalStack: Node {
     
     public var applyStyle: (() -> Void)?
@@ -408,6 +440,21 @@ class BlockBasedUITextField: UITextField {
     }
 }
 
+class BlockBasedUITextView: UITextView, UITextViewDelegate {
+    
+    public var actionHandler: ((String) -> Void)?
+    
+    public func setCallback(_ callback :@escaping ((String) -> Void)) {
+        actionHandler = callback
+        delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let text = textView.text {
+            actionHandler?(text)
+        }
+    }
+}
 
 class BlockBasedUIButton: UIButton {
     
@@ -453,4 +500,4 @@ class BlockBasedUISwitch: UISwitch {
 
 
 // Left to implement.
-//SegmentedControl ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell TextView DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
+//SegmentedControl ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar

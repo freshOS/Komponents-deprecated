@@ -19,7 +19,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
         return
             View(style: { $0.backgroundColor = .white }, [
                 VerticalStack(
-                    style: { $0.spacing = 10 },
+                    style: { $0.spacing = 5 },
                     layout: { $0.centerInContainer() }, [
                     
                     // View
@@ -30,6 +30,11 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     
                     // Field
                     Field("A cool field", textChanged: { print($0) } ),
+                    
+                    TextView("Some Text",
+                             textChanged: { print($0) },
+                             style: { $0.backgroundColor = .lightGray },
+                             layout: { $0.size(100) }),
                     
                     // Button
                     Button("Button",
