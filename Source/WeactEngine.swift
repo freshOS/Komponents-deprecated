@@ -39,7 +39,7 @@ public class WeactEngine {
             }
     }
     
-    private func updateComponent(_ component: IsComponent) {
+    public func updateComponent(_ component: IsComponent) {
         // VC Component
         if let vc = component as? UIViewController {
             for sv in vc.view.subviews {
@@ -48,6 +48,20 @@ public class WeactEngine {
             // Re-render compoenent in superview.
             self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil)
             
+        } else if let cellComponent = component as? UITableViewCell { // UITableViewCell Component
+            
+
+            if var canBeDirty = cellComponent as? CanBeDirty {
+            
+                if canBeDirty.isDirty {
+                    //TODO Here only rerender if render() yield a diffrerent node
+                    for sv in cellComponent.contentView.subviews {
+                        sv.removeFromSuperview()
+                    }
+                    self.renderer.render(component, in: cellComponent.contentView, withEngine: self, atIndex: nil)
+                    canBeDirty.isDirty = false
+                }
+            }
         } else if let viewComponent = component as? UIView { // UIView Component
             for sv in viewComponent.subviews {
                 sv.removeFromSuperview()

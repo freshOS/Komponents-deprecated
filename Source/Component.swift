@@ -76,9 +76,51 @@ public extension IsComponent where Self: UIView {
     }
 }
 
+public extension IsComponent where Self: UITableViewCell {
+    func loadComponent() {
+        WeactEngine.shared.render(component: self, in: self.contentView)
+//        NotificationCenter.default
+//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+//                if let weakSelf = self {
+//                    weakSelf.askForRefresh()
+//                }
+//        }
+    }
+}
 
-extension IsComponent {
+
+public extension IsComponent {
     func askForRefresh() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
+    }
+}
+
+public protocol CanBeDirty {
+    var isDirty: Bool { get set }
+}
+
+public protocol HasEquatableProps {
+    associatedtype Props:Equatable
+    var props: Props { get set }
+}
+
+extension HasEquatableProps where Self: CanBeDirty {
+    
+    public mutating func updateProps(newProps: Props) {
+        if newProps != props {
+            props = newProps
+            isDirty = true
+        }
+    }
+}
+
+public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
+    
+}
+
+public extension CellComponent {
+    
+    func refresh() {
+        WeactEngine.shared.updateComponent(self)
     }
 }

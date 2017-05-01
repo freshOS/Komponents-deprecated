@@ -15,6 +15,8 @@
 		99410C021EB4CAEF007164CF /* NestedComponentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C011EB4CAEF007164CF /* NestedComponentsVC.swift */; };
 		99410C041EB4D69E007164CF /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C031EB4D69E007164CF /* NavigationVC.swift */; };
 		99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C051EB4DD60007164CF /* HelloWorldVC.swift */; };
+		9996687A1EB74D4800C5A1DB /* TableViewCellExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999668791EB74D4800C5A1DB /* TableViewCellExampleVC.swift */; };
+		9996687D1EB7520100C5A1DB /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9996687C1EB7520100C5A1DB /* MyCell.swift */; };
 		999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */; };
 		99A12BCC1EB7004E0093D17E /* TodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12BCB1EB7004E0093D17E /* TodoVC.swift */; };
 		99A12BD41EB71F480093D17E /* DefaultNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12BD31EB71F480093D17E /* DefaultNodesVC.swift */; };
@@ -87,6 +89,8 @@
 		996ADD6A1EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996ADD761EB1C44A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
 		996ADD781EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		999668791EB74D4800C5A1DB /* TableViewCellExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellExampleVC.swift; sourceTree = "<group>"; };
+		9996687C1EB7520100C5A1DB /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloPropsVC.swift; sourceTree = "<group>"; };
 		99A12BCB1EB7004E0093D17E /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
 		99A12BD31EB71F480093D17E /* DefaultNodesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodesVC.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				99F6E1821EB1CB77004391DD /* LoopVC.swift */,
 				991D34DB1EB66F4C009B3531 /* TimerVC.swift */,
 				99A12BCB1EB7004E0093D17E /* TodoVC.swift */,
+				999668791EB74D4800C5A1DB /* TableViewCellExampleVC.swift */,
+				9996687C1EB7520100C5A1DB /* MyCell.swift */,
 				99A12BD31EB71F480093D17E /* DefaultNodesVC.swift */,
 				99F6E1731EB1C667004391DD /* Weact.xcodeproj */,
 				991B5EBA1E8E95CF005D7674 /* TrashTests */,
@@ -348,6 +354,7 @@
 				99410C021EB4CAEF007164CF /* NestedComponentsVC.swift in Sources */,
 				99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */,
 				99A12BD41EB71F480093D17E /* DefaultNodesVC.swift in Sources */,
+				9996687D1EB7520100C5A1DB /* MyCell.swift in Sources */,
 				99D47A381E8C0FB6003F14A2 /* PhotoFeedCell.swift in Sources */,
 				99410C041EB4D69E007164CF /* NavigationVC.swift in Sources */,
 				991D34DC1EB66F4C009B3531 /* TimerVC.swift in Sources */,
@@ -360,6 +367,7 @@
 				99410BFE1EB4C59D007164CF /* CounterVC.swift in Sources */,
 				9921678E1E92334F00979FC1 /* LoginVC.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,
+				9996687A1EB74D4800C5A1DB /* TableViewCellExampleVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
