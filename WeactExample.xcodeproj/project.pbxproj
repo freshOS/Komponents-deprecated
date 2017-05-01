@@ -16,6 +16,7 @@
 		99410C041EB4D69E007164CF /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C031EB4D69E007164CF /* NavigationVC.swift */; };
 		99410C061EB4DD60007164CF /* HelloWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99410C051EB4DD60007164CF /* HelloWorldVC.swift */; };
 		999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */; };
+		99A12BCC1EB7004E0093D17E /* TodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12BCB1EB7004E0093D17E /* TodoVC.swift */; };
 		99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CE3F6A1EAE6B77001049CF /* LoginState.swift */; };
 		99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D226D11E8BA734009416AA /* AppDelegate.swift */; };
 		99D226D91E8BA734009416AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D226D81E8BA734009416AA /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		996ADD761EB1C44A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
 		996ADD781EB1C44A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		999FFE361EB51D1300C5CC69 /* HelloPropsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloPropsVC.swift; sourceTree = "<group>"; };
+		99A12BCB1EB7004E0093D17E /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
 		99CE3F6A1EAE6B77001049CF /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		99D226CE1E8BA734009416AA /* WeactExampleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeactExampleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D226D11E8BA734009416AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				99CE3F6A1EAE6B77001049CF /* LoginState.swift */,
 				99F6E1821EB1CB77004391DD /* LoopExample.swift */,
 				991D34DB1EB66F4C009B3531 /* TimerVC.swift */,
+				99A12BCB1EB7004E0093D17E /* TodoVC.swift */,
 				99F6E1731EB1C667004391DD /* Weact.xcodeproj */,
 				991B5EBA1E8E95CF005D7674 /* TrashTests */,
 				99D226D81E8BA734009416AA /* Assets.xcassets */,
@@ -349,6 +352,7 @@
 				99F6E1831EB1CB77004391DD /* LoopExample.swift in Sources */,
 				999FFE371EB51D1300C5CC69 /* HelloPropsVC.swift in Sources */,
 				99CE3F6B1EAE6B77001049CF /* LoginState.swift in Sources */,
+				99A12BCC1EB7004E0093D17E /* TodoVC.swift in Sources */,
 				99410BFE1EB4C59D007164CF /* CounterVC.swift in Sources */,
 				9921678E1E92334F00979FC1 /* LoginVC.swift in Sources */,
 				99D226D21E8BA734009416AA /* AppDelegate.swift in Sources */,

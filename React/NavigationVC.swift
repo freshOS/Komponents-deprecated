@@ -31,7 +31,8 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("Login Screen", { LoginVC() }),
             ("Nested Components", { NestedComponentsVC() } ),
             ("Loops", { LoopVC() } ),
-            ("Timer", { TimerVC() } )
+            ("Timer", { TimerVC() } ),
+            ("Todo", { TodoVC() } )
         ]
 
         return
