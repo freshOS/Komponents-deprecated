@@ -167,7 +167,7 @@ class UIKitRenderer: Renderer {
         }
         
         if let sliderNode = node as? Slider {
-            let slider = UISlider()
+            let slider = BlockBasedUISlider()
             slider.value = sliderNode.value
             theView = slider
             node.applyLayout = {

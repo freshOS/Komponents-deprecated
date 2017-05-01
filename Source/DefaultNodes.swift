@@ -299,7 +299,7 @@ public struct ActivityIndicatorView: Node {
     }
 }
 
-public class Slider: Node {
+public struct Slider: Node {
     
     public var applyStyle: (() -> Void)?
     public var applyLayout: (() -> Void)?
@@ -309,8 +309,22 @@ public class Slider: Node {
     var value:Float = 0
     var ref: UnsafeMutablePointer<UISlider>?
     
-    var valueChangedCallback: ((Float) -> Void)?
     var registerValueChanged: ((UISlider) -> Void)?
+    
+    public init(_ value: Float,
+                changed: (Selector, target: Any),
+                style: ((UISlider) -> Void)? = nil,
+                layout: ((UISlider) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UISlider>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.value = value
+        self.ref = ref
+        
+        registerValueChanged = { slider in
+            slider.addTarget(changed.target, action: changed.0, for: .valueChanged)
+        }
+    }
     
     public init(_ value: Float,
                 changed: ((Float) -> Void)? = nil,
@@ -321,26 +335,11 @@ public class Slider: Node {
         self.styleBlock = style
         self.value = value
         self.ref = ref
-        
-        valueChangedCallback = changed
         registerValueChanged = { slider in
-            slider.addTarget(self, action: #selector(self.valueDidChange(s:)), for: .valueChanged)
+            if let slider = slider as? BlockBasedUISlider, let changed = changed {
+                slider.setCallback(changed)
+            }
         }
-    }
-    
-    @objc
-    func valueDidChange(s: UISlider) {
-        value = s.value
-        valueChangedCallback?(value)
-    }
-    
-    deinit {
-        applyStyle = nil
-        applyLayout = nil
-        styleBlock = nil
-        layoutBlock = nil
-        children = [Renderable]()
-        ref = nil
     }
 }
 
@@ -367,8 +366,8 @@ public struct Switch: Node {
         self.isOn = on
         self.ref = ref
 
-        registerValueChanged = { slider in
-            slider.addTarget(changed.target, action: changed.0, for: .valueChanged)
+        registerValueChanged = { aSwitch in
+            aSwitch.addTarget(changed.target, action: changed.0, for: .valueChanged)
         }
     }
     
@@ -390,6 +389,23 @@ public struct Switch: Node {
     
 }
 
+
+
+// Block Based UIControls
+
+class BlockBasedUISlider: UISlider {
+    
+    public var actionHandler: ((Float) -> Void)?
+    
+    public func setCallback(_ callback :@escaping ((Float) -> Void)) {
+        actionHandler = callback
+        addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+    }
+    
+    func sliderValueChanged(sender: UISlider) {
+        actionHandler?(sender.value)
+    }
+}
 
 class BlockBasedUISwitch: UISwitch {
     
