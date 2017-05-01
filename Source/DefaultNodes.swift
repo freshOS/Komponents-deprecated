@@ -51,11 +51,9 @@ public struct Label: Node {
     public init(_ wording: String = "",
                 style: ((UILabel) -> Void)? = nil,
                 layout: ((UILabel) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UILabel>? = nil,
-                children: [Renderable] = [Renderable]() ) {
+                ref: UnsafeMutablePointer<UILabel>? = nil) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.children = children
         self.wording = wording
         self.ref = ref
     }
@@ -82,11 +80,9 @@ public class Field: Node {
                 textChanged: ((String) -> Void)? = nil,
                 style: ((UITextField) -> Void)? = nil,
                 layout: ((UITextField) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UITextField>? = nil,
-                children: [Renderable] = [Renderable]()) {
+                ref: UnsafeMutablePointer<UITextField>? = nil) {
         self.layoutBlock = layout
         self.styleBlock = style
-        self.children = children
         self.placeholder = placeholder
         self.wording = wording
         self.ref = ref
@@ -208,18 +204,6 @@ public struct Image: Node {
     public init(_ image: UIImage? = nil,
                 style: ((UIView) -> Void)? = nil,
                 layout: ((UIImageView) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UIImageView>? = nil,
-                _ children: [Renderable]) {
-        self.layoutBlock = layout
-        self.styleBlock = style
-        self.children = children
-        self.ref = ref
-        self.image = image
-    }
-    
-    public init(_ image: UIImage? = nil,
-                style: ((UIView) -> Void)? = nil,
-                layout: ((UIImageView) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIImageView>? = nil) {
         self.layoutBlock = layout
         self.styleBlock = style
@@ -268,16 +252,6 @@ public struct PageControl: Node {
     
     public init(style: ((UIPageControl) -> Void)? = nil,
                 layout: ((UIPageControl) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UIPageControl>? = nil,
-                _ children: [Renderable]) {
-        self.layoutBlock = layout
-        self.styleBlock = style
-        self.children = children
-        self.ref = ref
-    }
-    
-    public init(style: ((UIPageControl) -> Void)? = nil,
-                layout: ((UIPageControl) -> Void)? = nil,
                 ref: UnsafeMutablePointer<UIPageControl>? = nil) {
         self.layoutBlock = layout
         self.styleBlock = style
@@ -295,18 +269,6 @@ public struct ActivityIndicatorView: Node {
 
     var ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     var activityIndicatorStyle = UIActivityIndicatorViewStyle.gray
-    
-    public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .gray,
-                style: ((UIView) -> Void)? = nil,
-                layout: ((UIActivityIndicatorView) -> Void)? = nil,
-                ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil,
-                _ children: [Renderable]) {
-        self.layoutBlock = layout
-        self.styleBlock = style
-        self.children = children
-        self.ref = ref
-        self.activityIndicatorStyle = activityIndicatorStyle
-    }
     
     public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .gray,
                 style: ((UIActivityIndicatorView) -> Void)? = nil,
