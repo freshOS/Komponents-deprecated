@@ -280,3 +280,42 @@ public struct ActivityIndicatorView: Node {
         self.activityIndicatorStyle = activityIndicatorStyle
     }
 }
+
+public class Slider: Node {
+    
+    public var applyStyle: (() -> Void)?
+    public var applyLayout: (() -> Void)?
+    var layoutBlock: ((UISlider) -> Void)?
+    var styleBlock: ((UISlider) -> Void)?
+    public var children = [Renderable]()
+    var value:Float = 0
+    var ref: UnsafeMutablePointer<UISlider>?
+    
+    var valueChangedCallback: ((Float) -> Void)?
+    var registerValueChanged: ((UISlider) -> Void)?
+    
+    public init(_ value: Float,
+                changed: ((Float) -> Void)? = nil,
+                style: ((UISlider) -> Void)? = nil,
+                layout: ((UISlider) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UISlider>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.value = value
+        self.ref = ref
+        
+        valueChangedCallback = changed
+        registerValueChanged = { slider in
+            slider.addTarget(self, action: #selector(self.valueDidChange(s:)), for: .valueChanged)
+        }
+    }
+    
+    @objc
+    func valueDidChange(s: UISlider) {
+        value = s.value
+        valueChangedCallback?(value)
+    }
+}
+
+// Left to implement.
+//SegmentedControl Switch ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell TextView DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar

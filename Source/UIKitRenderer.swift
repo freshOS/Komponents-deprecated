@@ -164,6 +164,19 @@ class UIKitRenderer: Renderer {
             spinnerNode.ref?.pointee = spinner
         }
         
+        if let sliderNode = node as? Slider {
+            let slider = UISlider()
+            slider.value = sliderNode.value
+            theView = slider
+            node.applyLayout = {
+                sliderNode.layoutBlock?(slider)
+            }
+            node.applyStyle = {
+                sliderNode.styleBlock?(slider)
+            }
+            sliderNode.ref?.pointee = slider
+        }
+        
         let testLayoutBlock = { }
         
         if let theView = theView {
@@ -300,6 +313,11 @@ class UIKitRenderer: Renderer {
             if tfNode.isFocused {
             }
         }
+        
+        if let sliderNode = node as? Slider {
+            sliderNode.registerValueChanged?(theView as! UISlider)
+        }
+        
         return theView ?? UIView()
     }
 }
