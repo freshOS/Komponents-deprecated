@@ -32,7 +32,8 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("Nested Components", { NestedComponentsVC() } ),
             ("Loops", { LoopVC() } ),
             ("Timer", { TimerVC() } ),
-            ("Todo", { TodoVC() } )
+            ("Todo", { TodoVC() } ),
+            ("Default Nodes", { DefaultNodesVC() } )
         ]
 
         return
