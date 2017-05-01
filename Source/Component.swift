@@ -58,19 +58,20 @@ public extension IsComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    WeactEngine.shared.render(component:weakSelf, in: weakSelf.view)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: weakSelf)
                 }
-            }
+        }
     }
 }
 
 public extension IsComponent where Self: UIView {
     func loadComponent() {
         WeactEngine.shared.render(component: self, in: self)
-        
-//        NotificationCenter.default
-//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) {_ in
-//                engine.render(component:self, in: self)
-//            }
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+                if let weakSelf = self {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: weakSelf)
+                }
+        }
     }
 }
