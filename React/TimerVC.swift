@@ -28,6 +28,7 @@ class TimerVC: UIViewController, Component {
     }
     
     func render() -> Node {
+        title = "Timer"
         return
             View(style: { $0.backgroundColor = .white }, [
                 Label("\(self.state)", layout: { $0.centerInContainer() })

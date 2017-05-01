@@ -27,6 +27,7 @@ class TodoVC: UIViewController, Component {
     override func loadView() { loadComponent() }
     
     func render() -> Node {
+        title = "Todo"
         return
             View(style: { $0.backgroundColor = .gray }, [
                 VerticalStack(layout: { $0.centerHorizontally().top(100) }, [

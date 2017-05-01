@@ -1,5 +1,5 @@
 //
-//  LoopExample.swift
+//  LoopVC.swift
 //  WeactExample
 //
 //  Created by Sacha Durand Saint Omer on 27/04/2017.
@@ -15,15 +15,12 @@ class LoopVC: UIViewController, StatelessComponent {
     override func loadView() { loadComponent() }
     
     func render() -> Node {
+        title = "Loops"
         return
             View(style: { $0.backgroundColor = .white }, [
                 VerticalStack(style: { $0.spacing = 40 }, layout: { $0.centerInContainer() },
                     Array(1...4).map { Label("I told you \($0) times !") }
                 )
             ])
-    }
-    
-    deinit {
-        print("DEINIT LoopVC ⚛️⚛️⚛️⚛️ ")
     }
 }
