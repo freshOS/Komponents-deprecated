@@ -161,7 +161,7 @@ public struct HorizontalStack: Node {
     }
 }
 
-public class Button: Node {
+public struct Button: Node {
     
     var tapCallback:(() -> Void)?
     
@@ -172,7 +172,6 @@ public class Button: Node {
     public var children = [Renderable]()
     var wording = ""
     var image: UIImage?
-    
     var registerTap: ((UIButton) -> Void)?
     var ref: UnsafeMutablePointer<UIButton>?
     
@@ -187,25 +186,27 @@ public class Button: Node {
         self.layoutBlock = layout
         self.styleBlock = style
         self.ref = ref
-    
-        tapCallback = tap
-        registerTap = { b in
-            b.addTarget(self, action: #selector(self.didTap), for: .touchUpInside)
+        registerTap = { button in
+            if let button = button as? BlockBasedUIButton, let tap = tap {
+                button.setCallback(tap)
+            }
         }
     }
     
-    @objc
-    func didTap() {
-        tapCallback?()
-    }
-    
-    deinit {
-        applyStyle = nil
-        applyLayout = nil
-        styleBlock = nil
-        layoutBlock = nil
-        children = [Renderable]()
-        ref = nil
+    public init(_ wording: String = "",
+                image: UIImage? = nil,
+                tap: (Selector, target: Any),
+                style: ((UIButton) -> Void)? = nil,
+                layout: ((UIButton) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UIButton>? = nil) {
+        self.image = image
+        self.wording = wording
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.ref = ref
+        registerTap = { button in
+            button.addTarget(tap.target, action: tap.0, for: .touchUpInside)
+        }
     }
 }
 
@@ -353,7 +354,6 @@ public struct Switch: Node {
     var isOn: Bool = false
     var ref: UnsafeMutablePointer<UISwitch>?
     
-    var changedSelector: Selector?
     var registerValueChanged: ((UISwitch) -> Void)?
     
     public init(_ on: Bool = false,
@@ -392,6 +392,21 @@ public struct Switch: Node {
 
 
 // Block Based UIControls
+
+class BlockBasedUIButton: UIButton {
+    
+    public var actionHandler: (() -> Void)?
+    
+    public func setCallback(_ callback :@escaping (() -> Void)) {
+        actionHandler = callback
+        addTarget(self, action: #selector(didTap), for: .touchUpInside)
+    }
+    
+    func didTap() {
+        actionHandler?()
+    }
+}
+
 
 class BlockBasedUISlider: UISlider {
     

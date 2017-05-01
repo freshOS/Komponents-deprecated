@@ -100,7 +100,7 @@ class UIKitRenderer: Renderer {
         }
         
         if let buttonNode = node as? Button {
-            let button = UIButton()
+            let button = BlockBasedUIButton()
             button.setTitle(buttonNode.wording, for: .normal)
             if let img = buttonNode.image {
                 button.setImage(img, for: .normal)
