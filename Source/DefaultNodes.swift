@@ -100,6 +100,15 @@ public class Field: Node {
             textChangedCallback?(t)
         }
     }
+    
+    deinit {
+        applyStyle = nil
+        applyLayout = nil
+        styleBlock = nil
+        layoutBlock = nil
+        children = [Renderable]()
+        ref = nil
+    }
 }
 
 public struct VerticalStack: Node {
@@ -188,6 +197,15 @@ public class Button: Node {
     @objc
     func didTap() {
         tapCallback?()
+    }
+    
+    deinit {
+        applyStyle = nil
+        applyLayout = nil
+        styleBlock = nil
+        layoutBlock = nil
+        children = [Renderable]()
+        ref = nil
     }
 }
 
@@ -315,7 +333,78 @@ public class Slider: Node {
         value = s.value
         valueChangedCallback?(value)
     }
+    
+    deinit {
+        applyStyle = nil
+        applyLayout = nil
+        styleBlock = nil
+        layoutBlock = nil
+        children = [Renderable]()
+        ref = nil
+    }
 }
 
+public struct Switch: Node {
+    
+    public var applyStyle: (() -> Void)?
+    public var applyLayout: (() -> Void)?
+    var layoutBlock: ((UISwitch) -> Void)?
+    var styleBlock: ((UISwitch) -> Void)?
+    public var children = [Renderable]()
+    var isOn: Bool = false
+    var ref: UnsafeMutablePointer<UISwitch>?
+    
+    var changedSelector: Selector?
+    var registerValueChanged: ((UISwitch) -> Void)?
+    
+    public init(_ on: Bool = false,
+                changed: (Selector, target: Any),
+                style: ((UISwitch) -> Void)? = nil,
+                layout: ((UISwitch) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UISwitch>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.isOn = on
+        self.ref = ref
+
+        registerValueChanged = { slider in
+            slider.addTarget(changed.target, action: changed.0, for: .valueChanged)
+        }
+    }
+    
+    public init(_ on: Bool = false,
+                changed: ((Bool) -> Void)? = nil,
+                style: ((UISwitch) -> Void)? = nil,
+                layout: ((UISwitch) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UISwitch>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.isOn = on
+        self.ref = ref
+        registerValueChanged = { aSwitch in
+            if let aSwitch = aSwitch as? BlockBasedUISwitch, let changed = changed {
+                aSwitch.setCallback(changed)
+            }
+        }
+    }
+    
+}
+
+
+class BlockBasedUISwitch: UISwitch {
+    
+    public var actionHandler: ((Bool) -> Void)?
+
+    public func setCallback(_ callback :@escaping ((Bool) -> Void)) {
+        actionHandler = callback
+        addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+    }
+    
+    func switchValueChanged(sender: UISwitch) {
+        actionHandler?(sender.isOn)
+    }
+}
+
+
 // Left to implement.
-//SegmentedControl Switch ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell TextView DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
+//SegmentedControl ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell TextView DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar

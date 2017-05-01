@@ -57,8 +57,22 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     ActivityIndicatorView(),
                     
                     // Slider
-                    Slider(0.5, changed: { print($0) }, layout: { $0.width(100) })
+                    Slider(0.5,
+                           changed: { print($0) },
+                           // changed: (#selector(changed), target: self),
+                           layout: { $0.width(100) }),
+                    
+                    // Switch
+                        Switch(true, changed: { print($0) })
                 ])
         ])
+    }
+    
+//    func changed(s:UISwitch) {
+//        print("SWITCH CHANGED!!! \(s.isOn)")
+//    }
+    
+    deinit {
+        print("deinit VC")
     }
 }

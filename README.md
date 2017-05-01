@@ -105,12 +105,12 @@ Here is the complete list of provided nodes :
 `PageControl`  
 `ActivityIndicatorView`   
 `VerticalStack`  
-`HorizontalStack`
+`HorizontalStack`  
+`Slider`  
+`Switch`
 
 ### Left to implement (coming soon)
 SegmentedControl
-Slider
-Switch
 ProgressView
 Stepper
 TableView

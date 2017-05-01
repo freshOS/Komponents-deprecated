@@ -179,6 +179,19 @@ class UIKitRenderer: Renderer {
             sliderNode.ref?.pointee = slider
         }
         
+        if let switchNode = node as? Switch {
+            let aSwitch = BlockBasedUISwitch()
+            aSwitch.isOn = switchNode.isOn
+            theView = aSwitch
+            node.applyLayout = {
+                switchNode.layoutBlock?(aSwitch)
+            }
+            node.applyStyle = {
+                switchNode.styleBlock?(aSwitch)
+            }
+            switchNode.ref?.pointee = aSwitch
+        }
+        
         let testLayoutBlock = { }
         
         if let theView = theView {
@@ -318,6 +331,10 @@ class UIKitRenderer: Renderer {
         
         if let sliderNode = node as? Slider {
             sliderNode.registerValueChanged?(theView as! UISlider)
+        }
+        
+        if let switchNode = node as? Switch {
+            switchNode.registerValueChanged?(theView as! UISwitch)
         }
         
         return theView ?? UIView()
