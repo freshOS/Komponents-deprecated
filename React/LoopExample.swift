@@ -6,6 +6,7 @@
 //  Copyright © 2017 freshOS. All rights reserved.
 //
 
+import UIKit
 import Stevia
 import Weact
 
