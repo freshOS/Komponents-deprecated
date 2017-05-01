@@ -258,19 +258,15 @@ class UIKitRenderer: Renderer {
         
         // Hierarchy
         if let theView = theView {
-            
-            if let aComponent = renderable as? IsComponent, !(aComponent is UIViewController) {
+            if let aComponent = renderable as? IsComponent, !(aComponent is UIViewController), !(aComponent is UIView)  {
                 let cId = aComponent.uniqueIdentifier
-                
                 // only if not present
-                
                 if let entry = engine.componentsMap[cId] {
                     print("Do nothing")
                 } else {
-                    engine.componentsMap[cId] = aComponent //// Reains the componenent
+                    engine.componentsMap[cId] = aComponent //// Retain the componenent
                 }
                 engine.viewMap[cId] = theView // update view entry.
-                
             }
             
             
