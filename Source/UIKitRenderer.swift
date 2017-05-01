@@ -86,7 +86,7 @@ class UIKitRenderer: Renderer {
         }
         
         if let fieldNode = node as? Field {
-            let field = UITextField()
+            let field = BlockBasedUITextField()
             field.placeholder = fieldNode.placeholder
             field.text  = fieldNode.wording
             theView = field

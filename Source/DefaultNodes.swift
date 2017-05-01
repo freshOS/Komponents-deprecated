@@ -59,7 +59,7 @@ public struct Label: Node {
     }
 }
 
-public class Field: Node {
+public struct Field: Node {
     
     public var applyStyle: (() -> Void)?
     public  var applyLayout: (() -> Void)?
@@ -86,28 +86,27 @@ public class Field: Node {
         self.placeholder = placeholder
         self.wording = wording
         self.ref = ref
-        textChangedCallback = textChanged
-        
-        registerTextChanged = { tf in
-            tf.addTarget(self, action: #selector(self.textDidChange(tf:)), for: .editingChanged)
+        registerTextChanged = { field in
+            if let field = field as? BlockBasedUITextField, let textChanged = textChanged {
+                field.setCallback(textChanged)
+            }
         }
     }
     
-    @objc
-    func textDidChange(tf: UITextField) {
-        if let t = tf.text {
-            wording = t
-            textChangedCallback?(t)
+    public init(_ placeholder: String = "",
+                wording: String = "",
+                textChanged: (Selector, target: Any),
+                style: ((UITextField) -> Void)? = nil,
+                layout: ((UITextField) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UITextField>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.placeholder = placeholder
+        self.wording = wording
+        self.ref = ref
+        registerTextChanged = { field in
+            field.addTarget(textChanged.target, action: textChanged.0, for: .editingChanged)
         }
-    }
-    
-    deinit {
-        applyStyle = nil
-        applyLayout = nil
-        styleBlock = nil
-        layoutBlock = nil
-        children = [Renderable]()
-        ref = nil
     }
 }
 
@@ -393,6 +392,23 @@ public struct Switch: Node {
 
 // Block Based UIControls
 
+class BlockBasedUITextField: UITextField {
+    
+    public var actionHandler: ((String) -> Void)?
+    
+    public func setCallback(_ callback :@escaping ((String) -> Void)) {
+        actionHandler = callback
+        addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    func textDidChange(field: UITextField) {
+        if let text = field.text {
+            actionHandler?(text)
+        }
+    }
+}
+
+
 class BlockBasedUIButton: UIButton {
     
     public var actionHandler: (() -> Void)?
@@ -406,7 +422,6 @@ class BlockBasedUIButton: UIButton {
         actionHandler?()
     }
 }
-
 
 class BlockBasedUISlider: UISlider {
     
