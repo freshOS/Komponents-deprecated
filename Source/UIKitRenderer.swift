@@ -162,6 +162,8 @@ class UIKitRenderer: Renderer {
                 spinnerNode.styleBlock?(spinner)
             }
             spinnerNode.ref?.pointee = spinner
+            
+            spinner.startAnimating()
         }
         
         if let sliderNode = node as? Slider {
