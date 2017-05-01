@@ -66,8 +66,10 @@ class LoadingScreen: UIViewController, Component {
 }
 
 ```
+You can now `push` and `present` your view controller like you used to, except this is now a powerful component! 😎
 
 ## View Component
+This is particularly handy to start migrating parts of the App to using components without breaking everything!
 To use a component as a `UIView` and play nicely with UIKit apis, just subclass
 `UIView` and call  `loadComponent` in an `init` function :)
 ```swift
@@ -83,8 +85,8 @@ class MyCoolButton: UIView, Component {
         return ...
     }
 }
-
 ```
+This way you have classic `UIView` that behaves like a component! 💪
 
 ## Nodes
 
