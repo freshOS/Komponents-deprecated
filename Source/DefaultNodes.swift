@@ -420,7 +420,26 @@ public struct Switch: Node {
     
 }
 
-
+public struct Progress: Node {
+    
+    public var applyStyle: (() -> Void)?
+    public var applyLayout: (() -> Void)?
+    var layoutBlock: ((UIProgressView) -> Void)?
+    var styleBlock: ((UIProgressView) -> Void)?
+    public var children = [Renderable]()
+    var progress:Float = 0
+    var ref: UnsafeMutablePointer<UIProgressView>?
+    
+    public init(_ progress: Float = 0,
+                style: ((UIProgressView) -> Void)? = nil,
+                layout: ((UIProgressView) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UIProgressView>? = nil) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.progress = progress
+        self.ref = ref
+    }
+}
 
 // Block Based UIControls
 
@@ -498,6 +517,5 @@ class BlockBasedUISwitch: UISwitch {
     }
 }
 
-
 // Left to implement.
-//SegmentedControl ProgressView Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
+//SegmentedControl Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar

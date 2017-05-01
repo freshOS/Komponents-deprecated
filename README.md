@@ -108,11 +108,11 @@ Here is the complete list of provided nodes :
 `VerticalStack`  
 `HorizontalStack`  
 `Slider`  
-`Switch`
+`Switch`  
+`ProgressView`
 
 ### Left to implement (coming soon)
 SegmentedControl
-ProgressView
 Stepper
 TableView
 CollectionView

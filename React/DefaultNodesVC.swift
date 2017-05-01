@@ -68,7 +68,8 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                            layout: { $0.width(100) }),
                     
                     // Switch
-                        Switch(true, changed: { print($0) })
+                    Switch(true, changed: { print($0) }),
+                    Progress(0.7)
                 ])
         ])
     }

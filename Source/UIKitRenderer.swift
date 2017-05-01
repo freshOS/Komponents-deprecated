@@ -205,6 +205,19 @@ class UIKitRenderer: Renderer {
             switchNode.ref?.pointee = aSwitch
         }
         
+        if let progressNode = node as? Progress {
+            let progress = UIProgressView()
+            progress.progress = progressNode.progress
+            theView = progress
+            node.applyLayout = {
+                progressNode.layoutBlock?(progress)
+            }
+            node.applyStyle = {
+                progressNode.styleBlock?(progress)
+            }
+            progressNode.ref?.pointee = progress
+        }
+        
         let testLayoutBlock = { }
         
         if let theView = theView {
