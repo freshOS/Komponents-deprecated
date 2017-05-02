@@ -1,6 +1,6 @@
 //
-//  WeactEngine.swift
-//  Weact
+//  KomponentsEngine.swift
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 30/03/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -9,9 +9,9 @@
 import Stevia
 import UIKit
 
-public class WeactEngine {
+public class KomponentsEngine {
     
-    static let shared = WeactEngine()
+    static let shared = KomponentsEngine()
     
     
     // retain non-VC components here
@@ -30,7 +30,7 @@ public class WeactEngine {
     private init(renderer: Renderer) {
         self.renderer = renderer
         NotificationCenter.default
-            .addObserver(forName: NSNotification.Name(rawValue:"WeactStateChanged"),
+            .addObserver(forName: NSNotification.Name(rawValue:"KomponentsStateChanged"),
                          object: nil,
                          queue: nil) { [unowned self] n in
                 if let componentToUpdate = n.object as? IsComponent {

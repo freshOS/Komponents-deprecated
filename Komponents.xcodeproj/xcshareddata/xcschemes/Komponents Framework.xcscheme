@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "996ADD8E1EB1C50A00364F7B"
-               BuildableName = "Weact.framework"
-               BlueprintName = "Weact"
-               ReferencedContainer = "container:Weact.xcodeproj">
+               BuildableName = "Komponents.framework"
+               BlueprintName = "Komponents"
+               ReferencedContainer = "container:Komponents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "996ADD971EB1C50A00364F7B"
-               BuildableName = "WeactTests.xctest"
-               BlueprintName = "WeactTests"
-               ReferencedContainer = "container:Weact.xcodeproj">
+               BuildableName = "KomponentsTests.xctest"
+               BlueprintName = "KomponentsTests"
+               ReferencedContainer = "container:Komponents.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "996ADD8E1EB1C50A00364F7B"
-            BuildableName = "Weact.framework"
-            BlueprintName = "Weact"
-            ReferencedContainer = "container:Weact.xcodeproj">
+            BuildableName = "Komponents.framework"
+            BlueprintName = "Komponents"
+            ReferencedContainer = "container:Komponents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "996ADD8E1EB1C50A00364F7B"
-            BuildableName = "Weact.framework"
-            BlueprintName = "Weact"
-            ReferencedContainer = "container:Weact.xcodeproj">
+            BuildableName = "Komponents.framework"
+            BlueprintName = "Komponents"
+            ReferencedContainer = "container:Komponents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "996ADD8E1EB1C50A00364F7B"
-            BuildableName = "Weact.framework"
-            BlueprintName = "Weact"
-            ReferencedContainer = "container:Weact.xcodeproj">
+            BuildableName = "Komponents.framework"
+            BlueprintName = "Komponents"
+            ReferencedContainer = "container:Komponents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

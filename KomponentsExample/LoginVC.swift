@@ -1,6 +1,6 @@
 //
 //  LoginScreen.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 03/04/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Stevia
 import UIKit
-import Weact
+import Komponents
 
 // TODO bind to state. email  textChanged
 // TODO Keep Field states by default?

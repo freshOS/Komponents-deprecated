@@ -1,6 +1,6 @@
 //
 //  ComponentView.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 26/04/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -18,7 +18,7 @@ public class ComponentView<T: Component> :UIView {
     public init(component: T) {
         self.component = component
         super.init(frame: CGRect.zero)
-        WeactEngine.shared.render(component:component, in: self)
+        KomponentsEngine.shared.render(component:component, in: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {

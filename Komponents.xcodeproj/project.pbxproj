@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		996ADD991EB1C50A00364F7B /* Weact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Weact.framework */; };
-		996ADD9E1EB1C50A00364F7B /* WeactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ADD9D1EB1C50A00364F7B /* WeactTests.swift */; };
-		996ADDA01EB1C50A00364F7B /* Weact.h in Headers */ = {isa = PBXBuildFile; fileRef = 996ADD921EB1C50A00364F7B /* Weact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9917E5121EB85709005C6092 /* WeactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9917E50F1EB856CC005C6092 /* WeactTests.swift */; };
+		9917E5141EB8574A005C6092 /* Komponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 9917E50A1EB856C2005C6092 /* Komponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99317BEF1EB85B5D0019A524 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE51EB85B5D0019A524 /* Component.swift */; };
+		99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE61EB85B5D0019A524 /* ComponentVC.swift */; };
+		99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE71EB85B5D0019A524 /* ComponentView.swift */; };
+		99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE81EB85B5D0019A524 /* ComponentViewController.swift */; };
+		99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE91EB85B5D0019A524 /* DefaultNodes.swift */; };
+		99317BF41EB85B5D0019A524 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEA1EB85B5D0019A524 /* Node.swift */; };
+		99317BF51EB85B5D0019A524 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEB1EB85B5D0019A524 /* Renderable.swift */; };
+		99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEC1EB85B5D0019A524 /* Renderer.swift */; };
+		99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */; };
+		99317BF81EB85B5D0019A524 /* WeactEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEE1EB85B5D0019A524 /* WeactEngine.swift */; };
+		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
 		998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998740AB1EB23EFB00750421 /* Stevia.framework */; };
-		99F6E1651EB1C568004391DD /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15B1EB1C568004391DD /* Component.swift */; };
-		99F6E1661EB1C568004391DD /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15C1EB1C568004391DD /* ComponentVC.swift */; };
-		99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15D1EB1C568004391DD /* ComponentView.swift */; };
-		99F6E1681EB1C568004391DD /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15E1EB1C568004391DD /* ComponentViewController.swift */; };
-		99F6E1691EB1C568004391DD /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E15F1EB1C568004391DD /* DefaultNodes.swift */; };
-		99F6E16A1EB1C568004391DD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1601EB1C568004391DD /* Node.swift */; };
-		99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1611EB1C568004391DD /* Renderable.swift */; };
-		99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1621EB1C568004391DD /* Renderer.swift */; };
-		99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1631EB1C568004391DD /* UIKitRenderer.swift */; };
-		99F6E16E1EB1C568004391DD /* WeactEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6E1641EB1C568004391DD /* WeactEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,23 +34,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		996ADD8F1EB1C50A00364F7B /* Weact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Weact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		996ADD921EB1C50A00364F7B /* Weact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weact.h; sourceTree = "<group>"; };
-		996ADD931EB1C50A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		996ADD981EB1C50A00364F7B /* WeactTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeactTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		996ADD9D1EB1C50A00364F7B /* WeactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
-		996ADD9F1EB1C50A00364F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9917E5091EB856C2005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9917E50A1EB856C2005C6092 /* Komponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Komponents.h; sourceTree = "<group>"; };
+		9917E50E1EB856CC005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9917E50F1EB856CC005C6092 /* WeactTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeactTests.swift; sourceTree = "<group>"; };
+		99317BE51EB85B5D0019A524 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		99317BE61EB85B5D0019A524 /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
+		99317BE71EB85B5D0019A524 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		99317BE81EB85B5D0019A524 /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
+		99317BE91EB85B5D0019A524 /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
+		99317BEA1EB85B5D0019A524 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		99317BEB1EB85B5D0019A524 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		99317BEC1EB85B5D0019A524 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
+		99317BEE1EB85B5D0019A524 /* WeactEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeactEngine.swift; sourceTree = "<group>"; };
+		996ADD8F1EB1C50A00364F7B /* Komponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Komponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
-		99F6E15B1EB1C568004391DD /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		99F6E15C1EB1C568004391DD /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
-		99F6E15D1EB1C568004391DD /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
-		99F6E15E1EB1C568004391DD /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
-		99F6E15F1EB1C568004391DD /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
-		99F6E1601EB1C568004391DD /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		99F6E1611EB1C568004391DD /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
-		99F6E1621EB1C568004391DD /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		99F6E1631EB1C568004391DD /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
-		99F6E1641EB1C568004391DD /* WeactEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeactEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +66,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996ADD991EB1C50A00364F7B /* Weact.framework in Frameworks */,
+				996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9917E5081EB856C2005C6092 /* Komponents */ = {
+			isa = PBXGroup;
+			children = (
+				9917E5091EB856C2005C6092 /* Info.plist */,
+				9917E50A1EB856C2005C6092 /* Komponents.h */,
+				99317BE41EB85B5D0019A524 /* Source */,
+			);
+			path = Komponents;
+			sourceTree = "<group>";
+		};
+		9917E50D1EB856CC005C6092 /* KomponentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				9917E50E1EB856CC005C6092 /* Info.plist */,
+				9917E50F1EB856CC005C6092 /* WeactTests.swift */,
+			);
+			path = KomponentsTests;
+			sourceTree = "<group>";
+		};
+		99317BE41EB85B5D0019A524 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				99317BE51EB85B5D0019A524 /* Component.swift */,
+				99317BE61EB85B5D0019A524 /* ComponentVC.swift */,
+				99317BE71EB85B5D0019A524 /* ComponentView.swift */,
+				99317BE81EB85B5D0019A524 /* ComponentViewController.swift */,
+				99317BE91EB85B5D0019A524 /* DefaultNodes.swift */,
+				99317BEA1EB85B5D0019A524 /* Node.swift */,
+				99317BEB1EB85B5D0019A524 /* Renderable.swift */,
+				99317BEC1EB85B5D0019A524 /* Renderer.swift */,
+				99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */,
+				99317BEE1EB85B5D0019A524 /* WeactEngine.swift */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
 		996ADD851EB1C50A00364F7B = {
 			isa = PBXGroup;
 			children = (
-				996ADD911EB1C50A00364F7B /* Weact */,
-				996ADD9C1EB1C50A00364F7B /* WeactTests */,
+				9917E5081EB856C2005C6092 /* Komponents */,
+				9917E50D1EB856CC005C6092 /* KomponentsTests */,
 				996ADD901EB1C50A00364F7B /* Products */,
 				99F6E1701EB1C605004391DD /* Frameworks */,
 			);
@@ -86,47 +122,11 @@
 		996ADD901EB1C50A00364F7B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				996ADD8F1EB1C50A00364F7B /* Weact.framework */,
-				996ADD981EB1C50A00364F7B /* WeactTests.xctest */,
+				996ADD8F1EB1C50A00364F7B /* Komponents.framework */,
+				996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		996ADD911EB1C50A00364F7B /* Weact */ = {
-			isa = PBXGroup;
-			children = (
-				996ADD921EB1C50A00364F7B /* Weact.h */,
-				996ADD931EB1C50A00364F7B /* Info.plist */,
-				99F6E15A1EB1C568004391DD /* Source */,
-			);
-			path = Weact;
-			sourceTree = "<group>";
-		};
-		996ADD9C1EB1C50A00364F7B /* WeactTests */ = {
-			isa = PBXGroup;
-			children = (
-				996ADD9D1EB1C50A00364F7B /* WeactTests.swift */,
-				996ADD9F1EB1C50A00364F7B /* Info.plist */,
-			);
-			path = WeactTests;
-			sourceTree = "<group>";
-		};
-		99F6E15A1EB1C568004391DD /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				99F6E1641EB1C568004391DD /* WeactEngine.swift */,
-				99F6E1611EB1C568004391DD /* Renderable.swift */,
-				99F6E1601EB1C568004391DD /* Node.swift */,
-				99F6E15F1EB1C568004391DD /* DefaultNodes.swift */,
-				99F6E15B1EB1C568004391DD /* Component.swift */,
-				99F6E1621EB1C568004391DD /* Renderer.swift */,
-				99F6E1631EB1C568004391DD /* UIKitRenderer.swift */,
-				99F6E15C1EB1C568004391DD /* ComponentVC.swift */,
-				99F6E15D1EB1C568004391DD /* ComponentView.swift */,
-				99F6E15E1EB1C568004391DD /* ComponentViewController.swift */,
-			);
-			path = Source;
-			sourceTree = SOURCE_ROOT;
 		};
 		99F6E1701EB1C605004391DD /* Frameworks */ = {
 			isa = PBXGroup;
@@ -143,16 +143,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996ADDA01EB1C50A00364F7B /* Weact.h in Headers */,
+				9917E5141EB8574A005C6092 /* Komponents.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		996ADD8E1EB1C50A00364F7B /* Weact */ = {
+		996ADD8E1EB1C50A00364F7B /* Komponents */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Weact" */;
+			buildConfigurationList = 996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Komponents" */;
 			buildPhases = (
 				996ADD8A1EB1C50A00364F7B /* Sources */,
 				996ADD8B1EB1C50A00364F7B /* Frameworks */,
@@ -163,14 +163,14 @@
 			);
 			dependencies = (
 			);
-			name = Weact;
+			name = Komponents;
 			productName = Weact;
-			productReference = 996ADD8F1EB1C50A00364F7B /* Weact.framework */;
+			productReference = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		996ADD971EB1C50A00364F7B /* WeactTests */ = {
+		996ADD971EB1C50A00364F7B /* KomponentsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "WeactTests" */;
+			buildConfigurationList = 996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "KomponentsTests" */;
 			buildPhases = (
 				996ADD941EB1C50A00364F7B /* Sources */,
 				996ADD951EB1C50A00364F7B /* Frameworks */,
@@ -181,9 +181,9 @@
 			dependencies = (
 				996ADD9B1EB1C50A00364F7B /* PBXTargetDependency */,
 			);
-			name = WeactTests;
+			name = KomponentsTests;
 			productName = WeactTests;
-			productReference = 996ADD981EB1C50A00364F7B /* WeactTests.xctest */;
+			productReference = 996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +206,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Weact" */;
+			buildConfigurationList = 996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Komponents" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,8 +218,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				996ADD8E1EB1C50A00364F7B /* Weact */,
-				996ADD971EB1C50A00364F7B /* WeactTests */,
+				996ADD8E1EB1C50A00364F7B /* Komponents */,
+				996ADD971EB1C50A00364F7B /* KomponentsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -246,16 +246,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F6E16C1EB1C568004391DD /* Renderer.swift in Sources */,
-				99F6E1691EB1C568004391DD /* DefaultNodes.swift in Sources */,
-				99F6E1661EB1C568004391DD /* ComponentVC.swift in Sources */,
-				99F6E16B1EB1C568004391DD /* Renderable.swift in Sources */,
-				99F6E1651EB1C568004391DD /* Component.swift in Sources */,
-				99F6E16A1EB1C568004391DD /* Node.swift in Sources */,
-				99F6E16E1EB1C568004391DD /* WeactEngine.swift in Sources */,
-				99F6E1681EB1C568004391DD /* ComponentViewController.swift in Sources */,
-				99F6E1671EB1C568004391DD /* ComponentView.swift in Sources */,
-				99F6E16D1EB1C568004391DD /* UIKitRenderer.swift in Sources */,
+				99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */,
+				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
+				99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */,
+				99317BF51EB85B5D0019A524 /* Renderable.swift in Sources */,
+				99317BF81EB85B5D0019A524 /* WeactEngine.swift in Sources */,
+				99317BEF1EB85B5D0019A524 /* Component.swift in Sources */,
+				99317BF41EB85B5D0019A524 /* Node.swift in Sources */,
+				99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */,
+				99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */,
+				99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996ADD9E1EB1C50A00364F7B /* WeactTests.swift in Sources */,
+				9917E5121EB85709005C6092 /* WeactTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +272,7 @@
 /* Begin PBXTargetDependency section */
 		996ADD9B1EB1C50A00364F7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 996ADD8E1EB1C50A00364F7B /* Weact */;
+			target = 996ADD8E1EB1C50A00364F7B /* Komponents */;
 			targetProxy = 996ADD9A1EB1C50A00364F7B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -391,11 +391,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Weact/Info.plist;
+				INFOPLIST_FILE = Komponents/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Weact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Komponents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -414,11 +414,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Weact/Info.plist;
+				INFOPLIST_FILE = Komponents/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Weact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.Komponents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -429,7 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = WeactTests/Info.plist;
+				INFOPLIST_FILE = KomponentsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,7 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = WeactTests/Info.plist;
+				INFOPLIST_FILE = KomponentsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.WeactTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +452,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Weact" */ = {
+		996ADD891EB1C50A00364F7B /* Build configuration list for PBXProject "Komponents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				996ADDA11EB1C50A00364F7B /* Debug */,
@@ -461,7 +461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Weact" */ = {
+		996ADDA31EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "Komponents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				996ADDA41EB1C50A00364F7B /* Debug */,
@@ -470,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "WeactTests" */ = {
+		996ADDA61EB1C50A00364F7B /* Build configuration list for PBXNativeTarget "KomponentsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				996ADDA71EB1C50A00364F7B /* Debug */,

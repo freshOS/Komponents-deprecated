@@ -10,7 +10,7 @@
 // TODO ViewLayout with spacies and margins in the childrne's aray ??
 
 import UIKit
-import Weact
+import Komponents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        loginView.frame = vc.view.frame
 //        vc.view.addSubview(loginView)
 
-//        // Using bare Weact engine.
+//        // Using bare Komponents engine.
 //        let vc = UIViewController()
 //        window?.rootViewController = vc
-//        let engine = WeactEngine()
+//        let engine = KomponentsEngine()
 //        engine.render(component: LoginComponent(), in:vc.view)

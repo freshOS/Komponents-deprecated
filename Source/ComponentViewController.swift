@@ -1,6 +1,6 @@
 //
 //  ComponentViewController.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 26/04/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -18,7 +18,7 @@ open class ComponentViewController: UIViewController, Component {
     
     override open func loadView() {
         view = UIView()
-        WeactEngine.shared.render(component:self, in: view)
+        KomponentsEngine.shared.render(component:self, in: view)
     }
     
     override open func viewDidLoad() {
@@ -27,7 +27,7 @@ open class ComponentViewController: UIViewController, Component {
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
                          object: nil, queue: nil) {_ in
                 self.view = UIView()
-                WeactEngine.shared.render(component:self, in: self.view)
+                KomponentsEngine.shared.render(component:self, in: self.view)
             }
     }
     

@@ -1,13 +1,13 @@
-![Weact](banner.png)
+![Komponents](banner.png)
 
-# Weact (Swift + React)
+# Komponents (Swift + React)
 [![Language: Swift 3](https://img.shields.io/badge/language-swift3-f48041.svg?style=flat)](https://developer.apple.com/swift)
 ![Platform: iOS 9+](https://img.shields.io/badge/platform-iOS%209%2B-blue.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/freshOS/then/blob/master/LICENSE)
 ![Release version](https://img.shields.io/badge/release-0.1-blue.svg)
 
-Weact is a Swift framework for building component-oriented interfaces.  
+Komponents is a Swift framework for building component-oriented interfaces.  
 Because it's unfair to need javascript to enjoy Components ! 😎
 
 ![Demo](demo.gif)
@@ -22,7 +22,7 @@ func render() -> Node {
 New to components? Fear not! [Facebook's React guide](https://facebook.github.io/react/) is a gold mine of information to get you started :)
 
 
-|      | Weact                                   |
+|      | Komponents                                   |
 | ---- | ---------------------------------------- |
 |  🔶  | Pure **Swift** (no JS, no XML)           |
 |  🏗    | Can be used **Incrementally** in your classic UIKit App |
@@ -38,7 +38,7 @@ A component is pretty simple :
 That's All!
 
 ```swift
-import Weact
+import Komponents
 
 class MyFirstComponent: Component {
 
@@ -225,7 +225,7 @@ func render() -> Node {
 ```swift
 import UIKit
 import Stevia
-import Weact
+import Komponents
 
 class LoadingScreen: UIViewController, StatelessComponent {
 
@@ -248,7 +248,7 @@ class LoadingScreen: UIViewController, StatelessComponent {
 
 
 ## More Examples
-Take a look at the example Project `WeactExample.xcodeproj` and play around !
+Take a look at the example Project `KomponentsExample.xcodeproj` and play around !
 
 <img src="examples.png" alt="Examples" width="250">
 
@@ -256,7 +256,7 @@ Take a look at the example Project `WeactExample.xcodeproj` and play around !
 
 ### Carthage
 ```
-github "s4cha/Weact"
+github "s4cha/Komponents"
 ```
 
 ### Manually

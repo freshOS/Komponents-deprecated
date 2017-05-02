@@ -1,15 +1,15 @@
 //
-//  WeactTests.swift
-//  WeactTests
+//  KomponentsTests.swift
+//  KomponentsTests
 //
 //  Created by Sacha Durand Saint Omer on 27/04/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
 //
 
-@testable import Weact
+@testable import Komponents
 import XCTest
 
-class WeactTests: XCTestCase {
+class KomponentsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -32,5 +32,4 @@ class WeactTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }

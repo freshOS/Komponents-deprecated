@@ -1,6 +1,6 @@
 //
 //  Component.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 31/03/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -54,7 +54,7 @@ class TestComp : IsComponent {
 public extension IsComponent where Self: UIViewController {
     func loadComponent() {
         view = UIView()
-        WeactEngine.shared.render(component: self, in: view)
+        KomponentsEngine.shared.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
@@ -66,7 +66,7 @@ public extension IsComponent where Self: UIViewController {
 
 public extension IsComponent where Self: UIView {
     func loadComponent() {
-        WeactEngine.shared.render(component: self, in: self)
+        KomponentsEngine.shared.render(component: self, in: self)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
@@ -78,7 +78,7 @@ public extension IsComponent where Self: UIView {
 
 public extension IsComponent where Self: UITableViewCell {
     func loadComponent() {
-        WeactEngine.shared.render(component: self, in: self.contentView)
+        KomponentsEngine.shared.render(component: self, in: self.contentView)
 //        NotificationCenter.default
 //            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
 //                if let weakSelf = self {
@@ -91,7 +91,7 @@ public extension IsComponent where Self: UITableViewCell {
 
 public extension IsComponent {
     func askForRefresh() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"WeactStateChanged"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"KomponentsStateChanged"), object: self)
     }
 }
 
@@ -121,6 +121,6 @@ public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
 public extension CellComponent {
     
     func refresh() {
-        WeactEngine.shared.updateComponent(self)
+        KomponentsEngine.shared.updateComponent(self)
     }
 }

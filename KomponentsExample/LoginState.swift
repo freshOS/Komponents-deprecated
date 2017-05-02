@@ -1,6 +1,6 @@
 //
 //  LoginState.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 24/04/2017.
 //  Copyright © 2017 freshOS. All rights reserved.

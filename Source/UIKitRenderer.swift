@@ -1,6 +1,6 @@
 //
 //  UIKitRenderer.swift
-//  Weact
+//  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 30/03/2017.
 //  Copyright © 2017 freshOS. All rights reserved.
@@ -10,9 +10,9 @@ import UIKit
 
 class UIKitRenderer: Renderer {
     
-    weak var engine: WeactEngine!
+    weak var engine: KomponentsEngine!
     
-    func render(_ renderable: Renderable, in rootView: UIView, withEngine: WeactEngine, atIndex: Int? = nil) {
+    func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int? = nil) {
         
         if let c = renderable as? IsComponent {
             print("⚛️ Rendering \(c) : \(c.uniqueIdentifier)")
