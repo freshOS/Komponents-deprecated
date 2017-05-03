@@ -317,15 +317,11 @@ class UIKitRenderer: Renderer {
             if let aComponent = renderable as? IsComponent, !(aComponent is UIViewController), !(aComponent is UIView)  {
                 let cId = aComponent.uniqueIdentifier
                 // only if not present
-                if let entry = engine.componentsMap[cId] {
-//                    print("Do nothing")
-                } else {
+                if engine.componentsMap.index(forKey: cId) == nil {
                     engine.componentsMap[cId] = aComponent //// Retain the componenent
                 }
                 engine.viewMap[cId] = theView // update view entry.
             }
-            
-            
             
             theView.translatesAutoresizingMaskIntoConstraints = false
             if let stackView = parentView as? UIStackView {
