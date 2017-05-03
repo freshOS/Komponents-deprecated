@@ -40,7 +40,9 @@ public extension IsComponent {
 
 public extension Component {
     func updateState(_ block:(inout State) -> Void) {
-        print("☝️ COMPONENT TO UPDATE : \(self.uniqueIdentifier)")
+        if Komponents.logsEnabled {
+            print("☝️ Update State : \(self)")
+        }
         block(&state)
         askForRefresh(patching: true)
     }

@@ -15,9 +15,9 @@ class UIKitRenderer: Renderer {
     func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int? = nil) {
         
         if rootView.superview != nil {
-        if let c = renderable as? IsComponent {
-            print("⚛️ Rendering \(c) : \(c.uniqueIdentifier)")
-        }
+            if let c = renderable as? IsComponent, Komponents.logsEnabled {
+                print("⚛️ Rendering \(c) : \(c.uniqueIdentifier)")
+            }
         }
         
         
@@ -318,7 +318,7 @@ class UIKitRenderer: Renderer {
                 let cId = aComponent.uniqueIdentifier
                 // only if not present
                 if let entry = engine.componentsMap[cId] {
-                    print("Do nothing")
+//                    print("Do nothing")
                 } else {
                     engine.componentsMap[cId] = aComponent //// Retain the componenent
                 }

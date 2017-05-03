@@ -9,6 +9,11 @@
 import Stevia
 import UIKit
 
+public class Komponents {
+    public static var logsEnabled = false
+}
+
+
 public class KomponentsEngine {
     
     static let shared = KomponentsEngine()

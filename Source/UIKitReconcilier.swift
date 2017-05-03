@@ -30,6 +30,12 @@ class UIKitReconcilier {
         }
     }
     
+    func log(_ s:String) {
+        if Komponents.logsEnabled {
+            print(s)
+        }
+    }
+    
     func smash(_ oldNode: UIView, _ newNode: UIView) {
         // read each node attributes and diff them
         // then patch the old node (side-effect)
@@ -43,7 +49,7 @@ class UIKitReconcilier {
                 updates.append {
                     view.backgroundColor = c
                 }
-                print("💉 Patch BackgroundColor")
+                log("💉 Patch BackgroundColor")
             }
         }
         
@@ -55,14 +61,14 @@ class UIKitReconcilier {
                 updates.append {
                     label.text = newLabel.text
                 }
-                print("💉 Patch text")
+                log("💉 Patch text")
             }
             
             if newLabel.textColor != label.textColor {
                 updates.append {
                     label.textColor = newLabel.textColor
                 }
-                print("💉 Patch textColor")
+                log("💉 Patch textColor")
             }
         }
         
@@ -74,7 +80,7 @@ class UIKitReconcilier {
                 updates.append {
                     button.setBackgroundImage(img, for: .normal)
                 }
-                print("💉 Patch backgroundImage")
+                log("💉 Patch backgroundImage")
             }
             
             if newButton.title(for: .normal) != button.title(for: .normal) {
@@ -82,7 +88,7 @@ class UIKitReconcilier {
                 updates.append {
                     button.setTitle(text, for: .normal)
                 }
-                print("💉 Patch Title")
+                log("💉 Patch Title")
             }
             
             if newButton.isEnabled != button.isEnabled {
@@ -90,7 +96,7 @@ class UIKitReconcilier {
                 updates.append {
                     button.isEnabled = e
                 }
-                print("💉 Patch isEnabled")
+                log("💉 Patch isEnabled")
             }
         }
         
@@ -102,7 +108,7 @@ class UIKitReconcilier {
                 updates.append {
                     image.image = img
                 }
-                print("💉 Patch Image")
+                log("💉 Patch Image")
             }
         }
     }
