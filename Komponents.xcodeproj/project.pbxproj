@@ -21,6 +21,7 @@
 		99317BF81EB85B5D0019A524 /* WeactEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEE1EB85B5D0019A524 /* WeactEngine.swift */; };
 		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
 		998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998740AB1EB23EFB00750421 /* Stevia.framework */; };
+		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		996ADD8F1EB1C50A00364F7B /* Komponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Komponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
+		99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitReconcilier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				99317BEB1EB85B5D0019A524 /* Renderable.swift */,
 				99317BEC1EB85B5D0019A524 /* Renderer.swift */,
 				99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */,
+				99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */,
 				99317BEE1EB85B5D0019A524 /* WeactEngine.swift */,
 			);
 			path = Source;
@@ -249,6 +252,7 @@
 				99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */,
 				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
 				99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */,
+				99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */,
 				99317BF51EB85B5D0019A524 /* Renderable.swift in Sources */,
 				99317BF81EB85B5D0019A524 /* WeactEngine.swift in Sources */,
 				99317BEF1EB85B5D0019A524 /* Component.swift in Sources */,

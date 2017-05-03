@@ -14,8 +14,10 @@ class UIKitRenderer: Renderer {
     
     func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int? = nil) {
         
+        if rootView.superview != nil {
         if let c = renderable as? IsComponent {
             print("⚛️ Rendering \(c) : \(c.uniqueIdentifier)")
+        }
         }
         
         

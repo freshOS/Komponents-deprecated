@@ -12,6 +12,7 @@ import UIKit
 public protocol IsComponent:class, Renderable {
     var uniqueIdentifier:String { get }
     func didRender()
+    func enablePatching() -> Bool
 }
 
 public extension IsComponent {
@@ -122,5 +123,11 @@ public extension CellComponent {
     
     func refresh() {
         KomponentsEngine.shared.updateComponent(self)
+    }
+}
+
+public extension IsComponent {
+    func enablePatching() -> Bool {
+        return false
     }
 }
