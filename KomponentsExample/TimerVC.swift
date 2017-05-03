@@ -40,4 +40,8 @@ class TimerVC: UIViewController, Component {
         timer?.invalidate()
         timer = nil
     }
+    
+    func enablePatching() -> Bool {
+        return true
+    }
 }

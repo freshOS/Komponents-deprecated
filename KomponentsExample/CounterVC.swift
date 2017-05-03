@@ -31,4 +31,8 @@ class CounterVC: UIViewController, Component {
                 ])
             ])
     }
+    
+    func enablePatching() -> Bool {
+        return true
+    }
 }

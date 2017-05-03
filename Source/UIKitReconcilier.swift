@@ -28,7 +28,6 @@ class UIKitReconcilier {
         } else {
             return newNode
         }
-        
     }
     
     func smash(_ oldNode: UIView, _ newNode: UIView) {
@@ -36,6 +35,17 @@ class UIKitReconcilier {
         // then patch the old node (side-effect)
         // - layout
         // - events
+        
+        // Image
+        if let view = oldNode as? UIView, let newView = newNode as? UIView {
+            if newView.backgroundColor != view.backgroundColor {
+                let c = newView.backgroundColor
+                updates.append {
+                    view.backgroundColor = c
+                }
+                print("💉 Patch BackgroundColor")
+            }
+        }
         
         
         // Label
@@ -59,15 +69,40 @@ class UIKitReconcilier {
         
         // Button
         if let button = oldNode as? UIButton, let newButton = newNode as? UIButton {
-            
-            
             if newButton.backgroundImage(for: .normal) != button.backgroundImage(for: .normal) {
-                
                 let img = newButton.backgroundImage(for: .normal)
                 updates.append {
                     button.setBackgroundImage(img, for: .normal)
                 }
                 print("💉 Patch backgroundImage")
+            }
+            
+            if newButton.title(for: .normal) != button.title(for: .normal) {
+                let text = newButton.title(for: .normal)
+                updates.append {
+                    button.setTitle(text, for: .normal)
+                }
+                print("💉 Patch Title")
+            }
+            
+            if newButton.isEnabled != button.isEnabled {
+                let e = newButton.isEnabled
+                updates.append {
+                    button.isEnabled = e
+                }
+                print("💉 Patch isEnabled")
+            }
+        }
+        
+        
+        // Image
+        if let image = oldNode as? UIImageView, let newImage = newNode as? UIImageView {
+            if newImage.image != image.image {
+                let img = newImage.image
+                updates.append {
+                    image.image = img
+                }
+                print("💉 Patch Image")
             }
         }
     }
@@ -82,8 +117,8 @@ class UIKitReconcilier {
     }
     
     private func updateChildren(_ oldNode: UIView, _ newNode: UIView) {
-        let newLength = newNode.subviews.count
-        let oldLength = oldNode.subviews.count
+        let newLength = (newNode is UIStackView) ? (newNode as! UIStackView).arrangedSubviews.count : newNode.subviews.count
+        let oldLength = (oldNode is UIStackView) ? (oldNode as! UIStackView).arrangedSubviews.count : oldNode.subviews.count
         let length = max(oldLength, newLength)
         
         var iNew = 0
@@ -92,34 +127,66 @@ class UIKitReconcilier {
         
         while i < length {
             
-            
             var newChildNode: UIView?
             var oldChildNode: UIView?
-            if iNew < newNode.subviews.count {
-                newChildNode = newNode.subviews[iNew]
+            
+            if let newNode = newNode as? UIStackView {
+                if iNew < newNode.arrangedSubviews.count {
+                    newChildNode = newNode.arrangedSubviews[iNew]
+                }
+            } else {
+                if iNew < newNode.subviews.count {
+                    newChildNode = newNode.subviews[iNew]
+                }
             }
-            if iOld < oldNode.subviews.count {
-                oldChildNode = oldNode.subviews[iOld]
+            
+            if let oldNode = oldNode as? UIStackView {
+                if iOld < oldNode.arrangedSubviews.count {
+                    oldChildNode = oldNode.arrangedSubviews[iOld]
+                }
+            } else {
+                if iOld < oldNode.subviews.count {
+                    oldChildNode = oldNode.subviews[iOld]
+                }
             }
             
             let retChildNode = walk(oldChildNode, newChildNode)
             
-            // TODO Add remove nodes if hierarchy changed
-            //            if (retChildNode == nil) {
-            //                if (oldChildNode != nil) {
-            //                    oldNode.subviews.remove(at: i)
-            //                    iOld = iOld-1
-            //                }
-            //            } else if (oldChildNode == nil) {
-            //                if (retChildNode) {
-            //                    oldNode.subviews.append(retChildNode)
-            //                    iNew = iNew- 1
-            //                }
-            //            } else if (retChildNode != oldChildNode) {
-            //                oldNode.subviews.remove(at: i)
-            //                oldNode.subviews.insert(retChildNode, at: i)
-            //                iNew = iNew- 1
-            //            }
+             //TODO Add remove nodes if hierarchy changed
+            if (retChildNode == nil) { // Node removed !
+                if (oldChildNode != nil) {
+//                    // TODO make it work :
+//                    updates.append {
+//                        if let oldNode = oldNode as? UIStackView {
+//                            let v = oldNode.arrangedSubviews[i]
+//                            oldNode.removeArrangedSubview(v)
+//                        } else {
+//                            let v = oldNode.subviews[i]
+//                            v.removeFromSuperview()
+//                        }
+//                    }
+                    
+                    iOld = iOld-1
+                }
+            } else if (oldChildNode == nil) { // New Node Added
+                if let retChildNode = retChildNode {
+                    updates.append {
+                        if let oldNode = oldNode as? UIStackView {
+                            oldNode.addArrangedSubview(retChildNode)
+                        } else {
+                            oldNode.addSubview(retChildNode)
+                        }
+                    }
+                    iNew = iNew - 1
+                }
+            } else if (retChildNode != oldChildNode) {
+//                oldNode.subviews.remove(at: i)
+//                let v = oldNode.subviews[i]
+//                v.removeFromSuperview()
+////                oldNode.subviews.insert(retChildNode, at: i)
+//                oldNode.insertSubview(retChildNode, at: i)
+//                iNew = iNew - 1
+            }
             
             i = i+1
             iNew = iNew+1

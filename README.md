@@ -252,6 +252,35 @@ Take a look at the example Project `KomponentsExample.xcodeproj` and play around
 
 <img src="examples.png" alt="Examples" width="250">
 
+## Patching
+
+Like React, Komponents tries to be smart about what it rerenders when the state changes.
+
+By default only the component that changed is re-rendered.
+Say you have the nested components `A`>`B`>`C` and `C`'s state changes, only `C` is going to rerender.
+
+But the whole C component is going to be re-rendered, and maybe only some text, or some color changed, and the structure of it is pretty much the same. That's where *patching* comes in!
+
+Patching is going to rerender the component in a background thread, compare the new view hierarchy with the old one,
+ and batch the updates on the UIThread.
+
+Patching is still experimental but can only get better with time!
+
+You can opt-in by implementing `enablePatching()` in your component :
+
+```swift    
+func enablePatching() -> Bool {
+  return true
+}
+```
+
+### Supported patching properties :
+View: `backgroundColor`  
+Label: `text`, `textColor`  
+Image: `image`  
+Button: `title`(state normal), `backgroundImage` (state normal), `isEnabled`
+
+
 ## Installation
 
 ### Carthage
