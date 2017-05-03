@@ -29,20 +29,12 @@ public class KomponentsEngine {
     let renderer: Renderer
     private init(renderer: Renderer) {
         self.renderer = renderer
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name(rawValue:"KomponentsStateChanged"),
-                         object: nil,
-                         queue: nil) { [unowned self] n in
-                if let componentToUpdate = n.object as? IsComponent {
-                    self.updateComponent(componentToUpdate)
-                }
-            }
     }
     
-    public func updateComponent(_ component: IsComponent) {
+    public func updateComponent(_ component: IsComponent, patching:Bool) {
         // VC Component
         if let vc = component as? UIViewController {
-            if component.enablePatching() {
+            if patching && component.enablePatching() {
                 DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
                     // Test rerender in another view first.
                     let myView = UIView()
@@ -75,7 +67,7 @@ public class KomponentsEngine {
                 }
             }
         } else if let viewComponent = component as? UIView { // UIView Component
-            if component.enablePatching() {
+            if patching && component.enablePatching() {
                 DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
                     // Test rerender in another view first.
                     let myView = UIView()

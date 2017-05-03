@@ -42,7 +42,7 @@ public extension Component {
     func updateState(_ block:(inout State) -> Void) {
         print("☝️ COMPONENT TO UPDATE : \(self.uniqueIdentifier)")
         block(&state)
-        askForRefresh()
+        askForRefresh(patching: true)
     }
 }
 
@@ -59,7 +59,7 @@ public extension IsComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    weakSelf.askForRefresh()
+                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
                 }
         }
     }
@@ -71,7 +71,7 @@ public extension IsComponent where Self: UIView {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    weakSelf.askForRefresh()
+                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
                 }
         }
     }
@@ -91,8 +91,8 @@ public extension IsComponent where Self: UITableViewCell {
 
 
 public extension IsComponent {
-    func askForRefresh() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"KomponentsStateChanged"), object: self)
+    func askForRefresh(patching: Bool) {
+        KomponentsEngine.shared.updateComponent(self, patching: patching)
     }
 }
 
@@ -122,7 +122,7 @@ public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
 public extension CellComponent {
     
     func refresh() {
-        KomponentsEngine.shared.updateComponent(self)
+        KomponentsEngine.shared.updateComponent(self, patching: false)
     }
 }
 
