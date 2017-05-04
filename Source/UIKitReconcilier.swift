@@ -42,15 +42,29 @@ class UIKitReconcilier {
         // - layout
         // - events
         
-        // Image
-        if let view = oldNode as? UIView, let newView = newNode as? UIView {
-            if newView.backgroundColor != view.backgroundColor {
-                let c = newView.backgroundColor
-                updates.append {
-                    view.backgroundColor = c
-                }
-                log("💉 Patch BackgroundColor")
+        // View
+        if newNode.backgroundColor != oldNode.backgroundColor {
+            let c = newNode.backgroundColor
+            updates.append {
+                oldNode.backgroundColor = c
             }
+            log("💉 Patch BackgroundColor")
+        }
+        
+        if newNode.isHidden != oldNode.isHidden {
+            let c = newNode.isHidden
+            updates.append {
+                oldNode.isHidden = c
+            }
+            log("💉 Patch isHidden")
+        }
+        
+        if newNode.alpha != oldNode.alpha {
+            let c = newNode.alpha
+            updates.append {
+                oldNode.alpha = c
+            }
+            log("💉 Patch alpha")
         }
         
         

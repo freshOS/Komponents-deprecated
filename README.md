@@ -275,7 +275,7 @@ func enablePatching() -> Bool {
 ```
 
 ### Supported patching properties :
-View: `backgroundColor`  
+View: `backgroundColor`, `isHidden`, `alpha`  
 Label: `text`, `textColor`  
 Image: `image`  
 Button: `title`(state normal), `backgroundImage` (state normal), `isEnabled`
