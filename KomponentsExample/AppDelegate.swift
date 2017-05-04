@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: NavigationVC()) // Using a UIViewController Component.
         window?.makeKeyAndVisible()
+        Komponents.logsEnabled = true
         return true
     }
 }
