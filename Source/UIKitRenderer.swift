@@ -11,6 +11,7 @@ import UIKit
 class UIKitRenderer: Renderer {
     
     weak var engine: KomponentsEngine!
+    weak var parentComponent: IsComponent?
     
     func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int? = nil) {
         
@@ -35,6 +36,12 @@ class UIKitRenderer: Renderer {
     
     @discardableResult
     func viewFor(renderable: Renderable, in parentView: UIView, atIndex: Int? = nil) -> UIView {
+        
+        // Store Parent component to associated it with its future children.
+        if let c = renderable as? IsComponent, c is UIViewController || c is UIView {
+            parentComponent = c
+        }
+    
         var theView: UIView?
         var node = renderable.render()
         
@@ -319,6 +326,14 @@ class UIKitRenderer: Renderer {
                 // only if not present
                 if engine.componentsMap.index(forKey: cId) == nil {
                     engine.componentsMap[cId] = aComponent //// Retain the componenent
+                    
+                    if let parent = parentComponent {
+                        if var children = engine.componentsChildren[parent.uniqueIdentifier] {
+                            engine.componentsChildren[parent.uniqueIdentifier] = (children + [cId])
+                        } else {
+                            engine.componentsChildren[parent.uniqueIdentifier] = [cId]
+                        }
+                    }
                 }
                 engine.viewMap[cId] = theView // update view entry.
             }

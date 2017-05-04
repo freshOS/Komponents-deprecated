@@ -13,6 +13,7 @@ public protocol IsComponent:class, Renderable {
     var uniqueIdentifier:String { get }
     func didRender()
     func enablePatching() -> Bool
+    func willDeinitComponent()
 }
 
 public extension IsComponent {
@@ -45,12 +46,6 @@ public extension Component {
         }
         block(&state)
         askForRefresh(patching: true)
-    }
-}
-
-class TestComp : IsComponent {
-    func render() -> Node {
-        return View([])
     }
 }
 
@@ -131,5 +126,18 @@ public extension CellComponent {
 public extension IsComponent {
     func enablePatching() -> Bool {
         return false
+    }
+}
+
+
+public extension IsComponent {
+    func willDeinitComponent() {
+        // Find and Remove children components references that retain sub-components.
+        if let childComponentsIds = KomponentsEngine.shared.componentsChildren[uniqueIdentifier] {
+            for id in childComponentsIds {
+                KomponentsEngine.shared.componentsMap.removeValue(forKey: id)
+            }
+        }
+        KomponentsEngine.shared.componentsChildren.removeValue(forKey: uniqueIdentifier)
     }
 }

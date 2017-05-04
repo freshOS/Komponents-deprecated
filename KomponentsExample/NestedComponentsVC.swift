@@ -31,6 +31,7 @@ class NestedComponentsVC: UIViewController, StatelessComponent {
     
     deinit {
         print("😀 DEstroying NestedComponentsVC")
+        willDeinitComponent()
     }
     
 }

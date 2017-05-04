@@ -18,9 +18,9 @@ public class KomponentsEngine {
     
     static let shared = KomponentsEngine()
     
-    
     // retain non-VC components here
     var componentsMap = [String: IsComponent]()
+    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
     var viewMap = [String: UIView]()
     
     func viewForComponentId(_ id :String) -> UIView {
@@ -90,18 +90,32 @@ public class KomponentsEngine {
                 self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil)
             }
         } else {
-            // Non-VC Component
             let associatedView = self.viewForComponentId(component.uniqueIdentifier)
-            if let superview = associatedView.superview {
-                var stackViewIndex: Int?
-                if let stackView = superview as? UIStackView {
-                    stackViewIndex = stackView.arrangedSubviews.index(of: associatedView)
+            // Non-VC Component
+            
+            // TODO enable patching for non-VC  components
+//            if patching && component.enablePatching(), let superview = associatedView.superview {
+//                
+//                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+//                    // Test rerender in another view first.
+//                    let myView = UIView()
+//                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil)
+//                    
+//                    let r = UIKitReconcilier()
+//                    r.mainUpdateChildren(superview, myView)
+//                }
+//            } else {
+                if let superview = associatedView.superview {
+                    var stackViewIndex: Int?
+                    if let stackView = superview as? UIStackView {
+                        stackViewIndex = stackView.arrangedSubviews.index(of: associatedView)
+                    }
+                    // Remove previous view hierarchy.
+                    associatedView.removeFromSuperview()
+                    // Re-render compoenent in superview.
+                    self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex)
                 }
-                // Remove previous view hierarchy.
-                associatedView.removeFromSuperview()
-                // Re-render compoenent in superview.
-                self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex)
-            }
+//            }
         }
     }
     
