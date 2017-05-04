@@ -285,7 +285,7 @@ Button: `title`(state normal), `backgroundImage` (state normal), `isEnabled`
 
 ### Carthage
 ```
-github "s4cha/Komponents"
+github "freshOS/Komponents"
 ```
 
 ### Manually
