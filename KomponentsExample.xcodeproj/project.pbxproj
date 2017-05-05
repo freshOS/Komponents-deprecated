@@ -28,9 +28,9 @@
 		99317BCF1EB8596E0019A524 /* TableViewCellExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */; };
 		99317BD01EB8596E0019A524 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBB1EB8596E0019A524 /* TimerVC.swift */; };
 		99317BD11EB8596E0019A524 /* TodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBC1EB8596E0019A524 /* TodoVC.swift */; };
-		99317BD21EB859EA0019A524 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D226F21E8BB1C5009416AA /* Stevia.framework */; };
 		99317BDC1EB85A200019A524 /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; };
 		99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99A623E31EBCDA280091EBFD /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +65,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */,
+				99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +96,7 @@
 		99317BBB1EB8596E0019A524 /* TimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
 		99317BBC1EB8596E0019A524 /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
 		99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Komponents.xcodeproj; sourceTree = SOURCE_ROOT; };
+		99A623E31EBCDA280091EBFD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				99317BDC1EB85A200019A524 /* Komponents.framework in Frameworks */,
-				99317BD21EB859EA0019A524 /* Stevia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +153,7 @@
 		99D226C51E8BA734009416AA = {
 			isa = PBXGroup;
 			children = (
+				99A623E31EBCDA280091EBFD /* Stevia.framework */,
 				99317BA61EB8596E0019A524 /* KomponentsExample */,
 				99D226CF1E8BA734009416AA /* Products */,
 				99D226F11E8BB1C5009416AA /* Frameworks */,
@@ -185,7 +187,6 @@
 				99317B811EB858770019A524 /* Frameworks */,
 				99317B821EB858770019A524 /* Resources */,
 				99317BE01EB85A200019A524 /* Embed Frameworks */,
-				9954FE341EB85C26003CB259 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -266,23 +267,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9954FE341EB85C26003CB259 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Stevia.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99317B801EB858770019A524 /* Sources */ = {
