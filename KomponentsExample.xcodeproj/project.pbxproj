@@ -15,7 +15,6 @@
 		99317BC21EB8596E0019A524 /* DefaultNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BAD1EB8596E0019A524 /* DefaultNodesVC.swift */; };
 		99317BC31EB8596E0019A524 /* HelloPropsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BAE1EB8596E0019A524 /* HelloPropsVC.swift */; };
 		99317BC41EB8596E0019A524 /* HelloWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BAF1EB8596E0019A524 /* HelloWorldVC.swift */; };
-		99317BC51EB8596E0019A524 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99317BB01EB8596E0019A524 /* Info.plist */; };
 		99317BC61EB8596E0019A524 /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB11EB8596E0019A524 /* LoadingVC.swift */; };
 		99317BC71EB8596E0019A524 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB21EB8596E0019A524 /* LoginState.swift */; };
 		99317BC81EB8596E0019A524 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB31EB8596E0019A524 /* LoginVC.swift */; };
@@ -115,15 +114,15 @@
 		99317BA61EB8596E0019A524 /* KomponentsExample */ = {
 			isa = PBXGroup;
 			children = (
-				99317BA71EB8596E0019A524 /* AppDelegate.swift */,
+				99317BB01EB8596E0019A524 /* Info.plist */,
 				99317BA81EB8596E0019A524 /* Assets.xcassets */,
 				99317BA91EB8596E0019A524 /* LaunchScreen.storyboard */,
+				99317BA71EB8596E0019A524 /* AppDelegate.swift */,
 				99317BAB1EB8596E0019A524 /* Counter.swift */,
 				99317BAC1EB8596E0019A524 /* CounterVC.swift */,
 				99317BAD1EB8596E0019A524 /* DefaultNodesVC.swift */,
 				99317BAE1EB8596E0019A524 /* HelloPropsVC.swift */,
 				99317BAF1EB8596E0019A524 /* HelloWorldVC.swift */,
-				99317BB01EB8596E0019A524 /* Info.plist */,
 				99317BB11EB8596E0019A524 /* LoadingVC.swift */,
 				99317BB21EB8596E0019A524 /* LoginState.swift */,
 				99317BB31EB8596E0019A524 /* LoginVC.swift */,
@@ -260,7 +259,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99317BC51EB8596E0019A524 /* Info.plist in Resources */,
 				99317BBE1EB8596E0019A524 /* Assets.xcassets in Resources */,
 				99317BBF1EB8596E0019A524 /* LaunchScreen.storyboard in Resources */,
 			);
