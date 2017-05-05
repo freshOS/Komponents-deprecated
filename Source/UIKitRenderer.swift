@@ -328,7 +328,7 @@ class UIKitRenderer: Renderer {
                     engine.componentsMap[cId] = aComponent //// Retain the componenent
                     
                     if let parent = parentComponent {
-                        if var children = engine.componentsChildren[parent.uniqueIdentifier] {
+                        if let children = engine.componentsChildren[parent.uniqueIdentifier] {
                             engine.componentsChildren[parent.uniqueIdentifier] = (children + [cId])
                         } else {
                             engine.componentsChildren[parent.uniqueIdentifier] = [cId]
