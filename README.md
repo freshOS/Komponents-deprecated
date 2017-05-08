@@ -30,61 +30,19 @@ New to components? Fear not! [Facebook's React guide](https://facebook.github.io
 |   📐  |Can use **Autolayout or any autolayout** lib for the layout (we like [Stevia](https://github.com/freshOS/Stevia)) |
 | 💉 | Supports **Hot Reload** with [💉 injectionForXcode](http://johnholdsworth.com/injection.html)|
 
+## Getting Started
 
-## Looping !
-
-```swift
-func render() -> Node {
-    let items = ["Hello", "How", "Are", "You?"]
-    return
-        View(style: { $0.backgroundColor = .white }, [
-            VerticalStack(style: { $0.spacing = 40 }, layout: { $0.centerInContainer() },
-                items.map { Label($0) }
-            )
-        ])
-}
-```
-
-## Example:  A Loading Screen
-```swift
-import UIKit
-import Stevia
-import Komponents
-
-class LoadingScreen: UIViewController, StatelessComponent {
-
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-
-    override func loadView() { loadComponent() }
-
-    func render() -> Node {
-        return
-            View(style: { $0.backgroundColor = .darkGray }, [
-                HorizontalStack(style: { $0.spacing = 8 }, layout: {$0.centerInContainer() }, [
-                    Label("Loading...", style: { $0.textColor = .white }),
-                    ActivityIndicatorView(.white, style: { $0.startAnimating() })
-                ])
-            ])
-    }
-}
-```
-<img src="loadingScreen.png" alt="Loading" width="250">
-
-
-## More Examples
-Take a look at the example Project `KomponentsExample.xcodeproj` and play around !
+The easiest way to get started and feel the power of Komponents is to take a look at the example project `KomponentsExample.xcodeproj` and play around !
 
 <img src="examples.png" alt="Examples" width="250">
 
-## Patching
-Like React, Komponents tries to be smart about what it rerenders when the state changes, you get find more details [here](https://github.com/freshOS/Komponents/wiki/Patching)
+You can learn how, like React, Komponents tries to be smart about what it rerenders when the state changes in [Patching](https://github.com/freshOS/Komponents/wiki/Patching) section.
+
+You can find more detailed information and guides in the [Wiki](https://github.com/freshOS/Komponents/wiki)
 
 ## Installation
 Komponents can be installed Manually, via Carthage, Cocoapods or Swift Package Manager.  
 Detailed installation steps in the wiki [here](https://github.com/freshOS/Komponents/wiki/Installation)
-
-## Documentation
-You can find more detailed information and guides in the [Wiki](https://github.com/freshOS/Komponents/wiki)
 
 ## Contributors
 [YannickDot](https://github.com/YannickDot),
