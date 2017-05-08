@@ -50,6 +50,9 @@ Detailed installation steps in the wiki [here](https://github.com/freshOS/Kompon
 We'd love to hear what you think so don't hesitate to reach out through an issue or via twitter
 [@sachadso](https://twitter.com/sachadso)
 
+## License
+Komponents is released under the MIT license. See [LICENSE](https://github.com/freshOS/Komponents/blob/master/LICENSE)  for details.
+
 ## Inspiration
 [Facebook's React](https://facebook.github.io/react/), [ComponentKit](https://github.com/facebook/componentkit),
 [Preact](https://github.com/developit/preact), [Vue.js](https://vuejs.org) AlexDrone's render, Angular...
