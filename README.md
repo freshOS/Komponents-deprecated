@@ -14,15 +14,6 @@ Because it's unfair to need javascript to enjoy Components ! 😎
 ![Demo](demo.gif)
 *<p align="center">Building a Loading screen with Hot reload 🎩</p>*
 
-```swift
-func render() -> Node {
-    return Label("Hello, Component !")
-}
-```
-
-New to components? Fear not! [Facebook's React guide](https://facebook.github.io/react/) is a gold mine of information to get you started :)
-
-
 |      | Komponents                                   |
 | ---- | ---------------------------------------- |
 |  🔶  | Pure **Swift** (no JS, no XML)           |
@@ -32,7 +23,12 @@ New to components? Fear not! [Facebook's React guide](https://facebook.github.io
 
 ## Getting Started
 
+New to components? Fear not! [Facebook's React guide](https://facebook.github.io/react/) is a gold mine of information to get you started :)
+
+
 The easiest way to get started and feel the power of Komponents is to take a look at the example project `KomponentsExample.xcodeproj` and play around !
+
+For an even better experience, we strongly recommend enabling [Hot reload](https://github.com/freshOS/Komponents/wiki/Hot-Reload)
 
 <img src="examples.png" alt="Examples" width="250">
 
