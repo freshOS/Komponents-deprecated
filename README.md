@@ -52,7 +52,6 @@ Komponents is released under the MIT license. See [LICENSE](https://github.com/f
 ## Inspiration
 [Facebook's React](https://facebook.github.io/react/), [ComponentKit](https://github.com/facebook/componentkit),
 [Preact](https://github.com/developit/preact), [Vue.js](https://vuejs.org) AlexDrone's render, Angular...
-Pure Swift React/ ComponentKit implementation
 
 ## Other great libraries
 We're not the first to tackle the great endeavor of swift components and here are some other very cool projects :
