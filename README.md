@@ -30,75 +30,7 @@ New to components? Fear not! [Facebook's React guide](https://facebook.github.io
 |   📐  |Can use **Autolayout or any autolayout** lib for the layout (we like [Stevia](https://github.com/freshOS/Stevia)) |
 | 💉 | Supports **Hot Reload** with [💉 injectionForXcode](http://johnholdsworth.com/injection.html)|
 
-## A Bare Component
 
-A component is pretty simple :
-- It has a `render` function that returns a `Node`.
-- It has a `state` property.
-
-That's All!
-
-```swift
-import Komponents
-
-class MyFirstComponent: Component {
-
-    var state = MyState()
-
-    func render() -> Node {
-        return Label("Hello!")
-    }
-}
-```
-
-## View Controller Component
-To use a component as a `UIViewController` and play nicely with UIKit apis, just subclass
-`UIViewController` and call  `loadComponent` in `loadView` :)
-
-```swift
-class LoadingScreen: UIViewController, Component {
-
-    // Just call `loadComponent` in loadView :)
-    override func loadView() { loadComponent() }
-
-    func render() -> Node {
-        return ...
-    }
-}
-
-```
-You can now `push` and `present` your view controller like you used to, except this is now a powerful component! 😎
-
-## View Component
-This is particularly handy to start migrating parts of the App to using components without breaking everything!
-To use a component as a `UIView` and play nicely with UIKit apis, just subclass
-`UIView` and call  `loadComponent` in an `init` function :)
-```swift
-class MyCoolButton: UIView, Component {
-
-    // Here we load the component
-    convenience init() {
-        self.init(frame:CGRect.zero)
-        loadComponent()
-    }
-
-    func render() -> Node {
-        return ...
-    }
-}
-```
-This way you have classic `UIView` that behaves like a component! 💪
-
-## View-Wrapped Component
-Display your component in a UIView and use it wherever You want!
-```swift
-let view = ComponentView(component: MyComponent())
-```
-## ViewController-Wrapped Component
-Embbed your component in view Controller and present it anyway you want :)
-```swift
-let vc = ComponentVC(component: MyComponent())
-```
 ## Looping !
 
 ```swift
