@@ -283,38 +283,8 @@ Button: `title`(state normal), `backgroundImage` (state normal), `isEnabled`
 
 
 ## Installation
-
-### Carthage
-```
-github "freshOS/Komponents"
-```
-
-### CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can get it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-To link `Komponents` into your Xcode project using CocoaPods, add this in your `Podfile`:
-
-
-```ruby
-target 'MyAppTarget' # Replace with your target's name
-pod 'Komponents'
-use_frameworks!
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
-Open the project via the `myProject.xcworkspace` and you're good to go!
-
-### Manually
-Simply Copy and Paste all the `.swift` files from the `Source` folder  in your Xcode Project :)
+Komponents can be installed Manually, via Carthage, Cocoapods or Swift Package Manager.  
+Detailed installation steps in the wiki [here](https://github.com/freshOS/Komponents/wiki/Installation)
 
 ## Contributors
 [YannickDot](https://github.com/YannickDot),
