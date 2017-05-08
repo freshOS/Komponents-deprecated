@@ -4,6 +4,7 @@
 [![Language: Swift 3](https://img.shields.io/badge/language-swift3-f48041.svg?style=flat)](https://developer.apple.com/swift)
 ![Platform: iOS 9+](https://img.shields.io/badge/platform-iOS%209%2B-blue.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org)
 [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/freshOS/then/blob/master/LICENSE)
 ![Release version](https://img.shields.io/badge/release-0.1-blue.svg)
 
@@ -288,11 +289,32 @@ Button: `title`(state normal), `backgroundImage` (state normal), `isEnabled`
 github "freshOS/Komponents"
 ```
 
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can get it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To link `Komponents` into your Xcode project using CocoaPods, add this in your `Podfile`:
+
+
+```ruby
+target 'MyAppTarget' # Replace with your target's name
+pod 'Komponents'
+use_frameworks!
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+Open the project via the `myProject.xcworkspace` and you're good to go!
+
 ### Manually
 Simply Copy and Paste all the `.swift` files from the `Source` folder  in your Xcode Project :)
-
-### Cocoapods
-Coming soon
 
 ## Contributors
 [YannickDot](https://github.com/YannickDot),
