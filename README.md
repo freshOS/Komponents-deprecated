@@ -151,6 +151,9 @@ Like React, Komponents tries to be smart about what it rerenders when the state 
 Komponents can be installed Manually, via Carthage, Cocoapods or Swift Package Manager.  
 Detailed installation steps in the wiki [here](https://github.com/freshOS/Komponents/wiki/Installation)
 
+## Documentation
+You can find more detailed information and guides in the [Wiki](https://github.com/freshOS/Komponents/wiki)
+
 ## Contributors
 [YannickDot](https://github.com/YannickDot),
 [S4cha](https://github.com/S4cha), YOU ?!  
