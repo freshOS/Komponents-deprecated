@@ -254,8 +254,7 @@ Take a look at the example Project `KomponentsExample.xcodeproj` and play around
 <img src="examples.png" alt="Examples" width="250">
 
 ## Patching
-Like React, Komponents tries to be smart about what it rerenders when the state changes, you get find more details [here]
-(https://github.com/freshOS/Komponents/wiki/Patching)
+Like React, Komponents tries to be smart about what it rerenders when the state changes, you get find more details [here](https://github.com/freshOS/Komponents/wiki/Patching)
 
 ## Installation
 Komponents can be installed Manually, via Carthage, Cocoapods or Swift Package Manager.  
