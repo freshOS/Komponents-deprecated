@@ -23,14 +23,39 @@ class UIKitRenderer: Renderer {
         
         
         engine = withEngine
-        let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
+
         
-        if renderable is UIViewController || renderable is UIView {
-            compoenentRootView.fillContainer()
-        }
         
-        if let c = renderable as? IsComponent {
-            c.didRender()
+        if let cell = rootView as? UITableViewCell {
+            
+            
+            let compoenentRootView = viewFor(renderable: renderable, in:cell.contentView, atIndex: atIndex) //recursive
+            
+        
+    
+                compoenentRootView.fillContainer()
+            
+            
+            if let c = renderable as? IsComponent {
+                c.didRender()
+            }
+            if renderable is UIViewController || renderable is UIView {
+                compoenentRootView.fillContainer()
+            }
+            
+            if let c = renderable as? IsComponent {
+                c.didRender()
+            }
+        } else {
+            let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
+            
+            if renderable is UIViewController || renderable is UIView {
+                compoenentRootView.fillContainer()
+            }
+            
+            if let c = renderable as? IsComponent {
+                c.didRender()
+            }
         }
     }
     
@@ -61,6 +86,7 @@ class UIKitRenderer: Renderer {
             let stack = UIStackView()
             stack.axis = .vertical
             theView = stack
+            print(vStackNode)
             node.applyLayout = {
                 vStackNode.layoutBlock?(stack)
             }
@@ -227,9 +253,76 @@ class UIKitRenderer: Renderer {
             progressNode.ref?.pointee = progress
         }
         
+        if var tableNode = node as? Table {
+            let table = CallBackTableView(frame: CGRect.zero, style: tableNode.tableStyle)
+            table.estimatedRowHeight = 100
+            
+            if let rc = tableNode.refreshCallback {
+                let refreshControl = BlockBasedUIRefreshControl()
+                table.addSubview(refreshControl)
+                refreshControl.setCallback(rc)
+            }
+            
+            table.numberOfRows = {
+                return tableNode.cells.count
+            }
+            table.cellForRowAt = { tbv, ip in
+                if ip.section == 0 {
+                    let child = tableNode.cells[ip.row]
+                    return ComponentCell(component: child)
+                }
+                return UITableViewCell()
+            }
+            
+            
+            if let deleteCallback = tableNode.deleteCallback {
+                table.didDeleteRowAt = { ip in
+                    let shouldDeleteBlock = { (b:Bool) in
+                        if b {
+                            // Remove cell
+                            tableNode.cells.remove(at: ip.row)
+                            // Delete corresponding row.
+                            table.deleteRows(at: [ip], with: .none)
+                        } else {
+                            table.reloadRows(at: [ip], with: .none)
+                        }
+                    }
+                    deleteCallback(ip.row, shouldDeleteBlock)
+                }
+            }
+            
+            theView = table
+            node.applyLayout = {
+                tableNode.layoutBlock?(table)
+            }
+            node.applyStyle = {
+                tableNode.styleBlock?(table)
+            }
+            tableNode.ref?.pointee = table
+        }
+        
         let testLayoutBlock = { }
         
         if let theView = theView {
+            
+            
+            // Single node inside View: use fillContainer as default layout.
+            if node is View {
+                if node.children.count == 1 {
+                    if var singleChild = node.children[0] as? VerticalStack {
+                        if singleChild.layoutBlock == nil {
+                            singleChild.layoutBlock = {
+                                $0.fillContainer()
+                            }
+                            node.children[0] = singleChild
+                        }
+                    }
+                    
+                }
+            }
+            
+            
+            
             for c in node.children {                
                 viewFor(renderable: c, in: theView)
             }

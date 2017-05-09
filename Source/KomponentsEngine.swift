@@ -122,4 +122,12 @@ public class KomponentsEngine {
     public func render<C: IsComponent>(component: C, in view: UIView) {
         renderer.render(component, in: view, withEngine: self, atIndex: nil)
     }
+    
+    public func render(component: IsComponent, in view: UIView) {
+        renderer.render(component, in: view, withEngine: self, atIndex: nil)
+    }
+    
+    public func render(component: Renderable, in view: UIView) {
+        renderer.render(component, in: view, withEngine: self, atIndex: nil)
+    }
 }
