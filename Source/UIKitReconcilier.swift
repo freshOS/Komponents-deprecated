@@ -37,6 +37,7 @@ class UIKitReconcilier {
     }
     
     func smash(_ oldNode: UIView, _ newNode: UIView) {
+        print(oldNode)
         // read each node attributes and diff them
         // then patch the old node (side-effect)
         // - layout
@@ -124,6 +125,18 @@ class UIKitReconcilier {
                 }
                 log("💉 Patch Image")
             }
+        }
+        
+        
+        // Switch
+        if let oldSwitch = oldNode as? UISwitch, let newSwitch = newNode as? UISwitch {
+            if newSwitch.isOn != oldSwitch.isOn {
+                updates.append {
+                    oldSwitch.isOn = newSwitch.isOn
+                }
+                log("💉 Patch isON")
+            }
+            
         }
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9923C6461EC1BE9200E4E5CC /* FenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923C6451EC1BE9200E4E5CC /* FenceCell.swift */; };
 		99317BBD1EB8596E0019A524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BA71EB8596E0019A524 /* AppDelegate.swift */; };
 		99317BBE1EB8596E0019A524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99317BA81EB8596E0019A524 /* Assets.xcassets */; };
 		99317BBF1EB8596E0019A524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99317BA91EB8596E0019A524 /* LaunchScreen.storyboard */; };
@@ -30,6 +31,7 @@
 		99317BDC1EB85A200019A524 /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; };
 		99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99A623E31EBCDA280091EBFD /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99CF3C8D1EC0F1B6006ACA47 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9923C6451EC1BE9200E4E5CC /* FenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FenceCell.swift; sourceTree = "<group>"; };
 		99317B841EB858770019A524 /* KomponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KomponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99317BA71EB8596E0019A524 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99317BA81EB8596E0019A524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		99317BBC1EB8596E0019A524 /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
 		99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Komponents.xcodeproj; sourceTree = SOURCE_ROOT; };
 		99A623E31EBCDA280091EBFD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
+		99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,8 @@
 				99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */,
 				99317BBB1EB8596E0019A524 /* TimerVC.swift */,
 				99317BBC1EB8596E0019A524 /* TodoVC.swift */,
+				99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */,
+				9923C6451EC1BE9200E4E5CC /* FenceCell.swift */,
 				99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */,
 			);
 			path = KomponentsExample;
@@ -278,9 +284,11 @@
 				99317BC01EB8596E0019A524 /* Counter.swift in Sources */,
 				99317BCA1EB8596E0019A524 /* MyCell.swift in Sources */,
 				99317BC61EB8596E0019A524 /* LoadingVC.swift in Sources */,
+				99CF3C8D1EC0F1B6006ACA47 /* StaticTableVC.swift in Sources */,
 				99317BC41EB8596E0019A524 /* HelloWorldVC.swift in Sources */,
 				99317BCF1EB8596E0019A524 /* TableViewCellExampleVC.swift in Sources */,
 				99317BCE1EB8596E0019A524 /* Requirements.swift in Sources */,
+				9923C6461EC1BE9200E4E5CC /* FenceCell.swift in Sources */,
 				99317BD11EB8596E0019A524 /* TodoVC.swift in Sources */,
 				99317BC21EB8596E0019A524 /* DefaultNodesVC.swift in Sources */,
 				99317BC91EB8596E0019A524 /* LoopVC.swift in Sources */,

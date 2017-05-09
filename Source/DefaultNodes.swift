@@ -165,6 +165,10 @@ public struct VerticalStack: Node {
         self.styleBlock = style
         self.children = children
     }
+    
+    mutating func newLayoutBlock(_ layout: @escaping ((UIStackView) -> Void)) {
+        layoutBlock = layout
+    }
 }
 
 public struct HorizontalStack: Node {
@@ -441,6 +445,45 @@ public struct Progress: Node {
     }
 }
 
+public typealias EndRefreshingCallback = () -> Void
+
+public typealias ShouldDeleteBlock = (Bool) -> Void
+//
+//public typealias DeleteCallback = (Int, ShouldDeleteBlock) -> Void
+
+
+public struct Table: Node {
+    
+    public var applyStyle: (() -> Void)?
+    public var applyLayout: (() -> Void)?
+    var layoutBlock: ((UITableView) -> Void)?
+    var styleBlock: ((UITableView) -> Void)?
+    public var children = [Renderable]()
+    public var cells = [Renderable]()
+    var tableStyle: UITableViewStyle = .plain
+    var ref: UnsafeMutablePointer<UITableView>?
+    var refreshCallback: (( @escaping EndRefreshingCallback) -> Void)?
+    var deleteCallback: ((Int, @escaping ShouldDeleteBlock) -> Void)?
+    
+    
+    public init(_ tableStyle: UITableViewStyle = .plain,
+                refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,
+                delete: ((Int, @escaping ShouldDeleteBlock) -> Void)? = nil,
+                style: ((UITableView) -> Void)? = nil,
+                layout: ((UITableView) -> Void)? = nil,
+                ref: UnsafeMutablePointer<UITableView>? = nil,
+                _ cells:[Renderable]) {
+        self.layoutBlock = layout
+        self.styleBlock = style
+        self.tableStyle = tableStyle
+        self.ref = ref
+        self.cells = cells
+        self.refreshCallback = refresh
+        self.deleteCallback = delete
+        
+    }
+}
+
 // Block Based UIControls
 
 class BlockBasedUITextField: UITextField {
@@ -517,5 +560,74 @@ class BlockBasedUISwitch: UISwitch {
     }
 }
 
+class BlockBasedUIRefreshControl: UIRefreshControl {
+    
+    public var actionHandler: ((@escaping EndRefreshingCallback) -> Void)?
+    
+    public func setCallback(_ callback :@escaping (( @escaping EndRefreshingCallback) -> Void)) {
+        actionHandler = callback
+        addTarget(self, action: #selector(refreshCallback), for: .valueChanged)
+    }
+    
+    func refreshCallback(sender: UIRefreshControl) {
+        actionHandler?({
+            self.endRefreshing()
+        })
+    }
+}
+
 // Left to implement.
 //SegmentedControl Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
+
+
+
+class CallBackTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+    
+    var nbOfSections: Int = 1
+    var numberOfRows:(() -> Int)?
+    var numberOfRowsInSection: ((Int) -> Int)?
+    var cellForRowAt: ((UITableView, IndexPath) -> UITableViewCell)?
+    var didSelectRowAt: ((IndexPath) -> Void)?
+    var didDeleteRowAt: ((IndexPath) -> Void)?
+    
+    override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
+        dataSource = self
+        delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return nbOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRows?() ?? numberOfRowsInSection?(section) ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cellForRowAt = cellForRowAt {
+            return cellForRowAt(tableView, indexPath)
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectRowAt?(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCellEditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            didDeleteRowAt?(indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return didDeleteRowAt != nil
+    }
+}

@@ -25,3 +25,20 @@ public class ComponentView<T: Component> :UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
+public class ComponentCell :UITableViewCell {
+    
+    public let component: Renderable!
+    
+    public init(component: Renderable) {
+        self.component = component
+        super.init(style: .default, reuseIdentifier: "")
+        selectionStyle = .none
+        KomponentsEngine.shared.render(component:component, in: self)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
