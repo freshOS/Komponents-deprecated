@@ -13,12 +13,13 @@ import Komponents
 class HelloWorldVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
+    var  aView = UIView()
     
-    func render() -> Node {
+    func render() -> Tree {
         title = "Hello World"
         return
-            View(style: { $0.backgroundColor = .white }, [
-                Label("Hello World", layout: { $0.centerInContainer() })
+            View([
+                Label("Hello World", .center)
             ])
     }
 }

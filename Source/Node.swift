@@ -8,14 +8,4 @@
 
 import Foundation
 
-public protocol Node: Renderable {
-    var children: [Renderable] { get set }
-    var applyStyle: (() -> Void)? { get set }
-    var applyLayout: (() -> Void)? { get set }
-}
-
-extension Node {
-    public func render() -> Node {
-        return self
-    }
-}
+protocol Node: IsNode, HasProps { }

@@ -21,11 +21,11 @@ class HelloPropsVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
     
-    func render() -> Node {        
+    func render() -> Tree {
         title = "Hello \(name)"
         return
-            View(style: { $0.backgroundColor = .white }, [
-                Label("Hello \(name)", layout: { $0.centerInContainer() })
+            View([
+                Label("Hello \(name)", .center)
             ])
     }
 }
