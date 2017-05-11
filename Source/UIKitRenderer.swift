@@ -74,6 +74,12 @@ class UIKitRenderer {
             l.text = node.props.text
             return l
         }
+        
+        if let node = node as? ActivityIndicatorView {
+            let v = UIActivityIndicatorView(activityIndicatorStyle: node.props.activityIndicatorStyle)
+            v.startAnimating()
+            return v
+        }
         return UIView()
     }
 }
