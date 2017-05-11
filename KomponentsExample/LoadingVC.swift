@@ -1,53 +1,54 @@
-////
-////  LoadingVC.swift
-////  KomponentsExample
-////
-////  Created by Sacha Durand Saint Omer on 29/04/2017.
-////  Copyright © 2017 freshOS. All rights reserved.
-////
 //
-//import UIKit
-//import Stevia
-//import Komponents
+//  LoadingVC.swift
+//  KomponentsExample
 //
-//class LoadingVC: UIViewController, StatelessComponent {
-//    
-//    override func loadView() { loadComponent() }
-//    
-//    func render() -> Node {
-//        title = "Loading"
-//        return
-//            View(style: { $0.backgroundColor = .white }, [
+//  Created by Sacha Durand Saint Omer on 29/04/2017.
+//  Copyright © 2017 freshOS. All rights reserved.
+//
+
+import UIKit
+import Stevia
+import Komponents
+
+class LoadingVC: UIViewController, StatelessComponent {
+    
+    override func loadView() { loadComponent() }
+    
+    func render() -> Tree {
+        title = "Loading"
+        return
+            View([
 //                HorizontalStack(layout: { $0.centerInContainer() }, [
-//                    Label("Loading..."), ActivityIndicatorView()
+//                    Label("Loading..."), 
+                ActivityIndicatorView(.gray, .center)
 //                ])
-//            ])
-//    }
-//}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+            ])
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

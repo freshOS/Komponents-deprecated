@@ -20,6 +20,7 @@
 		992C39901EC4A3FE005DAFA8 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C398F1EC4A3FE005DAFA8 /* Tree.swift */; };
 		992C39931EC4A569005DAFA8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39921EC4A569005DAFA8 /* View.swift */; };
 		992C39951EC4A673005DAFA8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39941EC4A673005DAFA8 /* Label.swift */; };
+		992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */; };
 		99317BEF1EB85B5D0019A524 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE51EB85B5D0019A524 /* Component.swift */; };
 		99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE61EB85B5D0019A524 /* ComponentVC.swift */; };
 		99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE71EB85B5D0019A524 /* ComponentView.swift */; };
@@ -59,6 +60,7 @@
 		992C398F1EC4A3FE005DAFA8 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		992C39921EC4A569005DAFA8 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		992C39941EC4A673005DAFA8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		99317BE51EB85B5D0019A524 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		99317BE61EB85B5D0019A524 /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
 		99317BE71EB85B5D0019A524 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				992C39921EC4A569005DAFA8 /* View.swift */,
 				992C39941EC4A673005DAFA8 /* Label.swift */,
+				992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */,
 			);
 			name = "Default Nodes";
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */,
 				992C39851EC4A325005DAFA8 /* HasProps.swift in Sources */,
 				99317BF41EB85B5D0019A524 /* Node.swift in Sources */,
+				992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */,
 				99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */,
 				99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */,
 				99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */,

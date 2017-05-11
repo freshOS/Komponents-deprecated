@@ -274,28 +274,6 @@ func generateUniqueId() -> Int {
 //    }
 //}
 
-//public struct ActivityIndicatorView: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIActivityIndicatorView) -> Void)?
-//    var styleBlock: ((UIActivityIndicatorView) -> Void)?
-//    public var children = [Renderable]()
-//
-//    var ref: UnsafeMutablePointer<UIActivityIndicatorView>?
-//    var activityIndicatorStyle = UIActivityIndicatorViewStyle.gray
-//    
-//    public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .gray,
-//                style: ((UIActivityIndicatorView) -> Void)? = nil,
-//                layout: ((UIActivityIndicatorView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//        self.activityIndicatorStyle = activityIndicatorStyle
-//    }
-//}
-
 //public struct Slider: Node {
 //    
 //    public var applyStyle: (() -> Void)?
