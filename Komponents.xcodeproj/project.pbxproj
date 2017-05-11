@@ -21,6 +21,7 @@
 		992C39931EC4A569005DAFA8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39921EC4A569005DAFA8 /* View.swift */; };
 		992C39951EC4A673005DAFA8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39941EC4A673005DAFA8 /* Label.swift */; };
 		992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */; };
+		992C399B1EC4BC39005DAFA8 /* HorizontalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */; };
 		99317BEF1EB85B5D0019A524 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE51EB85B5D0019A524 /* Component.swift */; };
 		99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE61EB85B5D0019A524 /* ComponentVC.swift */; };
 		99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE71EB85B5D0019A524 /* ComponentView.swift */; };
@@ -61,6 +62,7 @@
 		992C39921EC4A569005DAFA8 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		992C39941EC4A673005DAFA8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStack.swift; sourceTree = "<group>"; };
 		99317BE51EB85B5D0019A524 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		99317BE61EB85B5D0019A524 /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
 		99317BE71EB85B5D0019A524 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				992C39921EC4A569005DAFA8 /* View.swift */,
 				992C39941EC4A673005DAFA8 /* Label.swift */,
 				992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */,
+				992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */,
 			);
 			name = "Default Nodes";
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				992C39831EC4A313005DAFA8 /* HasChildren.swift in Sources */,
 				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
 				992C398E1EC4A3F0005DAFA8 /* CompareTrees.swift in Sources */,
+				992C399B1EC4BC39005DAFA8 /* HorizontalStack.swift in Sources */,
 				992C39871EC4A332005DAFA8 /* HasAPropsHash.swift in Sources */,
 				992C39951EC4A673005DAFA8 /* Label.swift in Sources */,
 				992C39901EC4A3FE005DAFA8 /* Tree.swift in Sources */,

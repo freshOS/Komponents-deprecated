@@ -18,10 +18,9 @@ class LoadingVC: UIViewController, StatelessComponent {
         title = "Loading"
         return
             View([
-//                HorizontalStack(layout: { $0.centerInContainer() }, [
-//                    Label("Loading..."), 
-                ActivityIndicatorView(.gray, .center)
-//                ])
+                HorizontalStack(.center, [
+                    Label("Loading..."), ActivityIndicatorView(.gray)
+                ])
             ])
     }
 }

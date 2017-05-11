@@ -9,7 +9,7 @@
 import Foundation
 
 
-func top(_ value:Int) -> Layout {
+public func top(_ value:Int) -> Layout {
     return Layout(top: value)
 }
 

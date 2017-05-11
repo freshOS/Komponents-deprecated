@@ -20,8 +20,7 @@ class UIKitRenderer {
         render(tree: tree, in: v)
         return v.subviews[0]
     }
-        
-        
+    
     func render(tree:Tree, in view: UIView) {
         nodeIdViewMap = [Int: UIView]() //Reset
         let newView = viewForNode(node: tree)
@@ -38,7 +37,11 @@ class UIKitRenderer {
         
         // Use autolayout
         newView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(newView)
+        if let stackView = view as? UIStackView {
+            stackView.addArrangedSubview(newView)
+        } else {
+            view.addSubview(newView)
+        }
         
         // add autolayout constraints. // TODO func
         if tree.layout.isCenteredVertically == true {
@@ -78,6 +81,15 @@ class UIKitRenderer {
         if let node = node as? ActivityIndicatorView {
             let v = UIActivityIndicatorView(activityIndicatorStyle: node.props.activityIndicatorStyle)
             v.startAnimating()
+            return v
+        }
+        
+        if let node = node as? HorizontalStack {
+            let v = UIStackView()
+            v.axis = .horizontal
+            
+            print(v.alignment)
+//            v.alignment = .fill
             return v
         }
         return UIView()
