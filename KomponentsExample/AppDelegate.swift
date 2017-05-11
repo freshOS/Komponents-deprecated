@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LoadingVC()//UINavigationController(rootViewController: NavigationVC()) // Using a UIViewController Component.
+        window?.rootViewController = CounterVC()//UINavigationController(rootViewController: NavigationVC()) // Using a UIViewController Component.
         window?.makeKeyAndVisible()
         Komponents.logsEnabled = true
         return true

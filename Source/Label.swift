@@ -15,7 +15,7 @@ public struct Label: Node, Equatable {
     public var children = [IsNode]()
     let props: LabelProps
     public let layout: Layout
-    let ref: UnsafeMutablePointer<UILabel>?
+    public let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",
          _ layout:Layout? = nil,
@@ -42,5 +42,5 @@ struct LabelProps: Equatable, Hashable {
 }
 
 func == (lhs: LabelProps, rhs: LabelProps) -> Bool {
-    return true
+    return lhs.hashValue == rhs.hashValue
 }
