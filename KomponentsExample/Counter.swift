@@ -14,7 +14,6 @@ class Counter: Component {
     
     var state = 0
     
-    
     var color = UIColor.red
     
     init(color: UIColor) {

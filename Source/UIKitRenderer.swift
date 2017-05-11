@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import MapKit
 
 class UIKitRenderer: Renderer {
     
     weak var engine: KomponentsEngine!
     weak var parentComponent: IsComponent?
     
-    func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int? = nil) {
+    func render(_ renderable: Renderable,
+                in rootView: UIView,
+                withEngine: KomponentsEngine,
+                atIndex: Int? = nil,
+                ignoreRefs: Bool = false) {
         
         if rootView.superview != nil {
             if let c = renderable as? IsComponent, Komponents.logsEnabled {
@@ -29,7 +34,7 @@ class UIKitRenderer: Renderer {
         if let cell = rootView as? UITableViewCell {
             
             
-            let compoenentRootView = viewFor(renderable: renderable, in:cell.contentView, atIndex: atIndex) //recursive
+            let compoenentRootView = viewFor(renderable: renderable, in:cell.contentView, atIndex: atIndex, ignoreRefs: ignoreRefs) //recursive
             
         
     
@@ -47,7 +52,7 @@ class UIKitRenderer: Renderer {
                 c.didRender()
             }
         } else {
-            let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex) //recursive
+            let compoenentRootView = viewFor(renderable: renderable, in:rootView, atIndex: atIndex, ignoreRefs: ignoreRefs) //recursive
             
             if renderable is UIViewController || renderable is UIView {
                 compoenentRootView.fillContainer()
@@ -60,7 +65,7 @@ class UIKitRenderer: Renderer {
     }
     
     @discardableResult
-    func viewFor(renderable: Renderable, in parentView: UIView, atIndex: Int? = nil) -> UIView {
+    func viewFor(renderable: Renderable, in parentView: UIView, atIndex: Int? = nil, ignoreRefs: Bool) -> UIView {
         
         // Store Parent component to associated it with its future children.
         if let c = renderable as? IsComponent, c is UIViewController || c is UIView {
@@ -79,7 +84,9 @@ class UIKitRenderer: Renderer {
             node.applyStyle = {
                 viewNode.styleBlock?(v)
             }
-            viewNode.ref?.pointee = v
+            if !ignoreRefs {
+                viewNode.ref?.pointee = v
+            }
         }
         
         if let vStackNode = node as? VerticalStack {
@@ -160,7 +167,9 @@ class UIKitRenderer: Renderer {
             node.applyStyle = {
                 buttonNode.styleBlock?(button)
             }
-            buttonNode.ref?.pointee = button
+            if !ignoreRefs {
+                buttonNode.ref?.pointee = button
+            }
         }
         
         if let imageNode = node as? Image {
@@ -301,6 +310,23 @@ class UIKitRenderer: Renderer {
             tableNode.ref?.pointee = table
         }
         
+        if let mapNode = node as? Map {
+            // MKMapView cannot be created in a BG thread !!
+            DispatchQueue.main.sync {
+                let map = MKMapView()
+                theView = map
+                node.applyLayout = {
+                    mapNode.layoutBlock?(map)
+                }
+                node.applyStyle = {
+                    mapNode.styleBlock?(map)
+                }
+                if !ignoreRefs{
+                    mapNode.ref?.pointee = map
+                }
+            }
+        }
+        
         let testLayoutBlock = { }
         
         if let theView = theView {
@@ -322,9 +348,74 @@ class UIKitRenderer: Renderer {
             }
             
             
+            // TEST
+            // Fill view children by default if the view nor the children have 
+            //  layout specified.
+            if node is View {
+                
+                var hasNolayout = false
+                
+                if let view = node as? View {
+                    if view.layoutBlock == nil {
+                        hasNolayout = true
+                    }
+                }
+                
+                
+                if hasNolayout {
+                    node.children = node.children.map { c in
+                        
+                        //TODO refactor
+                        
+                        // View child
+                        if var c = c as? View {
+                            if c.layoutBlock == nil {
+                                c.layoutBlock = {
+                                    $0.fillContainer()
+                                }
+                                return c
+                            }
+                        }
+                        
+                        // Button child
+                        if var c = c as? Button {
+                            if c.layoutBlock == nil {
+                                c.layoutBlock = {
+                                    $0.fillContainer()
+                                }
+                                return c
+                            }
+                        }
+                        
+                        // Image child
+                        if var c = c as? Image {
+                            if c.layoutBlock == nil {
+                                c.layoutBlock = {
+                                    $0.fillContainer()
+                                }
+                                return c
+                            }
+                        }
+                        
+                        // Map child
+                        if var c = c as? Map {
+                            if c.layoutBlock == nil {
+                                c.layoutBlock = {
+                                    $0.fillContainer()
+                                }
+                                return c
+                            }
+                        }
+                        
+                        return c
+                    }
+                }
+            }
+            
+            
             
             for c in node.children {                
-                viewFor(renderable: c, in: theView)
+                viewFor(renderable: c, in: theView, ignoreRefs: ignoreRefs)
             }
             
             if let viewNode = node as? View {
@@ -334,13 +425,13 @@ class UIKitRenderer: Renderer {
                         if let c = a as? Int {
                             newArray.append(CGFloat(c))
                         } else if let n = a as? Node {
-                            newArray.append(viewFor(renderable: n, in: theView))
+                            newArray.append(viewFor(renderable: n, in: theView, ignoreRefs: ignoreRefs))
                         } else if let array = a as? [Any] {
                             let transformedArray:[Any] = array.map { x in
                                 if let i = x as? Int {
                                     return CGFloat(i)
                                 } else if let n = x as? Node {
-                                    return viewFor(renderable: n, in: theView)
+                                    return viewFor(renderable: n, in: theView, ignoreRefs: ignoreRefs)
                                 }
                                 return ""
                             }

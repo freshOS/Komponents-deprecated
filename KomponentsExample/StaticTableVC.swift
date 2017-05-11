@@ -27,7 +27,7 @@ class StaticTableVC: UIViewController, StatelessComponent {
         title = "Static Table"
         return
             Table(.grouped, refresh: refresh, style: { $0.separatorStyle = .none },
-                  fences.map {
+                  fences.map { fence in
                     FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
                 }
             )
