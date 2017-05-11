@@ -12,7 +12,7 @@ open class ComponentViewController: UIViewController, Component {
     
     public var state = true
     
-    open func render() -> Node {
+    open func render() -> Tree {
         return View([])
     }
     

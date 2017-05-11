@@ -9,18 +9,27 @@
 /* Begin PBXBuildFile section */
 		9917E5121EB85709005C6092 /* KomponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9917E50F1EB856CC005C6092 /* KomponentsTests.swift */; };
 		9917E5141EB8574A005C6092 /* Komponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 9917E50A1EB856C2005C6092 /* Komponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992C397F1EC4A2AD005DAFA8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C397E1EC4A2AD005DAFA8 /* Layout.swift */; };
+		992C39811EC4A303005DAFA8 /* HasLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39801EC4A303005DAFA8 /* HasLayout.swift */; };
+		992C39831EC4A313005DAFA8 /* HasChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39821EC4A313005DAFA8 /* HasChildren.swift */; };
+		992C39851EC4A325005DAFA8 /* HasProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39841EC4A325005DAFA8 /* HasProps.swift */; };
+		992C39871EC4A332005DAFA8 /* HasAPropsHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39861EC4A332005DAFA8 /* HasAPropsHash.swift */; };
+		992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39881EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift */; };
+		992C398C1EC4A36E005DAFA8 /* IsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C398B1EC4A36E005DAFA8 /* IsNode.swift */; };
+		992C398E1EC4A3F0005DAFA8 /* CompareTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */; };
+		992C39901EC4A3FE005DAFA8 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C398F1EC4A3FE005DAFA8 /* Tree.swift */; };
+		992C39931EC4A569005DAFA8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39921EC4A569005DAFA8 /* View.swift */; };
+		992C39951EC4A673005DAFA8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39941EC4A673005DAFA8 /* Label.swift */; };
 		99317BEF1EB85B5D0019A524 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE51EB85B5D0019A524 /* Component.swift */; };
 		99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE61EB85B5D0019A524 /* ComponentVC.swift */; };
 		99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE71EB85B5D0019A524 /* ComponentView.swift */; };
 		99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE81EB85B5D0019A524 /* ComponentViewController.swift */; };
 		99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE91EB85B5D0019A524 /* DefaultNodes.swift */; };
 		99317BF41EB85B5D0019A524 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEA1EB85B5D0019A524 /* Node.swift */; };
-		99317BF51EB85B5D0019A524 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEB1EB85B5D0019A524 /* Renderable.swift */; };
 		99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEC1EB85B5D0019A524 /* Renderer.swift */; };
 		99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */; };
 		99317BF81EB85B5D0019A524 /* KomponentsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BEE1EB85B5D0019A524 /* KomponentsEngine.swift */; };
 		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
-		998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998740AB1EB23EFB00750421 /* Stevia.framework */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,13 +48,23 @@
 		9917E50A1EB856C2005C6092 /* Komponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Komponents.h; sourceTree = "<group>"; };
 		9917E50E1EB856CC005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9917E50F1EB856CC005C6092 /* KomponentsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KomponentsTests.swift; sourceTree = "<group>"; };
+		992C397E1EC4A2AD005DAFA8 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		992C39801EC4A303005DAFA8 /* HasLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasLayout.swift; sourceTree = "<group>"; };
+		992C39821EC4A313005DAFA8 /* HasChildren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasChildren.swift; sourceTree = "<group>"; };
+		992C39841EC4A325005DAFA8 /* HasProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasProps.swift; sourceTree = "<group>"; };
+		992C39861EC4A332005DAFA8 /* HasAPropsHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasAPropsHash.swift; sourceTree = "<group>"; };
+		992C39881EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasAUniqueIdentifier.swift; sourceTree = "<group>"; };
+		992C398B1EC4A36E005DAFA8 /* IsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNode.swift; sourceTree = "<group>"; };
+		992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareTrees.swift; sourceTree = "<group>"; };
+		992C398F1EC4A3FE005DAFA8 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		992C39921EC4A569005DAFA8 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		992C39941EC4A673005DAFA8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		99317BE51EB85B5D0019A524 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		99317BE61EB85B5D0019A524 /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
 		99317BE71EB85B5D0019A524 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		99317BE81EB85B5D0019A524 /* ComponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		99317BE91EB85B5D0019A524 /* DefaultNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultNodes.swift; sourceTree = "<group>"; };
 		99317BEA1EB85B5D0019A524 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		99317BEB1EB85B5D0019A524 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		99317BEC1EB85B5D0019A524 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitRenderer.swift; sourceTree = "<group>"; };
 		99317BEE1EB85B5D0019A524 /* KomponentsEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KomponentsEngine.swift; sourceTree = "<group>"; };
@@ -60,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998740AC1EB23EFB00750421 /* Stevia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +112,29 @@
 			path = KomponentsTests;
 			sourceTree = "<group>";
 		};
+		992C398A1EC4A356005DAFA8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				992C398B1EC4A36E005DAFA8 /* IsNode.swift */,
+				992C398F1EC4A3FE005DAFA8 /* Tree.swift */,
+				992C39801EC4A303005DAFA8 /* HasLayout.swift */,
+				992C39821EC4A313005DAFA8 /* HasChildren.swift */,
+				992C39841EC4A325005DAFA8 /* HasProps.swift */,
+				992C39861EC4A332005DAFA8 /* HasAPropsHash.swift */,
+				992C39881EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		992C39911EC4A55E005DAFA8 /* Default Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				992C39921EC4A569005DAFA8 /* View.swift */,
+				992C39941EC4A673005DAFA8 /* Label.swift */,
+			);
+			name = "Default Nodes";
+			sourceTree = "<group>";
+		};
 		99317BE41EB85B5D0019A524 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +142,16 @@
 				99317BE61EB85B5D0019A524 /* ComponentVC.swift */,
 				99317BE71EB85B5D0019A524 /* ComponentView.swift */,
 				99317BE81EB85B5D0019A524 /* ComponentViewController.swift */,
-				99317BE91EB85B5D0019A524 /* DefaultNodes.swift */,
 				99317BEA1EB85B5D0019A524 /* Node.swift */,
-				99317BEB1EB85B5D0019A524 /* Renderable.swift */,
+				99317BE91EB85B5D0019A524 /* DefaultNodes.swift */,
 				99317BEC1EB85B5D0019A524 /* Renderer.swift */,
 				99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */,
 				99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */,
 				99317BEE1EB85B5D0019A524 /* KomponentsEngine.swift */,
+				992C397E1EC4A2AD005DAFA8 /* Layout.swift */,
+				992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */,
+				992C39911EC4A55E005DAFA8 /* Default Nodes */,
+				992C398A1EC4A356005DAFA8 /* Protocols */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -250,16 +294,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */,
+				992C39831EC4A313005DAFA8 /* HasChildren.swift in Sources */,
 				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
+				992C398E1EC4A3F0005DAFA8 /* CompareTrees.swift in Sources */,
+				992C39871EC4A332005DAFA8 /* HasAPropsHash.swift in Sources */,
+				992C39951EC4A673005DAFA8 /* Label.swift in Sources */,
+				992C39901EC4A3FE005DAFA8 /* Tree.swift in Sources */,
 				99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */,
 				99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */,
-				99317BF51EB85B5D0019A524 /* Renderable.swift in Sources */,
+				992C397F1EC4A2AD005DAFA8 /* Layout.swift in Sources */,
+				992C39811EC4A303005DAFA8 /* HasLayout.swift in Sources */,
 				99317BF81EB85B5D0019A524 /* KomponentsEngine.swift in Sources */,
 				99317BEF1EB85B5D0019A524 /* Component.swift in Sources */,
+				992C39931EC4A569005DAFA8 /* View.swift in Sources */,
+				992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */,
+				992C39851EC4A325005DAFA8 /* HasProps.swift in Sources */,
 				99317BF41EB85B5D0019A524 /* Node.swift in Sources */,
 				99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */,
 				99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */,
 				99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */,
+				992C398C1EC4A36E005DAFA8 /* IsNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

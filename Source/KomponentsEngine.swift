@@ -6,7 +6,6 @@
 //  Copyright © 2017 freshOS. All rights reserved.
 //
 
-import Stevia
 import UIKit
 
 public class Komponents {
@@ -17,121 +16,186 @@ public class Komponents {
 public class KomponentsEngine {
     
     static let shared = KomponentsEngine()
-    
-    // retain non-VC components here
-    var componentsMap = [String: IsComponent]()
-    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
-    var viewMap = [String: UIView]()
-    
-    func viewForComponentId(_ id :String) -> UIView {
-        return viewMap[id]!
-    }
-    
-    private convenience init() {
-        self.init(renderer:UIKitRenderer())
-    }
-    
-    let renderer: Renderer
-    private init(renderer: Renderer) {
-        self.renderer = renderer
-    }
-    
-    public func updateComponent(_ component: IsComponent, patching:Bool) {
-        // VC Component
-        if let vc = component as? UIViewController {
-            if patching && component.enablePatching() {
-                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                    // Test rerender in another view first.
-                    let myView = UIView()
-                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil, ignoreRefs: true)
-                    
-                    let r = UIKitReconcilier()
-                    r.mainUpdateChildren(vc.view, myView)
-                    
-                }
-            } else {
-                // Rerender all.
-                for sv in vc.view.subviews {
-                    sv.removeFromSuperview()
-                }
-                // Re-render compoenent in superview.
-                self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil, ignoreRefs: false)
-            }
-        } else if let cellComponent = component as? UITableViewCell { // UITableViewCell Component
-            
-
-            if var canBeDirty = cellComponent as? CanBeDirty {
-            
-                if canBeDirty.isDirty {
-                    //TODO Here only rerender if render() yield a diffrerent node
-                    for sv in cellComponent.contentView.subviews {
-                        sv.removeFromSuperview()
-                    }
-                    self.renderer.render(component, in: cellComponent.contentView, withEngine: self, atIndex: nil, ignoreRefs: false)
-                    canBeDirty.isDirty = false
-                }
-            }
-        } else if let viewComponent = component as? UIView { // UIView Component
-            if patching && component.enablePatching() {
-                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                    // Test rerender in another view first.
-                    let myView = UIView()
-                    self.renderer.render(component,
-                                         in: myView,
-                                         withEngine: self,
-                                         atIndex: nil,
-                                         ignoreRefs: true)
-                    
-                    let r = UIKitReconcilier()
-                    r.mainUpdateChildren(viewComponent, myView)
-                    
-                }
-            } else {
-                // Re-render all
-                for sv in viewComponent.subviews {
-                    sv.removeFromSuperview()
-                }
-                self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil, ignoreRefs: false)
-            }
-        } else {
-            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
-            // Non-VC Component
-            
-            // TODO enable patching for non-VC  components
-//            if patching && component.enablePatching(), let superview = associatedView.superview {
-//                
+//    
+//    // retain non-VC components here
+//    var componentsMap = [String: IsComponent]()
+//    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
+//    var viewMap = [String: UIView]()
+//    
+//    func viewForComponentId(_ id :String) -> UIView {
+//        return viewMap[id]!
+//    }
+//    
+//    public func updateComponent(_ component: IsComponent, patching:Bool) {
+//        // VC Component
+//        if let vc = component as? UIViewController {
+//            if patching && component.enablePatching() {
 //                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
 //                    // Test rerender in another view first.
 //                    let myView = UIView()
-//                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil)
+//                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil, ignoreRefs: true)
 //                    
 //                    let r = UIKitReconcilier()
-//                    r.mainUpdateChildren(superview, myView)
+//                    r.mainUpdateChildren(vc.view, myView)
+//                    
 //                }
 //            } else {
-                if let superview = associatedView.superview {
-                    var stackViewIndex: Int?
-                    if let stackView = superview as? UIStackView {
-                        stackViewIndex = stackView.arrangedSubviews.index(of: associatedView)
-                    }
-                    // Remove previous view hierarchy.
-                    associatedView.removeFromSuperview()
-                    // Re-render compoenent in superview.
-                    self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex, ignoreRefs: false)
-                }
+//                // Rerender all.
+//                for sv in vc.view.subviews {
+//                    sv.removeFromSuperview()
+//                }
+//                // Re-render compoenent in superview.
+//                self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil, ignoreRefs: false)
 //            }
+//        } else if let cellComponent = component as? UITableViewCell { // UITableViewCell Component
+//            
+//
+//            if var canBeDirty = cellComponent as? CanBeDirty {
+//            
+//                if canBeDirty.isDirty {
+//                    //TODO Here only rerender if render() yield a diffrerent node
+//                    for sv in cellComponent.contentView.subviews {
+//                        sv.removeFromSuperview()
+//                    }
+//                    self.renderer.render(component, in: cellComponent.contentView, withEngine: self, atIndex: nil, ignoreRefs: false)
+//                    canBeDirty.isDirty = false
+//                }
+//            }
+//        } else if let viewComponent = component as? UIView { // UIView Component
+//            if patching && component.enablePatching() {
+//                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+//                    // Test rerender in another view first.
+//                    let myView = UIView()
+//                    self.renderer.render(component,
+//                                         in: myView,
+//                                         withEngine: self,
+//                                         atIndex: nil,
+//                                         ignoreRefs: true)
+//                    
+//                    let r = UIKitReconcilier()
+//                    r.mainUpdateChildren(viewComponent, myView)
+//                    
+//                }
+//            } else {
+//                // Re-render all
+//                for sv in viewComponent.subviews {
+//                    sv.removeFromSuperview()
+//                }
+//                self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil, ignoreRefs: false)
+//            }
+//        } else {
+//            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
+//            // Non-VC Component
+//            
+//            // TODO enable patching for non-VC  components
+////            if patching && component.enablePatching(), let superview = associatedView.superview {
+////                
+////                DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+////                    // Test rerender in another view first.
+////                    let myView = UIView()
+////                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil)
+////                    
+////                    let r = UIKitReconcilier()
+////                    r.mainUpdateChildren(superview, myView)
+////                }
+////            } else {
+//                if let superview = associatedView.superview {
+//                    var stackViewIndex: Int?
+//                    if let stackView = superview as? UIStackView {
+//                        stackViewIndex = stackView.arrangedSubviews.index(of: associatedView)
+//                    }
+//                    // Remove previous view hierarchy.
+//                    associatedView.removeFromSuperview()
+//                    // Re-render compoenent in superview.
+//                    self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex, ignoreRefs: false)
+//                }
+////            }
+//        }
+//        
+//    }
+//    
+//    public func render<C: IsComponent>(component: C, in view: UIView) {
+//        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
+//    }
+//    
+//    public func render(component: IsComponent, in view: UIView) {
+//        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
+//    }
+//    
+//    public func render(component: Renderable, in view: UIView) {
+//        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
+//    }
+//    
+    
+    
+    /// NEW API
+    
+    public func updateComponent(_ component: IsComponent, patching:Bool) {
+//        render(component: component, in: <#T##UIView#>)
+        print("empty")
+        
+    }
+    
+    
+    let renderer = UIKitRenderer()
+    
+    var latestRenderedTree:Tree?
+    
+    func render(component: Renderable) -> UIView {
+        let tree = component.render()
+        return renderer.render(tree: tree)
+    }
+    
+    func render(component: Renderable, in view: UIView) {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            let newTree = component.render()
+            if let latestRenderedTree = self.latestRenderedTree {
+                if areTreesEqual(latestRenderedTree, newTree) {
+                    print("Nothing changed, do nothing")
+                } else {
+                    print("Patch Views with new tree")
+                    DispatchQueue.main.async { //only batch update for ui thread
+                        self.traverseForPatch(latestRenderedTree, newTree)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.renderer.render(tree: newTree, in: view)
+                    self.latestRenderedTree = newTree
+                }
+            }
+            //            self.latestRenderedTree = newTree
         }
+        print("nodeIdViewMap : \(renderer.nodeIdViewMap)")
     }
     
-    public func render<C: IsComponent>(component: C, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
+    func traverseForPatch(_ tree: Tree, _ otherTree:Tree) {
+        if !areTreesEqual(tree, otherTree) {
+            testPatch(tree, otherTree)
+        }
+        
+        for i in tree.children.indices {
+            let treeChild = tree.children[i]
+            let otherTreeChild = otherTree.children[i]
+            traverseForPatch(treeChild, otherTreeChild)
+        }
+        
     }
     
-    public func render(component: IsComponent, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
-    }
-    
-    public func render(component: Renderable, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
+    func testPatch(_ node: IsNode, _ newNode: IsNode) {
+        if let label = node as? Label, let otherLabel = newNode as? Label {
+            if label.props.text != otherLabel.props.text {
+                
+                
+                print("patch associatedView with new props \(otherLabel.props.text )")
+                print(renderer.nodeIdViewMap)
+                print(label.uniqueIdentifier)
+                print(otherLabel.uniqueIdentifier)
+                if let uiLabel = renderer.nodeIdViewMap[label.uniqueIdentifier] as? UILabel {
+                    uiLabel.text = otherLabel.props.text
+                }
+            }
+        }
+        
     }
 }

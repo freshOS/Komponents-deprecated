@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+public protocol Renderable {
+    func render() -> Tree
+}
+
 public protocol IsComponent:class, Renderable {
     var uniqueIdentifier:String { get }
     func didRender()
@@ -51,8 +55,9 @@ public extension Component {
 
 public extension IsComponent where Self: UIViewController {
     func loadComponent() {
-        view = UIView()
-        KomponentsEngine.shared.render(component: self, in: view)
+        view = KomponentsEngine.shared.render(component: self)
+//        view = UIView()
+//        KomponentsEngine.shared.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
@@ -93,35 +98,41 @@ public extension IsComponent {
     }
 }
 
-public protocol CanBeDirty {
-    var isDirty: Bool { get set }
-}
-
-public protocol HasEquatableProps {
-    associatedtype Props:Equatable
-    var props: Props { get set }
-}
-
-extension HasEquatableProps where Self: CanBeDirty {
-    
-    public mutating func updateProps(newProps: Props) {
-        if newProps != props {
-            props = newProps
-            isDirty = true
-        }
+public extension IsComponent where Self: UIViewController {
+    func askForRefresh(patching: Bool) {
+        KomponentsEngine.shared.render(component: self, in: view)
     }
 }
 
-public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
-    
-}
+//public protocol CanBeDirty {
+//    var isDirty: Bool { get set }
+//}
+//
+//public protocol HasEquatableProps {
+//    associatedtype Props:Equatable
+//    var props: Props { get set }
+//}
+//
+//extension HasEquatableProps where Self: CanBeDirty {
+//    
+//    public mutating func updateProps(newProps: Props) {
+//        if newProps != props {
+//            props = newProps
+//            isDirty = true
+//        }
+//    }
+//}
+//
+//public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
+//    
+//}
 
-public extension CellComponent {
-    
-    func refresh() {
-        KomponentsEngine.shared.updateComponent(self, patching: false)
-    }
-}
+//public extension CellComponent {
+//    
+//    func refresh() {
+//        KomponentsEngine.shared.updateComponent(self, patching: false)
+//    }
+//}
 
 public extension IsComponent {
     func enablePatching() -> Bool {
@@ -133,11 +144,11 @@ public extension IsComponent {
 public extension IsComponent {
     func willDeinitComponent() {
         // Find and Remove children components references that retain sub-components.
-        if let childComponentsIds = KomponentsEngine.shared.componentsChildren[uniqueIdentifier] {
-            for id in childComponentsIds {
-                KomponentsEngine.shared.componentsMap.removeValue(forKey: id)
-            }
-        }
-        KomponentsEngine.shared.componentsChildren.removeValue(forKey: uniqueIdentifier)
+//        if let childComponentsIds = KomponentsEngine.shared.componentsChildren[uniqueIdentifier] {
+//            for id in childComponentsIds {
+//                KomponentsEngine.shared.componentsMap.removeValue(forKey: id)
+//            }
+//        }
+//        KomponentsEngine.shared.componentsChildren.removeValue(forKey: uniqueIdentifier)
     }
 }
