@@ -62,6 +62,11 @@ class UIKitRenderer {
         if let left = tree.layout.left {
             newView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: CGFloat(left)).isActive = true
         }
+        
+        // Plug events
+        if let bNode = tree as? Button {
+            bNode.registerTap?(newView as! UIButton)
+        }
     }
     
     func viewForNode(node:IsNode) -> UIView {
@@ -87,11 +92,21 @@ class UIKitRenderer {
         if let node = node as? HorizontalStack {
             let v = UIStackView()
             v.axis = .horizontal
-            
-            print(v.alignment)
-//            v.alignment = .fill
             return v
         }
+        if let node = node as? VerticalStack {
+            let v = UIStackView()
+            v.axis = .vertical
+            return v
+        }
+        
+        if let node = node as? Button {
+            let v = BlockBasedUIButton()
+            v.setTitle(node.props.text, for: .normal)
+            v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
+            return v
+        }
+        
         return UIView()
     }
 }

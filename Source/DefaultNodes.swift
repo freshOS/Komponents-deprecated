@@ -132,55 +132,6 @@ func generateUniqueId() -> Int {
 //    }
 //}
 
-//public struct Button: Node {
-//    
-//    var tapCallback:(() -> Void)?
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIButton) -> Void)?
-//    var styleBlock: ((UIButton) -> Void)?
-//    public var children = [Renderable]()
-//    var wording = ""
-//    var image: UIImage?
-//    var registerTap: ((UIButton) -> Void)?
-//    var ref: UnsafeMutablePointer<UIButton>?
-//    
-//    public init(_ wording: String = "",
-//                image: UIImage? = nil,
-//                tap: (() -> Void)? = nil,
-//                style: ((UIButton) -> Void)? = nil,
-//                layout: ((UIButton) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIButton>? = nil) {
-//        self.image = image
-//        self.wording = wording
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//        registerTap = { button in
-//            if let button = button as? BlockBasedUIButton, let tap = tap {
-//                button.setCallback(tap)
-//            }
-//        }
-//    }
-//    
-//    public init(_ wording: String = "",
-//                image: UIImage? = nil,
-//                tap: (Selector, target: Any),
-//                style: ((UIButton) -> Void)? = nil,
-//                layout: ((UIButton) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIButton>? = nil) {
-//        self.image = image
-//        self.wording = wording
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//        registerTap = { button in
-//            button.addTarget(tap.target, action: tap.0, for: .touchUpInside)
-//        }
-//    }
-//}
-
 //public struct Image: Node {
 //    
 //    public var applyStyle: (() -> Void)?

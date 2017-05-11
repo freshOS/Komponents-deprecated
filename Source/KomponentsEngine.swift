@@ -132,7 +132,10 @@ public class KomponentsEngine {
     
     public func updateComponent(_ component: IsComponent, patching:Bool) {
 //        render(component: component, in: <#T##UIView#>)
-        print("empty")
+       
+        if let vc = component as? UIViewController {
+            render(component: component, in: vc.view)
+        }
         
     }
     

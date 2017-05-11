@@ -22,6 +22,8 @@
 		992C39951EC4A673005DAFA8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39941EC4A673005DAFA8 /* Label.swift */; };
 		992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */; };
 		992C399B1EC4BC39005DAFA8 /* HorizontalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */; };
+		992C399D1EC4BFBF005DAFA8 /* VerticalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C399C1EC4BFBF005DAFA8 /* VerticalStack.swift */; };
+		992C399F1EC4C06E005DAFA8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C399E1EC4C06E005DAFA8 /* Button.swift */; };
 		99317BEF1EB85B5D0019A524 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE51EB85B5D0019A524 /* Component.swift */; };
 		99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE61EB85B5D0019A524 /* ComponentVC.swift */; };
 		99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BE71EB85B5D0019A524 /* ComponentView.swift */; };
@@ -63,6 +65,8 @@
 		992C39941EC4A673005DAFA8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStack.swift; sourceTree = "<group>"; };
+		992C399C1EC4BFBF005DAFA8 /* VerticalStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalStack.swift; sourceTree = "<group>"; };
+		992C399E1EC4C06E005DAFA8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		99317BE51EB85B5D0019A524 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		99317BE61EB85B5D0019A524 /* ComponentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentVC.swift; sourceTree = "<group>"; };
 		99317BE71EB85B5D0019A524 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				992C39941EC4A673005DAFA8 /* Label.swift */,
 				992C39981EC4B991005DAFA8 /* ActivityIndicatorView.swift */,
 				992C399A1EC4BC39005DAFA8 /* HorizontalStack.swift */,
+				992C399C1EC4BFBF005DAFA8 /* VerticalStack.swift */,
+				992C399E1EC4C06E005DAFA8 /* Button.swift */,
 			);
 			name = "Default Nodes";
 			sourceTree = "<group>";
@@ -313,6 +319,8 @@
 				992C39811EC4A303005DAFA8 /* HasLayout.swift in Sources */,
 				99317BF81EB85B5D0019A524 /* KomponentsEngine.swift in Sources */,
 				99317BEF1EB85B5D0019A524 /* Component.swift in Sources */,
+				992C399D1EC4BFBF005DAFA8 /* VerticalStack.swift in Sources */,
+				992C399F1EC4C06E005DAFA8 /* Button.swift in Sources */,
 				992C39931EC4A569005DAFA8 /* View.swift in Sources */,
 				992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */,
 				992C39851EC4A325005DAFA8 /* HasProps.swift in Sources */,
