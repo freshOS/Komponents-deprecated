@@ -23,7 +23,6 @@
 		99317BCA1EB8596E0019A524 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB51EB8596E0019A524 /* MyCell.swift */; };
 		99317BCB1EB8596E0019A524 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB61EB8596E0019A524 /* NavigationVC.swift */; };
 		99317BCC1EB8596E0019A524 /* NestedComponentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */; };
-		99317BCD1EB8596E0019A524 /* PhotoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB81EB8596E0019A524 /* PhotoFeedCell.swift */; };
 		99317BCE1EB8596E0019A524 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB91EB8596E0019A524 /* Requirements.swift */; };
 		99317BCF1EB8596E0019A524 /* TableViewCellExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */; };
 		99317BD01EB8596E0019A524 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBB1EB8596E0019A524 /* TimerVC.swift */; };
@@ -92,7 +91,6 @@
 		99317BB51EB8596E0019A524 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		99317BB61EB8596E0019A524 /* NavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedComponentsVC.swift; sourceTree = "<group>"; };
-		99317BB81EB8596E0019A524 /* PhotoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedCell.swift; sourceTree = "<group>"; };
 		99317BB91EB8596E0019A524 /* Requirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requirements.swift; sourceTree = "<group>"; };
 		99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellExampleVC.swift; sourceTree = "<group>"; };
 		99317BBB1EB8596E0019A524 /* TimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				99317BB51EB8596E0019A524 /* MyCell.swift */,
 				99317BB61EB8596E0019A524 /* NavigationVC.swift */,
 				99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */,
-				99317BB81EB8596E0019A524 /* PhotoFeedCell.swift */,
 				99317BB91EB8596E0019A524 /* Requirements.swift */,
 				99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */,
 				99317BBB1EB8596E0019A524 /* TimerVC.swift */,
@@ -294,7 +291,6 @@
 				99317BC91EB8596E0019A524 /* LoopVC.swift in Sources */,
 				99317BC71EB8596E0019A524 /* LoginState.swift in Sources */,
 				99317BBD1EB8596E0019A524 /* AppDelegate.swift in Sources */,
-				99317BCD1EB8596E0019A524 /* PhotoFeedCell.swift in Sources */,
 				99317BCC1EB8596E0019A524 /* NestedComponentsVC.swift in Sources */,
 				99317BC31EB8596E0019A524 /* HelloPropsVC.swift in Sources */,
 			);

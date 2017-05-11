@@ -43,7 +43,7 @@ public class KomponentsEngine {
                 DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
                     // Test rerender in another view first.
                     let myView = UIView()
-                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil)
+                    self.renderer.render(component, in: myView, withEngine: self,atIndex: nil, ignoreRefs: true)
                     
                     let r = UIKitReconcilier()
                     r.mainUpdateChildren(vc.view, myView)
@@ -55,7 +55,7 @@ public class KomponentsEngine {
                     sv.removeFromSuperview()
                 }
                 // Re-render compoenent in superview.
-                self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil)
+                self.renderer.render(component, in: vc.view, withEngine: self, atIndex: nil, ignoreRefs: false)
             }
         } else if let cellComponent = component as? UITableViewCell { // UITableViewCell Component
             
@@ -67,7 +67,7 @@ public class KomponentsEngine {
                     for sv in cellComponent.contentView.subviews {
                         sv.removeFromSuperview()
                     }
-                    self.renderer.render(component, in: cellComponent.contentView, withEngine: self, atIndex: nil)
+                    self.renderer.render(component, in: cellComponent.contentView, withEngine: self, atIndex: nil, ignoreRefs: false)
                     canBeDirty.isDirty = false
                 }
             }
@@ -76,7 +76,11 @@ public class KomponentsEngine {
                 DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
                     // Test rerender in another view first.
                     let myView = UIView()
-                    self.renderer.render(component, in: myView, withEngine: self, atIndex: nil)
+                    self.renderer.render(component,
+                                         in: myView,
+                                         withEngine: self,
+                                         atIndex: nil,
+                                         ignoreRefs: true)
                     
                     let r = UIKitReconcilier()
                     r.mainUpdateChildren(viewComponent, myView)
@@ -87,7 +91,7 @@ public class KomponentsEngine {
                 for sv in viewComponent.subviews {
                     sv.removeFromSuperview()
                 }
-                self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil)
+                self.renderer.render(component, in: viewComponent, withEngine: self, atIndex: nil, ignoreRefs: false)
             }
         } else {
             let associatedView = self.viewForComponentId(component.uniqueIdentifier)
@@ -113,21 +117,21 @@ public class KomponentsEngine {
                     // Remove previous view hierarchy.
                     associatedView.removeFromSuperview()
                     // Re-render compoenent in superview.
-                    self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex)
+                    self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex, ignoreRefs: false)
                 }
 //            }
         }
     }
     
     public func render<C: IsComponent>(component: C, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil)
+        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
     }
     
     public func render(component: IsComponent, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil)
+        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
     }
     
     public func render(component: Renderable, in view: UIView) {
-        renderer.render(component, in: view, withEngine: self, atIndex: nil)
+        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
     }
 }

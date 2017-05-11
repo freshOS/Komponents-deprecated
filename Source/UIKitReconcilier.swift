@@ -37,7 +37,6 @@ class UIKitReconcilier {
     }
     
     func smash(_ oldNode: UIView, _ newNode: UIView) {
-        print(oldNode)
         // read each node attributes and diff them
         // then patch the old node (side-effect)
         // - layout

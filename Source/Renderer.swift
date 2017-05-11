@@ -9,5 +9,5 @@
 import UIKit
 
 protocol Renderer {
-    func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int?)
+    func render(_ renderable: Renderable, in rootView: UIView, withEngine: KomponentsEngine, atIndex: Int?, ignoreRefs: Bool)
 }
