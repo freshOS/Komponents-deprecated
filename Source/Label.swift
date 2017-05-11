@@ -15,7 +15,7 @@ public struct Label: Node, Equatable {
     public var children = [IsNode]()
     let props: LabelProps
     public let layout: Layout
-    var ref: UnsafeMutablePointer<UILabel>?
+    let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",
          _ layout:Layout? = nil,
@@ -24,15 +24,8 @@ public struct Label: Node, Equatable {
         p.text = text
         self.props = p
         self.layout = layout == nil ? Layout() : layout!
+        self.ref = ref
     }
-    
-    // new layout style.
-//    init(_ text: String = "", _ layout:Layout) {
-//        var p = LabelProps()
-//        p.text = text
-//        self.props = p
-//        self.layout = layout
-//    }
 }
 
 public func == (lhs: Label, rhs: Label) -> Bool {

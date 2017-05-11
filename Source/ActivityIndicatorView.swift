@@ -9,16 +9,6 @@
 // TODO all refs make sure
 import Foundation
 
-
-//
-//    var ref: UnsafeMutablePointer<UIActivityIndicatorView>?
-//    var activityIndicatorStyle = UIActivityIndicatorViewStyle.gray
-//
-//    public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .gray,
-//        self.activityIndicatorStyle = activityIndicatorStyle
-//    }
-//}
-
 public struct ActivityIndicatorView: Node, Equatable {
     
     public let uniqueIdentifier: Int = generateUniqueId()
@@ -26,7 +16,7 @@ public struct ActivityIndicatorView: Node, Equatable {
     public var children = [IsNode]()
     let props: ActivityIndicatorViewProps
     public let layout: Layout
-    var ref: UnsafeMutablePointer<UIActivityIndicatorView>?
+    let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
     public init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .white,
         _ layout:Layout? = nil,
@@ -35,6 +25,7 @@ public struct ActivityIndicatorView: Node, Equatable {
         p.activityIndicatorStyle = activityIndicatorStyle
         self.props = p
         self.layout = layout == nil ? Layout() : layout!
+        self.ref = ref
     }
 }
 

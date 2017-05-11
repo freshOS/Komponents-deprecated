@@ -132,31 +132,6 @@ func generateUniqueId() -> Int {
 //    }
 //}
 
-//public struct HorizontalStack: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIStackView) -> Void)?
-//    var styleBlock: ((UIStackView) -> Void)?
-//    public var children = [Renderable]()
-//    
-//    public init(style: ((UIStackView) -> Void)? = nil,
-//                layout: ((UIStackView) -> Void)? = nil,
-//                children: [Renderable] = [Renderable]()) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.children = children
-//    }
-//    
-//    public init(style: ((UIStackView) -> Void)? = nil,
-//                layout: ((UIStackView) -> Void)? = nil,
-//                _ children: [Renderable]) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.children = children
-//    }
-//}
-
 //public struct Button: Node {
 //    
 //    var tapCallback:(() -> Void)?
