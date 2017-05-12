@@ -178,51 +178,6 @@ func generateUniqueId() -> Int {
 //    }
 //}
 
-//public struct Switch: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UISwitch) -> Void)?
-//    var styleBlock: ((UISwitch) -> Void)?
-//    public var children = [Renderable]()
-//    var isOn: Bool = false
-//    var ref: UnsafeMutablePointer<UISwitch>?
-//    
-//    var registerValueChanged: ((UISwitch) -> Void)?
-//    
-//    public init(_ on: Bool = false,
-//                changed: (Selector, target: Any),
-//                style: ((UISwitch) -> Void)? = nil,
-//                layout: ((UISwitch) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UISwitch>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.isOn = on
-//        self.ref = ref
-//
-//        registerValueChanged = { aSwitch in
-//            aSwitch.addTarget(changed.target, action: changed.0, for: .valueChanged)
-//        }
-//    }
-//    
-//    public init(_ on: Bool = false,
-//                changed: ((Bool) -> Void)? = nil,
-//                style: ((UISwitch) -> Void)? = nil,
-//                layout: ((UISwitch) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UISwitch>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.isOn = on
-//        self.ref = ref
-//        registerValueChanged = { aSwitch in
-//            if let aSwitch = aSwitch as? BlockBasedUISwitch, let changed = changed {
-//                aSwitch.setCallback(changed)
-//            }
-//        }
-//    }
-//    
-//}
-
 //public struct Progress: Node {
 //    
 //    public var applyStyle: (() -> Void)?
