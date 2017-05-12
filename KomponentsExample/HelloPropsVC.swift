@@ -25,7 +25,7 @@ class HelloPropsVC: UIViewController, StatelessComponent {
         title = "Hello \(name)"
         return
             View(layout: .fill, [
-                Label("Hello \(name)", .center)
+                Label("Hello \(name)", layout: .center)
             ])
     }
 }

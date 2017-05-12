@@ -21,8 +21,8 @@ public struct View: Node, Equatable {
     public init(
         props:((inout ViewProps) -> Void)? = nil,
         layout: Layout? = nil,
-         ref: UnsafeMutablePointer<UIView>? = nil,
-         _ children: [IsNode]) {
+        ref: UnsafeMutablePointer<UIView>? = nil,
+        _ children: [IsNode]) {
         
         if let p = props {
             var prop = ViewProps()
@@ -31,8 +31,6 @@ public struct View: Node, Equatable {
         } else {
             self.props = ViewProps()
         }
-        
-        
         
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
@@ -48,15 +46,22 @@ public func == (lhs: View, rhs: View) -> Bool {
 public struct ViewProps: Equatable, Hashable {
     
     public var backgroundColor = UIColor.white
-    //$0.layer.borderColor = self.color.cgColor
-    //$0.layer.borderWidth = 1
-    
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var anchorPoint = CGPoint(x: 0.5, y: 0.5)
+
     public var hashValue: Int {
         return backgroundColor.hashValue
+            ^ borderColor.hashValue
+            ^ borderWidth.hashValue
+            ^ cornerRadius.hashValue
+            ^ anchorPoint.x.hashValue
+            ^ anchorPoint.y.hashValue
     }
 }
 
 public func == (lhs: ViewProps, rhs: ViewProps) -> Bool {
-    return true
+    return lhs.hashValue == rhs.hashValue
 }
 

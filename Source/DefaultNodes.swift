@@ -19,9 +19,6 @@ func generateUniqueId() -> Int {
     return startID
 }
 
-
-
-
 //public struct TextView: Node {
 //    
 //    public var applyStyle: (() -> Void)?
@@ -53,8 +50,6 @@ func generateUniqueId() -> Int {
 //        }
 //    }
 //}
-
-
 
 //public struct ScrollView: Node {
 //    
@@ -90,39 +85,6 @@ public typealias EndRefreshingCallback = () -> Void
 public typealias ShouldDeleteBlock = (Bool) -> Void
 //
 //public typealias DeleteCallback = (Int, ShouldDeleteBlock) -> Void
-
-
-//public struct Table: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UITableView) -> Void)?
-//    var styleBlock: ((UITableView) -> Void)?
-//    public var children = [Renderable]()
-//    public var cells = [Renderable]()
-//    var tableStyle: UITableViewStyle = .plain
-//    var ref: UnsafeMutablePointer<UITableView>?
-//    var refreshCallback: (( @escaping EndRefreshingCallback) -> Void)?
-//    var deleteCallback: ((Int, @escaping ShouldDeleteBlock) -> Void)?
-//    
-//    
-//    public init(_ tableStyle: UITableViewStyle = .plain,
-//                refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,
-//                delete: ((Int, @escaping ShouldDeleteBlock) -> Void)? = nil,
-//                style: ((UITableView) -> Void)? = nil,
-//                layout: ((UITableView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UITableView>? = nil,
-//                _ cells:[Renderable]) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.tableStyle = tableStyle
-//        self.ref = ref
-//        self.cells = cells
-//        self.refreshCallback = refresh
-//        self.deleteCallback = delete
-//        
-//    }
-//}
 
 // Block Based UIControls
 
@@ -218,8 +180,6 @@ class BlockBasedUIRefreshControl: UIRefreshControl {
 
 // Left to implement.
 //SegmentedControl Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
-
-
 
 class CallBackTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     

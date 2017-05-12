@@ -16,7 +16,7 @@ public class Komponents {
 public class KomponentsEngine {
     
     static let shared = KomponentsEngine()
-//    
+//
 //    // retain non-VC components here
 //    var componentsMap = [String: IsComponent]()
 //    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
@@ -162,19 +162,24 @@ public class KomponentsEngine {
 //        return renderer.render(tree: tree)
 //    }
     
-    func render(component: Renderable, in view: UIView) {
+    func render(component: IsComponent, in view: UIView) {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            
             self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                 let newTree = component.render()
-                if let latestRenderedTree = self.latestRenderedTree {
+                if let latestRenderedTree = self.latestRenderedTree, component.forceRerender() == false {
                     if areTreesEqual(latestRenderedTree, newTree) {
                         print("Nothing changed, do nothing")
                     } else {
                         self.traverseForPatch(latestRenderedTree, newTree)
                     }
                 } else {
+                    
+    
                     DispatchQueue.main.async {
+                        // empty view if previously rendered
+                        for sv in view.subviews {
+                            sv.removeFromSuperview()
+                        }
                         self.renderer.render(tree: newTree, in: view)
                         self.latestRenderedTree = newTree
 //                        print("nodeIdViewMap : \(self.renderer.nodeIdViewMap)")
@@ -228,6 +233,8 @@ public class KomponentsEngine {
     }
     
     func traverseForPatch(_ tree: Tree, _ otherTree:Tree) {
+        log(tree)
+        log(otherTree)
         if !areTreesEqual(tree, otherTree) {
             testPatch(tree, otherTree)
         }
@@ -237,7 +244,6 @@ public class KomponentsEngine {
             let otherTreeChild = otherTree.children[i]
             traverseForPatch(treeChild, otherTreeChild)
         }
-        
     }
     
     func testPatch(_ node: IsNode, _ newNode: IsNode) {

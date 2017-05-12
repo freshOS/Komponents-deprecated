@@ -8,32 +8,6 @@
 
 import Foundation
 
-
-//public struct Field: Node {
-
-//    var textChangedCallback: ((String) -> Void)?
-//
-
-//
-//    public init(_ placeholder: String = "",
-//                wording: String = "",
-//                textChanged: ((String) -> Void)? = nil,
-//                style: ((UITextField) -> Void)? = nil,
-//                layout: ((UITextField) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UITextField>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.placeholder = placeholder
-//        self.wording = wording
-//        self.ref = ref
-//        registerTextChanged = { field in
-//            if let field = field as? BlockBasedUITextField, let textChanged = textChanged {
-//                field.setCallback(textChanged)
-//            }
-//        }
-//    }
-//}
-
 public struct Field: Node, Equatable {
     
     public let uniqueIdentifier: Int = generateUniqueId()
@@ -48,8 +22,7 @@ public struct Field: Node, Equatable {
                 text: String = "",
                 textChanged: ((String) -> Void)? = nil,
                 props:((inout FieldProps) -> Void)? = nil,
-                style: ((UITextField) -> Void)? = nil,
-                _ layout:Layout? = nil,
+                layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UITextField>? = nil) {
 
         var defaultProps = FieldProps()

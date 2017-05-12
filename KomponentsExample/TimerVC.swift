@@ -31,7 +31,7 @@ class TimerVC: UIViewController, Component {
         title = "Timer"
         return
             View(layout: .fill, [
-                Label("\(self.state)", .center)
+                Label("\(self.state)", layout: .center)
             ])
     }
     

@@ -19,7 +19,7 @@ class UIKitRenderer {
     func viewForComponent(component: IsComponent) -> UIView {
         
         
-        let id:String = component.uniqueIdentifier
+        let id:String = component.uniqueComponentIdentifier
         print(id)
         print(nodeIdViewMap)
         print(componentIdNodeIdViewMap)
@@ -125,6 +125,10 @@ class UIKitRenderer {
         if let node = node as? View {
             let v = UIView()
             v.backgroundColor = node.props.backgroundColor
+            v.layer.borderColor = node.props.borderColor.cgColor
+            v.layer.borderWidth = node.props.borderWidth
+            v.layer.cornerRadius = node.props.cornerRadius
+            v.layer.anchorPoint = node.props.anchorPoint
             return v
         }
         
@@ -207,6 +211,45 @@ class UIKitRenderer {
             return v
         }
         
+        if var node = node as? Table {
+            let table = CallBackTableView(frame: CGRect.zero, style: node.tableStyle)
+            table.estimatedRowHeight = 100
+
+            if let rc = node.refreshCallback {
+                let refreshControl = BlockBasedUIRefreshControl()
+                table.addSubview(refreshControl)
+                refreshControl.setCallback(rc)
+            }
+
+            table.numberOfRows = {
+                return node.cells.count
+            }
+            table.cellForRowAt = { tbv, ip in
+                if ip.section == 0 {
+                    let child = node.cells[ip.row]
+                    return ComponentCell(component: child)
+                }
+                return UITableViewCell()
+            }
+        
+            if let deleteCallback = node.deleteCallback {
+                table.didDeleteRowAt = { ip in
+                    let shouldDeleteBlock = { (b:Bool) in
+                        if b {
+                            // Remove cell
+                            node.cells.remove(at: ip.row)
+                            // Delete corresponding row.
+                            table.deleteRows(at: [ip], with: .none)
+                        } else {
+                            table.reloadRows(at: [ip], with: .none)
+                        }
+                    }
+                    deleteCallback(ip.row, shouldDeleteBlock)
+                }
+            }
+            return table
+        }
+        
         return UIView()
     }
 }
@@ -277,240 +320,7 @@ class UIKitRenderer {
 //        var theView: UIView?
 //        var node = renderable.render()
 //        
-//        if let viewNode = node as? View {
-//            let v = UIView()
-//            theView = v
-//            node.applyLayout = {
-//                viewNode.layoutBlock?(v)
-//            }
-//            node.applyStyle = {
-//                viewNode.styleBlock?(v)
-//            }
-//            if !ignoreRefs {
-//                viewNode.ref?.pointee = v
-//            }
-//        }
-//        
-//        if let vStackNode = node as? VerticalStack {
-//            let stack = UIStackView()
-//            stack.axis = .vertical
-//            theView = stack
-//            print(vStackNode)
-//            node.applyLayout = {
-//                vStackNode.layoutBlock?(stack)
-//            }
-//            node.applyStyle = {
-//                vStackNode.styleBlock?(stack)
-//            }
-//        }
-//        
-//        if let hStackNode = node as? HorizontalStack {
-//            let stack = UIStackView()
-//            stack.axis = .horizontal
-//            theView = stack
-//            node.applyLayout = {
-//                hStackNode.layoutBlock?(stack)
-//            }
-//            node.applyStyle = {
-//                hStackNode.styleBlock?(stack)
-//            }
-//        }
-//        
-//        if let textNode = node as? Label {
-//            let label = UILabel()
-//            label.text = textNode.wording
-//            theView = label
-//            node.applyLayout = {
-//                textNode.layoutBlock?(label)
-//            }
-//            node.applyStyle = {
-//                textNode.styleBlock?(label)
-//            }
-//            textNode.ref?.pointee = label
-//        }
-//        
-//        if let fieldNode = node as? Field {
-//            let field = BlockBasedUITextField()
-//            field.placeholder = fieldNode.placeholder
-//            field.text  = fieldNode.wording
-//            theView = field
-//            node.applyLayout = {
-//                fieldNode.layoutBlock?(field)
-//            }
-//            node.applyStyle = {
-//                fieldNode.styleBlock?(field)
-//            }
-//            fieldNode.ref?.pointee = field
-//        }
-//        
-//        if let textViewNode = node as? TextView {
-//            let textView = BlockBasedUITextView()
-//            textView.text  = textViewNode.wording
-//            theView = textView
-//            node.applyLayout = {
-//                textViewNode.layoutBlock?(textView)
-//            }
-//            node.applyStyle = {
-//                textViewNode.styleBlock?(textView)
-//            }
-//            textViewNode.ref?.pointee = textView
-//        }
-//        
-//        if let buttonNode = node as? Button {
-//            let button = BlockBasedUIButton()
-//            button.setTitle(buttonNode.wording, for: .normal)
-//            if let img = buttonNode.image {
-//                button.setImage(img, for: .normal)
-//            }
-//            theView = button
-//            node.applyLayout = {
-//                buttonNode.layoutBlock?(button)
-//            }
-//            node.applyStyle = {
-//                buttonNode.styleBlock?(button)
-//            }
-//            if !ignoreRefs {
-//                buttonNode.ref?.pointee = button
-//            }
-//        }
-//        
-//        if let imageNode = node as? Image {
-//            let v = UIImageView()
-//            theView = v
-//            node.applyLayout = {
-//                imageNode.layoutBlock?(v)
-//            }
-//            node.applyStyle = {
-//                imageNode.styleBlock?(v)
-//            }
-//            imageNode.ref?.pointee = v
-//            v.image = imageNode.image
-//        }
-//        
-//        if let scrollViewNode = node as? ScrollView {
-//            let v = UIScrollView()
-//            theView = v
-//            node.applyLayout = {
-//                scrollViewNode.layoutBlock?(v)
-//            }
-//            node.applyStyle = {
-//                scrollViewNode.styleBlock?(v)
-//            }
-//            scrollViewNode.ref?.pointee = v
-//        }
-//        
-//        if let pageControlNode = node as? PageControl {
-//            let v = UIPageControl()
-//            theView = v
-//            node.applyLayout = {
-//                pageControlNode.layoutBlock?(v)
-//            }
-//            node.applyStyle = {
-//                pageControlNode.styleBlock?(v)
-//            }
-//            pageControlNode.ref?.pointee = v
-//        }
-//        
-//        if let spinnerNode = node as? ActivityIndicatorView {
-//            let spinner = UIActivityIndicatorView(activityIndicatorStyle: spinnerNode.activityIndicatorStyle)
-//            theView = spinner
-//            node.applyLayout = {
-//                spinnerNode.layoutBlock?(spinner)
-//            }
-//            node.applyStyle = {
-//                spinnerNode.styleBlock?(spinner)
-//            }
-//            spinnerNode.ref?.pointee = spinner
-//            
-//            spinner.startAnimating()
-//        }
-//        
-//        if let sliderNode = node as? Slider {
-//            let slider = BlockBasedUISlider()
-//            slider.value = sliderNode.value
-//            theView = slider
-//            node.applyLayout = {
-//                sliderNode.layoutBlock?(slider)
-//            }
-//            node.applyStyle = {
-//                sliderNode.styleBlock?(slider)
-//            }
-//            sliderNode.ref?.pointee = slider
-//        }
-//        
-//        if let switchNode = node as? Switch {
-//            let aSwitch = BlockBasedUISwitch()
-//            aSwitch.isOn = switchNode.isOn
-//            theView = aSwitch
-//            node.applyLayout = {
-//                switchNode.layoutBlock?(aSwitch)
-//            }
-//            node.applyStyle = {
-//                switchNode.styleBlock?(aSwitch)
-//            }
-//            switchNode.ref?.pointee = aSwitch
-//        }
-//        
-//        if let progressNode = node as? Progress {
-//            let progress = UIProgressView()
-//            progress.progress = progressNode.progress
-//            theView = progress
-//            node.applyLayout = {
-//                progressNode.layoutBlock?(progress)
-//            }
-//            node.applyStyle = {
-//                progressNode.styleBlock?(progress)
-//            }
-//            progressNode.ref?.pointee = progress
-//        }
-//        
-//        if var tableNode = node as? Table {
-//            let table = CallBackTableView(frame: CGRect.zero, style: tableNode.tableStyle)
-//            table.estimatedRowHeight = 100
-//            
-//            if let rc = tableNode.refreshCallback {
-//                let refreshControl = BlockBasedUIRefreshControl()
-//                table.addSubview(refreshControl)
-//                refreshControl.setCallback(rc)
-//            }
-//            
-//            table.numberOfRows = {
-//                return tableNode.cells.count
-//            }
-//            table.cellForRowAt = { tbv, ip in
-//                if ip.section == 0 {
-//                    let child = tableNode.cells[ip.row]
-//                    return ComponentCell(component: child)
-//                }
-//                return UITableViewCell()
-//            }
-//            
-//            
-//            if let deleteCallback = tableNode.deleteCallback {
-//                table.didDeleteRowAt = { ip in
-//                    let shouldDeleteBlock = { (b:Bool) in
-//                        if b {
-//                            // Remove cell
-//                            tableNode.cells.remove(at: ip.row)
-//                            // Delete corresponding row.
-//                            table.deleteRows(at: [ip], with: .none)
-//                        } else {
-//                            table.reloadRows(at: [ip], with: .none)
-//                        }
-//                    }
-//                    deleteCallback(ip.row, shouldDeleteBlock)
-//                }
-//            }
-//            
-//            theView = table
-//            node.applyLayout = {
-//                tableNode.layoutBlock?(table)
-//            }
-//            node.applyStyle = {
-//                tableNode.styleBlock?(table)
-//            }
-//            tableNode.ref?.pointee = table
-//        }
+
 //        
 //        if let mapNode = node as? Map {
 //            // MKMapView cannot be created in a BG thread !!
@@ -742,30 +552,11 @@ class UIKitRenderer {
 //        testLayoutBlock()
 //        
 //        node.applyStyle?()
-//        
-//        //Register taps ?? need to be at the end ? after adding to view Hierarchy?
-//        if let bNode = node as? Button {
-//            bNode.registerTap?(theView as! UIButton)
-//        }
-//        
-//        if let tfNode = node as? Field {
-//            tfNode.registerTextChanged?(theView as! UITextField)
-//            if tfNode.isFocused {
-//            }
-//        }
-//        
+//
 //        if let tfNode = node as? TextView {
 //            tfNode.registerTextChanged?(theView as! UITextView)
 //        }
-//        
-//        if let sliderNode = node as? Slider {
-//            sliderNode.registerValueChanged?(theView as! UISlider)
-//        }
-//        
-//        if let switchNode = node as? Switch {
-//            switchNode.registerValueChanged?(theView as! UISwitch)
-//        }
-//        
+
 //        return theView ?? UIView()
 //    }
 //}

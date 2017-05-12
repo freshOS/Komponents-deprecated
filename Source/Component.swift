@@ -13,24 +13,25 @@ public protocol Renderable {
     func render() -> Tree
 }
 
-public protocol IsComponent:class, Renderable {
-    var uniqueIdentifier:String { get }
+public protocol IsComponent:class, Renderable, IsNode {
+    var uniqueComponentIdentifier:String { get }
     func didRender()
     func enablePatching() -> Bool
+    func forceRerender() -> Bool
     func willDeinitComponent()
 }
 
 public extension IsComponent {
-    public var uniqueIdentifier: String {
+    public var uniqueComponentIdentifier: String {
         return "\(ObjectIdentifier(self).hashValue)"
     }
 }
 
 public protocol StatelessComponent: IsComponent { }
 
-public protocol Component: IsComponent, HasState, IsNode { }
+public protocol Component: IsComponent, HasState { }
 
-extension Component { // COmponene is a node
+extension IsComponent { // COmponene is a node
     public var layout: Layout { return Layout() }
     public var children: [IsNode] { return [] }
     public var propsHash: Int { return 0 }
@@ -70,7 +71,8 @@ public extension IsComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
-                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
+                    engine.render(component: weakSelf, in: weakSelf.view)
+//                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
                 }
         }
     }
@@ -145,6 +147,10 @@ public extension IsComponent where Self: UIViewController {
 
 public extension IsComponent {
     func enablePatching() -> Bool {
+        return false
+    }
+    
+    func forceRerender() -> Bool {
         return false
     }
 }

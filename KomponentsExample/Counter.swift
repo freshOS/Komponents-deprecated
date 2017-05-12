@@ -25,7 +25,7 @@ class Counter: Component {
             View(
                 props: { $0.backgroundColor = self.color },
                 layout: Layout().size(100), [
-                    VerticalStack(.center, [
+                    VerticalStack(layout: .center, [
                         Label("Counter : \(state)"),
                         Button("Tap me",
                                tap: { [weak self] in self?.updateState{ $0 += 1 } },

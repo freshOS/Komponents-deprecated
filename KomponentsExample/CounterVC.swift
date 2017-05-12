@@ -20,7 +20,7 @@ class CounterVC: UIViewController, Component {
         title = "Counter"        
         return
             View(layout: .fill, [
-                VerticalStack(.center, [
+                VerticalStack(layout: .center, [
                     Label("Counter : \(state)"),
                     Button("Tap me",
                            tap: { [weak self] in //be careful of the strong Ref ! (document this)
