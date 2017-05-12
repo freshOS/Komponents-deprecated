@@ -62,6 +62,13 @@ class UIKitRenderer {
         if let left = tree.layout.left {
             newView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: CGFloat(left)).isActive = true
         }
+        if let height = tree.layout.height {
+            newView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+        }
+        if let width = tree.layout.width {
+            newView.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
+        }
+        
         
         // Plug events
         if let bNode = tree as? Button {
@@ -72,6 +79,9 @@ class UIKitRenderer {
         }
         if let sliderNode = tree as? Slider {
             sliderNode.registerValueChanged?(newView as! UISlider)
+        }
+        if let fieldNode = tree as? Field {
+            fieldNode.registerTextChanged?(newView as! UITextField)
         }
     }
     
@@ -89,6 +99,13 @@ class UIKitRenderer {
             return l
         }
         
+        if let node = node as? Field {
+            let v = BlockBasedUITextField()
+            v.placeholder = node.props.placeholder
+            v.text = node.props.text
+            return v
+        }
+        
         if let node = node as? Image {
             let v = UIImageView()
             v.image = node.props.image
@@ -97,13 +114,13 @@ class UIKitRenderer {
         }
         
         if let node = node as? Switch {
-            let v = UISwitch()
+            let v = BlockBasedUISwitch()
             v.isOn = node.props.isOn
             return v
         }
         
         if let node = node as? Slider {
-            let v = UISlider()
+            let v = BlockBasedUISlider()
             v.value = node.props.value
             return v
         }
