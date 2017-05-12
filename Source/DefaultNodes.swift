@@ -20,56 +20,7 @@ func generateUniqueId() -> Int {
 }
 
 
-//public struct Field: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public  var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UITextField) -> Void)?
-//    var styleBlock: ((UITextField) -> Void)?
-//    public var children = [Renderable]()
-//    var placeholder = ""
-//    var wording = ""
-//    var isFocused = true
-//    var ref: UnsafeMutablePointer<UITextField>?
-//    
-//    var textChangedCallback: ((String) -> Void)?
-//    
-//    var registerTextChanged: ((UITextField) -> Void)?
-//    
-//    public init(_ placeholder: String = "",
-//                wording: String = "",
-//                textChanged: ((String) -> Void)? = nil,
-//                style: ((UITextField) -> Void)? = nil,
-//                layout: ((UITextField) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UITextField>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.placeholder = placeholder
-//        self.wording = wording
-//        self.ref = ref
-//        registerTextChanged = { field in
-//            if let field = field as? BlockBasedUITextField, let textChanged = textChanged {
-//                field.setCallback(textChanged)
-//            }
-//        }
-//    }
-//    
-//    public init(_ placeholder: String = "",
-//                wording: String = "",
-//                textChanged: (Selector, target: Any),
-//                style: ((UITextField) -> Void)? = nil,
-//                layout: ((UITextField) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UITextField>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.placeholder = placeholder
-//        self.wording = wording
-//        self.ref = ref
-//        registerTextChanged = { field in
-//            field.addTarget(textChanged.target, action: textChanged.0, for: .editingChanged)
-//        }
-//    }
-//}
+
 
 //public struct TextView: Node {
 //    

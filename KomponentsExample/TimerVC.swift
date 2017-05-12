@@ -30,7 +30,7 @@ class TimerVC: UIViewController, Component {
     func render() -> Tree {
         title = "Timer"
         return
-            View([
+            View(layout: .fill, [
                 Label("\(self.state)", .center)
             ])
     }

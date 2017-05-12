@@ -27,9 +27,9 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
 
                     // Label
                     Label("Label !"),
-
-//                    // Field
-//                    Field("A cool field", textChanged: { print($0) } ),
+                    
+                    // Field
+                    Field("A cool field", textChanged: { print($0) } ),
 //                    
 //                    TextView("Some Text",
 //                             textChanged: { print($0) },

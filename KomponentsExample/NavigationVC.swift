@@ -17,10 +17,10 @@ class NavigationVC: UIViewController, StatelessComponent {
     func render() -> Tree {
         title = "Examples"
         
-        func buttonStyle(b: UIButton) {
+        func buttonProps(b: inout ButtonProps) {
             b.setTitleColor(UIColor(red: 0.04, green: 0.04, blue: 0.04, alpha: 1), for: .normal)
             b.setTitleColor(.gray, for: .highlighted)
-            b.titleLabel?.textAlignment = .right
+//            b.titleLabel?.textAlignment = .right
         }
         
         let sections: [(String, (() ->(UIViewController)) )] = [
@@ -33,20 +33,21 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("Loops", { LoopVC() } ),
             ("Timer", { TimerVC() } ),
 //            ("Todo", { TodoVC() } ),
-//            ("Default Nodes", { DefaultNodesVC() } ),
+            ("Default Nodes", { DefaultNodesVC() } ),
 //            ("Static Table", { StaticTableVC() } )
         ]
 
         return
-            View(props: { $0.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1) }, [
-                VerticalStack(.fill, //Layout().centerVertically().left(0).right(0)
+            View(props: { $0.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1) },
+                 layout: .fill, [
+                VerticalStack(Layout().centered().left(0).right(0),
                     sections.map { wording, vc in
                         return View(layout: Layout().height(50), [
                             View(props: { $0.backgroundColor = UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1) },
                                  layout: Layout().left(0).right(0).top(0).height(1), []),
                             Button("\(wording)", tap: { [weak self] in
                                  self?.push(vc()) },
-//                                   style: buttonStyle,
+                                   props: buttonProps,
                                    layout: .fill)
                         ])
                     }
