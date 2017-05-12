@@ -13,7 +13,6 @@ import Komponents
 class HelloWorldVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
-    var  aView = UIView()
     
     func render() -> Tree {
         title = "Hello World"
@@ -21,9 +20,5 @@ class HelloWorldVC: UIViewController, StatelessComponent {
             View(layout: .fill, [
                 Label("Hello World", layout: .center)
             ])
-    }
-    
-    func didRender() {
-        print("Did render!")
     }
 }
