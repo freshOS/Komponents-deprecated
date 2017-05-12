@@ -17,7 +17,7 @@ class LoopVC: UIViewController, StatelessComponent {
     func render() -> Tree {
         title = "Loops"
         return
-            View([
+            View(layout: .fill, [
                 VerticalStack(props: { $0.spacing = 40 }, .center,
                     Array(1...4).map { Label("I told you \($0) times !") }
                 )

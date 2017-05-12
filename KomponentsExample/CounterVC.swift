@@ -19,7 +19,7 @@ class CounterVC: UIViewController, Component {
     func render() -> Tree {
         title = "Counter"        
         return
-            View([
+            View(layout: .fill, [
                 VerticalStack(.center, [
                     Label("Counter : \(state)"),
                     Button("Tap me",

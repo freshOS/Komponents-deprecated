@@ -29,7 +29,7 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("LoadingScreen", { LoadingVC() }),
             ("Counter ", { CounterVC() }),
 //            ("Login Screen", { LoginVC() }),
-//            ("Nested Components", { NestedComponentsVC() } ),
+            ("Nested Components", { NestedComponentsVC() } ),
             ("Loops", { LoopVC() } ),
             ("Timer", { TimerVC() } ),
 //            ("Todo", { TodoVC() } ),

@@ -18,7 +18,7 @@ class HelloWorldVC: UIViewController, StatelessComponent {
     func render() -> Tree {
         title = "Hello World"
         return
-            View([
+            View(layout: .fill, [
                 Label("Hello World", .center)
             ])
     }

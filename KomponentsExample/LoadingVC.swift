@@ -17,7 +17,7 @@ class LoadingVC: UIViewController, StatelessComponent {
     func render() -> Tree {
         title = "Loading"
         return
-            View([
+            View(layout: .fill, [
                 HorizontalStack(.center, [
                     Label("Loading..."), ActivityIndicatorView(.gray)
                 ])
