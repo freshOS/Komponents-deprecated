@@ -23,7 +23,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     .center, [
                     
                     // View
-                    View(props: { $0.backgroundColor = .red }, layout: Layout().size(50), []),
+                    View(props: { $0.backgroundColor = .red }, layout: Layout().height(50), []),
 
                     // Label
                     Label("Label !"),
@@ -68,7 +68,11 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     Switch(true, changed: { print($0) }),
                     
                     // Progress
-                    Progress(0.7)
+                    Progress(0.7),
+                    
+                    // Map
+                    Map(layout: Layout().height(100))
+                        
                 ])
         ])
     }

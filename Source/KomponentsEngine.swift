@@ -171,7 +171,6 @@ public class KomponentsEngine {
                     if areTreesEqual(latestRenderedTree, newTree) {
                         print("Nothing changed, do nothing")
                     } else {
-                        print("Patch Views with new tree")
                         self.traverseForPatch(latestRenderedTree, newTree)
                     }
                 } else {

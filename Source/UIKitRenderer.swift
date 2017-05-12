@@ -166,6 +166,11 @@ class UIKitRenderer {
             return v
         }
         
+        if let node = node as? Map {
+            let v = MKMapView()
+            return v
+        }
+        
         if let node = node as? PageControl {
             let v = UIPageControl()
             v.numberOfPages = node.props.numberOfPages
