@@ -33,14 +33,14 @@ public func == (lhs: Label, rhs: Label) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-struct LabelProps: Equatable, Hashable {
-    var text = ""
+public struct LabelProps: Equatable, Hashable {
+    public var text = ""
     
-    var hashValue: Int {
+    public var hashValue: Int {
         return text.hashValue
     }
 }
 
-func == (lhs: LabelProps, rhs: LabelProps) -> Bool {
+public func == (lhs: LabelProps, rhs: LabelProps) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

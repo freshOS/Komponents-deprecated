@@ -13,15 +13,25 @@ public struct VerticalStack: Node, Equatable {
     public let uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
-    public let props: VerticalStackProps
+    public var props: VerticalStackProps
     public let layout: Layout
     let ref: UnsafeMutablePointer<UIStackView>?
     
-    public init(_ layout:Layout? = nil,
+    public init(props:((inout VerticalStackProps) -> Void)? = nil,
+                _ layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
                 _ children: [IsNode]) {
-        var p = VerticalStackProps()
-        self.props = p
+        
+        // Props
+        var defaultProps = VerticalStackProps()
+        if let p = props {
+            var prop = defaultProps
+            p(&prop)
+            self.props = prop
+        } else {
+            self.props = defaultProps
+        }
+        
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
         self.children = children
@@ -35,11 +45,13 @@ public func == (lhs: VerticalStack, rhs: VerticalStack) -> Bool {
 
 public struct VerticalStackProps: Equatable, Hashable {
     
+    public var spacing: CGFloat = 0
+    
     public var hashValue: Int {
-        return 0
+        return spacing.hashValue
     }
 }
 
 public func == (lhs: VerticalStackProps, rhs: VerticalStackProps) -> Bool {
-    return true
+    return lhs.spacing == rhs.spacing
 }

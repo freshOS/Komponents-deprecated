@@ -103,55 +103,7 @@ func generateUniqueId() -> Int {
 //    }
 //}
 
-//public struct VerticalStack: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIStackView) -> Void)?
-//    var styleBlock: ((UIStackView) -> Void)?
-//    public var children = [Renderable]()
-//    
-//    public init(style: ((UIStackView) -> Void)? = nil,
-//                layout: ((UIStackView) -> Void)? = nil,
-//                children: [Renderable] = [Renderable]()) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.children = children
-//    }
-//    
-//    public init(style: ((UIStackView) -> Void)? = nil,
-//                layout: ((UIStackView) -> Void)? = nil,
-//                _ children: [Renderable]) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.children = children
-//    }
-//    
-//    mutating func newLayoutBlock(_ layout: @escaping ((UIStackView) -> Void)) {
-//        layoutBlock = layout
-//    }
-//}
 
-//public struct Image: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIImageView) -> Void)?
-//    var styleBlock: ((UIImageView) -> Void)?
-//    public var children = [Renderable]()
-//    var ref: UnsafeMutablePointer<UIImageView>?
-//    var image: UIImage?
-//    
-//    public init(_ image: UIImage? = nil,
-//                style: ((UIView) -> Void)? = nil,
-//                layout: ((UIImageView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIImageView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//        self.image = image
-//    }
-//}
 
 //public struct ScrollView: Node {
 //    
@@ -176,24 +128,6 @@ func generateUniqueId() -> Int {
 //    public init(style: ((UIScrollView) -> Void)? = nil,
 //                layout: ((UIScrollView) -> Void)? = nil,
 //                ref: UnsafeMutablePointer<UIScrollView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//    }
-//}
-
-//public struct PageControl: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIPageControl) -> Void)?
-//    var styleBlock: ((UIPageControl) -> Void)?
-//    public var children = [Renderable]()
-//    var ref: UnsafeMutablePointer<UIPageControl>?
-//    
-//    public init(style: ((UIPageControl) -> Void)? = nil,
-//                layout: ((UIPageControl) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIPageControl>? = nil) {
 //        self.layoutBlock = layout
 //        self.styleBlock = style
 //        self.ref = ref

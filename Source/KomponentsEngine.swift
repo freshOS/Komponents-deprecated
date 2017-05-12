@@ -144,10 +144,10 @@ public class KomponentsEngine {
     
     var latestRenderedTree:Tree?
     
-    func render(component: Renderable) -> UIView {
-        let tree = component.render()
-        return renderer.render(tree: tree)
-    }
+//    func render(component: Renderable) -> UIView {
+//        let tree = component.render()
+//        return renderer.render(tree: tree)
+//    }
     
     func render(component: Renderable, in view: UIView) {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
