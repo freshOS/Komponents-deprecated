@@ -64,6 +64,7 @@ class UIKitRenderer {
             if let subComponenet = c as? IsComponent {
                 let subTree = subComponenet.render()
                 render(tree: subTree, in: newView)
+                subComponenet.didRender()
             } else {
                 render(tree: c, in: newView)
             }

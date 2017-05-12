@@ -184,7 +184,9 @@ public class KomponentsEngine {
                         self.latestRenderedTree = newTree
 //                        print("nodeIdViewMap : \(self.renderer.nodeIdViewMap)")
                         self.log(newTree)
+                        component.didRender()
                     }
+                    
                 }
                 //            self.latestRenderedTree = newTree
             })

@@ -20,7 +20,7 @@ func areTreesEqual(_ tree: Tree, _ otherTree:Tree) -> Bool {
         haveTheSameProps = tree.propsHash == otherTree.propsHash// Compare props
         if tree.children.count != otherTree.children.count { // Same children count?
             haveTheSameChildren = false
-            return false // ealry return optim?
+            return false // early return optim?
         } else {
             haveTheSameChildren = true
             for i in tree.children.indices {
@@ -33,7 +33,6 @@ func areTreesEqual(_ tree: Tree, _ otherTree:Tree) -> Bool {
             }
         }
     }
-    
     
     return areOfTheSameType
         && haveTheSameProps
