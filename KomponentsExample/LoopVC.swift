@@ -18,10 +18,15 @@ class LoopVC: UIViewController, StatelessComponent {
         title = "Loops"
         return
             View(layout: .fill, [
-                VerticalStack(props: { $0.spacing = 40 },layout: .center,
-                    Array(1...4).map { Label("I told you \($0) times !") }
+                VerticalStack(props: { $0.spacing = 10 },
+                              layout: .center,
+                    Array(1...10).map { Label("I told you \($0) JJ MUHAHAH !") }
                 )
             ])
+    }
+    
+    func forceRerender() -> Bool {
+        return true
     }
 }
 
