@@ -67,6 +67,9 @@ class UIKitRenderer {
         if let bNode = tree as? Button {
             bNode.registerTap?(newView as! UIButton)
         }
+        if let switchNode = tree as? Switch {
+            switchNode.registerValueChanged?(newView as! UISwitch)
+        }
     }
     
     func viewForNode(node:IsNode) -> UIView {
@@ -87,6 +90,12 @@ class UIKitRenderer {
             let v = UIImageView()
             v.image = node.props.image
             v.contentMode = node.props.contentMode
+            return v
+        }
+        
+        if let node = node as? Switch {
+            let v = UISwitch()
+            v.isOn = node.props.isOn
             return v
         }
         
@@ -113,7 +122,7 @@ class UIKitRenderer {
         if let node = node as? VerticalStack {
             let v = UIStackView()
             v.axis = .vertical
-//            v.spacing = node.props.spacing
+            v.spacing = node.props.spacing
             return v
         }
         
