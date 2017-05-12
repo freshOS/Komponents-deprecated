@@ -14,12 +14,12 @@ class UIKitRenderer {
     
     var nodeIdViewMap = [Int: UIView]()
     
-    func render(tree:Tree) -> UIView {
-         //Hacky
-        let v = UIView()
-        render(tree: tree, in: v)
-        return v.subviews[0]
-    }
+//    func render(tree:Tree) -> UIView {
+//         //Hacky
+//        let v = UIView()
+//        render(tree: tree, in: v)
+//        return v.subviews[0]
+//    }
     
     func render(tree:Tree, in view: UIView) {
         nodeIdViewMap = [Int: UIView]() //Reset
@@ -83,6 +83,22 @@ class UIKitRenderer {
             return l
         }
         
+        if let node = node as? Image {
+            let v = UIImageView()
+            v.image = node.props.image
+            v.contentMode = node.props.contentMode
+            return v
+        }
+        
+        if let node = node as? PageControl {
+            let v = UIPageControl()
+            v.numberOfPages = node.props.numberOfPages
+            v.currentPage = node.props.currentPage
+            v.pageIndicatorTintColor = node.props.pageIndicatorTintColor
+            v.currentPageIndicatorTintColor = node.props.currentPageIndicatorTintColor
+            return v
+        }
+        
         if let node = node as? ActivityIndicatorView {
             let v = UIActivityIndicatorView(activityIndicatorStyle: node.props.activityIndicatorStyle)
             v.startAnimating()
@@ -97,6 +113,7 @@ class UIKitRenderer {
         if let node = node as? VerticalStack {
             let v = UIStackView()
             v.axis = .vertical
+//            v.spacing = node.props.spacing
             return v
         }
         
@@ -104,6 +121,7 @@ class UIKitRenderer {
             let v = BlockBasedUIButton()
             v.setTitle(node.props.text, for: .normal)
             v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
+            v.setTitleColor(node.props.titleColorForHighlightedState, for: .highlighted)
             return v
         }
         

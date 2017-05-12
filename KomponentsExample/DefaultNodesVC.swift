@@ -1,33 +1,33 @@
-////
-////  DefaultNodesVC.swift
-////  KomponentsExample
-////
-////  Created by Sacha Durand Saint Omer on 01/05/2017.
-////  Copyright © 2017 Octopepper. All rights reserved.
-////
 //
-//import UIKit
-//import Stevia
-//import Komponents
+//  DefaultNodesVC.swift
+//  KomponentsExample
 //
-//class DefaultNodesVC: UIViewController, StatelessComponent {
+//  Created by Sacha Durand Saint Omer on 01/05/2017.
+//  Copyright © 2017 Octopepper. All rights reserved.
 //
-//    override func loadView() { loadComponent() }
-//    
-//    func render() -> Node {
-//        title = "Default Nodes"
-//        return
-//            View(style: { $0.backgroundColor = .white }, [
-//                VerticalStack(
-//                    style: { $0.spacing = 5 },
-//                    layout: { $0.centerInContainer() }, [
-//                    
-//                    // View
-//                    View(style: { $0.backgroundColor = .red }, layout: { $0.height(50) }),
-//                    
-//                    // Label
-//                    Label("Label !"),
-//                    
+
+import UIKit
+import Stevia
+import Komponents
+
+class DefaultNodesVC: UIViewController, StatelessComponent {
+
+    override func loadView() { loadComponent() }
+    
+    func render() -> Tree {
+        title = "Default Nodes"
+        return
+            View(layout:.fill, [
+                VerticalStack(
+                    props: { $0.spacing = 5 },
+                    .center, [
+                    
+                    // View
+                    View(props: { $0.backgroundColor = .red }, layout: Layout().size(50), []),
+
+                    // Label
+                    Label("Label !"),
+//
 //                    // Field
 //                    Field("A cool field", textChanged: { print($0) } ),
 //                    
@@ -36,31 +36,29 @@
 //                             style: { $0.backgroundColor = .lightGray },
 //                             layout: { $0.size(100) }),
 //                    
-//                    // Button
-//                    Button("Button",
-//                           tap: { print("Tapped!") },
-//                           style: {
+//                  // Button
+                    Button("Button",
+                           tap: { print("Tapped!") },
+                           props: {
 //                                $0.backgroundColor = .yellow
-//                                $0.setTitleColor(.black, for:.normal)
-//                                $0.setTitleColor(.gray, for:.highlighted)
-//                            }
-//                    ),
-//                    
-//                    // Image
-//                    Image(#imageLiteral(resourceName: "anImage"), style: {
-//                        $0.contentMode = .scaleAspectFill
-//                    }),
-//                    
-//                    // Page Control
-//                    PageControl(style: {
-//                        $0.numberOfPages = 5
-//                        $0.pageIndicatorTintColor = .lightGray
-//                        $0.currentPageIndicatorTintColor = .gray
-//                        $0.currentPage = 3
-//                    }),
-//                    
-//                    ActivityIndicatorView(),
-//                    
+                                $0.setTitleColor(.black, for:.normal)
+                                $0.setTitleColor(.gray, for:.highlighted)
+                            }
+                    ),
+                    
+                    // Image
+                    Image(#imageLiteral(resourceName: "anImage"), props: { $0.contentMode = .scaleAspectFill }),
+  
+                    // Page Control
+                    PageControl(props: {
+                        $0.numberOfPages = 5
+                        $0.pageIndicatorTintColor = .lightGray
+                        $0.currentPageIndicatorTintColor = .gray
+                        $0.currentPage = 3
+                    }),
+//
+                    ActivityIndicatorView(.gray),
+//
 //                    // Slider
 //                    Slider(0.5,
 //                           changed: { print($0) },
@@ -70,15 +68,15 @@
 //                    // Switch
 //                    Switch(true, changed: { print($0) }),
 //                    Progress(0.7)
-//                ])
-//        ])
+                ])
+        ])
+    }
+    
+//    func changed(s:UISwitch) {
+//        print("SWITCH CHANGED!!! \(s.isOn)")
 //    }
-//    
-////    func changed(s:UISwitch) {
-////        print("SWITCH CHANGED!!! \(s.isOn)")
-////    }
-//    
-//    deinit {
-//        print("deinit VC")
-//    }
-//}
+    
+    deinit {
+        print("deinit VC")
+    }
+}

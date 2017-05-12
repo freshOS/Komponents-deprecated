@@ -81,16 +81,20 @@ public struct ButtonProps: Hashable, Equatable {
         if state == .normal {
             titleColorForNormalState = color
         }
+        if state == .highlighted {
+            titleColorForHighlightedState = color
+        }
     }
     
     internal var titleColorForNormalState: UIColor = .white
+    internal var titleColorForHighlightedState: UIColor = .white
     
     init(text: String = "") {
         self.text = text
     }
     
     public var hashValue: Int {
-        return text.hashValue ^ titleColorForNormalState.hashValue
+        return text.hashValue ^ titleColorForNormalState.hashValue ^ titleColorForHighlightedState.hashValue
     }
 }
 

@@ -55,9 +55,10 @@ public extension Component {
 
 public extension IsComponent where Self: UIViewController {
     func loadComponent() {
-        view = KomponentsEngine.shared.render(component: self)
-//        view = UIView()
-//        KomponentsEngine.shared.render(component: self, in: view)
+//        view = KomponentsEngine.shared.render(component: self)
+        view = UIView()
+        view.backgroundColor = .white
+        KomponentsEngine.shared.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {

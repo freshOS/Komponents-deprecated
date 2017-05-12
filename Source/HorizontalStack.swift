@@ -21,7 +21,6 @@ public struct HorizontalStack: Node, Equatable {
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
                 _ children: [IsNode]) {
         var p = HorizontalStackProps()
-//        p.text = text
         self.props = p
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
