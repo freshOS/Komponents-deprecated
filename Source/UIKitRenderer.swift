@@ -70,6 +70,9 @@ class UIKitRenderer {
         if let switchNode = tree as? Switch {
             switchNode.registerValueChanged?(newView as! UISwitch)
         }
+        if let sliderNode = tree as? Slider {
+            sliderNode.registerValueChanged?(newView as! UISlider)
+        }
     }
     
     func viewForNode(node:IsNode) -> UIView {
@@ -96,6 +99,18 @@ class UIKitRenderer {
         if let node = node as? Switch {
             let v = UISwitch()
             v.isOn = node.props.isOn
+            return v
+        }
+        
+        if let node = node as? Slider {
+            let v = UISlider()
+            v.value = node.props.value
+            return v
+        }
+        
+        if let node = node as? Progress {
+            let v = UIProgressView()
+            v.progress = node.props.progress
             return v
         }
         

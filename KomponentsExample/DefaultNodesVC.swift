@@ -27,7 +27,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
 
                     // Label
                     Label("Label !"),
-//
+
 //                    // Field
 //                    Field("A cool field", textChanged: { print($0) } ),
 //                    
@@ -56,29 +56,20 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                         $0.currentPageIndicatorTintColor = .gray
                         $0.currentPage = 3
                     }),
-//
+
                     ActivityIndicatorView(.gray),
-//
-//                    // Slider
-//                    Slider(0.5,
-//                           changed: { print($0) },
-//                           // changed: (#selector(changed), target: self),
-//                           layout: { $0.width(100) }),
-//                    
+
+                    // Slider
+                    Slider(0.5,
+                           changed: { print($0) },
+                           Layout().width(100)),
+
                     // Switch
                     Switch(true, changed: { print($0) }),
                     
                     // Progress
-//                    Progress(0.7)
+                    Progress(0.7)
                 ])
         ])
-    }
-    
-//    func changed(s:UISwitch) {
-//        print("SWITCH CHANGED!!! \(s.isOn)")
-//    }
-    
-    deinit {
-        print("deinit VC")
     }
 }

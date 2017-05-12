@@ -1,5 +1,5 @@
 //
-//  Switch.swift
+//  Slider.swift
 //  Komponents
 //
 //  Created by Sacha Durand Saint Omer on 12/05/2017.
@@ -8,24 +8,24 @@
 
 import Foundation
 
-public struct Switch: Node, Equatable {
+public struct Slider: Node, Equatable {
     
     public let uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
-    let props: SwitchProps
+    let props: SliderProps
     public let layout: Layout
     public let ref: UnsafeMutablePointer<UISwitch>?
-    var registerValueChanged: ((UISwitch) -> Void)?
+    var registerValueChanged: ((UISlider) -> Void)?
     
     public init(
-        _ on: Bool = false,
-        changed:((Bool) -> Void)? = nil,
-        props:((inout SwitchProps) -> Void)? = nil,
-                _ layout:Layout? = nil,
-                ref: UnsafeMutablePointer<UISwitch>? = nil) {
-        var defaultProps = SwitchProps()
-        defaultProps.isOn = on
+        _ value: Float = 0,
+        changed:((Float) -> Void)? = nil,
+        props:((inout SliderProps) -> Void)? = nil,
+        _ layout:Layout? = nil,
+        ref: UnsafeMutablePointer<UISwitch>? = nil) {
+        var defaultProps = SliderProps()
+        defaultProps.value = value
         if let p = props {
             var prop = defaultProps
             p(&prop)
@@ -35,29 +35,28 @@ public struct Switch: Node, Equatable {
         }
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
-        
-        registerValueChanged = { aSwitch in
-            if let aSwitch = aSwitch as? BlockBasedUISwitch, let changed = changed {
-                aSwitch.setCallback(changed)
+        registerValueChanged = { slider in
+            if let slider = slider as? BlockBasedUISlider, let changed = changed {
+                slider.setCallback(changed)
             }
         }
     }
 }
 
-public func == (lhs: Switch, rhs: Switch) -> Bool {
+public func == (lhs: Slider, rhs: Slider) -> Bool {
     return lhs.props == rhs.props
         && lhs.layout == rhs.layout
 }
 
-public struct SwitchProps: Equatable, Hashable {
+public struct SliderProps: Equatable, Hashable {
     
-    public var isOn = false
+    public var value:Float = 0
     
     public var hashValue: Int {
-        return isOn.hashValue
+        return value.hashValue
     }
 }
 
-public func == (lhs: SwitchProps, rhs: SwitchProps) -> Bool {
+public func == (lhs: SliderProps, rhs: SliderProps) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
