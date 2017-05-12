@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		9900D5661EC5EAEF009A0673 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D5651EC5EAEF009A0673 /* Table.swift */; };
+		9900D5681EC5FB61009A0673 /* ViewForNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D5671EC5FB61009A0673 /* ViewForNode.swift */; };
+		9900D56A1EC5FC99009A0673 /* Layout+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D5691EC5FC99009A0673 /* Layout+Autolayout.swift */; };
+		9900D56C1EC6002C009A0673 /* OldLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D56B1EC6002C009A0673 /* OldLogic.swift */; };
+		9900D56E1EC6005C009A0673 /* Node+References.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D56D1EC6005C009A0673 /* Node+References.swift */; };
+		9900D5701EC60085009A0673 /* Node+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D56F1EC60085009A0673 /* Node+Events.swift */; };
 		9917E5121EB85709005C6092 /* KomponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9917E50F1EB856CC005C6092 /* KomponentsTests.swift */; };
 		9917E5141EB8574A005C6092 /* Komponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 9917E50A1EB856C2005C6092 /* Komponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		992C397F1EC4A2AD005DAFA8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C397E1EC4A2AD005DAFA8 /* Layout.swift */; };
@@ -57,6 +62,11 @@
 
 /* Begin PBXFileReference section */
 		9900D5651EC5EAEF009A0673 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		9900D5671EC5FB61009A0673 /* ViewForNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewForNode.swift; sourceTree = "<group>"; };
+		9900D5691EC5FC99009A0673 /* Layout+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+Autolayout.swift"; sourceTree = "<group>"; };
+		9900D56B1EC6002C009A0673 /* OldLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldLogic.swift; sourceTree = "<group>"; };
+		9900D56D1EC6005C009A0673 /* Node+References.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+References.swift"; sourceTree = "<group>"; };
+		9900D56F1EC60085009A0673 /* Node+Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Events.swift"; sourceTree = "<group>"; };
 		9917E5091EB856C2005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9917E50A1EB856C2005C6092 /* Komponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Komponents.h; sourceTree = "<group>"; };
 		9917E50E1EB856CC005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +196,11 @@
 				992C397E1EC4A2AD005DAFA8 /* Layout.swift */,
 				992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */,
 				996481371EC5DFAF00A518DC /* Map.swift */,
+				9900D5671EC5FB61009A0673 /* ViewForNode.swift */,
+				9900D5691EC5FC99009A0673 /* Layout+Autolayout.swift */,
+				9900D56D1EC6005C009A0673 /* Node+References.swift */,
+				9900D56F1EC60085009A0673 /* Node+Events.swift */,
+				9900D56B1EC6002C009A0673 /* OldLogic.swift */,
 				992C39911EC4A55E005DAFA8 /* Default Nodes */,
 				992C398A1EC4A356005DAFA8 /* Protocols */,
 			);
@@ -329,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9900D5701EC60085009A0673 /* Node+Events.swift in Sources */,
 				99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */,
 				992C39831EC4A313005DAFA8 /* HasChildren.swift in Sources */,
 				996481381EC5DFAF00A518DC /* Map.swift in Sources */,
@@ -343,6 +359,7 @@
 				992C39951EC4A673005DAFA8 /* Label.swift in Sources */,
 				992C39901EC4A3FE005DAFA8 /* Tree.swift in Sources */,
 				99317BF01EB85B5D0019A524 /* ComponentVC.swift in Sources */,
+				9900D56C1EC6002C009A0673 /* OldLogic.swift in Sources */,
 				99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */,
 				992C397F1EC4A2AD005DAFA8 /* Layout.swift in Sources */,
 				992C39811EC4A303005DAFA8 /* HasLayout.swift in Sources */,
@@ -354,9 +371,12 @@
 				992C399F1EC4C06E005DAFA8 /* Button.swift in Sources */,
 				992C39931EC4A569005DAFA8 /* View.swift in Sources */,
 				992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */,
+				9900D56E1EC6005C009A0673 /* Node+References.swift in Sources */,
 				992C39851EC4A325005DAFA8 /* HasProps.swift in Sources */,
+				9900D5681EC5FB61009A0673 /* ViewForNode.swift in Sources */,
 				9964812C1EC5A3E000A518DC /* Image.swift in Sources */,
 				99317BF41EB85B5D0019A524 /* Node.swift in Sources */,
+				9900D56A1EC5FC99009A0673 /* Layout+Autolayout.swift in Sources */,
 				992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */,
 				99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */,
 				99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */,

@@ -15,7 +15,7 @@ public struct Slider: Node, Equatable {
     public var children = [IsNode]()
     let props: SliderProps
     public let layout: Layout
-    public let ref: UnsafeMutablePointer<UISwitch>?
+    public let ref: UnsafeMutablePointer<UISlider>?
     var registerValueChanged: ((UISlider) -> Void)?
     
     public init(
@@ -23,7 +23,7 @@ public struct Slider: Node, Equatable {
         changed:((Float) -> Void)? = nil,
         props:((inout SliderProps) -> Void)? = nil,
         _ layout:Layout? = nil,
-        ref: UnsafeMutablePointer<UISwitch>? = nil) {
+        ref: UnsafeMutablePointer<UISlider>? = nil) {
         var defaultProps = SliderProps()
         defaultProps.value = value
         if let p = props {

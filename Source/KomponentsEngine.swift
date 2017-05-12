@@ -163,9 +163,17 @@ public class KomponentsEngine {
 //    }
     
     func render(component: IsComponent, in view: UIView) {
+        print(" 👮 renderiiiiii")
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                 let newTree = component.render()
+                var test = self
+                withUnsafePointer(to: &test) {
+                    print(" str value \(test) has address: \($0)")
+                }
+                print(self.latestRenderedTree)
+                print(component.forceRerender())
+                print(component)
                 if let latestRenderedTree = self.latestRenderedTree, component.forceRerender() == false {
                     if areTreesEqual(latestRenderedTree, newTree) {
                         print("Nothing changed, do nothing")
@@ -173,15 +181,15 @@ public class KomponentsEngine {
                         self.traverseForPatch(latestRenderedTree, newTree)
                     }
                 } else {
-                    
-    
+                    self.latestRenderedTree = newTree
+                    print(self.latestRenderedTree)
                     DispatchQueue.main.async {
                         // empty view if previously rendered
                         for sv in view.subviews {
                             sv.removeFromSuperview()
                         }
                         self.renderer.render(tree: newTree, in: view)
-                        self.latestRenderedTree = newTree
+//                        self.latestRenderedTree = newTree
 //                        print("nodeIdViewMap : \(self.renderer.nodeIdViewMap)")
                         self.log(newTree)
                         component.didRender()
@@ -223,20 +231,16 @@ public class KomponentsEngine {
                 counter -= 1
             }
         }
-        
-
     }
     
     func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
         let startTime = CFAbsoluteTimeGetCurrent()
         operation()
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-        print("Time elapsed for \(title): \(timeElapsed) s")
+        print("⏱ Rendering in : \(timeElapsed) s")
     }
     
     func traverseForPatch(_ tree: Tree, _ otherTree:Tree) {
-        log(tree)
-        log(otherTree)
         if !areTreesEqual(tree, otherTree) {
             testPatch(tree, otherTree)
         }
@@ -251,10 +255,10 @@ public class KomponentsEngine {
     func testPatch(_ node: IsNode, _ newNode: IsNode) {
         if let label = node as? Label, let otherLabel = newNode as? Label {
             if label.props.text != otherLabel.props.text {
-//                print("patch associatedView with new props \(otherLabel.props.text )")
-//                print(renderer.nodeIdViewMap)
-//                print(label.uniqueIdentifier)
-//                print(otherLabel.uniqueIdentifier)
+                
+                print(renderer.nodeIdViewMap)
+                print(label.uniqueIdentifier)
+                print(otherLabel.uniqueIdentifier)
                 if let uiLabel = renderer.nodeIdViewMap[label.uniqueIdentifier] as? UILabel {
                     log("💉 Patch text")
                     DispatchQueue.main.async {
