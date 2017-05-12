@@ -11,8 +11,21 @@ import MapKit
 
 class UIKitRenderer {
     
+    weak var engine: KomponentsEngine!
     
     var nodeIdViewMap = [Int: UIView]()
+    var componentIdNodeIdViewMap = [String: Int]()
+    
+    func viewForComponent(component: IsComponent) -> UIView {
+        
+        
+        let id:String = component.uniqueIdentifier
+        print(id)
+        print(nodeIdViewMap)
+        print(componentIdNodeIdViewMap)
+        let nodeId = componentIdNodeIdViewMap[id]!
+        return nodeIdViewMap[nodeId]!
+    }
     
 //    func render(tree:Tree) -> UIView {
 //         //Hacky
@@ -22,7 +35,10 @@ class UIKitRenderer {
 //    }
     
     func render(tree:Tree, in view: UIView) {
-        nodeIdViewMap = [Int: UIView]() //Reset
+        
+        var tree = tree
+        
+//        nodeIdViewMap = [Int: UIView]() //Reset
         let newView = viewForNode(node: tree)
         
         //set ref
@@ -30,10 +46,29 @@ class UIKitRenderer {
             tree.ref?.pointee = newView
         }
         
-        nodeIdViewMap[tree.uniqueIdentifier] = newView
+//        if let subComponenet = tree as? IsComponent {
+//            let subTree = subComponenet.render()
+//            tree = subTree
+//            
+//            let cId = subComponenet.uniqueIdentifier
+//            componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
+//            
+//            //                render(tree: subTree, in: newView)
+//        } else {
+            nodeIdViewMap[tree.uniqueIdentifier] = newView // todo use same table for Compoenents?
+//        }
+        
+
         for c in tree.children {
-            render(tree: c, in: newView)
+            // replace child carrement?
+            if let subComponenet = c as? IsComponent {
+                let subTree = subComponenet.render()
+                render(tree: subTree, in: newView)
+            } else {
+                render(tree: c, in: newView)
+            }
         }
+        
         
         // Use autolayout
         newView.translatesAutoresizingMaskIntoConstraints = false
@@ -149,6 +184,7 @@ class UIKitRenderer {
         if let node = node as? HorizontalStack {
             let v = UIStackView()
             v.axis = .horizontal
+            v.spacing = node.props.spacing
             return v
         }
         if let node = node as? VerticalStack {

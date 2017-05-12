@@ -20,12 +20,12 @@ public class KomponentsEngine {
 //    // retain non-VC components here
 //    var componentsMap = [String: IsComponent]()
 //    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
-//    var viewMap = [String: UIView]()
-//    
-//    func viewForComponentId(_ id :String) -> UIView {
-//        return viewMap[id]!
-//    }
-//    
+    var viewMap = [String: UIView]()
+
+    func viewForComponentId(_ id :String) -> UIView {
+        return viewMap[id]!
+    }
+//
 //    public func updateComponent(_ component: IsComponent, patching:Bool) {
 //        // VC Component
 //        if let vc = component as? UIViewController {
@@ -132,9 +132,22 @@ public class KomponentsEngine {
     
     public func updateComponent(_ component: IsComponent, patching:Bool) {
 //        render(component: component, in: <#T##UIView#>)
+        
+        //TEST
+        renderer.engine = self
        
         if let vc = component as? UIViewController {
             render(component: component, in: vc.view)
+        } else {
+            
+//            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
+            
+            //            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
+        
+            let associatedView = renderer.viewForComponent(component: component)
+            print(associatedView)
+
+
         }
         
     }
@@ -165,12 +178,47 @@ public class KomponentsEngine {
                     DispatchQueue.main.async {
                         self.renderer.render(tree: newTree, in: view)
                         self.latestRenderedTree = newTree
+//                        print("nodeIdViewMap : \(self.renderer.nodeIdViewMap)")
+                        self.log(newTree)
                     }
                 }
                 //            self.latestRenderedTree = newTree
             })
         }
-        print("nodeIdViewMap : \(renderer.nodeIdViewMap)")
+    }
+    
+    var counter = 0
+    func log(_ tree: Tree) {
+        var str = ""
+        if counter == 0 {
+            print("🌲")
+        }
+        for _ in 0..<counter {
+            str += "-----"
+        }
+        
+        print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
+        
+        //subcomponenet
+        if let subComponent = tree as? IsComponent {
+            counter += 1
+            let subTree = subComponent.render()
+            log(subTree)
+            counter -= 1
+        } else if let hasChildren = tree as? HasChildren {
+            
+            if hasChildren.children.count > 0 {
+                counter += 1
+            }
+            for c in hasChildren.children {
+                log(c)
+            }
+            if hasChildren.children.count > 0 {
+                counter -= 1
+            }
+        }
+        
+
     }
     
     func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {

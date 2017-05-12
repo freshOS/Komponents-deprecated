@@ -48,6 +48,8 @@ public func == (lhs: View, rhs: View) -> Bool {
 public struct ViewProps: Equatable, Hashable {
     
     public var backgroundColor = UIColor.white
+    //$0.layer.borderColor = self.color.cgColor
+    //$0.layer.borderWidth = 1
     
     public var hashValue: Int {
         return backgroundColor.hashValue

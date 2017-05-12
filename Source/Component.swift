@@ -28,7 +28,14 @@ public extension IsComponent {
 
 public protocol StatelessComponent: IsComponent { }
 
-public protocol Component: IsComponent, HasState { }
+public protocol Component: IsComponent, HasState, IsNode { }
+
+extension Component { // COmponene is a node
+    public var layout: Layout { return Layout() }
+    public var children: [IsNode] { return [] }
+    public var propsHash: Int { return 0 }
+    public var uniqueIdentifier: Int { return 0}
+}
 
 public protocol HasState: class {
     associatedtype State
@@ -58,7 +65,8 @@ public extension IsComponent where Self: UIViewController {
 //        view = KomponentsEngine.shared.render(component: self)
         view = UIView()
         view.backgroundColor = .white
-        KomponentsEngine.shared.render(component: self, in: view)
+        let engine = KomponentsEngine()
+        engine.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {

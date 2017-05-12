@@ -13,15 +13,25 @@ public struct HorizontalStack: Node, Equatable {
     public let uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
-    public let props: HorizontalStackProps
+    public let props: StackProps
     public let layout: Layout
     let ref: UnsafeMutablePointer<UIStackView>?
     
-    public init(_ layout:Layout? = nil,
+    public init(props:((inout StackProps) -> Void)? = nil,
+                _ layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
                 _ children: [IsNode]) {
-        var p = HorizontalStackProps()
-        self.props = p
+        
+        // Props
+        let defaultProps = StackProps()
+        if let p = props {
+            var prop = defaultProps
+            p(&prop)
+            self.props = prop
+        } else {
+            self.props = defaultProps
+        }
+        
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
         self.children = children
@@ -32,15 +42,4 @@ public struct HorizontalStack: Node, Equatable {
 public func == (lhs: HorizontalStack, rhs: HorizontalStack) -> Bool {
     return lhs.props == rhs.props
         && lhs.layout == rhs.layout
-}
-
-public struct HorizontalStackProps: Equatable, Hashable {
-    
-    public var hashValue: Int {
-        return 0
-    }
-}
-
-public func == (lhs: HorizontalStackProps, rhs: HorizontalStackProps) -> Bool {
-    return true
 }
