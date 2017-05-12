@@ -124,25 +124,6 @@ public typealias ShouldDeleteBlock = (Bool) -> Void
 //    }
 //}
 
-//public struct Map: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((MKMapView) -> Void)?
-//    var styleBlock: ((MKMapView) -> Void)?
-//    public var children = [Renderable]()
-//    var wording = ""
-//    var ref: UnsafeMutablePointer<MKMapView>?
-//    
-//    public init(style: ((MKMapView) -> Void)? = nil,
-//                layout: ((MKMapView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<MKMapView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//    }
-//}
-
 // Block Based UIControls
 
 class BlockBasedUITextField: UITextField {

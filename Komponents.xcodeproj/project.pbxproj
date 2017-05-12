@@ -39,6 +39,7 @@
 		996481321EC5A97400A518DC /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481311EC5A97400A518DC /* Progress.swift */; };
 		996481341EC5AB0100A518DC /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481331EC5AB0100A518DC /* Slider.swift */; };
 		996481361EC5ACC500A518DC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481351EC5ACC500A518DC /* Field.swift */; };
+		996481381EC5DFAF00A518DC /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481371EC5DFAF00A518DC /* Map.swift */; };
 		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		996481311EC5A97400A518DC /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		996481331EC5AB0100A518DC /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		996481351EC5ACC500A518DC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		996481371EC5DFAF00A518DC /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		996ADD8F1EB1C50A00364F7B /* Komponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Komponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				99317BEE1EB85B5D0019A524 /* KomponentsEngine.swift */,
 				992C397E1EC4A2AD005DAFA8 /* Layout.swift */,
 				992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */,
+				996481371EC5DFAF00A518DC /* Map.swift */,
 				992C39911EC4A55E005DAFA8 /* Default Nodes */,
 				992C398A1EC4A356005DAFA8 /* Protocols */,
 			);
@@ -325,6 +328,7 @@
 			files = (
 				99317BF61EB85B5D0019A524 /* Renderer.swift in Sources */,
 				992C39831EC4A313005DAFA8 /* HasChildren.swift in Sources */,
+				996481381EC5DFAF00A518DC /* Map.swift in Sources */,
 				9964812E1EC5A5FC00A518DC /* PageControl.swift in Sources */,
 				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
 				996481341EC5AB0100A518DC /* Slider.swift in Sources */,
