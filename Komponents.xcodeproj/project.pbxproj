@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9900D5661EC5EAEF009A0673 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D5651EC5EAEF009A0673 /* Table.swift */; };
 		9917E5121EB85709005C6092 /* KomponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9917E50F1EB856CC005C6092 /* KomponentsTests.swift */; };
 		9917E5141EB8574A005C6092 /* Komponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 9917E50A1EB856C2005C6092 /* Komponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		992C397F1EC4A2AD005DAFA8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C397E1EC4A2AD005DAFA8 /* Layout.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9900D5651EC5EAEF009A0673 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		9917E5091EB856C2005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9917E50A1EB856C2005C6092 /* Komponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Komponents.h; sourceTree = "<group>"; };
 		9917E50E1EB856CC005C6092 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				996481311EC5A97400A518DC /* Progress.swift */,
 				996481331EC5AB0100A518DC /* Slider.swift */,
 				996481351EC5ACC500A518DC /* Field.swift */,
+				9900D5651EC5EAEF009A0673 /* Table.swift */,
 			);
 			name = "Default Nodes";
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				99317BF81EB85B5D0019A524 /* KomponentsEngine.swift in Sources */,
 				99317BEF1EB85B5D0019A524 /* Component.swift in Sources */,
 				992C399D1EC4BFBF005DAFA8 /* VerticalStack.swift in Sources */,
+				9900D5661EC5EAEF009A0673 /* Table.swift in Sources */,
 				992C399F1EC4C06E005DAFA8 /* Button.swift in Sources */,
 				992C39931EC4A569005DAFA8 /* View.swift in Sources */,
 				992C39891EC4A33E005DAFA8 /* HasAUniqueIdentifier.swift in Sources */,

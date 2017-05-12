@@ -29,9 +29,9 @@ public class ComponentView<T: Component> :UIView {
 
 public class ComponentCell :UITableViewCell {
     
-    public let component: Renderable!
+    public let component: IsComponent!
     
-    public init(component: Renderable) {
+    public init(component: IsComponent) {
         self.component = component
         super.init(style: .default, reuseIdentifier: "")
         selectionStyle = .none

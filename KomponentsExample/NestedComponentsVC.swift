@@ -20,7 +20,7 @@ class NestedComponentsVC: UIViewController, StatelessComponent {
             View(layout: .fill, [
                 VerticalStack(
                     props: { $0.spacing = 10 },
-                    .center, [
+                    layout: .center, [
                     Counter(color: .blue),
                     Counter(color: .red),
                     Counter(color: .green),

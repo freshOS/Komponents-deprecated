@@ -28,19 +28,19 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("Hello Props", { HelloPropsVC(name:"Chuck Norris") }),
             ("LoadingScreen", { LoadingVC() }),
             ("Counter ", { CounterVC() }),
-//            ("Login Screen", { LoginVC() }),
+            ("Login Screen", { LoginVC() }),
             ("Nested Components", { NestedComponentsVC() } ),
             ("Loops", { LoopVC() } ),
             ("Timer", { TimerVC() } ),
-//            ("Todo", { TodoVC() } ),
+            ("Todo", { TodoVC() } ),
             ("Default Nodes", { DefaultNodesVC() } ),
-//            ("Static Table", { StaticTableVC() } )
+            ("Static Table", { StaticTableVC() } )
         ]
 
         return
             View(props: { $0.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1) },
                  layout: .fill, [
-                VerticalStack(Layout().centered().left(0).right(0),
+                    VerticalStack(layout: Layout().centered().left(0).right(0),
                     sections.map { wording, vc in
                         return View(layout: Layout().height(50), [
                             View(props: { $0.backgroundColor = UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1) },

@@ -18,7 +18,7 @@ public struct Label: Node, Equatable {
     public let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",
-         _ layout:Layout? = nil,
+         layout:Layout? = nil,
          ref: UnsafeMutablePointer<UILabel>? = nil) {
         var p = LabelProps()
         p.text = text
@@ -35,6 +35,9 @@ public func == (lhs: Label, rhs: Label) -> Bool {
 
 public struct LabelProps: Equatable, Hashable {
     public var text = ""
+    
+    //$0.font = UIFont.systemFont(ofSize: 30)
+    //$0.textAlignment = .center
     
     public var hashValue: Int {
         return text.hashValue

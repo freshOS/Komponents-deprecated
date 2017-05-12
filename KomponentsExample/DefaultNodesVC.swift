@@ -20,7 +20,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
             View(layout:.fill, [
                 VerticalStack(
                     props: { $0.spacing = 5 },
-                    .center, [
+                    layout: .center, [
                     
                     // View
                     View(props: { $0.backgroundColor = .red }, layout: Layout().height(50), []),

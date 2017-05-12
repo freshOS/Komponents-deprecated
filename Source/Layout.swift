@@ -103,6 +103,14 @@ public struct Layout: Equatable {
     public func fill(padding value:Int? = 0) -> Layout {
         return Layout(top: value, right: value, bottom: value, left: value, width: width, height: width)
     }
+    
+    public func fillHorizontally(padding value:Int? = 0) -> Layout {
+        return Layout(top: top, right: value, bottom: bottom, left: value, width: width, height: width)
+    }
+    
+    public func fillVertically(padding value:Int? = 0) -> Layout {
+        return Layout(top: value, right: right, bottom: value, left: left, width: width, height: width)
+    }
 }
 
 public func == (lhs: Layout, rhs: Layout) -> Bool {

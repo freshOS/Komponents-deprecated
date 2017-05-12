@@ -18,7 +18,7 @@ public struct HorizontalStack: Node, Equatable {
     let ref: UnsafeMutablePointer<UIStackView>?
     
     public init(props:((inout StackProps) -> Void)? = nil,
-                _ layout:Layout? = nil,
+                layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
                 _ children: [IsNode]) {
         

@@ -19,7 +19,11 @@ class HelloWorldVC: UIViewController, StatelessComponent {
         title = "Hello World"
         return
             View(layout: .fill, [
-                Label("Hello World", .center)
+                Label("Hello World", layout: .center)
             ])
+    }
+    
+    func didRender() {
+        print("Did render!")
     }
 }
