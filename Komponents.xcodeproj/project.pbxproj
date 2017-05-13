@@ -48,6 +48,7 @@
 		996481381EC5DFAF00A518DC /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481371EC5DFAF00A518DC /* Map.swift */; };
 		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
 		9992BD9E1EC6CE06005EA9D6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9D1EC6CE06005EA9D6 /* TextView.swift */; };
+		9992BDA01EC6D0D7005EA9D6 /* Scrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		9992BD9D1EC6CE06005EA9D6 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrollview.swift; sourceTree = "<group>"; };
 		99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitReconcilier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				996481331EC5AB0100A518DC /* Slider.swift */,
 				996481351EC5ACC500A518DC /* Field.swift */,
 				9992BD9D1EC6CE06005EA9D6 /* TextView.swift */,
+				9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */,
 				9900D5651EC5EAEF009A0673 /* Table.swift */,
 			);
 			name = "Default Nodes";
@@ -384,6 +387,7 @@
 				992C39991EC4B991005DAFA8 /* ActivityIndicatorView.swift in Sources */,
 				99317BF21EB85B5D0019A524 /* ComponentViewController.swift in Sources */,
 				99317BF11EB85B5D0019A524 /* ComponentView.swift in Sources */,
+				9992BDA01EC6D0D7005EA9D6 /* Scrollview.swift in Sources */,
 				99317BF71EB85B5D0019A524 /* UIKitRenderer.swift in Sources */,
 				992C398C1EC4A36E005DAFA8 /* IsNode.swift in Sources */,
 			);

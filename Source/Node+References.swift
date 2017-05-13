@@ -52,6 +52,9 @@ func linkReference(of node: IsNode, to view: UIView) {
     if let node = node as? VerticalStack, let view = view as? UIStackView {
         node.ref?.pointee = view
     }
+    if let node = node as? ScrollView, let view = view as? UIScrollView {
+        node.ref?.pointee = view
+    }
     if let node = node as? Table, let view = view as? UITableView {
         node.ref?.pointee = view
     }
