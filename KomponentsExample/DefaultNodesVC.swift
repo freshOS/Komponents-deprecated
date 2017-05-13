@@ -23,7 +23,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     layout: .center, [
                     
                     // View
-                    View(props: { $0.backgroundColor = .red }, layout: Layout().height(50), []),
+                    View(color: .red, layout: Layout().height(50), []),
 
                     // Label
                     Label("Label !"),

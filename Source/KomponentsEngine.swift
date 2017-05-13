@@ -183,11 +183,9 @@ public class KomponentsEngine {
 //    }
     
     func render(component: IsComponent, in view: UIView) {
-        print(" 👮 renderiiiiii")
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                 let newTree = component.render()
-                var test = self
                 print("UNIQUE ID: \(component.uniqueComponentIdentifier)")
                 print(self.latestRenderedTreeForComponent(component))
                 print(component)
@@ -205,14 +203,10 @@ public class KomponentsEngine {
                             sv.removeFromSuperview()
                         }
                         self.renderer.render(tree: newTree, in: view)
-//                        self.latestRenderedTree = newTree
-//                        print("nodeIdViewMap : \(self.renderer.nodeIdViewMap)")
                         self.log(newTree)
                         component.didRender()
                     }
-                    
                 }
-                //            self.latestRenderedTree = newTree
             })
         }
     }
@@ -235,15 +229,14 @@ public class KomponentsEngine {
             let subTree = subComponent.render()
             log(subTree)
             counter -= 1
-        } else if let hasChildren = tree as? HasChildren {
-            
-            if hasChildren.children.count > 0 {
+        } else {
+            if tree.children.count > 0 {
                 counter += 1
             }
-            for c in hasChildren.children {
+            for c in tree.children {
                 log(c)
             }
-            if hasChildren.children.count > 0 {
+            if tree.children.count > 0 {
                 counter -= 1
             }
         }

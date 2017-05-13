@@ -49,8 +49,8 @@ class Circle: StatelessComponent {
     func render() -> Tree {
         return
             View(
+                color: UIColor(red: 0, green: 0, blue: 1, alpha: 0.1),
                 props: {
-                    $0.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.1)
                     $0.borderColor = .blue
                     $0.borderWidth = 2
                     $0.cornerRadius = 30
@@ -62,7 +62,7 @@ class Circle: StatelessComponent {
 class Separator: StatelessComponent {
     func render() -> Tree {
         return
-            View(props: { $0.backgroundColor = UIColor.black.withAlphaComponent(0.05) },
+            View(color: UIColor.black.withAlphaComponent(0.05),
                  layout: Layout().fillHorizontally().top(0).height(1), [])
     }
 }
