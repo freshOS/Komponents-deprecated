@@ -140,12 +140,26 @@ public class KomponentsEngine {
             render(component: component, in: vc.view)
         } else {
             
+            // rerender full tree of root component.
+            
 //            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
             
             //            let associatedView = self.viewForComponentId(component.uniqueIdentifier)
         
-            let associatedView = renderer.viewForComponent(component: component)
-            print(associatedView)
+//            let associatedView = renderer.viewForComponent(component: component)
+//            print(associatedView)
+//            
+//            
+//            if let superview = associatedView.superview {
+//                var stackViewIndex: Int?
+//                if let stackView = superview as? UIStackView {
+//                    stackViewIndex = stackView.arrangedSubviews.index(of: associatedView)
+//                }
+//                // Remove previous view hierarchy.
+//                associatedView.removeFromSuperview()
+//                // Re-render compoenent in superview.
+//                self.renderer.render(component, in: superview, withEngine: self, atIndex: stackViewIndex, ignoreRefs: false)
+//            }
 
 
         }
@@ -155,7 +169,13 @@ public class KomponentsEngine {
     
     let renderer = UIKitRenderer()
     
-    var latestRenderedTree:Tree?
+//    var latestRenderedTree:Tree?
+    
+    var componentTreeMap = [String:Tree]()
+    
+    func latestRenderedTreeForComponent(_ component: IsComponent) -> Tree? {
+        return componentTreeMap[component.uniqueComponentIdentifier]
+    }
     
 //    func render(component: Renderable) -> UIView {
 //        let tree = component.render()
@@ -168,21 +188,17 @@ public class KomponentsEngine {
             self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                 let newTree = component.render()
                 var test = self
-                withUnsafePointer(to: &test) {
-                    print(" str value \(test) has address: \($0)")
-                }
-                print(self.latestRenderedTree)
-                print(component.forceRerender())
+                print("UNIQUE ID: \(component.uniqueComponentIdentifier)")
+                print(self.latestRenderedTreeForComponent(component))
                 print(component)
-                if let latestRenderedTree = self.latestRenderedTree, component.forceRerender() == false {
+                if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
                     if areTreesEqual(latestRenderedTree, newTree) {
                         print("Nothing changed, do nothing")
                     } else {
                         self.traverseForPatch(latestRenderedTree, newTree)
                     }
                 } else {
-                    self.latestRenderedTree = newTree
-                    print(self.latestRenderedTree)
+                    self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
                     DispatchQueue.main.async {
                         // empty view if previously rendered
                         for sv in view.subviews {

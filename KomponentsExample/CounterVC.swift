@@ -33,7 +33,7 @@ class CounterVC: UIViewController, Component {
             ])
     }
     
-    func enablePatching() -> Bool {
-        return true
+    deinit {
+        print("destorying  \(self) withID: \(uniqueComponentIdentifier)")
     }
 }

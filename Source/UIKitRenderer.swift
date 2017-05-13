@@ -27,6 +27,14 @@ class UIKitRenderer {
     
     func render(tree:Tree, in view: UIView) {
         
+        var tree = tree
+        if let subComponenet = tree as? IsComponent {
+            let cId = subComponenet.uniqueComponentIdentifier
+            tree = subComponenet.render()
+            componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
+        }
+        
+        
         // Create a UIKIt view form a node
         let newView = viewForNode(node: tree)
     
@@ -34,12 +42,13 @@ class UIKitRenderer {
         linkReference(of: tree, to: newView)
         
 //        if let subComponenet = tree as? IsComponent {
-//            let subTree = subComponenet.render()
-//            tree = subTree
-//            
-//            let cId = subComponenet.uniqueIdentifier
+////            let subTree = subComponenet.render()
+////            tree = subTree
+////            
+//            let cId = subComponenet.uniqueComponentIdentifier
 //            componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
-//            
+//        }
+//
 //            //                render(tree: subTree, in: newView)
 //        } else {
             nodeIdViewMap[tree.uniqueIdentifier] = newView // todo use same table for Compoenents?
@@ -48,8 +57,9 @@ class UIKitRenderer {
         for c in tree.children {
             // replace child carrement?
             if let subComponenet = c as? IsComponent {
-                let subTree = subComponenet.render()
-                render(tree: subTree, in: newView)
+//                let subTree = subComponenet.render()
+//                render(tree: subTree, in: newView)
+                render(tree: c, in: newView)
                 subComponenet.didRender()
             } else {
                 render(tree: c, in: newView)
