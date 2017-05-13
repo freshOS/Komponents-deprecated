@@ -23,7 +23,7 @@ class Counter: Component {
     func render() -> Tree {
         return
             View(
-                props: { $0.backgroundColor = self.color },
+                color: color,
                 layout: Layout().size(100), [
                     VerticalStack(layout: .center, [
                         Label("Counter : \(state)"),

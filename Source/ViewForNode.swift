@@ -67,7 +67,7 @@ func viewForNode(node:IsNode) -> UIView {
         return v
     }
     
-    if let node = node as? Map {
+    if node is Map {
         let v = MKMapView()
         return v
     }
@@ -108,7 +108,7 @@ func viewForNode(node:IsNode) -> UIView {
         return v
     }
     
-    if let node = node as? ScrollView {
+    if node is ScrollView {
         let v = UIScrollView()
         return v
     }

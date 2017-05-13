@@ -19,18 +19,20 @@ public struct View: Node, Equatable {
     
     // todo add props.
     public init(
+        color: UIColor? = nil,
         props:((inout ViewProps) -> Void)? = nil,
         layout: Layout? = nil,
         ref: UnsafeMutablePointer<UIView>? = nil,
         _ children: [IsNode]) {
         
-        if let p = props {
-            var prop = ViewProps()
-            p(&prop)
-            self.props = prop
-        } else {
-            self.props = ViewProps()
+        var prop = ViewProps()
+        if let color = color {
+            prop.backgroundColor = color
         }
+        if let p = props {
+            p(&prop)
+        }
+        self.props = prop
         
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref

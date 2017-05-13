@@ -30,7 +30,7 @@ class TodoVC: UIViewController, Component {
         title = "Todo"
         return
             View(
-                props: { $0.backgroundColor = .gray },
+                color:.gray,
                 layout: .fill, [
                     VerticalStack(layout: Layout().centerHorizontally().top(100), [
                     Label("TODO"),

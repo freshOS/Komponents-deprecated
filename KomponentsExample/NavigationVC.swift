@@ -36,14 +36,15 @@ class NavigationVC: UIViewController, StatelessComponent {
             ("Default Nodes", { DefaultNodesVC() } ),
             ("Static Table", { StaticTableVC() } )
         ]
+        let color = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
 
         return
-            View(props: { $0.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1) },
+            View(color: color,
                  layout: .fill, [
                     VerticalStack(layout: Layout().centered().left(0).right(0),
                     sections.map { wording, vc in
                         return View(layout: Layout().height(50), [
-                            View(props: { $0.backgroundColor = UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1) },
+                            View(color: UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1),
                                  layout: Layout().left(0).right(0).top(0).height(1), []),
                             Button("\(wording)", tap: { [weak self] in
                                  self?.push(vc()) },
