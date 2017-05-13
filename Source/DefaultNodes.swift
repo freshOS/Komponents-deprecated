@@ -27,34 +27,7 @@ func generateUniqueId() -> Int {
 
 
 
-//public struct ScrollView: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UIScrollView) -> Void)?
-//    var styleBlock: ((UIScrollView) -> Void)?
-//    public var children = [Renderable]()
-//    var childrenLayout = [Any]()
-//    var ref: UnsafeMutablePointer<UIScrollView>?
-//    
-//    public init(style: ((UIScrollView) -> Void)? = nil,
-//                layout: ((UIScrollView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIScrollView>? = nil,
-//                _ children: [Renderable]) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.children = children
-//        self.ref = ref
-//    }
-//    
-//    public init(style: ((UIScrollView) -> Void)? = nil,
-//                layout: ((UIScrollView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UIScrollView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.ref = ref
-//    }
-//}
+
 
 public typealias EndRefreshingCallback = () -> Void
 
