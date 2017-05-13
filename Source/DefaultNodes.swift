@@ -19,6 +19,12 @@ func generateUniqueId() -> Int {
     return startID
 }
 
+//private var startComponentID = 0
+//func generateUniqueComponentId() -> Int {
+//    startComponentID += 1
+//    return startComponentID
+//}
+
 //public struct TextView: Node {
 //    
 //    public var applyStyle: (() -> Void)?

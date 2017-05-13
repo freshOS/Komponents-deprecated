@@ -66,7 +66,7 @@ public extension IsComponent where Self: UIViewController {
 //        view = KomponentsEngine.shared.render(component: self)
         view = UIView()
         view.backgroundColor = .white
-        let engine = KomponentsEngine()
+        let engine = KomponentsEngine.shared
         engine.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
