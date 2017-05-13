@@ -30,13 +30,13 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     
                     // Field
                     Field("A cool field", textChanged: { print($0) } ),
-//                    
-//                    TextView("Some Text",
-//                             textChanged: { print($0) },
-//                             style: { $0.backgroundColor = .lightGray },
-//                             layout: { $0.size(100) }),
-//                    
-//                  // Button
+
+                    // TextView
+                    TextView(text: "Some Text",
+                             textChanged: { print($0) },
+                             props: { $0.backgroundColor = .lightGray },
+                             layout: Layout().size(100)),
+                    // Button
                     Button("Button",
                            tap: { print("Tapped!") },
                            props: {

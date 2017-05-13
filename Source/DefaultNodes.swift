@@ -25,37 +25,7 @@ func generateUniqueId() -> Int {
 //    return startComponentID
 //}
 
-//public struct TextView: Node {
-//    
-//    public var applyStyle: (() -> Void)?
-//    public  var applyLayout: (() -> Void)?
-//    var layoutBlock: ((UITextView) -> Void)?
-//    var styleBlock: ((UITextView) -> Void)?
-//    public var children = [Renderable]()
-//    var wording = ""
-//    var isFocused = true
-//    var ref: UnsafeMutablePointer<UITextView>?
-//    
-//    var textChangedCallback: ((String) -> Void)?
-//    
-//    var registerTextChanged: ((UITextView) -> Void)?
-//    
-//    public init(_ wording: String = "",
-//                textChanged: ((String) -> Void)? = nil,
-//                style: ((UITextView) -> Void)? = nil,
-//                layout: ((UITextView) -> Void)? = nil,
-//                ref: UnsafeMutablePointer<UITextView>? = nil) {
-//        self.layoutBlock = layout
-//        self.styleBlock = style
-//        self.wording = wording
-//        self.ref = ref
-//        registerTextChanged = { field in
-//            if let field = field as? BlockBasedUITextView, let textChanged = textChanged {
-//                field.setCallback(textChanged)
-//            }
-//        }
-//    }
-//}
+
 
 //public struct ScrollView: Node {
 //    

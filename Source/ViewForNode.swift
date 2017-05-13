@@ -35,6 +35,13 @@ func viewForNode(node:IsNode) -> UIView {
         return v
     }
     
+    if let node = node as? TextView {
+        let v = BlockBasedUITextView()
+        v.text = node.props.text
+        v.backgroundColor = node.props.backgroundColor
+        return v
+    }
+    
     if let node = node as? Image {
         let v = UIImageView()
         v.image = node.props.image

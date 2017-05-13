@@ -22,4 +22,7 @@ func plugEvents(from tree:IsNode, to newView: UIView) {
     if let fieldNode = tree as? Field {
         fieldNode.registerTextChanged?(newView as! UITextField)
     }
+    if let fieldNode = tree as? TextView {
+        fieldNode.registerTextChanged?(newView as! UITextView)
+    }
 }

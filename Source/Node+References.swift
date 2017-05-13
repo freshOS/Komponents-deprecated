@@ -22,6 +22,9 @@ func linkReference(of node: IsNode, to view: UIView) {
     if let node = node as? Field, let view = view as? UITextField {
         node.ref?.pointee = view
     }
+    if let node = node as? TextView, let view = view as? UITextView {
+        node.ref?.pointee = view
+    }
     if let node = node as? Image, let view = view as? UIImageView {
         node.ref?.pointee = view
     }
