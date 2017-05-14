@@ -36,7 +36,11 @@ class NestedComponentsVC: UIViewController, Component {
                             self?.updateState { $0[1] += 1 }
                         }),
                         
-                        StatefulCounter(color: .yellow)
+                        // Self-contained stateful component.
+                        StatefulCounter(color: .yellow),
+                        
+                        // StateLess component.
+                        AStatelessComponent(),
                         
                 ])
             ])

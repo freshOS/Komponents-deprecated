@@ -38,6 +38,7 @@ struct BareCounter {
     }
 }
 
+
 class StatefulCounter: Component {
     
     var reactEngine:KomponentsEngine?
@@ -68,4 +69,12 @@ class StatefulCounter: Component {
     deinit {
         print("😀 DEstroying Counter")
     }
+}
+
+struct AStatelessComponent: StatelessComponent {
+    
+    func render() -> Tree {
+        return View(color: .blue, layout: Layout().size(100), [])
+    }
+    
 }

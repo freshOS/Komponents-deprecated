@@ -13,7 +13,6 @@ import Komponents
 class CounterVC: UIViewController, Component {
     var reactEngine: KomponentsEngine?
 
-        
     var state = 0
     
     override func loadView() { loadComponent() }

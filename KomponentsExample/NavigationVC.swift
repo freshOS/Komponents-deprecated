@@ -20,7 +20,6 @@ class NavigationVC: UIViewController, StatelessComponent {
         func buttonProps(b: inout ButtonProps) {
             b.setTitleColor(UIColor(red: 0.04, green: 0.04, blue: 0.04, alpha: 1), for: .normal)
             b.setTitleColor(.gray, for: .highlighted)
-//            b.titleLabel?.textAlignment = .right
         }
         
         let sections: [(String, (() ->(UIViewController)) )] = [

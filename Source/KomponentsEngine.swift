@@ -15,9 +15,6 @@ public class Komponents {
 
 public class KomponentsEngine {
     
-//    static let shared = KomponentsEngine()
-//
-//    // retain non-VC components here
 //    var componentsMap = [String: IsComponent]()
 //    var componentsChildren = [String: [String]]() // [ComponentID: [ChildComponentID]]
     var viewMap = [String: UIView]()
@@ -113,7 +110,7 @@ public class KomponentsEngine {
 //        }
 //        
 //    }
-//    
+//
 //    public func render<C: IsComponent>(component: C, in view: UIView) {
 //        renderer.render(component, in: view, withEngine: self, atIndex: nil, ignoreRefs: false)
 //    }
@@ -178,10 +175,13 @@ public class KomponentsEngine {
     }
     
     var rootComponent:IsComponent?
+    public var rootView:UIView?
     
     func render(subComponent:IsComponent) {
         if let vc = rootComponent as? UIViewController {
             render(component: rootComponent!, in: vc.view)
+        } else if let rootView = rootView {
+            render(component: subComponent, in: rootView)
         }
     }
     
@@ -203,9 +203,11 @@ public class KomponentsEngine {
                     } else {
                         self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
                         DispatchQueue.main.async {
-                            // empty view if previously rendered
-                            for sv in view.subviews { // TODO put inside rendere?
-                                sv.removeFromSuperview()
+                            if self.rootView == nil { // not a subcomponent
+                                // empty view if previously rendered
+                                for sv in view.subviews { // TODO put inside rendere?
+                                    sv.removeFromSuperview()
+                                }
                             }
                             self.renderer.render(tree: newTree, in: view)
                             self.log(newTree)

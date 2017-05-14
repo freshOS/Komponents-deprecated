@@ -32,14 +32,19 @@ class UIKitRenderer {
     
         if let subComponenet = tree as? IsStatefulComponent {
             let cId = subComponenet.uniqueComponentIdentifier
-            tree = subComponenet.render()
+//            tree = subComponenet.render()
             componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
             
             // Pass along engine to subcompoenent
             print(engine)
-            subComponenet.reactEngine = engine
+//            subComponenet.reactEngine = engine
+            subComponenet.reactEngine = KomponentsEngine() // link new engine
             print(subComponenet)
             print(subComponenet.reactEngine)
+            
+//            let wrapView = UIView()
+//            subComponenet.reactEngine?.render(component: subComponenet, in: wrapView)
+//            add(wrapView, asSubviewOf: view)
         } else if let subComponenet = tree as? Renderable {
             tree = subComponenet.render()
         }
@@ -66,9 +71,20 @@ class UIKitRenderer {
         
         for c in tree.children {
             // replace child carrement?
-            if let subComponenet = c as? IsComponent {
+            
+            if let subComponenet = c as? IsStatefulComponent {
+//                let wrapView = UIView()
+                subComponenet.reactEngine = KomponentsEngine()
+                subComponenet.reactEngine?.rootView = newView
+                subComponenet.reactEngine?.render(component: subComponenet, in: newView)
+//                add(wrapView, asSubviewOf: newView)
+            }
+            else if let subComponenet = c as? IsComponent {
 //                let subTree = subComponenet.render()
 //                render(tree: subTree, in: newView)
+                
+                
+                
                 render(tree: c, in: newView)
                 subComponenet.didRender()
             } else {

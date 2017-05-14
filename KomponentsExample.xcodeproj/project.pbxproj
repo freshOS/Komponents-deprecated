@@ -20,10 +20,8 @@
 		99317BC71EB8596E0019A524 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB21EB8596E0019A524 /* LoginState.swift */; };
 		99317BC81EB8596E0019A524 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB31EB8596E0019A524 /* LoginVC.swift */; };
 		99317BC91EB8596E0019A524 /* LoopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB41EB8596E0019A524 /* LoopVC.swift */; };
-		99317BCA1EB8596E0019A524 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB51EB8596E0019A524 /* MyCell.swift */; };
 		99317BCB1EB8596E0019A524 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB61EB8596E0019A524 /* NavigationVC.swift */; };
 		99317BCC1EB8596E0019A524 /* NestedComponentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */; };
-		99317BCE1EB8596E0019A524 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BB91EB8596E0019A524 /* Requirements.swift */; };
 		99317BCF1EB8596E0019A524 /* TableViewCellExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */; };
 		99317BD01EB8596E0019A524 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBB1EB8596E0019A524 /* TimerVC.swift */; };
 		99317BD11EB8596E0019A524 /* TodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99317BBC1EB8596E0019A524 /* TodoVC.swift */; };
@@ -89,10 +87,8 @@
 		99317BB21EB8596E0019A524 /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		99317BB31EB8596E0019A524 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		99317BB41EB8596E0019A524 /* LoopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopVC.swift; sourceTree = "<group>"; };
-		99317BB51EB8596E0019A524 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		99317BB61EB8596E0019A524 /* NavigationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedComponentsVC.swift; sourceTree = "<group>"; };
-		99317BB91EB8596E0019A524 /* Requirements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requirements.swift; sourceTree = "<group>"; };
 		99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellExampleVC.swift; sourceTree = "<group>"; };
 		99317BBB1EB8596E0019A524 /* TimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
 		99317BBC1EB8596E0019A524 /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
@@ -132,10 +128,8 @@
 				99317BB21EB8596E0019A524 /* LoginState.swift */,
 				99317BB31EB8596E0019A524 /* LoginVC.swift */,
 				99317BB41EB8596E0019A524 /* LoopVC.swift */,
-				99317BB51EB8596E0019A524 /* MyCell.swift */,
 				99317BB61EB8596E0019A524 /* NavigationVC.swift */,
 				99317BB71EB8596E0019A524 /* NestedComponentsVC.swift */,
-				99317BB91EB8596E0019A524 /* Requirements.swift */,
 				99317BBA1EB8596E0019A524 /* TableViewCellExampleVC.swift */,
 				99317BBB1EB8596E0019A524 /* TimerVC.swift */,
 				99317BBC1EB8596E0019A524 /* TodoVC.swift */,
@@ -282,12 +276,10 @@
 				99317BD01EB8596E0019A524 /* TimerVC.swift in Sources */,
 				99317BC11EB8596E0019A524 /* CounterVC.swift in Sources */,
 				99317BC01EB8596E0019A524 /* Counter.swift in Sources */,
-				99317BCA1EB8596E0019A524 /* MyCell.swift in Sources */,
 				99317BC61EB8596E0019A524 /* LoadingVC.swift in Sources */,
 				99CF3C8D1EC0F1B6006ACA47 /* StaticTableVC.swift in Sources */,
 				99317BC41EB8596E0019A524 /* HelloWorldVC.swift in Sources */,
 				99317BCF1EB8596E0019A524 /* TableViewCellExampleVC.swift in Sources */,
-				99317BCE1EB8596E0019A524 /* Requirements.swift in Sources */,
 				9923C6461EC1BE9200E4E5CC /* FenceCell.swift in Sources */,
 				99317BD11EB8596E0019A524 /* TodoVC.swift in Sources */,
 				99317BC21EB8596E0019A524 /* DefaultNodesVC.swift in Sources */,
