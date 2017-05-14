@@ -10,7 +10,37 @@ import UIKit
 import Stevia
 import Komponents
 
-class Counter: Component {
+
+// Free function Functional Compoenent
+
+func FunctionalCounter(color: UIColor, count: Int, tap:@escaping () ->Void) -> Tree {
+    return
+        View(color: color, layout: Layout().size(100), [
+            VerticalStack(layout: .center, [
+                Label("Counter : \(count)"),
+                Button("Tap me", tap:tap, props: { $0.setTitleColor(.red, for: .normal) })
+            ])
+        ])
+}
+
+
+// Stateless componenent doos not need anything
+struct BareCounter {
+    
+    static func render(color: UIColor, count: Int, tap:@escaping () ->Void) -> Tree {
+        return
+            View(color: color, layout: Layout().size(100), [
+                VerticalStack(layout: .center, [
+                    Label("Counter : \(count)"),
+                    Button("Tap me", tap:tap, props: { $0.setTitleColor(.red, for: .normal) })
+                ])
+            ])
+    }
+}
+
+class StatefulCounter: Component {
+    
+    var reactEngine:KomponentsEngine?
     
     var state = 0
     

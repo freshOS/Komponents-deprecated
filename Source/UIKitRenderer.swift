@@ -15,7 +15,7 @@ class UIKitRenderer {
     var nodeIdViewMap = [Int: UIView]()
     var componentIdNodeIdViewMap = [String: Int]()
     
-    func viewForComponent(component: IsComponent) -> UIView {
+    func viewForComponent(component: IsStatefulComponent) -> UIView {
         
         let id:String = component.uniqueComponentIdentifier
         print(id)
@@ -28,10 +28,20 @@ class UIKitRenderer {
     func render(tree:Tree, in view: UIView) {
         
         var tree = tree
-        if let subComponenet = tree as? IsComponent {
+        
+    
+        if let subComponenet = tree as? IsStatefulComponent {
             let cId = subComponenet.uniqueComponentIdentifier
             tree = subComponenet.render()
             componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
+            
+            // Pass along engine to subcompoenent
+            print(engine)
+            subComponenet.reactEngine = engine
+            print(subComponenet)
+            print(subComponenet.reactEngine)
+        } else if let subComponenet = tree as? Renderable {
+            tree = subComponenet.render()
         }
         
         

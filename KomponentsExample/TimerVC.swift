@@ -11,6 +11,8 @@ import Stevia
 import Komponents
 
 class TimerVC: UIViewController, Component {
+    var reactEngine: KomponentsEngine?
+
     
     var state = 0
     

@@ -10,6 +10,8 @@ import UIKit
 import Komponents
 
 class TestPatch: UIViewController, Component {
+    var reactEngine: KomponentsEngine?
+
     
     var state = false
     

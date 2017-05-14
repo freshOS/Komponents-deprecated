@@ -11,6 +11,8 @@ import Stevia
 import Komponents
 
 class TodoVC: UIViewController, Component {
+    var reactEngine: KomponentsEngine?
+
     
     struct Item {
         let name: String

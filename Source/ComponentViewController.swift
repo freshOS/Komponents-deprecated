@@ -9,6 +9,8 @@
 import UIKit
 
 open class ComponentViewController: UIViewController, Component {
+    public var reactEngine: KomponentsEngine?
+
     
     public var state = true
     
@@ -18,7 +20,7 @@ open class ComponentViewController: UIViewController, Component {
     
     override open func loadView() {
         view = UIView()
-        KomponentsEngine.shared.render(component:self, in: view)
+        KomponentsEngine().render(component:self, in: view)
     }
     
     override open func viewDidLoad() {
@@ -27,7 +29,7 @@ open class ComponentViewController: UIViewController, Component {
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
                          object: nil, queue: nil) {_ in
                 self.view = UIView()
-                KomponentsEngine.shared.render(component:self, in: self.view)
+                KomponentsEngine().render(component:self, in: self.view)
             }
     }
     

@@ -10,7 +10,11 @@ import UIKit
 import Stevia
 import Komponents
 
-class NestedComponentsVC: UIViewController, StatelessComponent {
+class NestedComponentsVC: UIViewController, Component {
+    var reactEngine: KomponentsEngine?
+
+    
+    var state: [Int] = [0,0,0] //counters
     
     override func loadView() { loadComponent() }
     
@@ -21,10 +25,19 @@ class NestedComponentsVC: UIViewController, StatelessComponent {
                 VerticalStack(
                     props: { $0.spacing = 10 },
                     layout: .center, [
-                    Counter(color: .blue),
-                    Counter(color: .red),
-                    Counter(color: .green),
-                    Counter(color: .yellow)
+                        
+                        // Free function functional Componenent
+                        FunctionalCounter(color: .blue, count: state[0], tap: { [weak self] in
+                            self?.updateState { $0[0] += 1 }
+                        }),
+                        
+                        // struct-namespaced functional component
+                        BareCounter.render(color: .red, count: state[1], tap: { [weak self] in
+                            self?.updateState { $0[1] += 1 }
+                        }),
+                        
+                        StatefulCounter(color: .yellow)
+                        
                 ])
             ])
     }

@@ -13,15 +13,19 @@ public protocol Renderable {
     func render() -> Tree
 }
 
-public protocol IsComponent:class, Renderable, IsNode {
-    var uniqueComponentIdentifier:String { get }
+public protocol IsComponent: Renderable, IsNode {
     func didRender()
     func enablePatching() -> Bool
     func forceRerender() -> Bool
     func willDeinitComponent()
 }
 
-public extension IsComponent {
+public protocol IsStatefulComponent: class, IsComponent {
+    var uniqueComponentIdentifier:String { get }
+    var reactEngine:KomponentsEngine? { get set }
+}
+
+public extension IsStatefulComponent {
     public var uniqueComponentIdentifier: String {
         return "\(ObjectIdentifier(self).hashValue)"
     }
@@ -29,7 +33,7 @@ public extension IsComponent {
 
 public protocol StatelessComponent: IsComponent { }
 
-public protocol Component: IsComponent, HasState { }
+public protocol Component: IsStatefulComponent, HasState { }
 
 extension IsComponent { // COmponene is a node
     public var layout: Layout { return Layout() }
@@ -61,59 +65,112 @@ public extension Component {
     }
 }
 
-public extension IsComponent where Self: UIViewController {
+public extension IsStatefulComponent where Self: UIViewController {
     func loadComponent() {
-//        view = KomponentsEngine.shared.render(component: self)
+        reactEngine = KomponentsEngine()
         view = UIView()
         view.backgroundColor = .white
-        let engine = KomponentsEngine.shared
+        reactEngine?.render(component: self, in: view)
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+                if let weakSelf = self {
+                    weakSelf.reactEngine?.render(component: weakSelf, in: weakSelf.view)
+                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
+                }
+        }
+    }
+}
+
+public extension StatelessComponent where Self: UIViewController {
+    func loadComponent() {
+        let engine = KomponentsEngine()
+        view = UIView()
+        view.backgroundColor = .white
         engine.render(component: self, in: view)
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
                     engine.render(component: weakSelf, in: weakSelf.view)
-//                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
+                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
                 }
         }
     }
 }
 
-public extension IsComponent where Self: UIView {
-    func loadComponent() {
-        KomponentsEngine.shared.render(component: self, in: self)
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
-                if let weakSelf = self {
-                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-                }
-        }
-    }
-}
-
-public extension IsComponent where Self: UITableViewCell {
-    func loadComponent() {
-        KomponentsEngine.shared.render(component: self, in: self.contentView)
+//public extension IsComponent where Self: UIViewController {
+//    func loadComponent() {
+//        
+////        view = KomponentsEngine.shared.render(component: self)
+//        view = UIView()
+//        view.backgroundColor = .white
+//        let engine = KomponentsEngine.shared
+//        engine.render(component: self, in: view)
 //        NotificationCenter.default
 //            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
 //                if let weakSelf = self {
-//                    weakSelf.askForRefresh()
+//                    engine.render(component: weakSelf, in: weakSelf.view)
+////                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
 //                }
 //        }
-    }
-}
+//    }
+//}
+
+//public extension IsComponent where Self: UIView {
+//    func loadComponent() {
+//        KomponentsEngine.shared.render(component: self, in: self)
+//        NotificationCenter.default
+//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+//                if let weakSelf = self {
+//                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
+//                }
+//        }
+//    }
+//}
+//
+//public extension IsComponent where Self: UITableViewCell {
+//    func loadComponent() {
+//        KomponentsEngine.shared.render(component: self, in: self.contentView)
+////        NotificationCenter.default
+////            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+////                if let weakSelf = self {
+////                    weakSelf.askForRefresh()
+////                }
+////        }
+//    }
+//}
 
 
-public extension IsComponent {
+//public extension IsComponent {
+//    func askForRefresh(patching: Bool) {
+//        KomponentsEngine.shared.updateComponent(self, patching: patching)
+//    }
+//}
+//
+//public extension IsComponent where Self: UIViewController {
+//    func askForRefresh(patching: Bool) {
+//        KomponentsEngine.shared.render(component: self, in: view)
+//    }
+//}
+
+
+
+public extension IsStatefulComponent {
     func askForRefresh(patching: Bool) {
-        KomponentsEngine.shared.updateComponent(self, patching: patching)
+        if let vc = self as? UIViewController {
+            reactEngine?.render(component: self, in: vc.view)
+        } else {
+            print(reactEngine)
+            reactEngine?.render(subComponent: self)
+        }
+//        reactEngine
+//        reactEngine?.render(component: self, in: view)
     }
 }
-
-public extension IsComponent where Self: UIViewController {
-    func askForRefresh(patching: Bool) {
-        KomponentsEngine.shared.render(component: self, in: view)
-    }
-}
+//public extension IsStatefulComponent where Self: UIViewController {
+//    func askForRefresh(patching: Bool) {
+//        reactEngine?.render(component: self, in: view)
+//    }
+//}
 
 //public protocol CanBeDirty {
 //    var isDirty: Bool { get set }
