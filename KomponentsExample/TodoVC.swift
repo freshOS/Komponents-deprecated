@@ -67,10 +67,10 @@ class TodoVC: UIViewController, Component {
             }
         }
     }
-    
-    // Test wiht pathcing view hierarchies!
-    func forceRerender() -> Bool {
-        return true
-    }
+//    
+//    // Test wiht pathcing view hierarchies!
+//    func forceRerender() -> Bool {
+//        return true
+//    }
     
 }
