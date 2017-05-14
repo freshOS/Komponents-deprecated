@@ -49,6 +49,7 @@ class UIKitReconcilier {
             if retChildNode == nil { // Node removed !
                 if let oldChildNode = oldChildNode {
                     if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier]  {
+                        print("💉 Removing node \(oldChildNode)")
                         updates.append {
                             removedView.removeFromSuperview() // different when its a stackview?
                         }
@@ -57,22 +58,24 @@ class UIKitReconcilier {
                 }
             } else if oldChildNode == nil { // New Node Added
                 if let retChildNode = retChildNode, let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier]  {
+                    print("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
                     updates.append {
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
                     }
                     iNew = iNew - 1
                 }
-            } else { // Replacement by non patchable node (different node type.)
+            } else if !areTreesEqual(retChildNode!, oldChildNode!) { // Replacement by non patchable node (different node type.)
                 if let retChildNode = retChildNode, let oldChildNode = oldChildNode,
                     let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
                     let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier]  {
+                    print("💉 Replacing node")
                     updates.append {
                         // render new node in parentView
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
                         // remove old node
                         removedView.removeFromSuperview()
                     }
-                    iNew = iNew - 1 //is this useful?
+//                    iNew = iNew - 1 //is this useful?
                 }
             }
             
