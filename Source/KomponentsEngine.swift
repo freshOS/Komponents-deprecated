@@ -177,29 +177,23 @@ public class KomponentsEngine {
         return componentTreeMap[component.uniqueComponentIdentifier]
     }
     
-//    func render(component: Renderable) -> UIView {
-//        let tree = component.render()
-//        return renderer.render(tree: tree)
-//    }
-    
     func render(component: IsComponent, in view: UIView) {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                 let newTree = component.render()
-                print("UNIQUE ID: \(component.uniqueComponentIdentifier)")
-                print(self.latestRenderedTreeForComponent(component))
-                print(component)
                 if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
                     if areTreesEqual(latestRenderedTree, newTree) {
                         print("Nothing changed, do nothing")
                     } else {
-                        self.traverseForPatch(latestRenderedTree, newTree)
+                        let reconcilier = UIKitReconcilier()
+                        reconcilier.engine = self
+                        reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
                     }
                 } else {
                     self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
                     DispatchQueue.main.async {
                         // empty view if previously rendered
-                        for sv in view.subviews {
+                        for sv in view.subviews { // TODO put inside rendere?
                             sv.removeFromSuperview()
                         }
                         self.renderer.render(tree: newTree, in: view)
@@ -247,36 +241,6 @@ public class KomponentsEngine {
         operation()
         let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
         print("⏱ Rendering in : \(timeElapsed) s")
-    }
-    
-    func traverseForPatch(_ tree: Tree, _ otherTree:Tree) {
-        if !areTreesEqual(tree, otherTree) {
-            testPatch(tree, otherTree)
-        }
-        
-        for i in tree.children.indices {
-            let treeChild = tree.children[i]
-            let otherTreeChild = otherTree.children[i]
-            traverseForPatch(treeChild, otherTreeChild)
-        }
-    }
-    
-    func testPatch(_ node: IsNode, _ newNode: IsNode) {
-        if let label = node as? Label, let otherLabel = newNode as? Label {
-            if label.props.text != otherLabel.props.text {
-                
-                print(renderer.nodeIdViewMap)
-                print(label.uniqueIdentifier)
-                print(otherLabel.uniqueIdentifier)
-                if let uiLabel = renderer.nodeIdViewMap[label.uniqueIdentifier] as? UILabel {
-                    log("💉 Patch text")
-                    DispatchQueue.main.async {
-                        uiLabel.text = otherLabel.props.text
-                    }
-                }
-            }
-        }
-        
     }
     
     func log(_ s:String) {
