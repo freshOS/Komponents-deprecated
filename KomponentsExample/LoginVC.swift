@@ -40,6 +40,8 @@ func SignupButton(text: String) -> Button {
 }
 
 class LoginVC: UIViewController, Component {
+    var reactEngine: KomponentsEngine?
+
     
     var state = LoginState()
     

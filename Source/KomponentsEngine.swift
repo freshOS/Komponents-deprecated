@@ -15,7 +15,7 @@ public class Komponents {
 
 public class KomponentsEngine {
     
-    static let shared = KomponentsEngine()
+//    static let shared = KomponentsEngine()
 //
 //    // retain non-VC components here
 //    var componentsMap = [String: IsComponent]()
@@ -173,24 +173,52 @@ public class KomponentsEngine {
     
     var componentTreeMap = [String:Tree]()
     
-    func latestRenderedTreeForComponent(_ component: IsComponent) -> Tree? {
+    func latestRenderedTreeForComponent(_ component: IsStatefulComponent) -> Tree? {
         return componentTreeMap[component.uniqueComponentIdentifier]
     }
     
+    var rootComponent:IsComponent?
+    
+    func render(subComponent:IsComponent) {
+        if let vc = rootComponent as? UIViewController {
+            render(component: rootComponent!, in: vc.view)
+        }
+    }
+    
     func render(component: IsComponent, in view: UIView) {
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
-                let newTree = component.render()
-                if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
-                    if areTreesEqual(latestRenderedTree, newTree) {
-                        print("Nothing changed, do nothing")
+        rootComponent = component
+        renderer.engine = self
+        if let component = component as? IsStatefulComponent {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+                self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
+                    let newTree = component.render()
+                    if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
+                        if areTreesEqual(latestRenderedTree, newTree) {
+                            print("Nothing changed, do nothing")
+                        } else {
+                            let reconcilier = UIKitReconcilier()
+                            reconcilier.engine = self
+                            reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
+                        }
                     } else {
-                        let reconcilier = UIKitReconcilier()
-                        reconcilier.engine = self
-                        reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
+                        self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
+                        DispatchQueue.main.async {
+                            // empty view if previously rendered
+                            for sv in view.subviews { // TODO put inside rendere?
+                                sv.removeFromSuperview()
+                            }
+                            self.renderer.render(tree: newTree, in: view)
+                            self.log(newTree)
+                            component.didRender()
+                        }
                     }
-                } else {
-                    self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
+                })
+            }
+        } else {
+            // Stateless compoenent
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+                self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
+                    let newTree = component.render()
                     DispatchQueue.main.async {
                         // empty view if previously rendered
                         for sv in view.subviews { // TODO put inside rendere?
@@ -200,8 +228,8 @@ public class KomponentsEngine {
                         self.log(newTree)
                         component.didRender()
                     }
-                }
-            })
+                })
+            }
         }
     }
     

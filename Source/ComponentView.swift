@@ -18,7 +18,7 @@ public class ComponentView<T: Component> :UIView {
     public init(component: T) {
         self.component = component
         super.init(frame: CGRect.zero)
-        KomponentsEngine.shared.render(component:component, in: self)
+        KomponentsEngine().render(component:component, in: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ public class ComponentCell :UITableViewCell {
         self.component = component
         super.init(style: .default, reuseIdentifier: "")
         selectionStyle = .none
-        KomponentsEngine.shared.render(component:component, in: self)
+        KomponentsEngine().render(component:component, in: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {
