@@ -63,11 +63,11 @@ public struct Layout: Equatable {
     }
     
     public func bottom(_ value:Int) -> Layout {
-        return Layout(top: top, right: right, bottom: value, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
+        return Layout(top: top, right: right, bottom: -value, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
     
     public func right(_ value:Int) -> Layout {
-        return Layout(top: top, right: value, bottom: bottom, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
+        return Layout(top: top, right: -value, bottom: bottom, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
     
     public func left(_ value:Int) -> Layout {
@@ -97,19 +97,23 @@ public struct Layout: Equatable {
     // Helpers
     
     public func size(_ value:Int) -> Layout {
-        return Layout(top: top, right: right, bottom: bottom, left: left, width: value, height: value)
+        return Layout(top: top, right: right, bottom: bottom, left: left, width: value, height: value,
+                      isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
+
     }
     
     public func fill(padding value:Int? = 0) -> Layout {
-        return Layout(top: value, right: value, bottom: value, left: value, width: width, height: width)
-    }
+        return Layout(top: value, right: value, bottom: value, left: value, width: width, height: width,
+    isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)}
     
     public func fillHorizontally(padding value:Int? = 0) -> Layout {
-        return Layout(top: top, right: value, bottom: bottom, left: value, width: width, height: width)
+        return Layout(top: top, right: value, bottom: bottom, left: value, width: width, height: width,
+        isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
     
     public func fillVertically(padding value:Int? = 0) -> Layout {
-        return Layout(top: value, right: right, bottom: value, left: left, width: width, height: width)
+        return Layout(top: value, right: right, bottom: value, left: left, width: width, height: width,
+        isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
 }
 
