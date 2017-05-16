@@ -44,26 +44,31 @@ class UIKitReconcilier {
                 oldChildNode = oldNode.children[iOld]
             }
             
+            print("oANOldChildNode :  \(oldChildNode) ")
             let retChildNode = walk(oldChildNode, newChildNode)
+            print("retChildNode \(retChildNode) ")
             
-            // Update IDS
-            
-            if let old = oldChildNode, let new = newChildNode {
-                if type(of: old) == type(of: new) { // Same type nodes
-    
-                    if var map = self.engine?.renderer.nodeIdViewMap {
-                        map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
-                        map.removeValue(forKey: old.uniqueIdentifier)
-                        // Heere update ids?
-                        // new can keep old ids
-//                        print(new.uniqueIdentifier)
-//                        newNode?.setID(id: old.uniqueIdentifier)
-                    //                    newNod
-                    
-                    self.engine?.renderer.nodeIdViewMap = map
-                    }
-                }
-            }
+//            // Update IDS
+//            
+//            if let old = oldChildNode, let new = newChildNode {
+//                if type(of: old) == type(of: new) { // Same type nodes
+//    
+//                    print("Updating Ids of : \(type(of:old)) ")
+//                    print("old : \(old.uniqueIdentifier)), new: \(new.uniqueIdentifier) ")
+//                    if var map = self.engine?.renderer.nodeIdViewMap {
+//                        map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
+//                        map.removeValue(forKey: old.uniqueIdentifier)
+//                        // Heere update ids?
+//                        // new can keep old ids
+////                        print(new.uniqueIdentifier)
+////                        newNode?.setID(id: old.uniqueIdentifier)
+//                    //                    newNod
+//                    
+//                    self.engine?.renderer.nodeIdViewMap = map
+//                        
+//                    }
+//                }
+//            }
             
             
             
@@ -99,6 +104,10 @@ class UIKitReconcilier {
                     }
 //                    iNew = iNew - 1 //is this useful?
                 }
+            } else {
+                print("othercase")
+                // Recurse on Children
+                updateChildren(oldChildNode!, newChildNode!)
             }
             
             i = i+1
@@ -108,16 +117,39 @@ class UIKitReconcilier {
     }
     
     private func walk(_ oldNode: IsNode?, _ newNode: IsNode?) -> IsNode? {
+        
+        if let oldNode = oldNode as? ActivityIndicatorView {
+            print("WTF")
+        }
         if let old = oldNode {
             if let new = newNode {
                 if type(of: old) == type(of: new) { // Same type nodes
+                    
+                    // Update IDS
+                    print("Updating Ids of : \(type(of:old)) ")
+                    print("old : \(old.uniqueIdentifier)), new: \(new.uniqueIdentifier) ")
+                    if var map = self.engine?.renderer.nodeIdViewMap {
+                        map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
+                        map.removeValue(forKey: old.uniqueIdentifier)
+                        // Heere update ids?
+                        // new can keep old ids
+                        //                        print(new.uniqueIdentifier)
+                        //                        newNode?.setID(id: old.uniqueIdentifier)
+                        //                    newNod
+                        
+                        self.engine?.renderer.nodeIdViewMap = map
+                        
+                    }
+                    print(self.engine?.renderer.nodeIdViewMap)
+                    
+                    
                     if areTreesEqual(new, old) { // Nothing changed, keep old
                         return old
                     } else { // Somtheing is different, pathc properties and update children.
                         smash(old, new)
-                        updateChildren(old, new)
-                        return old
-                    }                    
+//                        updateChildren(old, new)
+                        return old // Test new for ids
+                    }
                 } else {
                     // Replace by a diffrent node, so return new
                     return newNode
@@ -144,7 +176,7 @@ class UIKitReconcilier {
         // View
         if let view = oldNode as? View, let newView = newNode as? View {
             if newView.props.backgroundColor != view.props.backgroundColor {
-                if let uiView = engine?.renderer.nodeIdViewMap[view.uniqueIdentifier] {
+                if let uiView = engine?.renderer.nodeIdViewMap[newView.uniqueIdentifier] {
                     updates.append {
                         uiView.backgroundColor = newView.props.backgroundColor
                     }
@@ -173,7 +205,7 @@ class UIKitReconcilier {
         // Label
         if let label = oldNode as? Label, let newLabel = newNode as? Label {
             if newLabel.props.text != label.props.text {
-                if let uiLabel = engine?.renderer.nodeIdViewMap[label.uniqueIdentifier] as? UILabel {
+                if let uiLabel = engine?.renderer.nodeIdViewMap[newLabel.uniqueIdentifier] as? UILabel {
                     log("💉 Patch text")
                     updates.append {
                         uiLabel.text = newLabel.props.text
@@ -196,14 +228,48 @@ class UIKitReconcilier {
         // Button
         if let button = oldNode as? Button, let newButton = newNode as? Button {
             if newButton.props.image != button.props.image {
-                if let uibutton = engine?.renderer.nodeIdViewMap[button.uniqueIdentifier] as? UIButton {
+                if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? UIButton {
                     log("💉 Patch image")
                     updates.append {
                         uibutton.setImage(newButton.props.image, for: .normal)
                     }
                 }
             }
+            
+            // isEnabled
+            if newButton.props.isEnabled != button.props.isEnabled {
+                if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? UIButton {
+                    log("💉 Patch isEnabled")
+                    updates.append {
+                        uibutton.isEnabled = newButton.props.isEnabled
+                    }
+                }
+            }
+            
+            // BackgroudnColor
+            if newButton.props.backgroundColorForNormalState != button.props.backgroundColorForNormalState {
+                if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? BlockBasedUIButton {
+                    log("💉 Patch backgroudnColor")
+                    updates.append {
+                        uibutton.setBackgroundColor(newButton.props.backgroundColorForNormalState, for: .normal)
+                    }
+                }
+            }
         }
+        
+        
+        // Image
+        if let image = oldNode as? Image, let newImage = newNode as? Image {
+            if newImage.props.image != image.props.image {
+                if let uiimage = engine?.renderer.nodeIdViewMap[newImage.uniqueIdentifier] as? UIImageView {
+                    log("💉 Patch image")
+                    updates.append {
+                        uiimage.image = newImage.props.image
+                    }
+                }
+            }
+        }
+        
 //        if let button = oldNode as? UIButton, let newButton = newNode as? UIButton {
 //            if newButton.backgroundImage(for: .normal) != button.backgroundImage(for: .normal) {
 //                let img = newButton.backgroundImage(for: .normal)
@@ -221,13 +287,7 @@ class UIKitReconcilier {
 //                log("💉 Patch Title")
 //            }
 //            
-//            if newButton.isEnabled != button.isEnabled {
-//                let e = newButton.isEnabled
-//                updates.append {
-//                    button.isEnabled = e
-//                }
-//                log("💉 Patch isEnabled")
-//            }
+//
 //        }
 //        
 //        

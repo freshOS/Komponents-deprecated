@@ -115,15 +115,27 @@ public extension StatelessComponent where Self: UIViewController {
 //    }
 //}
 
-public extension IsComponent where Self: UIView {
+public extension StatelessComponent where Self: UIView {
     func loadComponent() {
         let engine = KomponentsEngine()
         engine.render(component: self, in: self)
-        
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
                 if let weakSelf = self {
 //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
+                }
+        }
+    }
+}
+
+public extension IsStatefulComponent where Self: UIView {
+    func loadComponent() {
+        reactEngine = KomponentsEngine()
+        reactEngine?.render(component: self, in: self)
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+                if let weakSelf = self {
+                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
                 }
         }
     }
@@ -160,42 +172,16 @@ public extension IsStatefulComponent {
     func askForRefresh(patching: Bool) {
         if let vc = self as? UIViewController {
             reactEngine?.render(component: self, in: vc.view)
-        } else {
+        } else if let view = self as? UIView {
             print(reactEngine)
+            reactEngine?.render(component: self, in: view)
+        } else {
             reactEngine?.render(subComponent: self)
         }
 //        reactEngine
 //        reactEngine?.render(component: self, in: view)
     }
 }
-//public extension IsStatefulComponent where Self: UIViewController {
-//    func askForRefresh(patching: Bool) {
-//        reactEngine?.render(component: self, in: view)
-//    }
-//}
-
-//public protocol CanBeDirty {
-//    var isDirty: Bool { get set }
-//}
-//
-//public protocol HasEquatableProps {
-//    associatedtype Props:Equatable
-//    var props: Props { get set }
-//}
-//
-//extension HasEquatableProps where Self: CanBeDirty {
-//    
-//    public mutating func updateProps(newProps: Props) {
-//        if newProps != props {
-//            props = newProps
-//            isDirty = true
-//        }
-//    }
-//}
-//
-//public protocol CellComponent: IsComponent, HasEquatableProps, CanBeDirty {
-//    
-//}
 
 //public extension CellComponent {
 //    

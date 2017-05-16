@@ -19,6 +19,7 @@ func viewForNode(node:IsNode) -> UIView {
         v.layer.borderWidth = node.props.borderWidth
         v.layer.cornerRadius = node.props.cornerRadius
         v.layer.anchorPoint = node.props.anchorPoint
+        v.clipsToBounds = node.props.clipsToBounds
         return v
     }
     
@@ -110,8 +111,9 @@ func viewForNode(node:IsNode) -> UIView {
         v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
         v.setTitleColor(node.props.titleColorForHighlightedState, for: .highlighted)
         v.setBackgroundColor(node.props.backgroundColorForNormalState, for: .normal)
-//        v.setBackgroundColor(node.props.backgroundForHighlightedState, for: .highlighted)
+        v.setBackgroundColor(node.props.backgroundForHighlightedState, for: .highlighted)
         v.isEnabled = node.props.isEnabled
+        v.titleLabel?.font = node.props.font
         
         if let bi = node.props.image {
             v.setBackgroundImage(bi, for: .normal)

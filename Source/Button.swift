@@ -82,6 +82,7 @@ public struct ButtonProps: Hashable, Equatable {
     
     public var text: String
     public var image: UIImage?
+    public var font: UIFont?
     public var isEnabled = true
     
     public mutating func setTitleColor(_ color: UIColor, for state: UIControlState) {
@@ -106,8 +107,8 @@ public struct ButtonProps: Hashable, Equatable {
         }
     }
     
-    internal var backgroundColorForNormalState: UIColor = .white
-    internal var backgroundForHighlightedState: UIColor = .white
+    internal var backgroundColorForNormalState: UIColor = .clear
+    internal var backgroundForHighlightedState: UIColor = .clear
     
     
     
@@ -123,6 +124,7 @@ public struct ButtonProps: Hashable, Equatable {
             ^ backgroundColorForNormalState.hashValue
             ^ backgroundForHighlightedState.hashValue
             ^ ((image == nil) ? 154 : image!.hashValue)
+            ^ ((font == nil) ? 0 : font!.hashValue)
     }
 }
 

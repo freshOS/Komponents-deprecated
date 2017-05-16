@@ -46,7 +46,8 @@ public struct ImageProps: Equatable, Hashable {
     public var contentMode = UIViewContentMode.scaleToFill
     
     public var hashValue: Int {
-        return image.hashValue ^ contentMode.hashValue
+        return image.hashValue
+            ^ contentMode.hashValue
     }
 }
 

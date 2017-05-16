@@ -185,13 +185,16 @@ public class KomponentsEngine {
         }
     }
     
+    let backgroundSerialQueue = DispatchQueue(label: "bgQueue", qos: .background)
+    
     func render(component: IsComponent, in view: UIView) {
         rootComponent = component
         renderer.engine = self
         if let component = component as? IsStatefulComponent {
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            backgroundSerialQueue.async {
                 self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
                     let newTree = component.render()
+                    
                     if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
                         if areTreesEqual(latestRenderedTree, newTree) {
                             print("Nothing changed, do nothing")
@@ -200,17 +203,17 @@ public class KomponentsEngine {
                             reconcilier.engine = self
                             
                             
-                            print("Before")
-                            for (i, _)  in self.renderer.nodeIdViewMap {
-                                print(i)
-                            }
+//                            print("Before")
+//                            for (i, _)  in self.renderer.nodeIdViewMap {
+//                                print(i)
+//                            }
 //                            print(self.renderer.nodeIdViewMap.indices)
                             reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
                             
-                            print("After")
-                            for (i, _)  in self.renderer.nodeIdViewMap {
-                                print(i)
-                            }
+//                            print("After")
+//                            for (i, _)  in self.renderer.nodeIdViewMap {
+//                                print(i)
+//                            }
 //                            print(self.renderer.nodeIdViewMap.indices)
                             
                             // Update tree
@@ -267,7 +270,14 @@ public class KomponentsEngine {
             str += "-----"
         }
         
-        print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
+        if let associatedView = renderer.nodeIdViewMap[tree.uniqueIdentifier]{
+            print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier)) view: \(associatedView)")
+        } else {
+            print("no associatedView")
+            print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
+        }
+        
+
         
         //subcomponenet
         if let subComponent = tree as? IsComponent {

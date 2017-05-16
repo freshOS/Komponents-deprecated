@@ -44,7 +44,7 @@ public func == (lhs: Label, rhs: Label) -> Bool {
 public struct LabelProps: Equatable, Hashable {
     public var text = ""
     public var textColor =  UIColor.black
-    public var font: UIFont? = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    public var font: UIFont?
     public var numberOfLines = 1
     public var textAlignment = NSTextAlignment.left
     

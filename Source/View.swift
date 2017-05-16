@@ -73,6 +73,7 @@ public struct ViewProps: Equatable, Hashable {
     public var borderWidth: CGFloat = 0
     public var cornerRadius: CGFloat = 0
     public var anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    public var clipsToBounds = false
 
     public var hashValue: Int {
         return backgroundColor.hashValue
@@ -81,6 +82,7 @@ public struct ViewProps: Equatable, Hashable {
             ^ cornerRadius.hashValue
             ^ anchorPoint.x.hashValue
             ^ anchorPoint.y.hashValue
+            ^ clipsToBounds.hashValue
     }
 }
 
