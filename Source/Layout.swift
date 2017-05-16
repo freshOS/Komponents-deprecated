@@ -87,7 +87,7 @@ public struct Layout: Equatable {
     }
     
     public func centerVertically() -> Layout {
-        return Layout(top: nil, right: left, bottom: nil, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically: true)
+        return Layout(top: nil, right: right, bottom: nil, left: left, width: width, height: height, isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically: true)
     }
     
     public func centered() -> Layout {
