@@ -198,7 +198,29 @@ public class KomponentsEngine {
                         } else {
                             let reconcilier = UIKitReconcilier()
                             reconcilier.engine = self
+                            
+                            
+                            print("Before")
+                            for (i, _)  in self.renderer.nodeIdViewMap {
+                                print(i)
+                            }
+//                            print(self.renderer.nodeIdViewMap.indices)
                             reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
+                            
+                            print("After")
+                            for (i, _)  in self.renderer.nodeIdViewMap {
+                                print(i)
+                            }
+//                            print(self.renderer.nodeIdViewMap.indices)
+                            
+                            // Update tree
+                            self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
+                            
+                            
+                            
+                            
+                            self.log(newTree)
+                            
                         }
                     } else {
                         self.componentTreeMap[component.uniqueComponentIdentifier] = newTree

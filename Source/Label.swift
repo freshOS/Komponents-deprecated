@@ -10,7 +10,7 @@ import Foundation
 
 public struct Label: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: LabelProps
@@ -18,11 +18,19 @@ public struct Label: Node, Equatable {
     public let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",
+            props:((inout LabelProps) -> Void)? = nil,
          layout:Layout? = nil,
          ref: UnsafeMutablePointer<UILabel>? = nil) {
-        var p = LabelProps()
-        p.text = text
-        self.props = p
+        
+        
+        var prop = LabelProps()
+        prop.text = text
+        if let p = props {
+            p(&prop)
+        }
+        self.props = prop
+        
+        
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
     }
@@ -35,12 +43,17 @@ public func == (lhs: Label, rhs: Label) -> Bool {
 
 public struct LabelProps: Equatable, Hashable {
     public var text = ""
-    
-    //$0.font = UIFont.systemFont(ofSize: 30)
-    //$0.textAlignment = .center
+    public var textColor =  UIColor.black
+    public var font: UIFont? = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    public var numberOfLines = 1
+    public var textAlignment = NSTextAlignment.left
     
     public var hashValue: Int {
         return text.hashValue
+            ^ textColor.hashValue
+        ^ ((font == nil) ? 0 : font!.hashValue)
+        ^ numberOfLines.hashValue
+        ^ textAlignment.hashValue
     }
 }
 

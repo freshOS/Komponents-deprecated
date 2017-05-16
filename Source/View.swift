@@ -10,7 +10,7 @@ import Foundation
 
 public struct View: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: ViewProps
@@ -37,6 +37,27 @@ public struct View: Node, Equatable {
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
         self.children = children
+    }
+    
+    // No children init
+    public init(
+        color: UIColor? = nil,
+        props:((inout ViewProps) -> Void)? = nil,
+        layout: Layout? = nil,
+        ref: UnsafeMutablePointer<UIView>? = nil) {
+        
+        var prop = ViewProps()
+        if let color = color {
+            prop.backgroundColor = color
+        }
+        if let p = props {
+            p(&prop)
+        }
+        self.props = prop
+        
+        self.layout = layout == nil ? Layout() : layout!
+        self.ref = ref
+        self.children = [IsNode]()
     }
 }
 

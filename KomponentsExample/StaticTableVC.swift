@@ -29,7 +29,7 @@ class StaticTableVC: UIViewController, StatelessComponent {
             Table(.grouped,
                   refresh: refresh,
 //                  style: { $0.separatorStyle = .none },
-                layout: .fill,
+                layout: .fill, cells:
                   fences.map { fence in
                     FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
                 }

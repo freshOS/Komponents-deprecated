@@ -28,17 +28,17 @@ import Foundation
 
 public struct Button: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public let children = [IsNode]()
     public var props: ButtonProps
     public let layout: Layout
     public let ref: UnsafeMutablePointer<UIButton>?
-    //    var image: UIImage?
     
     var registerTap: ((UIButton) -> Void)?
     
     public init(_ wording: String = "",
+                image: UIImage? = nil,
          tap: (() -> Void)? = nil,
          props:((inout ButtonProps) -> Void)? = nil,
          layout: Layout? = nil,
@@ -46,6 +46,7 @@ public struct Button: Node, Equatable {
 
         var defaultProps = ButtonProps()
         defaultProps.text = wording
+        defaultProps.image = image
         if let p = props {
             var prop = defaultProps
             p(&prop)
@@ -75,7 +76,13 @@ public func == (lhs: Button, rhs: Button) -> Bool {
 
 public struct ButtonProps: Hashable, Equatable {
     
+    public init() {
+        text = ""
+    }
+    
     public var text: String
+    public var image: UIImage?
+    public var isEnabled = true
     
     public mutating func setTitleColor(_ color: UIColor, for state: UIControlState) {
         if state == .normal {
@@ -89,16 +96,36 @@ public struct ButtonProps: Hashable, Equatable {
     internal var titleColorForNormalState: UIColor = .white
     internal var titleColorForHighlightedState: UIColor = .white
     
+    
+    public mutating func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+        if state == .normal {
+            backgroundColorForNormalState = color
+        }
+        if state == .highlighted {
+            backgroundForHighlightedState = color
+        }
+    }
+    
+    internal var backgroundColorForNormalState: UIColor = .white
+    internal var backgroundForHighlightedState: UIColor = .white
+    
+    
+    
     init(text: String = "") {
         self.text = text
     }
     
     public var hashValue: Int {
-        return text.hashValue ^ titleColorForNormalState.hashValue ^ titleColorForHighlightedState.hashValue
+        return text.hashValue
+            ^ titleColorForNormalState.hashValue
+            ^ titleColorForHighlightedState.hashValue
+            ^ isEnabled.hashValue
+            ^ backgroundColorForNormalState.hashValue
+            ^ backgroundForHighlightedState.hashValue
+            ^ ((image == nil) ? 154 : image!.hashValue)
     }
 }
 
 public func == (lhs: ButtonProps, rhs: ButtonProps) -> Bool {
-    return lhs.text == rhs.text
-        && lhs.titleColorForNormalState == rhs.titleColorForNormalState
+    return lhs.hashValue == rhs.hashValue
 }

@@ -25,6 +25,10 @@ func viewForNode(node:IsNode) -> UIView {
     if let node = node as? Label {
         let l = UILabel()
         l.text = node.props.text
+        l.textColor = node.props.textColor
+        l.font = node.props.font
+        l.numberOfLines = node.props.numberOfLines
+        l.textAlignment = node.props.textAlignment
         return l
     }
     
@@ -105,6 +109,13 @@ func viewForNode(node:IsNode) -> UIView {
         v.setTitle(node.props.text, for: .normal)
         v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
         v.setTitleColor(node.props.titleColorForHighlightedState, for: .highlighted)
+        v.setBackgroundColor(node.props.backgroundColorForNormalState, for: .normal)
+//        v.setBackgroundColor(node.props.backgroundForHighlightedState, for: .highlighted)
+        v.isEnabled = node.props.isEnabled
+        
+        if let bi = node.props.image {
+            v.setBackgroundImage(bi, for: .normal)
+        }
         return v
     }
     

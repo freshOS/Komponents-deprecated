@@ -25,7 +25,13 @@ class TimerVC: UIViewController, Component {
     }
     
     func tick() {
-        updateState{ $0 += 1 }
+        updateState{
+            if $0 == 0 {
+                $0 = 1
+            } else {
+                $0 = 0
+            }
+        }
     }
     
     func render() -> Tree {

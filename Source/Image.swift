@@ -10,7 +10,7 @@ import Foundation
 
 public struct Image: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ImageProps
@@ -19,7 +19,7 @@ public struct Image: Node, Equatable {
     
     public init(_ image: UIImage = UIImage(),
                 props:((inout ImageProps) -> Void)? = nil,
-                _ layout:Layout? = nil,
+                layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UIImageView>? = nil) {
         var defaultProps = ImageProps()
         defaultProps.image = image

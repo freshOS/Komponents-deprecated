@@ -10,7 +10,7 @@ import Foundation
 
 public struct Table: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: TableProps
@@ -30,7 +30,7 @@ public struct Table: Node, Equatable {
         props:((inout TableProps) -> Void)? = nil,
         layout: Layout? = nil,
         ref: UnsafeMutablePointer<UITableView>? = nil,
-        _ cells:[IsComponent]) {
+        cells:[IsComponent]) {
         
         if let p = props {
             var prop = TableProps()

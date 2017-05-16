@@ -81,7 +81,31 @@ class BlockBasedUIButton: UIButton {
     func didTap() {
         actionHandler?()
     }
+    
+    public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+        let img = UIImage(color: color, size: CGSize(width: 1.0, height: 1.0))
+        setBackgroundImage(img, for: state)
+    }
 }
+
+public extension UIImage {
+    /// Create an square image fill with color
+    public convenience init(color: UIColor, size: CGSize) {
+        var rect = CGRect.zero
+        rect.size = size
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        color.setFill()
+        UIRectFill(rect)
+        let uiImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if let cgImage = uiImage?.cgImage {
+            self.init(cgImage: cgImage)
+        } else {
+            self.init()
+        }
+    }
+}
+
 
 class BlockBasedUISlider: UISlider {
     

@@ -25,7 +25,13 @@ class CounterVC: UIViewController, Component {
                     Label("Counter : \(state)"),
                     Button("Tap me",
                            tap: { [weak self] in //be careful of the strong Ref ! (document this)
-                            self?.updateState{ $0 += 1 }
+                            self?.updateState{
+                                if $0 == 0 {
+                                    $0 = 1
+                                } else {
+                                    $0 = 0
+                                }
+                            }
                         }, props: {
                             $0.text = "Lool"
                             $0.setTitleColor(.red, for:.normal)

@@ -9,8 +9,8 @@
 import Foundation
 
 public struct ScrollView: Node, Equatable {
-    
-    public let uniqueIdentifier: Int = generateUniqueId()
+
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: ScrollViewProps
@@ -35,6 +35,24 @@ public struct ScrollView: Node, Equatable {
         self.layout = layout == nil ? Layout() : layout!
         self.ref = ref
         self.children = children
+    }
+    
+    public init(
+        props:((inout ScrollViewProps) -> Void)? = nil,
+        layout: Layout? = nil,
+        ref: UnsafeMutablePointer<UIScrollView>? = nil) {
+        
+        if let p = props {
+            var prop = ScrollViewProps()
+            p(&prop)
+            self.props = prop
+        } else {
+            self.props = ScrollViewProps()
+        }
+        
+        self.layout = layout == nil ? Layout() : layout!
+        self.ref = ref
+        self.children = [IsNode]()
     }
 }
 

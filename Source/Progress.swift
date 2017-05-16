@@ -10,7 +10,7 @@ import Foundation
 
 public struct Progress: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ProgressProps

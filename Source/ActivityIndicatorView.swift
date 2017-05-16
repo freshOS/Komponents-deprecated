@@ -11,7 +11,7 @@ import Foundation
 
 public struct ActivityIndicatorView: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ActivityIndicatorViewProps
@@ -19,7 +19,7 @@ public struct ActivityIndicatorView: Node, Equatable {
     let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
     public init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .white,
-        _ layout:Layout? = nil,
+        layout:Layout? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
         var p = ActivityIndicatorViewProps()
         p.activityIndicatorStyle = activityIndicatorStyle

@@ -115,17 +115,19 @@ public extension StatelessComponent where Self: UIViewController {
 //    }
 //}
 
-//public extension IsComponent where Self: UIView {
-//    func loadComponent() {
-//        KomponentsEngine.shared.render(component: self, in: self)
-//        NotificationCenter.default
-//            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
-//                if let weakSelf = self {
+public extension IsComponent where Self: UIView {
+    func loadComponent() {
+        let engine = KomponentsEngine()
+        engine.render(component: self, in: self)
+        
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"), object: nil, queue: nil) { [weak self] _ in
+                if let weakSelf = self {
 //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-//                }
-//        }
-//    }
-//}
+                }
+        }
+    }
+}
 //
 //public extension IsComponent where Self: UITableViewCell {
 //    func loadComponent() {

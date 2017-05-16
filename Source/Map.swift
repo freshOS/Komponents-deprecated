@@ -11,7 +11,7 @@ import MapKit
 
 public struct Map: Node, Equatable {
     
-    public let uniqueIdentifier: Int = generateUniqueId()
+    public var uniqueIdentifier: Int = generateUniqueId()
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: MapProps
@@ -30,7 +30,7 @@ public struct Map: Node, Equatable {
         } else {
             self.props = MapProps()
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout == nil ? .fill : layout!
         self.ref = ref
         self.children = [IsNode]()
     }

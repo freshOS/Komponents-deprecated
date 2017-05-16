@@ -15,40 +15,30 @@ class UIKitRenderer {
     var nodeIdViewMap = [Int: UIView]()
     var componentIdNodeIdViewMap = [String: Int]()
     
-    func viewForComponent(component: IsStatefulComponent) -> UIView {
-        
-        let id:String = component.uniqueComponentIdentifier
-        print(id)
-        print(nodeIdViewMap)
-        print(componentIdNodeIdViewMap)
-        let nodeId = componentIdNodeIdViewMap[id]!
-        return nodeIdViewMap[nodeId]!
-    }
+    var storedSubComponents: [IsComponent] = [IsComponent]()
     
     func render(tree:Tree, in view: UIView) {
+        storedSubComponents = [IsComponent]()
+        privateRender(tree: tree, in: view)
+        for sc in storedSubComponents {
+            sc.didRender()
+        }
+    }
+    
+    func privateRender(tree:Tree, in view: UIView) {
         
         var tree = tree
         
-    
         if let subComponenet = tree as? IsStatefulComponent {
             let cId = subComponenet.uniqueComponentIdentifier
-//            tree = subComponenet.render()
             componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
             
-            // Pass along engine to subcompoenent
-            print(engine)
-//            subComponenet.reactEngine = engine
+            // Create new engine for subcompoenent
             subComponenet.reactEngine = KomponentsEngine() // link new engine
-            print(subComponenet)
-            print(subComponenet.reactEngine)
-            
-//            let wrapView = UIView()
-//            subComponenet.reactEngine?.render(component: subComponenet, in: wrapView)
-//            add(wrapView, asSubviewOf: view)
+
         } else if let subComponenet = tree as? Renderable {
             tree = subComponenet.render()
         }
-        
         
         // Create a UIKIt view form a node
         let newView = viewForNode(node: tree)
@@ -56,39 +46,21 @@ class UIKitRenderer {
         // Link references
         linkReference(of: tree, to: newView)
         
-//        if let subComponenet = tree as? IsComponent {
-////            let subTree = subComponenet.render()
-////            tree = subTree
-////            
-//            let cId = subComponenet.uniqueComponentIdentifier
-//            componentIdNodeIdViewMap[cId] = tree.uniqueIdentifier
-//        }
-//
-//            //                render(tree: subTree, in: newView)
-//        } else {
-            nodeIdViewMap[tree.uniqueIdentifier] = newView // todo use same table for Compoenents?
-//        }
+        nodeIdViewMap[tree.uniqueIdentifier] = newView
         
         for c in tree.children {
-            // replace child carrement?
             
             if let subComponenet = c as? IsStatefulComponent {
-//                let wrapView = UIView()
                 subComponenet.reactEngine = KomponentsEngine()
                 subComponenet.reactEngine?.rootView = newView
                 subComponenet.reactEngine?.render(component: subComponenet, in: newView)
-//                add(wrapView, asSubviewOf: newView)
+                storedSubComponents.append(subComponenet)
             }
             else if let subComponenet = c as? IsComponent {
-//                let subTree = subComponenet.render()
-//                render(tree: subTree, in: newView)
-                
-                
-                
-                render(tree: c, in: newView)
-                subComponenet.didRender()
+                storedSubComponents.append(subComponenet)
+                privateRender(tree: c, in: newView)
             } else {
-                render(tree: c, in: newView)
+                privateRender(tree: c, in: newView)
             }
         }
         
@@ -110,6 +82,4 @@ class UIKitRenderer {
             view.addSubview(newView)
         }
     }
-    
-
 }

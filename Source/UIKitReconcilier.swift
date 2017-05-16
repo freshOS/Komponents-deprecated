@@ -46,6 +46,28 @@ class UIKitReconcilier {
             
             let retChildNode = walk(oldChildNode, newChildNode)
             
+            // Update IDS
+            
+            if let old = oldChildNode, let new = newChildNode {
+                if type(of: old) == type(of: new) { // Same type nodes
+    
+                    if var map = self.engine?.renderer.nodeIdViewMap {
+                        map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
+                        map.removeValue(forKey: old.uniqueIdentifier)
+                        // Heere update ids?
+                        // new can keep old ids
+//                        print(new.uniqueIdentifier)
+//                        newNode?.setID(id: old.uniqueIdentifier)
+                    //                    newNod
+                    
+                    self.engine?.renderer.nodeIdViewMap = map
+                    }
+                }
+            }
+            
+            
+            
+            
             if retChildNode == nil { // Node removed !
                 if let oldChildNode = oldChildNode {
                     if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier]  {
@@ -95,7 +117,7 @@ class UIKitReconcilier {
                         smash(old, new)
                         updateChildren(old, new)
                         return old
-                    }
+                    }                    
                 } else {
                     // Replace by a diffrent node, so return new
                     return newNode
@@ -156,6 +178,9 @@ class UIKitReconcilier {
                     updates.append {
                         uiLabel.text = newLabel.props.text
                     }
+                    
+                    // Update NodeID - View Map
+                    
                 }
             }
             
@@ -168,7 +193,17 @@ class UIKitReconcilier {
         }
         
         
-//        // Button
+        // Button
+        if let button = oldNode as? Button, let newButton = newNode as? Button {
+            if newButton.props.image != button.props.image {
+                if let uibutton = engine?.renderer.nodeIdViewMap[button.uniqueIdentifier] as? UIButton {
+                    log("💉 Patch image")
+                    updates.append {
+                        uibutton.setImage(newButton.props.image, for: .normal)
+                    }
+                }
+            }
+        }
 //        if let button = oldNode as? UIButton, let newButton = newNode as? UIButton {
 //            if newButton.backgroundImage(for: .normal) != button.backgroundImage(for: .normal) {
 //                let img = newButton.backgroundImage(for: .normal)
