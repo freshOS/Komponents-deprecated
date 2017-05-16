@@ -14,7 +14,7 @@ public struct Slider: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: SliderProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UISlider>?
     var registerValueChanged: ((UISlider) -> Void)?
     

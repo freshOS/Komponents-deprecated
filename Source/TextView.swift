@@ -14,7 +14,7 @@ public struct TextView: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: TextViewProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UITextView>?
     var registerTextChanged: ((UITextView) -> Void)?
     

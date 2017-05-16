@@ -14,7 +14,7 @@ public struct Field: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: FieldProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UITextField>?
     var registerTextChanged: ((UITextField) -> Void)?
     
@@ -58,7 +58,8 @@ public struct FieldProps: Equatable, Hashable {
     public var text: String = ""
     
     public var hashValue: Int {
-        return placeholder.hashValue ^ text.hashValue
+        return placeholder.hashValue
+            ^ text.hashValue
     }
 }
 

@@ -14,7 +14,7 @@ public struct VerticalStack: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public var props: StackProps
-    public let layout: Layout
+    public var layout: Layout
     let ref: UnsafeMutablePointer<UIStackView>?
     
     public init(props:((inout StackProps) -> Void)? = nil,

@@ -193,8 +193,18 @@ public class KomponentsEngine {
         if let component = component as? IsStatefulComponent {
             backgroundSerialQueue.async {
                 self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
-                    let newTree = component.render()
+                    var newTree = component.render()
                     
+                    // ViewController, auto-fill root view
+                    if component is UIViewController {
+                        if var view = newTree as? View {
+                            if view.layout == Layout() {
+                                view.layout = .fill
+                                newTree = view
+                            }
+                        }
+                    }
+
                     if let latestRenderedTree = self.latestRenderedTreeForComponent(component), component.forceRerender() == false {
                         if areTreesEqual(latestRenderedTree, newTree) {
                             print("Nothing changed, do nothing")
@@ -245,7 +255,18 @@ public class KomponentsEngine {
             // Stateless compoenent
             DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
                 self.printTimeElapsedWhenRunningCode(title: "Render", operation: {
-                    let newTree = component.render()
+                    var newTree = component.render()
+                    
+                    // ViewController, auto-fill root view
+                    if component is UIViewController {
+                        if var view = newTree as? View {
+                            if view.layout == Layout() {
+                                view.layout = .fill
+                                newTree = view
+                            }
+                        }
+                    }
+                    
                     DispatchQueue.main.async {
                         // empty view if previously rendered
                         for sv in view.subviews { // TODO put inside rendere?

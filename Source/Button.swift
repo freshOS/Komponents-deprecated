@@ -32,7 +32,7 @@ public struct Button: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public let children = [IsNode]()
     public var props: ButtonProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UIButton>?
     
     var registerTap: ((UIButton) -> Void)?

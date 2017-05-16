@@ -40,17 +40,20 @@ func SignupButton(text: String) -> Button {
 }
 
 class LoginVC: UIViewController, Component {
+    
     var reactEngine: KomponentsEngine?
-
     
     var state = LoginState()
     
     override func loadView() { loadComponent() }
     
     // MARK - View
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Login Screen"
+    }
     
     func render() -> Tree {
-        title = "Login Screen"
         return View([
             VerticalStack(props: { $0.spacing = 8 },
                           layout: Layout().fillHorizontally().top(80), [

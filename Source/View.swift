@@ -14,7 +14,7 @@ public struct View: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: ViewProps
-    public let layout: Layout
+    public var layout: Layout
     public var ref: UnsafeMutablePointer<UIView>?
     
     // todo add props.

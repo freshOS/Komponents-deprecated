@@ -14,7 +14,7 @@ public struct Table: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: TableProps
-    public let layout: Layout
+    public var layout: Layout
     public var ref: UnsafeMutablePointer<UITableView>?
     
     public var cells = [IsComponent]()

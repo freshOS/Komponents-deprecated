@@ -133,12 +133,20 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class NSBundle;
 @class NSCoder;
+
+SWIFT_CLASS("_TtC10Komponents13ComponentCell")
+@interface ComponentCell : UITableViewCell
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier SWIFT_UNAVAILABLE;
+@end
+
+@class NSBundle;
 
 SWIFT_CLASS("_TtC10Komponents23ComponentViewController")
 @interface ComponentViewController : UIViewController
@@ -148,6 +156,13 @@ SWIFT_CLASS("_TtC10Komponents23ComponentViewController")
 - (void)didRender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIColor;
+
+@interface UIImage (SWIFT_EXTENSION(Komponents))
+/// Create an square image fill with color
+- (nonnull instancetype)initWithColor:(UIColor * _Nonnull)color size:(CGSize)size;
 @end
 
 #pragma clang diagnostic pop

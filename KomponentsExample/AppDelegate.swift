@@ -19,27 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: NavigationVC()) // Using a UIViewController Component.
+        window?.rootViewController = UINavigationController(rootViewController: NavigationVC())
         window?.makeKeyAndVisible()
         Komponents.logsEnabled = true
         return true
     }
 }
-
-// Other ways to display components:
-
-//        // Using View Controller wrapper.
-//        window?.rootViewController = ComponentVC(component: TestLoop())
-
-//        // Using UIView wrapper.
-//        let vc = UIViewController()
-//        window?.rootViewController = vc
-//        let loginView = ComponentView(component: LoginComponent())
-//        loginView.frame = vc.view.frame
-//        vc.view.addSubview(loginView)
-
-//        // Using bare Komponents engine.
-//        let vc = UIViewController()
-//        window?.rootViewController = vc
-//        let engine = KomponentsEngine()
-//        engine.render(component: LoginComponent(), in:vc.view)

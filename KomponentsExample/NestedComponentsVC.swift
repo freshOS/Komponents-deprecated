@@ -21,7 +21,7 @@ class NestedComponentsVC: UIViewController, Component {
     func render() -> Tree {
         title = "Nested Components"
         return
-            View(layout: .fill, [
+            View([
                 VerticalStack(
                     props: { $0.spacing = 10 },
                     layout: .center, [

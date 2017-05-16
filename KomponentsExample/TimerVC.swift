@@ -14,41 +14,34 @@ class TimerVC: UIViewController, Component {
     
     var reactEngine: KomponentsEngine?
     var state = 0
+    var timer: Timer?
     
     override func loadView() { loadComponent() }
     
-    var timer: Timer?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Timer"
+    }
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }
     
-    func tick() {
-        updateState{
-            if $0 == 0 {
-                $0 = 1
-            } else {
-                $0 = 0
-            }
-        }
-    }
-    
     func render() -> Tree {
-        title = "Timer"
         return
-            View(layout: .fill, [
+            View([
                 Label("\(self.state)", layout: .center)
             ])
+    }
+    
+    func tick() {
+        updateState { $0 += 1 }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         timer?.invalidate()
         timer = nil
-    }
-    
-    func enablePatching() -> Bool {
-        return true
     }
 }

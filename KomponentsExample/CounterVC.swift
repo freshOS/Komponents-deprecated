@@ -11,27 +11,26 @@ import Stevia
 import Komponents
 
 class CounterVC: UIViewController, Component {
+    
     var reactEngine: KomponentsEngine?
 
     var state = 0
     
     override func loadView() { loadComponent() }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Counter"
+    }
+    
     func render() -> Tree {
-        title = "Counter"        
         return
-            View(layout: .fill, [
+            View([
                 VerticalStack(layout: .center, [
                     Label("Counter : \(state)"),
                     Button("Tap me",
                            tap: { [weak self] in //be careful of the strong Ref ! (document this)
-                            self?.updateState{
-                                if $0 == 0 {
-                                    $0 = 1
-                                } else {
-                                    $0 = 0
-                                }
-                            }
+                            self?.updateState { $0 += 1 }
                         }, props: {
                             $0.text = "Lool"
                             $0.setTitleColor(.red, for:.normal)

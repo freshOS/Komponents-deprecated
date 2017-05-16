@@ -15,7 +15,7 @@ public struct Map: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: MapProps
-    public let layout: Layout
+    public var layout: Layout
     public var ref: UnsafeMutablePointer<MKMapView>?
     
     // todo add props.

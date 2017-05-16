@@ -14,7 +14,7 @@ public struct Switch: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: SwitchProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UISwitch>?
     var registerValueChanged: ((UISwitch) -> Void)?
     

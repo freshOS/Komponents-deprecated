@@ -21,10 +21,14 @@ class HelloPropsVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
     
-    func render() -> Tree {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Hello \(name)"
+    }
+    
+    func render() -> Tree {
         return
-            View(layout: .fill, [
+            View([
                 Label("Hello \(name)", layout: .center)
             ])
     }

@@ -28,6 +28,7 @@
 		99317BDC1EB85A200019A524 /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; };
 		99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		993354691EC83E730066B6FE /* TestPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993354681EC83E730066B6FE /* TestPatch.swift */; };
+		998740271ECB547600FA6A18 /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998740261ECB547600FA6A18 /* UIViewController+Push.swift */; };
 		99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99A623E31EBCDA280091EBFD /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99CF3C8D1EC0F1B6006ACA47 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		99317BBC1EB8596E0019A524 /* TodoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoVC.swift; sourceTree = "<group>"; };
 		99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Komponents.xcodeproj; sourceTree = SOURCE_ROOT; };
 		993354681EC83E730066B6FE /* TestPatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPatch.swift; sourceTree = "<group>"; };
+		998740261ECB547600FA6A18 /* UIViewController+Push.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
 		99A623E31EBCDA280091EBFD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -121,8 +123,8 @@
 				993354681EC83E730066B6FE /* TestPatch.swift */,
 				99317BAF1EB8596E0019A524 /* HelloWorldVC.swift */,
 				99317BAE1EB8596E0019A524 /* HelloPropsVC.swift */,
-				99317BAB1EB8596E0019A524 /* Counter.swift */,
 				99317BAC1EB8596E0019A524 /* CounterVC.swift */,
+				99317BAB1EB8596E0019A524 /* Counter.swift */,
 				99317BAD1EB8596E0019A524 /* DefaultNodesVC.swift */,
 				99317BB11EB8596E0019A524 /* LoadingVC.swift */,
 				99317BB21EB8596E0019A524 /* LoginState.swift */,
@@ -135,6 +137,7 @@
 				99317BBC1EB8596E0019A524 /* TodoVC.swift */,
 				99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */,
 				9923C6451EC1BE9200E4E5CC /* FenceCell.swift */,
+				998740261ECB547600FA6A18 /* UIViewController+Push.swift */,
 				99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */,
 			);
 			path = KomponentsExample;
@@ -209,6 +212,7 @@
 				TargetAttributes = {
 					99317B831EB858770019A524 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 4TATSTJ3J3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -288,6 +292,7 @@
 				99317BC71EB8596E0019A524 /* LoginState.swift in Sources */,
 				99317BBD1EB8596E0019A524 /* AppDelegate.swift in Sources */,
 				99317BCC1EB8596E0019A524 /* NestedComponentsVC.swift in Sources */,
+				998740271ECB547600FA6A18 /* UIViewController+Push.swift in Sources */,
 				99317BC31EB8596E0019A524 /* HelloPropsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,12 +324,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 4TATSTJ3J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = KomponentsExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.KomponentsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,12 +344,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 4TATSTJ3J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = KomponentsExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freshos.KomponentsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

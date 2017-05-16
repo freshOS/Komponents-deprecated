@@ -15,7 +15,7 @@ public struct ActivityIndicatorView: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ActivityIndicatorViewProps
-    public let layout: Layout
+    public var layout: Layout
     let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
     public init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .white,

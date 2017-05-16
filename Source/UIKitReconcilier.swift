@@ -43,10 +43,8 @@ class UIKitReconcilier {
             if iOld < oldNode.children.count {
                 oldChildNode = oldNode.children[iOld]
             }
-            
-            print("oANOldChildNode :  \(oldChildNode) ")
+    
             let retChildNode = walk(oldChildNode, newChildNode)
-            print("retChildNode \(retChildNode) ")
             
 //            // Update IDS
 //            
@@ -105,7 +103,6 @@ class UIKitReconcilier {
 //                    iNew = iNew - 1 //is this useful?
                 }
             } else {
-                print("othercase")
                 // Recurse on Children
                 updateChildren(oldChildNode!, newChildNode!)
             }
@@ -117,32 +114,18 @@ class UIKitReconcilier {
     }
     
     private func walk(_ oldNode: IsNode?, _ newNode: IsNode?) -> IsNode? {
-        
-        if let oldNode = oldNode as? ActivityIndicatorView {
-            print("WTF")
-        }
         if let old = oldNode {
             if let new = newNode {
                 if type(of: old) == type(of: new) { // Same type nodes
                     
                     // Update IDS
-                    print("Updating Ids of : \(type(of:old)) ")
-                    print("old : \(old.uniqueIdentifier)), new: \(new.uniqueIdentifier) ")
                     if var map = self.engine?.renderer.nodeIdViewMap {
                         map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
                         map.removeValue(forKey: old.uniqueIdentifier)
-                        // Heere update ids?
-                        // new can keep old ids
-                        //                        print(new.uniqueIdentifier)
-                        //                        newNode?.setID(id: old.uniqueIdentifier)
-                        //                    newNod
-                        
                         self.engine?.renderer.nodeIdViewMap = map
-                        
                     }
-                    print(self.engine?.renderer.nodeIdViewMap)
                     
-                    
+
                     if areTreesEqual(new, old) { // Nothing changed, keep old
                         return old
                     } else { // Somtheing is different, pathc properties and update children.
@@ -268,6 +251,28 @@ class UIKitReconcilier {
                     }
                 }
             }
+        }
+        
+        // Field
+        if let field = oldNode as? Field, let newField = newNode as? Field {
+            if newField.props.text != field.props.text {
+                if let uitextField = engine?.renderer.nodeIdViewMap[newField.uniqueIdentifier] as? UITextField {
+                    log("💉 Patch text")
+                    updates.append {
+                        uitextField.text = newField.props.text
+                    }
+                    
+                    // Update NodeID - View Map
+                    
+                }
+            }
+            
+            //            if newLabel.textColor != label.textColor {
+            //                updates.append {
+            //                    label.textColor = newLabel.textColor
+            //                }
+            //                log("💉 Patch textColor")
+            //            }
         }
         
 //        if let button = oldNode as? UIButton, let newButton = newNode as? UIButton {

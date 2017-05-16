@@ -173,7 +173,6 @@ public extension IsStatefulComponent {
         if let vc = self as? UIViewController {
             reactEngine?.render(component: self, in: vc.view)
         } else if let view = self as? UIView {
-            print(reactEngine)
             reactEngine?.render(component: self, in: view)
         } else {
             reactEngine?.render(subComponent: self)

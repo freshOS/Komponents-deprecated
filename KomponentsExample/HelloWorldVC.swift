@@ -14,10 +14,14 @@ class HelloWorldVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
     
-    func render() -> Tree {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Hello World"
+    }
+    
+    func render() -> Tree {
         return
-            View(layout: .fill, [
+            View([
                 Label("Hello World", layout: .center)
             ])
     }

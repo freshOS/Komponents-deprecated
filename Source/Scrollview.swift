@@ -14,7 +14,7 @@ public struct ScrollView: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: ScrollViewProps
-    public let layout: Layout
+    public var layout: Layout
     public var ref: UnsafeMutablePointer<UIScrollView>?
     
     // todo add props.

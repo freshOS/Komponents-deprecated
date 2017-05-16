@@ -14,7 +14,7 @@ public struct Image: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ImageProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UIImageView>?
     
     public init(_ image: UIImage = UIImage(),

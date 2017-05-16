@@ -14,7 +14,7 @@ public struct Label: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: LabelProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",

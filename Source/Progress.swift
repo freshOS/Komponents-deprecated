@@ -14,7 +14,7 @@ public struct Progress: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: ProgressProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UIProgressView>?
     
     public init(

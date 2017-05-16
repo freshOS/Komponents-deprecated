@@ -14,7 +14,7 @@ public struct HorizontalStack: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     public let props: StackProps
-    public let layout: Layout
+    public var layout: Layout
     let ref: UnsafeMutablePointer<UIStackView>?
     
     public init(props:((inout StackProps) -> Void)? = nil,

@@ -14,10 +14,14 @@ class LoadingVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
     
-    func render() -> Tree {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Loading"
+    }
+    
+    func render() -> Tree {
         return
-            View(layout: .fill, [
+            View([
                 HorizontalStack(layout: .center, [
                     Label("Loading..."), ActivityIndicatorView(.gray)
                 ])

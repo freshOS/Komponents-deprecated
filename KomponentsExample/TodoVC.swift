@@ -32,8 +32,7 @@ class TodoVC: UIViewController, Component {
         title = "Todo"
         return
             View(
-                color:.gray,
-                layout: .fill, [
+                color:.gray, [
                     VerticalStack(layout: Layout().centerHorizontally().top(100), [
                     Label("TODO"),
 //                    Label("TODO", style : {
@@ -69,10 +68,4 @@ class TodoVC: UIViewController, Component {
             }
         }
     }
-//    
-//    // Test wiht pathcing view hierarchies!
-//    func forceRerender() -> Bool {
-//        return true
-//    }
-    
 }

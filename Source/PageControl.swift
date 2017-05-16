@@ -14,7 +14,7 @@ public struct PageControl: Node, Equatable {
     public var propsHash: Int { return props.hashValue }
     public var children = [IsNode]()
     let props: PageControlProps
-    public let layout: Layout
+    public var layout: Layout
     public let ref: UnsafeMutablePointer<UIPageControl>?
     
     public init(props:((inout PageControlProps) -> Void)? = nil,
