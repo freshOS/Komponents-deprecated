@@ -20,9 +20,9 @@ public struct Slider: Node, Equatable {
     
     public init(
         _ value: Float = 0,
-        changed:((Float) -> Void)? = nil,
+        changed: ((Float) -> Void)? = nil,
         props:((inout SliderProps) -> Void)? = nil,
-        _ layout:Layout? = nil,
+        _ layout: Layout? = nil,
         ref: UnsafeMutablePointer<UISlider>? = nil) {
         var defaultProps = SliderProps()
         defaultProps.value = value
@@ -33,7 +33,7 @@ public struct Slider: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         registerValueChanged = { slider in
             if let slider = slider as? BlockBasedUISlider, let changed = changed {
@@ -50,7 +50,7 @@ public func == (lhs: Slider, rhs: Slider) -> Bool {
 
 public struct SliderProps: Equatable, Hashable {
     
-    public var value:Float = 0
+    public var value: Float = 0
     
     public var hashValue: Int {
         return value.hashValue

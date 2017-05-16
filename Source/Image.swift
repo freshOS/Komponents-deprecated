@@ -18,8 +18,8 @@ public struct Image: Node, Equatable {
     public let ref: UnsafeMutablePointer<UIImageView>?
     
     public init(_ image: UIImage = UIImage(),
-                props:((inout ImageProps) -> Void)? = nil,
-                layout:Layout? = nil,
+                props: ((inout ImageProps) -> Void)? = nil,
+                layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIImageView>? = nil) {
         var defaultProps = ImageProps()
         defaultProps.image = image
@@ -30,7 +30,7 @@ public struct Image: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
     }
 }

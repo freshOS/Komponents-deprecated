@@ -34,7 +34,7 @@ public struct View: Node, Equatable {
         }
         self.props = prop
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = children
     }
@@ -42,7 +42,7 @@ public struct View: Node, Equatable {
     // No children init
     public init(
         color: UIColor? = nil,
-        props:((inout ViewProps) -> Void)? = nil,
+        props: ((inout ViewProps) -> Void)? = nil,
         layout: Layout? = nil,
         ref: UnsafeMutablePointer<UIView>? = nil) {
         
@@ -55,7 +55,7 @@ public struct View: Node, Equatable {
         }
         self.props = prop
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = [IsNode]()
     }
@@ -89,4 +89,3 @@ public struct ViewProps: Equatable, Hashable {
 public func == (lhs: ViewProps, rhs: ViewProps) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
-

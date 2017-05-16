@@ -9,9 +9,8 @@
 import UIKit
 
 open class ComponentViewController: UIViewController, Component {
-    public var reactEngine: KomponentsEngine?
-
     
+    public var reactEngine: KomponentsEngine?
     public var state = true
     
     open func render() -> Tree {

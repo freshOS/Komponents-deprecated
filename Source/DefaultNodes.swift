@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import MapKit
 
-
 // TODO ref . referencable protocol??
 
 private var startID = 0
@@ -19,21 +18,9 @@ func generateUniqueId() -> Int {
     return startID
 }
 
-//private var startComponentID = 0
-//func generateUniqueComponentId() -> Int {
-//    startComponentID += 1
-//    return startComponentID
-//}
-
-
-
-
-
 public typealias EndRefreshingCallback = () -> Void
 
 public typealias ShouldDeleteBlock = (Bool) -> Void
-//
-//public typealias DeleteCallback = (Int, ShouldDeleteBlock) -> Void
 
 // Block Based UIControls
 
@@ -106,7 +93,6 @@ public extension UIImage {
     }
 }
 
-
 class BlockBasedUISlider: UISlider {
     
     public var actionHandler: ((Float) -> Void)?
@@ -152,7 +138,9 @@ class BlockBasedUIRefreshControl: UIRefreshControl {
 }
 
 // Left to implement.
-//SegmentedControl Stepper TableView CollectionView TableViewCell CollectionViewCell DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
+// SegmentedControl Stepper TableView CollectionView TableViewCell CollectionViewCell
+// DatePicker PickerView VisualEffectView MapKitView Webview TapGestureRecognizer PinchGestureRecognizers
+// RotationGestureRecognizers SwipeGestureRecognizers Toolbar SearchBar
 
 class CallBackTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     

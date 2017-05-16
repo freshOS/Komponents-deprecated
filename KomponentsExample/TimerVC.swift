@@ -25,7 +25,11 @@ class TimerVC: UIViewController, Component {
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
-           timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+           timer = Timer.scheduledTimer(timeInterval: 1,
+                                        target: self,
+                                        selector: #selector(tick),
+                                        userInfo: nil,
+                                        repeats: true)
     }
     
     func render() -> Tree {

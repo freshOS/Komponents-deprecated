@@ -18,20 +18,16 @@ public struct Label: Node, Equatable {
     public let ref: UnsafeMutablePointer<UILabel>?
     
     public init(_ text: String = "",
-            props:((inout LabelProps) -> Void)? = nil,
-         layout:Layout? = nil,
-         ref: UnsafeMutablePointer<UILabel>? = nil) {
-        
-        
+                props: ((inout LabelProps) -> Void)? = nil,
+                layout: Layout? = nil,
+                ref: UnsafeMutablePointer<UILabel>? = nil) {
         var prop = LabelProps()
         prop.text = text
         if let p = props {
             p(&prop)
         }
         self.props = prop
-        
-        
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
     }
 }

@@ -21,7 +21,7 @@ public struct TextView: Node, Equatable {
     public init(text: String = "",
                 textChanged: ((String) -> Void)? = nil,
                 props:((inout TextViewProps) -> Void)? = nil,
-                layout:Layout? = nil,
+                layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UITextView>? = nil) {
         var defaultProps = TextViewProps()
         defaultProps.text = text
@@ -33,7 +33,7 @@ public struct TextView: Node, Equatable {
             self.props = defaultProps
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         
         registerTextChanged = { field in

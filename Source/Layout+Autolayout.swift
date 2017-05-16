@@ -9,7 +9,7 @@
 import UIKit
 
 // Translates the Layout Struct into Autolayout layout anchors :)
-func layout(_ newView:UIView, withLayout layout:Layout, inView view: UIView) {
+func layout(_ newView: UIView, withLayout layout: Layout, inView view: UIView) {
     if layout.isCenteredVertically == true {
         newView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }

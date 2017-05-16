@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Stevia
 import Komponents
 
 class LoadingVC: UIViewController, StatelessComponent {
@@ -28,30 +27,3 @@ class LoadingVC: UIViewController, StatelessComponent {
             ])
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

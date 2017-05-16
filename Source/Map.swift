@@ -30,7 +30,7 @@ public struct Map: Node, Equatable {
         } else {
             self.props = MapProps()
         }
-        self.layout = layout == nil ? .fill : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = [IsNode]()
     }

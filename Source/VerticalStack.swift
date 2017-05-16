@@ -18,7 +18,7 @@ public struct VerticalStack: Node, Equatable {
     let ref: UnsafeMutablePointer<UIStackView>?
     
     public init(props:((inout StackProps) -> Void)? = nil,
-                layout:Layout? = nil,
+                layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
                 _ children: [IsNode]) {
         
@@ -32,7 +32,7 @@ public struct VerticalStack: Node, Equatable {
             self.props = defaultProps
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = children
     }

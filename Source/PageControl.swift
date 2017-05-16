@@ -18,7 +18,7 @@ public struct PageControl: Node, Equatable {
     public let ref: UnsafeMutablePointer<UIPageControl>?
     
     public init(props:((inout PageControlProps) -> Void)? = nil,
-                _ layout:Layout? = nil,
+                _ layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIPageControl>? = nil) {
         let defaultProps = PageControlProps()
         if let p = props {
@@ -28,7 +28,7 @@ public struct PageControl: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
     }
 }
@@ -42,8 +42,8 @@ public struct PageControlProps: Equatable, Hashable {
     
     public var numberOfPages = 0
     public var currentPage = 0
-    public var pageIndicatorTintColor:UIColor?
-    public var currentPageIndicatorTintColor:UIColor?
+    public var pageIndicatorTintColor: UIColor?
+    public var currentPageIndicatorTintColor: UIColor?
     
     public var hashValue: Int {
         return numberOfPages.hashValue

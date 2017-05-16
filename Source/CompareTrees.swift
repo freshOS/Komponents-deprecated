@@ -8,7 +8,7 @@
 
 import Foundation
 
-func areTreesEqual(_ tree: Tree, _ otherTree:Tree) -> Bool {
+func areTreesEqual(_ tree: Tree, _ otherTree: Tree) -> Bool {
     var areOfTheSameType = false
     var haveTheSameProps = false
     var haveTheSameLayout = false

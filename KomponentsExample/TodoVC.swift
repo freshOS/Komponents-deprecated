@@ -50,7 +50,7 @@ class TodoVC: UIViewController, Component {
 //                                $0.becomeFirstResponder()
                         }),
                         Button("Add #\(self.state.items.count+1)",
-                               tap: { [weak self] in self?.addItem() }),
+                               tap: { [weak self] in self?.addItem() })
                     ]),
                     VerticalStack(
                         self.state.items.map { Label("- \($0.name)") }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-func viewForNode(node:IsNode) -> UIView {
+func viewForNode(node: IsNode) -> UIView {
     
     if let node = node as? View {
         let v = UIView()
@@ -149,7 +149,7 @@ func viewForNode(node:IsNode) -> UIView {
         
         if let deleteCallback = node.deleteCallback {
             table.didDeleteRowAt = { ip in
-                let shouldDeleteBlock = { (b:Bool) in
+                let shouldDeleteBlock = { (b: Bool) in
                     if b {
                         // Remove cell
                         node.cells.remove(at: ip.row)

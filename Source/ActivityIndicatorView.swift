@@ -18,13 +18,13 @@ public struct ActivityIndicatorView: Node, Equatable {
     public var layout: Layout
     let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
-    public init(_ activityIndicatorStyle:UIActivityIndicatorViewStyle = .white,
-        layout:Layout? = nil,
+    public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .white,
+                layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
         var p = ActivityIndicatorViewProps()
         p.activityIndicatorStyle = activityIndicatorStyle
         self.props = p
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
     }
 }

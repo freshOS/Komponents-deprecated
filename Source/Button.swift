@@ -39,10 +39,10 @@ public struct Button: Node, Equatable {
     
     public init(_ wording: String = "",
                 image: UIImage? = nil,
-         tap: (() -> Void)? = nil,
-         props:((inout ButtonProps) -> Void)? = nil,
-         layout: Layout? = nil,
-         ref: UnsafeMutablePointer<UIButton>? = nil) {
+                tap: (() -> Void)? = nil,
+                props:((inout ButtonProps) -> Void)? = nil,
+                layout: Layout? = nil,
+                ref: UnsafeMutablePointer<UIButton>? = nil) {
 
         var defaultProps = ButtonProps()
         defaultProps.text = wording
@@ -54,7 +54,7 @@ public struct Button: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         
         registerTap = { button in
@@ -97,7 +97,6 @@ public struct ButtonProps: Hashable, Equatable {
     internal var titleColorForNormalState: UIColor = .white
     internal var titleColorForHighlightedState: UIColor = .white
     
-    
     public mutating func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
         if state == .normal {
             backgroundColorForNormalState = color
@@ -109,8 +108,6 @@ public struct ButtonProps: Hashable, Equatable {
     
     internal var backgroundColorForNormalState: UIColor = .clear
     internal var backgroundForHighlightedState: UIColor = .clear
-    
-    
     
     init(text: String = "") {
         self.text = text

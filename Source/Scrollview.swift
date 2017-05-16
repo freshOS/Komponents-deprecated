@@ -32,7 +32,7 @@ public struct ScrollView: Node, Equatable {
             self.props = ScrollViewProps()
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = children
     }
@@ -50,7 +50,7 @@ public struct ScrollView: Node, Equatable {
             self.props = ScrollViewProps()
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = [IsNode]()
     }

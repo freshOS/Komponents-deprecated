@@ -12,16 +12,16 @@ import Stevia
 class FenceCell: StatelessComponent {
     
     private var wording = ""
-    private var didActivate = { (b:Bool) in }
+    private var didActivate = { (b: Bool) in }
     
-    init(_ wording:String = "Default", didActivate:@escaping (Bool) -> Void = { (b:Bool) in }) {
+    init(_ wording: String = "Default", didActivate:@escaping (Bool) -> Void = { (b: Bool) in }) {
         self.wording = wording
         self.didActivate = didActivate
     }
     
     func render() -> Tree {
         return
-            View(layout: .fill,[
+            View(layout: .fill, [
                 HorizontalStack(
 //                    style: stackStyle,
                     layout: .fill, [
@@ -36,7 +36,7 @@ class FenceCell: StatelessComponent {
             ])
     }
     
-    func stackStyle(s:UIStackView) {
+    func stackStyle(s: UIStackView) {
         s.alignment = .center
         s.spacing = 20
         s.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -55,7 +55,7 @@ class Circle: StatelessComponent {
                     $0.borderWidth = 2
                     $0.cornerRadius = 30
                     $0.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            },layout: Layout().size(60), [])
+            }, layout: Layout().size(60), [])
     }
 }
 

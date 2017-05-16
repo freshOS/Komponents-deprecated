@@ -22,7 +22,7 @@ public struct Field: Node, Equatable {
                 text: String = "",
                 textChanged: ((String) -> Void)? = nil,
                 props:((inout FieldProps) -> Void)? = nil,
-                layout:Layout? = nil,
+                layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UITextField>? = nil) {
 
         var defaultProps = FieldProps()
@@ -36,7 +36,7 @@ public struct Field: Node, Equatable {
             self.props = defaultProps
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         
         registerTextChanged = { field in

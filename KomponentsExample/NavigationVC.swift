@@ -18,18 +18,18 @@ class NavigationVC: UIViewController, StatelessComponent {
         title = "Examples"
     }
     
-    let sections: [(String, (() ->(UIViewController)) )] = [
+    let sections: [(String, (() -> (UIViewController)) )] = [
         ("Hello World", { HelloWorldVC() }),
         ("Hello Props", { HelloPropsVC(name:"Chuck Norris") }),
         ("LoadingScreen", { LoadingVC() }),
         ("Counter ", { CounterVC() }),
         ("Login Screen", { LoginVC() }),
-        ("Nested Components", { NestedComponentsVC() } ),
-        ("Loops", { LoopVC() } ),
-        ("Timer", { TimerVC() } ),
-        ("Todo", { TodoVC() } ),
-        ("Default Nodes", { DefaultNodesVC() } ),
-        ("Static Table", { StaticTableVC() } )
+        ("Nested Components", { NestedComponentsVC() }),
+        ("Loops", { LoopVC() }),
+        ("Timer", { TimerVC() }),
+        ("Todo", { TodoVC() }),
+        ("Default Nodes", { DefaultNodesVC() }),
+        ("Static Table", { StaticTableVC() })
     ]
     
     func render() -> Tree {

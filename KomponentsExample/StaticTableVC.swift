@@ -17,7 +17,6 @@ public extension UIColor {
     }
 }
 
-
 class StaticTableVC: UIViewController, StatelessComponent {
     
     override func loadView() { loadComponent() }
@@ -32,16 +31,15 @@ class StaticTableVC: UIViewController, StatelessComponent {
                 layout: .fill, cells:
                   fences.map { fence in
                     FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
-                }
+                  }
             )
     }
     
     func refresh(_ done: @escaping () -> Void ) {
         print("Refreshing...")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute:{
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             done()
         })
         
     }
 }
-

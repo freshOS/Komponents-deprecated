@@ -11,10 +11,9 @@ import Stevia
 import Komponents
 
 class NestedComponentsVC: UIViewController, Component {
-    var reactEngine: KomponentsEngine?
-
     
-    var state: [Int] = [0,0,0] //counters
+    var reactEngine: KomponentsEngine?
+    var state: [Int] = [0, 0, 0] //counters
     
     override func loadView() { loadComponent() }
     
@@ -40,8 +39,7 @@ class NestedComponentsVC: UIViewController, Component {
                         StatefulCounter(color: .yellow),
                         
                         // StateLess component.
-                        AStatelessComponent(),
-                        
+                        AStatelessComponent()
                 ])
             ])
     }

@@ -19,9 +19,9 @@ public struct Progress: Node, Equatable {
     
     public init(
         _ progress: Float = 0,
-        changed:((Bool) -> Void)? = nil,
+        changed: ((Bool) -> Void)? = nil,
         props:((inout ProgressProps) -> Void)? = nil,
-        _ layout:Layout? = nil,
+        _ layout: Layout? = nil,
         ref: UnsafeMutablePointer<UIProgressView>? = nil) {
         var defaultProps = ProgressProps()
         defaultProps.progress = progress
@@ -32,7 +32,7 @@ public struct Progress: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
     }
 }

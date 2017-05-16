@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func plugEvents(from tree:IsNode, to newView: UIView) {
+func plugEvents(from tree: IsNode, to newView: UIView) {
     if let bNode = tree as? Button {
         bNode.registerTap?(newView as! UIButton)
     }

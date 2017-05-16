@@ -18,11 +18,10 @@ public struct Switch: Node, Equatable {
     public let ref: UnsafeMutablePointer<UISwitch>?
     var registerValueChanged: ((UISwitch) -> Void)?
     
-    public init(
-        _ on: Bool = false,
-        changed:((Bool) -> Void)? = nil,
-        props:((inout SwitchProps) -> Void)? = nil,
-                _ layout:Layout? = nil,
+    public init(_ on: Bool = false,
+                changed: ((Bool) -> Void)? = nil,
+                props:((inout SwitchProps) -> Void)? = nil,
+                _ layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UISwitch>? = nil) {
         var defaultProps = SwitchProps()
         defaultProps.isOn = on
@@ -33,7 +32,7 @@ public struct Switch: Node, Equatable {
         } else {
             self.props = defaultProps
         }
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         
         registerValueChanged = { aSwitch in

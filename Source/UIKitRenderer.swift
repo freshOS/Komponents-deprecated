@@ -17,7 +17,7 @@ class UIKitRenderer {
     
     var storedSubComponents: [IsComponent] = [IsComponent]()
     
-    func render(tree:Tree, in view: UIView) {
+    func render(tree: Tree, in view: UIView) {
         storedSubComponents = [IsComponent]()
         privateRender(tree: tree, in: view)
         for sc in storedSubComponents {
@@ -25,7 +25,7 @@ class UIKitRenderer {
         }
     }
     
-    func privateRender(tree:Tree, in view: UIView) {
+    func privateRender(tree: Tree, in view: UIView) {
         
         var tree = tree
         
@@ -55,8 +55,7 @@ class UIKitRenderer {
                 subComponenet.reactEngine?.rootView = newView
                 subComponenet.reactEngine?.render(component: subComponenet, in: newView)
                 storedSubComponents.append(subComponenet)
-            }
-            else if let subComponenet = c as? IsComponent {
+            } else if let subComponenet = c as? IsComponent {
                 storedSubComponents.append(subComponenet)
                 privateRender(tree: c, in: newView)
             } else {

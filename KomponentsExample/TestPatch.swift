@@ -12,7 +12,6 @@ import Komponents
 class TestPatch: UIViewController, Component {
     var reactEngine: KomponentsEngine?
 
-    
     var state = false
     
     override func loadView() {
@@ -24,15 +23,16 @@ class TestPatch: UIViewController, Component {
         if !state {
             return
                 View([
-                    View(color:.blue, layout:Layout().size(100).top(100).left(10), []),
-                    View(color:.lightGray, layout:Layout().size(100).top(100).centerHorizontally(), []),
+                    View(color:.blue, layout:Layout().size(100).top(100).left(10)),
+                    View(color: .lightGray,
+                         layout: Layout().size(100).top(100).centerHorizontally())
                 ])
         } else {
             return
                 View([
-                    View(color:.blue, layout:Layout().size(100).top(100).left(10), []),
-                    View(color:.lightGray, layout:Layout().size(100).top(100).centerHorizontally(), []),
-                    View(color:.red, layout:Layout().size(100).top(100).right(10), [])
+                    View(color:.blue, layout:Layout().size(100).top(100).left(10)),
+                    View(color:.lightGray, layout:Layout().size(100).top(100).centerHorizontally()),
+                    View(color:.red, layout:Layout().size(100).top(100).right(10))
                 ])
         }
     }

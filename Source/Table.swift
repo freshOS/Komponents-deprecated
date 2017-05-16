@@ -30,7 +30,7 @@ public struct Table: Node, Equatable {
         props:((inout TableProps) -> Void)? = nil,
         layout: Layout? = nil,
         ref: UnsafeMutablePointer<UITableView>? = nil,
-        cells:[IsComponent]) {
+        cells: [IsComponent]) {
         
         if let p = props {
             var prop = TableProps()
@@ -40,7 +40,7 @@ public struct Table: Node, Equatable {
             self.props = TableProps()
         }
         
-        self.layout = layout == nil ? Layout() : layout!
+        self.layout = layout ?? Layout()
         self.ref = ref
         self.children = [IsNode]()
         self.cells = cells

@@ -9,6 +9,3 @@
 import Foundation
 
 public protocol IsNode: HasLayout, HasChildren, HasAPropsHash, HasAUniqueIdentifier { }
-
-
-

@@ -10,7 +10,7 @@ import UIKit
 
 class UIKitReconcilier {
     
-    weak var engine:KomponentsEngine?
+    weak var engine: KomponentsEngine?
     
     var updates = [()->Void]()
     
@@ -46,53 +46,30 @@ class UIKitReconcilier {
     
             let retChildNode = walk(oldChildNode, newChildNode)
             
-//            // Update IDS
-//            
-//            if let old = oldChildNode, let new = newChildNode {
-//                if type(of: old) == type(of: new) { // Same type nodes
-//    
-//                    print("Updating Ids of : \(type(of:old)) ")
-//                    print("old : \(old.uniqueIdentifier)), new: \(new.uniqueIdentifier) ")
-//                    if var map = self.engine?.renderer.nodeIdViewMap {
-//                        map[new.uniqueIdentifier] = map[old.uniqueIdentifier]
-//                        map.removeValue(forKey: old.uniqueIdentifier)
-//                        // Heere update ids?
-//                        // new can keep old ids
-////                        print(new.uniqueIdentifier)
-////                        newNode?.setID(id: old.uniqueIdentifier)
-//                    //                    newNod
-//                    
-//                    self.engine?.renderer.nodeIdViewMap = map
-//                        
-//                    }
-//                }
-//            }
-            
-            
-            
-            
             if retChildNode == nil { // Node removed !
                 if let oldChildNode = oldChildNode {
-                    if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier]  {
+                    if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
                         print("💉 Removing node \(oldChildNode)")
                         updates.append {
                             removedView.removeFromSuperview() // different when its a stackview?
                         }
                     }
-                    iOld = iOld-1
+                    iOld -= 1
                 }
             } else if oldChildNode == nil { // New Node Added
-                if let retChildNode = retChildNode, let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier]  {
+                if let retChildNode = retChildNode,
+                    let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier] {
                     print("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
                     updates.append {
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
                     }
-                    iNew = iNew - 1
+                    iNew -= 1
                 }
-            } else if !areTreesEqual(retChildNode!, oldChildNode!) { // Replacement by non patchable node (different node type.)
+            } else if !areTreesEqual(retChildNode!, oldChildNode!) {
+                // Replacement by non patchable node (different node type.)
                 if let retChildNode = retChildNode, let oldChildNode = oldChildNode,
                     let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
-                    let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier]  {
+                    let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
                     print("💉 Replacing node")
                     updates.append {
                         // render new node in parentView
@@ -107,9 +84,9 @@ class UIKitReconcilier {
                 updateChildren(oldChildNode!, newChildNode!)
             }
             
-            i = i+1
-            iNew = iNew+1
-            iOld = iOld+1
+            i += 1
+            iNew += 1
+            iOld += 1
         }
     }
     
@@ -125,7 +102,6 @@ class UIKitReconcilier {
                         self.engine?.renderer.nodeIdViewMap = map
                     }
                     
-
                     if areTreesEqual(new, old) { // Nothing changed, keep old
                         return old
                     } else { // Somtheing is different, pathc properties and update children.
@@ -144,7 +120,7 @@ class UIKitReconcilier {
         return newNode
     }
     
-    func log(_ s:String) {
+    func log(_ s: String) {
         if Komponents.logsEnabled {
             print(s)
         }
@@ -207,7 +183,6 @@ class UIKitReconcilier {
 //            }
         }
         
-        
         // Button
         if let button = oldNode as? Button, let newButton = newNode as? Button {
             if newButton.props.image != button.props.image {
@@ -239,7 +214,6 @@ class UIKitReconcilier {
                 }
             }
         }
-        
         
         // Image
         if let image = oldNode as? Image, let newImage = newNode as? Image {
