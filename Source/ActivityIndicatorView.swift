@@ -19,10 +19,12 @@ public struct ActivityIndicatorView: Node, Equatable {
     let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
     public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .white,
+                props:((inout ActivityIndicatorViewProps) -> Void)? = nil,
                 layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
         var p = ActivityIndicatorViewProps()
         p.activityIndicatorStyle = activityIndicatorStyle
+        props?(&p)
         self.props = p
         self.layout = layout ?? Layout()
         self.ref = ref
@@ -34,13 +36,15 @@ public func == (lhs: ActivityIndicatorView, rhs: ActivityIndicatorView) -> Bool 
         && lhs.layout == rhs.layout
 }
 
-struct ActivityIndicatorViewProps: Equatable, Hashable {
+public struct ActivityIndicatorViewProps: Equatable, Hashable {
     var activityIndicatorStyle = UIActivityIndicatorViewStyle.white
-    var hashValue: Int {
+    public var isHidden = false
+    public var hashValue: Int {
         return activityIndicatorStyle.rawValue
+            ^ isHidden.hashValue
     }
 }
 
-func == (lhs: ActivityIndicatorViewProps, rhs: ActivityIndicatorViewProps) -> Bool {
-    return lhs.activityIndicatorStyle == rhs.activityIndicatorStyle
+public func == (lhs: ActivityIndicatorViewProps, rhs: ActivityIndicatorViewProps) -> Bool {
+    return lhs.hashValue == rhs.hashValue
 }

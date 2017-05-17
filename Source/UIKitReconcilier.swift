@@ -237,6 +237,22 @@ class UIKitReconcilier {
             }
         }
         
+        // ActivityIndicatorView
+        if let spinner = oldNode as? ActivityIndicatorView, let newSpinner = newNode as? ActivityIndicatorView {
+            if newSpinner.props.isHidden != spinner.props.isHidden {
+                if let uiSpinner = engine?.renderer.nodeIdViewMap[newSpinner.uniqueIdentifier] as? UIActivityIndicatorView {
+                    log("💉 Patch isHidden")
+                    updates.append {
+                        if newSpinner.props.isHidden {
+                            uiSpinner.stopAnimating()
+                        } else {
+                            uiSpinner.startAnimating()
+                        }
+                    }
+                }
+            }
+        }
+        
         // Field
         if let field = oldNode as? Field, let newField = newNode as? Field {
             if newField.props.text != field.props.text {
