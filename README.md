@@ -58,3 +58,41 @@ We're not the first to tackle the great endeavor of swift components and here ar
  - [Alexdrone's render](https://github.com/alexdrone/Render)
  - [joshaber's Few.swift](https://github.com/joshaber/Few.swift/tree/master/FewDemo)
  - [BendingSpoons' katana](https://github.com/BendingSpoons/katana-swift)
+
+# ⚠️  v 0.2 in the works 🏗
+Please be aware that this is still very experimental 🔬.  
+The actual api can and *will* change.  
+This is not battle-tested and we advise you against using this in Appstore Apps (for now)
+
+
+### Declarative Styling via Props 🎨
+
+Applying styles directly on the UIKit elements was super handy in `v0.1` but came with major strings attached. Indeed, the styles blocks in the nodes **could only be called on the main thread**, because UIKit is meant to be accessed from the UI Thread (for the most part).
+Also, in order to compare styles, we needed to create a duplicate UIKit element (heavy) and look for differences on it.
+
+That's where `Props` come in!
+
+The idea is to have a Props layer, aka **a structure that defines an element's style**, that is `Equatable`.
+Being equatable, it becomes trivial to compare two buttons styles.
+For instance, you can just write :  
+ `let styleIsTheSame = (button.props == newButton.props)`
+
+ Being Value-typed, it is also safe to process the diff in background !
+
+Could we get all this goodness for free? Of course not, welcome to engineering.
+The major drawback is that we have to bridge every UIKit element property to its corresponding `Props` struct.
+
+However the properties supported can only get better with time classic escape hatch through refs will always be accessible to access UIkit elements if a property is not yet supported.
+
+This is worth it!
+
+### A dead-simple declarative layout 📐
+The coming version is switching from Autolayout (and Stevia) to a declarative layout.  
+The new layout system is based on a super simple `Layout` struct, that, combined with classic `StackViews` enables 99.9% of layout cases.
+It is a value type, meaning it will be thread safe and thus enable comparison in a background thread :)
+
+### Diffing on the virtual DOM. 🚀
+
+With `elements`, `styling`, and `layout` purely **declarative**, **Value-Type** and **Equatable**, we can now safely put all the heavy duty stuff off to a background thread !!!
+
+In `v0.2`, the [diffing](https://facebook.github.io/react/docs/reconciliation.html) algorithm  (also known as reconciliation) will run on the virtual DOM, on a background thread and only schedule  UI changes on the UI thread. 🎉
