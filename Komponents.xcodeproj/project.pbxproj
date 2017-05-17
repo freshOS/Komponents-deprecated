@@ -46,6 +46,7 @@
 		996481361EC5ACC500A518DC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481351EC5ACC500A518DC /* Field.swift */; };
 		996481381EC5DFAF00A518DC /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996481371EC5DFAF00A518DC /* Map.swift */; };
 		996ADD991EB1C50A00364F7B /* Komponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996ADD8F1EB1C50A00364F7B /* Komponents.framework */; };
+		9982C81A1ECCA6B30096B688 /* UIKitReconcilier+Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9982C8191ECCA6B30096B688 /* UIKitReconcilier+Patch.swift */; };
 		9992BD9E1EC6CE06005EA9D6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9D1EC6CE06005EA9D6 /* TextView.swift */; };
 		9992BDA01EC6D0D7005EA9D6 /* Scrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
@@ -104,6 +105,7 @@
 		996481371EC5DFAF00A518DC /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		996ADD8F1EB1C50A00364F7B /* Komponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Komponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		996ADD981EB1C50A00364F7B /* KomponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KomponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9982C8191ECCA6B30096B688 /* UIKitReconcilier+Patch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitReconcilier+Patch.swift"; sourceTree = "<group>"; };
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		9992BD9D1EC6CE06005EA9D6 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrollview.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				99317BEC1EB85B5D0019A524 /* Renderer.swift */,
 				99317BED1EB85B5D0019A524 /* UIKitRenderer.swift */,
 				99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */,
+				9982C8191ECCA6B30096B688 /* UIKitReconcilier+Patch.swift */,
 				99317BEE1EB85B5D0019A524 /* KomponentsEngine.swift */,
 				992C397E1EC4A2AD005DAFA8 /* Layout.swift */,
 				992C398D1EC4A3F0005DAFA8 /* CompareTrees.swift */,
@@ -371,6 +374,7 @@
 				996481381EC5DFAF00A518DC /* Map.swift in Sources */,
 				9964812E1EC5A5FC00A518DC /* PageControl.swift in Sources */,
 				99317BF31EB85B5D0019A524 /* DefaultNodes.swift in Sources */,
+				9982C81A1ECCA6B30096B688 /* UIKitReconcilier+Patch.swift in Sources */,
 				996481341EC5AB0100A518DC /* Slider.swift in Sources */,
 				992C398E1EC4A3F0005DAFA8 /* CompareTrees.swift in Sources */,
 				992C399B1EC4BC39005DAFA8 /* HorizontalStack.swift in Sources */,
