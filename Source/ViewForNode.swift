@@ -139,6 +139,7 @@ func viewForNode(node: IsNode) -> UIView {
     if var node = node as? Table {
         let table = CallBackTableView(frame: CGRect.zero, style: node.tableStyle)
         table.estimatedRowHeight = 100
+        table.rowHeight = UITableViewAutomaticDimension
         
         if let rc = node.refreshCallback {
             let refreshControl = BlockBasedUIRefreshControl()
