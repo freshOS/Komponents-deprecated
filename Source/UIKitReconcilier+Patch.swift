@@ -63,18 +63,17 @@ extension UIKitReconcilier {
                     updates.append {
                         uiLabel.text = newLabel.props.text
                     }
-                    
-                    // Update NodeID - View Map
-                    
                 }
             }
             
-            //            if newLabel.textColor != label.textColor {
-            //                updates.append {
-            //                    label.textColor = newLabel.textColor
-            //                }
-            //                log("💉 Patch textColor")
-            //            }
+            if newLabel.props.textColor != label.props.textColor {
+                if let uiLabel = engine?.renderer.nodeIdViewMap[newLabel.uniqueIdentifier] as? UILabel {
+                    log("💉 Patch textColor")
+                    updates.append {
+                        uiLabel.textColor = newLabel.props.textColor
+                    }
+                }
+            }
         }
         
         // Button
