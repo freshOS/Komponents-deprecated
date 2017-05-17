@@ -219,7 +219,9 @@ class UIKitReconcilier {
                 if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? BlockBasedUIButton {
                     log("💉 Patch backgroudnColor")
                     updates.append {
-                        uibutton.setBackgroundColor(newButton.props.backgroundColorForNormalState, for: .normal)
+                        if let backgroundColorForNormalState = newButton.props.backgroundColorForNormalState {
+                            uibutton.setBackgroundColor(backgroundColorForNormalState, for: .normal)
+                        }
                     }
                 }
             }

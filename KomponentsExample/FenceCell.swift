@@ -21,18 +21,18 @@ class FenceCell: StatelessComponent {
     
     func render() -> Tree {
         return
-            View(layout: .fill, [
+            View(layout: Layout().height(100).fill(), [
                 HorizontalStack(
 //                    style: stackStyle,
                     layout: .fill, [
-                    Circle(),
+                    Circle.render(withLayout: Layout().fillVertically()),
                     Label(wording),
                     Switch(true,
                            changed: didActivate
 //                           style: { $0.onTintColor = .green }
                         )
                 ]),
-                Separator()
+                Separator.render()
             ])
     }
     
@@ -45,8 +45,9 @@ class FenceCell: StatelessComponent {
 }
 
 // Circle
-class Circle: StatelessComponent {
-    func render() -> Tree {
+struct Circle {
+    
+    static func render(withLayout: Layout) -> Tree {
         return
             View(
                 color: UIColor(red: 0, green: 0, blue: 1, alpha: 0.1),
@@ -55,12 +56,12 @@ class Circle: StatelessComponent {
                     $0.borderWidth = 2
                     $0.cornerRadius = 30
                     $0.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            }, layout: Layout().size(60), [])
+            }, layout: withLayout.size(60))
     }
 }
 
-class Separator: StatelessComponent {
-    func render() -> Tree {
+struct Separator {
+    static func render() -> Tree {
         return
             View(color: UIColor.black.withAlphaComponent(0.05),
                  layout: Layout().fillHorizontally().top(0).height(1), [])

@@ -106,8 +106,8 @@ public struct ButtonProps: Hashable, Equatable {
         }
     }
     
-    internal var backgroundColorForNormalState: UIColor = .clear
-    internal var backgroundForHighlightedState: UIColor = .clear
+    internal var backgroundColorForNormalState: UIColor?
+    internal var backgroundForHighlightedState: UIColor?
     
     init(text: String = "") {
         self.text = text
@@ -118,8 +118,8 @@ public struct ButtonProps: Hashable, Equatable {
             ^ titleColorForNormalState.hashValue
             ^ titleColorForHighlightedState.hashValue
             ^ isEnabled.hashValue
-            ^ backgroundColorForNormalState.hashValue
-            ^ backgroundForHighlightedState.hashValue
+            ^ ((backgroundColorForNormalState == nil) ? 0 : backgroundColorForNormalState!.hashValue)
+            ^ ((backgroundForHighlightedState == nil) ? 0 : backgroundForHighlightedState!.hashValue)
             ^ ((image == nil) ? 154 : image!.hashValue)
             ^ ((font == nil) ? 0 : font!.hashValue)
     }

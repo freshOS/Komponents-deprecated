@@ -88,7 +88,12 @@ func viewForNode(node: IsNode) -> UIView {
     
     if let node = node as? ActivityIndicatorView {
         let v = UIActivityIndicatorView(activityIndicatorStyle: node.props.activityIndicatorStyle)
-        v.startAnimating()
+        v.hidesWhenStopped = true
+        if node.props.isHidden {
+            v.stopAnimating()
+        } else {
+            v.startAnimating()
+        }
         return v
     }
     
@@ -110,8 +115,13 @@ func viewForNode(node: IsNode) -> UIView {
         v.setTitle(node.props.text, for: .normal)
         v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
         v.setTitleColor(node.props.titleColorForHighlightedState, for: .highlighted)
-        v.setBackgroundColor(node.props.backgroundColorForNormalState, for: .normal)
-        v.setBackgroundColor(node.props.backgroundForHighlightedState, for: .highlighted)
+        
+        if let backgroundColorForNormalState = node.props.backgroundColorForNormalState {
+            v.setBackgroundColor(backgroundColorForNormalState, for: .normal)
+        }
+        if let backgroundForHighlightedState = node.props.backgroundForHighlightedState {
+            v.setBackgroundColor(backgroundForHighlightedState, for: .highlighted)
+        }
         v.isEnabled = node.props.isEnabled
         v.titleLabel?.font = node.props.font
         
