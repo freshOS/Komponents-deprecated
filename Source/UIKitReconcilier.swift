@@ -127,10 +127,20 @@ class UIKitReconcilier {
     }
     
     private func smash(_ oldNode: IsNode, _ newNode: IsNode) {
-        // read each node attributes and diff them
-        // then patch the old node (side-effect)
-        // - layout
-        // - events
+            
+        // Patch Layout
+        if newNode.layout != oldNode.layout {
+            if let uiView = engine?.renderer.nodeIdViewMap[newNode.uniqueIdentifier] {
+                log("💉 Patch Layout")
+                updates.append {
+                    // remove all previous layout constraints
+                    uiView.removeConstraints(uiView.constraints)
+                    
+                    // Apply new layout
+                    layout(uiView, withLayout: newNode.layout, inView: uiView.superview!)
+                }
+            }
+        }
         
         // View
         if let view = oldNode as? View, let newView = newNode as? View {
