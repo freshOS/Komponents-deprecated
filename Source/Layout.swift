@@ -126,9 +126,12 @@ public struct Layout: Equatable {
 }
 
 public func == (lhs: Layout, rhs: Layout) -> Bool {
-    return
-        lhs.top == rhs.top
+    return lhs.top == rhs.top
             && lhs.right == rhs.right
             && lhs.left == rhs.left
             && lhs.bottom == rhs.bottom
+            && lhs.width == rhs.width
+            && lhs.height == rhs.height
+            && lhs.isCenteredHorizontally == rhs.isCenteredHorizontally
+            && lhs.isCenteredVertically == rhs.isCenteredVertically
 }
