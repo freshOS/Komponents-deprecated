@@ -12,7 +12,9 @@ import Komponents
 
 class HelloWorldVC: UIViewController, StatelessComponent {
     
-    override func loadView() { loadComponent() }
+    override func loadView() {
+        loadComponent()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,7 +13,7 @@ import Komponents
 class NestedComponentsVC: UIViewController, Component {
     
     var reactEngine: KomponentsEngine?
-    var state: [Int] = [0, 0, 0] //counters
+    var state: [Int] = [23, 34, 0] //counters
     
     override func loadView() { loadComponent() }
     
@@ -26,7 +26,7 @@ class NestedComponentsVC: UIViewController, Component {
                     layout: .center, [
                         
                         // Free function functional Componenent
-                        FunctionalCounter(color: .blue, count: state[0], tap: { [weak self] in
+                        FunctionalCounter(color: .yellow, count: state[0], tap: { [weak self] in
                             self?.updateState { $0[0] += 1 }
                         }),
                         
@@ -43,9 +43,4 @@ class NestedComponentsVC: UIViewController, Component {
                 ])
             ])
     }
-    
-    deinit {
-        print("😀 DEstroying NestedComponentsVC")
-    }
-    
 }

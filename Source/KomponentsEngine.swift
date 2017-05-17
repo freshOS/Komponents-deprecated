@@ -14,6 +14,8 @@ public class Komponents {
 
 public class KomponentsEngine {
     
+    public init() {}
+    
     public func updateComponent(_ component: IsComponent, patching: Bool) {
         renderer.engine = self
         if let vc = component as? UIViewController {
@@ -31,13 +33,14 @@ public class KomponentsEngine {
         return componentTreeMap[component.uniqueComponentIdentifier]
     }
     
-    var rootComponent: IsComponent?
+//    var rootComponent: IsComponent?
     public var rootView: UIView?
     
     func render(subComponent: IsComponent) {
-        if let vc = rootComponent as? UIViewController {
-            render(component: rootComponent!, in: vc.view)
-        } else if let rootView = rootView {
+//        if let vc = rootComponent as? UIViewController {
+//            render(component: rootComponent!, in: vc.view)
+//        } else
+    if let rootView = rootView {
             render(component: subComponent, in: rootView)
         }
     }
@@ -45,7 +48,7 @@ public class KomponentsEngine {
     let backgroundSerialQueue = DispatchQueue(label: "bgQueue", qos: .background)
     
     func render(component: IsComponent, in view: UIView) {
-        rootComponent = component
+//        rootComponent = component
         renderer.engine = self
         if let component = component as? IsStatefulComponent {
             backgroundSerialQueue.async {

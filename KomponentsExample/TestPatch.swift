@@ -43,8 +43,4 @@ class TestPatch: UIViewController, Component {
             self.updateState { $0 = true }
         }
     }
-    
-    deinit {
-        print("😀 DEstroying Counter")
-    }
 }

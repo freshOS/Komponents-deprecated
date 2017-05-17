@@ -53,67 +53,73 @@ class LoginVC: UIViewController, Component {
         title = "Login Screen"
     }
     
+    var emailFieldRef = UITextField()
+    var passwordFieldRef = UITextField()
+    var buttonRef = UIButton()
+    
     func render() -> Tree {
+        
+    
         return View([
             VerticalStack(props: { $0.spacing = 8 },
                           layout: Layout().fillHorizontally().top(80), [
                 Field("Email",
                       text: state.email,
-                      textChanged: emailChanged,
+                      textChanged: { [weak self] email in self?.updateState { $0.email = email } } ,
 //                      style: emailStyle,
-                      layout: Layout().height(80)
+                      layout: Layout().height(80),
+                      ref : &emailFieldRef
                 ),
                 Field("Password",
                       text: state.password,
-                      textChanged: passwordChanged,
+                      textChanged: { [weak self] pass in self?.updateState { $0.password = pass } } ,
 //                      style: passwordStyle,
-                      layout: Layout().height(80)
+                      layout: Layout().height(80),
+                      ref : &passwordFieldRef
                 )
                 ]),
             VerticalStack(layout: Layout().fillHorizontally().bottom(0), [
-                    Button("Vous n'avez pas de compte ?",
-//                       style: signUpButtonStyle,
-                       layout: Layout().height(80)
-                ),
                 Button(buttonTextForState(state.status),
-                       tap: login,
+                       tap: { [weak self] in self?.login() },
 //                       style: loginButtonStyle,
-                       layout: Layout().height(80)
+                       layout: Layout().height(80),
+                        ref : &buttonRef
                 )
             ])
         ])
     }
     
-    // MARK - Events
+//    func bindTo(property:UnsafeMutablePointer<String>) {
+//        self.text = property.pointee // apply text.
+//        
+////        { [weak self] email in self?.updateState { property = email }
+//    }
     
-    // TODO find a way to plug directyl fields on String state properties.
-    // so that we don't have to write this :)
-    
-    func emailChanged(email: String) {
-        updateState {
-            $0.email = email
-            $0.emailFieldFocused = true
-            $0.passwordFieldFocused = false
-        }
+    func didRender() {
+        applyStyles()
     }
     
-    func passwordChanged(pass: String) {
-        updateState {
-            $0.password = pass
-            $0.emailFieldFocused = false
-            $0.passwordFieldFocused = true
-        }
+    func didUpdateState() {
+        applyStyles()
     }
+    
+    func applyStyles() {
+        emailStyle(f: emailFieldRef)
+        passwordStyle(f: passwordFieldRef)
+        loginButtonStyle(b: buttonRef)
+    }
+    
+
     
     func login() {
         updateState { $0.status = .loading }
-//        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-//            if self.state.email == "sacha" {
-//                self.updateState { $0.status = .success }
-//            } else {
-//                self.updateState { $0.status = .error }
-//            }
-//        }
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            if self.state.email == "sachadso@gmail.com" {
+                self.updateState { $0.status = .success }
+            } else {
+                self.updateState { $0.status = .error }
+            }
+        }
     }
     
     // MARK - Styles
@@ -131,31 +137,13 @@ class LoginVC: UIViewController, Component {
         f.autocapitalizationType = .none
         f.returnKeyType = .next
         f.layer.borderColor = state.emailValid == .invalid ? UIColor.red.cgColor : UIColor.green.cgColor
-        if state.emailFieldFocused {
-            f.becomeFirstResponder()
-        }
     }
     
     func passwordStyle(f: UITextField) {
         inputStyle(f)
-//        f.isSecureTextEntry = true // Bug text reset everytime :/
+        f.isSecureTextEntry = true // Bug text reset everytime? :/
         f.returnKeyType = .done
         f.layer.borderColor = state.passwordValid == .invalid ? UIColor.red.cgColor : UIColor.green.cgColor
-        if state.passwordFieldFocused {
-            f.becomeFirstResponder()
-        }
-    }
-    
-    func signUpButtonStyle(b: UIButton) {
-        b.setTitleColor(UIColor(red: 0.6588, green: 0.702, blue: 0.1725, alpha: 1.0), for: .normal)
-        b.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
-        if let text = b.titleLabel?.text {
-        b.titleLabel?.attributedText = NSAttributedString(string: text,
-                                                          attributes: [
-                                                            NSUnderlineStyleAttributeName:
-                                                            NSUnderlineStyle.styleSingle.rawValue
-            ])
-        }
     }
     
     func loginButtonStyle(b: UIButton) {

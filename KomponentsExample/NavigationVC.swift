@@ -18,21 +18,22 @@ class NavigationVC: UIViewController, StatelessComponent {
         title = "Examples"
     }
     
-    let sections: [(String, (() -> (UIViewController)) )] = [
-        ("Hello World", { HelloWorldVC() }),
-        ("Hello Props", { HelloPropsVC(name:"Chuck Norris") }),
-        ("LoadingScreen", { LoadingVC() }),
-        ("Counter ", { CounterVC() }),
-        ("Login Screen", { LoginVC() }),
-        ("Nested Components", { NestedComponentsVC() }),
-        ("Loops", { LoopVC() }),
-        ("Timer", { TimerVC() }),
-        ("Todo", { TodoVC() }),
-        ("Default Nodes", { DefaultNodesVC() }),
-        ("Static Table", { StaticTableVC() })
-    ]
-    
     func render() -> Tree {
+        
+        let sections: [(String, (() -> (UIViewController)) )] = [
+            ("Hello World", { HelloWorldVC() }),
+            ("Hello Props", { HelloPropsVC(name:"Chuck Norris") }),
+            ("LoadingScreen", { LoadingVC() }),
+            ("Counter ", { CounterVC() }),
+            ("Login Screen", { LoginVC() }),
+            ("Nested Components", { NestedComponentsVC() }),
+            ("Loops", { LoopVC() }),
+            ("Timer", { TimerVC() }),
+            ("Todo", { TodoVC() }),
+            ("Default Nodes", { DefaultNodesVC() }),
+            ("Static Table", { StaticTableVC() })
+        ]
+        
         return
             View(
                 color: UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1), [

@@ -28,6 +28,7 @@ public struct Field: Node, Equatable {
         var defaultProps = FieldProps()
         defaultProps.placeholder = placeholder
         defaultProps.text = text
+    
         if let p = props {
             var prop = defaultProps
             p(&prop)
@@ -45,7 +46,53 @@ public struct Field: Node, Equatable {
             }
         }
     }
+    
+//    public init<T:HasState>(_ placeholder: String = "",
+//                            target:T,
+//                           property:() -> String ,
+//                           updateCallback: @escaping (T.State) -> UnsafeMutablePointer<String>,
+//                           props:((inout FieldProps) -> Void)? = nil,
+//        layout: Layout? = nil,
+//        ref: UnsafeMutablePointer<UITextField>? = nil) {
+//        
+//        var defaultProps = FieldProps()
+//        defaultProps.placeholder = placeholder
+////        defaultProps.text = text
+//        
+//        
+//    
+//        defaultProps.text = property()
+//        
+//        
+//        
+//        
+//        if let p = props {
+//            var prop = defaultProps
+//            p(&prop)
+//            self.props = prop
+//        } else {
+//            self.props = defaultProps
+//        }
+//        
+//        self.layout = layout ?? Layout()
+//        self.ref = ref
+//        
+//        registerTextChanged = { field in
+//            if let field = field as? BlockBasedUITextField {
+//                field.setCallback { newtext in
+//                    target.updateState { state in
+//                        
+//                        let propertyPointer = updateCallback(state)
+//                        propertyPointer.pointee = newtext
+//                    }
+//                }
+//            }
+//        }
+//            
+//    
+//    }
 }
+
 
 public func == (lhs: Field, rhs: Field) -> Bool {
     return lhs.props == rhs.props

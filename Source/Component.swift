@@ -15,6 +15,7 @@ public protocol Renderable {
 
 public protocol IsComponent: Renderable, IsNode {
     func didRender()
+    func didUpdateState()
     func forceRerender() -> Bool
 }
 
@@ -51,6 +52,10 @@ public extension IsComponent {
     func didRender() {
 //        print("didRender \(self)")
     }
+    
+    func didUpdateState() {
+        
+    }
 }
 
 public extension Component {
@@ -59,7 +64,8 @@ public extension Component {
             print("☝️ Update State : \(self)")
         }
         block(&state)
-        askForRefresh(patching: true)
+        askForRefresh()
+        didUpdateState()
     }
 }
 
@@ -72,14 +78,27 @@ public extension IsStatefulComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
                          object: nil,
-                         queue: nil) { [weak self] _ in
-                if let weakSelf = self {
-                    weakSelf.reactEngine?.render(component: weakSelf, in: weakSelf.view)
-                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-                }
+                         queue: nil) { [weak self] n in
+                            if let weakSelf = self, notificationContains(notification: n, object: weakSelf) {
+                                weakSelf.reactEngine?.render(component: weakSelf, in: weakSelf.view)
+                            }
             }
     }
 }
+
+public extension IsStatefulComponent {
+    public func supportInjection() {
+        NotificationCenter.default
+            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
+                         object: nil,
+                         queue: nil) { [weak self] n in
+                            if let weakSelf = self, notificationContains(notification: n, object: weakSelf) {
+                                weakSelf.reactEngine?.render(subComponent: weakSelf)
+                            }
+        }
+    }
+}
+
 
 public extension StatelessComponent where Self: UIViewController {
     func loadComponent() {
@@ -90,13 +109,29 @@ public extension StatelessComponent where Self: UIViewController {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
                          object: nil,
-                         queue: nil) { [weak self] _ in
-                if let weakSelf = self {
-                    engine.render(component: weakSelf, in: weakSelf.view)
-                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-                }
+                         queue: nil) { [weak self] n in
+                            if let weakSelf = self, notificationContains(notification: n, object: weakSelf) {
+                                engine.render(component: weakSelf, in: weakSelf.view)
+                            }
             }
     }
+}
+
+public func notificationContains(notification: Notification, object: Any ) -> Bool {
+    if let arrayOfInjectedObjects = notification.object as? [Any] {
+        for o in arrayOfInjectedObjects {
+            let registeredClassName = String(describing: type(of: object))
+            var injectedClassName = String(describing: o)
+            let s = injectedClassName.characters.split(separator: ".").map(String.init)
+            if let last = s.last {
+                injectedClassName = last
+            }
+            if injectedClassName == registeredClassName {
+                return true
+            }
+        }
+    }
+    return false
 }
 
 public extension StatelessComponent where Self: UIView {
@@ -131,7 +166,7 @@ public extension IsStatefulComponent where Self: UIView {
 
 public extension IsStatefulComponent {
     
-    func askForRefresh(patching: Bool) {
+    func askForRefresh() {
         if let vc = self as? UIViewController {
             reactEngine?.render(component: self, in: vc.view)
         } else if let view = self as? UIView {

@@ -39,13 +39,13 @@ struct BareCounter {
 class StatefulCounter: Component {
     
     var reactEngine: KomponentsEngine?
-    
     var state = 0
     
     var color = UIColor.red
     
     init(color: UIColor) {
         self.color = color
+        supportInjection()
     }
     
     func render() -> Tree {
@@ -61,10 +61,6 @@ class StatefulCounter: Component {
                         )
                     ])
                 ])
-    }
-    
-    deinit {
-        print("😀 DEstroying Counter")
     }
 }
 

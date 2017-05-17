@@ -27,7 +27,7 @@ class CounterVC: UIViewController, Component {
         return
             View([
                 VerticalStack(layout: .center, [
-                    Label("Counter : \(state)"),
+                    Label("Counter hehe : \(state)"),
                     Button("Tap me",
                            tap: { [weak self] in //be careful of the strong Ref ! (document this)
                             self?.updateState { $0 += 1 }
@@ -37,9 +37,5 @@ class CounterVC: UIViewController, Component {
                     })
                 ])
             ])
-    }
-    
-    deinit {
-        print("destorying  \(self) withID: \(uniqueComponentIdentifier)")
     }
 }
