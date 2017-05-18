@@ -78,6 +78,18 @@ extension UIKitReconcilier {
         
         // Button
         if let button = oldNode as? Button, let newButton = newNode as? Button {
+            
+            // Text
+            if newButton.props.text != button.props.text {
+                if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? UIButton {
+                    log("💉 Patch text")
+                    updates.append {
+                        uibutton.setTitle(newButton.props.text, for: .normal)
+                    }
+                }
+            }
+            
+            // Image
             if newButton.props.image != button.props.image {
                 if let uibutton = engine?.renderer.nodeIdViewMap[newButton.uniqueIdentifier] as? UIButton {
                     log("💉 Patch image")
