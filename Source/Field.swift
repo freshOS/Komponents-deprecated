@@ -93,7 +93,6 @@ public struct Field: Node, Equatable {
 //    }
 }
 
-
 public func == (lhs: Field, rhs: Field) -> Bool {
     return lhs.props == rhs.props
         && lhs.layout == rhs.layout

@@ -27,6 +27,10 @@ class StaticTableVC: UIViewController, StatelessComponent {
         return
             Table(.grouped,
                   refresh: refresh,
+                  delete: { i, shouldDelete in
+                    print(i)
+                    shouldDelete(true)
+            },
 //                  style: { $0.separatorStyle = .none },
                 layout: Layout().fillHorizontally().bottom(0).top(100),
                 cells:
@@ -36,11 +40,10 @@ class StaticTableVC: UIViewController, StatelessComponent {
             )
     }
     
-    
-    
     func refresh(_ done: @escaping () -> Void ) {
         print("Refreshing...")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            
             done()
         })
         

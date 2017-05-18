@@ -21,7 +21,9 @@ extension UIKitReconcilier {
                     uiView.removeConstraints(uiView.constraints)
                     
                     // Apply new layout
-                    layout(uiView, withLayout: newNode.layout, inView: uiView.superview!)
+                    if let superview = uiView.superview {
+                        layout(uiView, withLayout: newNode.layout, inView: superview)
+                    }
                 }
             }
         }
@@ -137,7 +139,8 @@ extension UIKitReconcilier {
         // ActivityIndicatorView
         if let spinner = oldNode as? ActivityIndicatorView, let newSpinner = newNode as? ActivityIndicatorView {
             if newSpinner.props.isHidden != spinner.props.isHidden {
-                if let uiSpinner = engine?.renderer.nodeIdViewMap[newSpinner.uniqueIdentifier] as? UIActivityIndicatorView {
+                if let uiSpinner = engine?.renderer.nodeIdViewMap[newSpinner.uniqueIdentifier]
+                    as? UIActivityIndicatorView {
                     log("💉 Patch isHidden")
                     updates.append {
                         if newSpinner.props.isHidden {

@@ -88,3 +88,10 @@ public struct ViewProps: Equatable, Hashable {
 public func == (lhs: ViewProps, rhs: ViewProps) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
+
+public func hashFor<T: Hashable>(_ obj: T?) -> Int {
+    if let t = obj {
+        return t.hashValue
+    }
+    return 0
+}

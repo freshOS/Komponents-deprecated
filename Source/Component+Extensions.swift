@@ -9,42 +9,17 @@
 import Foundation
 import UIKit
 
-public protocol Renderable {
-    func render() -> Tree
-}
-
-public protocol IsComponent: Renderable, IsNode {
-    func didRender()
-    func didUpdateState()
-    func forceRerender() -> Bool
-}
-
-public protocol IsStatefulComponent: class, IsComponent {
-    var uniqueComponentIdentifier: String { get }
-    var reactEngine: KomponentsEngine? { get set }
-}
-
 public extension IsStatefulComponent {
     public var uniqueComponentIdentifier: String {
         return "\(ObjectIdentifier(self).hashValue)"
     }
 }
 
-public protocol StatelessComponent: IsComponent { }
-
-public protocol Component: IsStatefulComponent, HasState { }
-
 extension IsComponent { // COmponene is a node
     public var layout: Layout { return Layout() }
     public var children: [IsNode] { return [] }
     public var propsHash: Int { return 0 }
     public var uniqueIdentifier: Int { return 0 }
-}
-
-public protocol HasState: class {
-    associatedtype State
-    var state: State { get set }
-    func updateState(_ block:(inout State) -> Void)
 }
 
 public extension IsComponent {
@@ -95,10 +70,9 @@ public extension IsStatefulComponent {
                             if let weakSelf = self, notificationContains(notification: n, object: weakSelf) {
                                 weakSelf.reactEngine?.render(subComponent: weakSelf)
                             }
-        }
+            }
     }
 }
-
 
 public extension StatelessComponent where Self: UIViewController {
     func loadComponent() {
@@ -138,14 +112,6 @@ public extension StatelessComponent where Self: UIView {
     func loadComponent() {
         let engine = KomponentsEngine()
         engine.render(component: self, in: self)
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
-                         object: nil,
-                         queue: nil) { [weak self] _ in
-                if let weakSelf = self {
-//                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-                }
-            }
     }
 }
 
@@ -153,14 +119,6 @@ public extension IsStatefulComponent where Self: UIView {
     func loadComponent() {
         reactEngine = KomponentsEngine()
         reactEngine?.render(component: self, in: self)
-        NotificationCenter.default
-            .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
-                         object: nil,
-                         queue: nil) { [weak self] _ in
-                if let weakSelf = self {
-                    //                    weakSelf.askForRefresh(patching: false) // Patching crashes with injection
-                }
-            }
     }
 }
 

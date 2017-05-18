@@ -24,7 +24,7 @@ public class KomponentsEngine {
     }
     
     let renderer = UIKitRenderer()
-    var latestRenderedTree:Tree?
+    var latestRenderedTree: Tree?
     public var rootView: UIView?
     
     func render(subComponent: IsComponent) {

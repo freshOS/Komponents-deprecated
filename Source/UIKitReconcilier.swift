@@ -66,10 +66,10 @@ class UIKitReconcilier {
                     }
                     iNew -= 1
                 }
-            } else if !areTreesEqual(retChildNode!, oldChildNode!) {
+            } else if let retChildNode = retChildNode,
+            let oldChildNode = oldChildNode, !areTreesEqual(retChildNode, oldChildNode) {
                 // Replacement by non patchable node (different node type.)
-                if let retChildNode = retChildNode, let oldChildNode = oldChildNode,
-                    let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
+                if let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
                     let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
                     log("💉 Replacing node")
                     updates.append {
@@ -80,9 +80,9 @@ class UIKitReconcilier {
                     }
 //                    iNew = iNew - 1 //is this useful?
                 }
-            } else {
+            } else if let newChildNode = newChildNode, let oldChildNode = oldChildNode {
                 // Recurse on Children
-                updateChildren(oldChildNode!, newChildNode!)
+                updateChildren(oldChildNode, newChildNode)
             }
             
             i += 1

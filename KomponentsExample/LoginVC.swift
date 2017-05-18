@@ -10,16 +10,16 @@ import Stevia
 import UIKit
 import Komponents
 
-func SignupButton() -> Button {
-    return SignupButton(text: "Hello")
-    // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
-}
-
-// Functional Component with props Example
-
-func SignupButton(text: String) -> Button {
-    return Button(text, props: { p in /*$0.backgroundColor = .red*/ }, layout: Layout().height(80))
-}
+//func SignupButton() -> Button {
+//    return SignupButton(text: "Hello")
+//    // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
+//}
+//
+//// Functional Component with props Example
+//
+//func SignupButton(text: String) -> Button {
+//    return Button(text, props: { p in /*$0.backgroundColor = .red*/ }, layout: Layout().height(80))
+//}
 
 class LoginVC: UIViewController, Component {
     
@@ -40,8 +40,6 @@ class LoginVC: UIViewController, Component {
     var buttonRef = UIButton()
     
     func render() -> Tree {
-        
-    
         return View([
             VerticalStack(props: { $0.spacing = 8 },
                           layout: Layout().fillHorizontally().top(80), [
@@ -90,8 +88,6 @@ class LoginVC: UIViewController, Component {
         passwordStyle(f: passwordFieldRef)
         loginButtonStyle(b: buttonRef)
     }
-    
-
     
     func login() {
         updateState { $0.status = .loading }

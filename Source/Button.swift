@@ -118,10 +118,11 @@ public struct ButtonProps: Hashable, Equatable {
             ^ titleColorForNormalState.hashValue
             ^ titleColorForHighlightedState.hashValue
             ^ isEnabled.hashValue
-            ^ ((backgroundColorForNormalState == nil) ? 0 : backgroundColorForNormalState!.hashValue)
-            ^ ((backgroundForHighlightedState == nil) ? 0 : backgroundForHighlightedState!.hashValue)
-            ^ ((image == nil) ? 154 : image!.hashValue)
-            ^ ((font == nil) ? 0 : font!.hashValue)
+            ^ hashFor(backgroundColorForNormalState)
+            ^ hashFor(backgroundForHighlightedState)
+            ^ hashFor(image)
+            ^ hashFor(font)
+        
     }
 }
 

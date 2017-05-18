@@ -47,7 +47,7 @@ public struct LabelProps: Equatable, Hashable {
     public var hashValue: Int {
         return text.hashValue
             ^ textColor.hashValue
-        ^ ((font == nil) ? 0 : font!.hashValue)
+        ^ hashFor(font)
         ^ numberOfLines.hashValue
         ^ textAlignment.hashValue
     }
