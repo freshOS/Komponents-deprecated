@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Stevia
 import Komponents
 
 class CounterVC: UIViewController, Component {

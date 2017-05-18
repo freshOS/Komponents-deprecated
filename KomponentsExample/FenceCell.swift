@@ -7,7 +7,6 @@
 //
 
 import Komponents
-import Stevia
 
 class FenceCell: StatelessComponent {
     

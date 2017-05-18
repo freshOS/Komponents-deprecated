@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Stevia
 import Komponents
 
 // Free function Functional Compoenent

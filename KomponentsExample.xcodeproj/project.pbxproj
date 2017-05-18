@@ -29,7 +29,6 @@
 		99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99317BD91EB85A0E0019A524 /* Komponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		993354691EC83E730066B6FE /* TestPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993354681EC83E730066B6FE /* TestPatch.swift */; };
 		998740271ECB547600FA6A18 /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998740261ECB547600FA6A18 /* UIViewController+Push.swift */; };
-		99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99A623E31EBCDA280091EBFD /* Stevia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99CF3C8D1EC0F1B6006ACA47 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				99317BDD1EB85A200019A524 /* Komponents.framework in Embed Frameworks */,
-				99A623E41EBCDA280091EBFD /* Stevia.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +94,6 @@
 		99317BD31EB85A0E0019A524 /* Komponents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Komponents.xcodeproj; sourceTree = SOURCE_ROOT; };
 		993354681EC83E730066B6FE /* TestPatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPatch.swift; sourceTree = "<group>"; };
 		998740261ECB547600FA6A18 /* UIViewController+Push.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
-		99A623E31EBCDA280091EBFD /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		99CF3C8C1EC0F1B6006ACA47 /* StaticTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
 		99D226F21E8BB1C5009416AA /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,7 +152,6 @@
 		99D226C51E8BA734009416AA = {
 			isa = PBXGroup;
 			children = (
-				99A623E31EBCDA280091EBFD /* Stevia.framework */,
 				99317BA61EB8596E0019A524 /* KomponentsExample */,
 				99D226CF1E8BA734009416AA /* Products */,
 				99D226F11E8BB1C5009416AA /* Frameworks */,

@@ -6,7 +6,6 @@
 //  Copyright © 2017 freshOS. All rights reserved.
 //
 
-import Stevia
 import UIKit
 import Komponents
 
