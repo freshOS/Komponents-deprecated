@@ -49,7 +49,8 @@ class UIKitReconcilier {
             if retChildNode == nil { // Node removed !
                 if let oldChildNode = oldChildNode {
                     if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
-                        print("💉 Removing node \(oldChildNode)")
+                        
+                        log("💉 Removing node \(oldChildNode)")
                         updates.append {
                             removedView.removeFromSuperview() // different when its a stackview?
                         }
@@ -59,7 +60,7 @@ class UIKitReconcilier {
             } else if oldChildNode == nil { // New Node Added
                 if let retChildNode = retChildNode,
                     let parenView = self.engine?.renderer.nodeIdViewMap[newNode.uniqueIdentifier] {
-                    print("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
+                    log("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
                     updates.append {
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
                     }
@@ -70,7 +71,7 @@ class UIKitReconcilier {
                 if let retChildNode = retChildNode, let oldChildNode = oldChildNode,
                     let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
                     let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
-                    print("💉 Replacing node")
+                    log("💉 Replacing node")
                     updates.append {
                         // render new node in parentView
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)

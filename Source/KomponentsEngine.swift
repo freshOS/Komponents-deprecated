@@ -55,7 +55,9 @@ public class KomponentsEngine {
                     if let latestRenderedTree = self.latestRenderedTree,
                         component.forceRerender() == false {
                         if areTreesEqual(latestRenderedTree, newTree) {
-                            print("Nothing changed, do nothing")
+                            if Komponents.logsEnabled {
+                                print("Nothing changed, do nothing")
+                            }
                         } else {
                             let reconcilier = UIKitReconcilier()
                             reconcilier.engine = self
@@ -112,45 +114,51 @@ public class KomponentsEngine {
     
     var counter = 0
     func log(_ tree: Tree) {
-        var str = ""
-        if counter == 0 {
-            print("🌲")
-        }
-        for _ in 0..<counter {
-            str += "-----"
-        }
-        
-        if let associatedView = renderer.nodeIdViewMap[tree.uniqueIdentifier] {
-            print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier)) view: \(associatedView)")
-        } else {
-            print("no associatedView")
-            print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
-        }
+            if Komponents.logsEnabled {
+            var str = ""
+            if counter == 0 {
+                print("🌲")
+            }
+            for _ in 0..<counter {
+                str += "-----"
+            }
+            
+            if let associatedView = renderer.nodeIdViewMap[tree.uniqueIdentifier] {
+                print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier)) view: \(associatedView)")
+            } else {
+                print("no associatedView")
+                print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
+            }
 
-        //subcomponenet
-        if let subComponent = tree as? IsComponent {
-            counter += 1
-            let subTree = subComponent.render()
-            log(subTree)
-            counter -= 1
-        } else {
-            if !tree.children.isEmpty {
+            //subcomponenet
+            if let subComponent = tree as? IsComponent {
                 counter += 1
-            }
-            for c in tree.children {
-                log(c)
-            }
-            if !tree.children.isEmpty {
+                let subTree = subComponent.render()
+                log(subTree)
                 counter -= 1
+            } else {
+                if !tree.children.isEmpty {
+                    counter += 1
+                }
+                for c in tree.children {
+                    log(c)
+                }
+                if !tree.children.isEmpty {
+                    counter -= 1
+                }
             }
         }
     }
     
     func printTimeElapsedWhenRunningCode(title: String, operation: () -> Void) {
-        let startTime = CFAbsoluteTimeGetCurrent()
-        operation()
-        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-        print("⏱ Rendering in : \(timeElapsed) s")
+        if Komponents.logsEnabled {
+            let startTime = CFAbsoluteTimeGetCurrent()
+            operation()
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+            print("⏱ Rendering in : \(timeElapsed) s")
+        } else {
+            operation()
+        }
     }
     
     func log(_ s: String) {
