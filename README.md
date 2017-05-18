@@ -6,20 +6,41 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org)
 [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/freshOS/then/blob/master/LICENSE)
-![Release version](https://img.shields.io/badge/release-0.1-blue.svg)
+![Release version](https://img.shields.io/badge/release-0.2-blue.svg)
 
 Komponents is a Swift framework for building component-oriented interfaces.  
 Because it's unfair to need javascript to enjoy Components ! 😎
 
-![Demo](demo.gif)
-*<p align="center">Building a Loading screen with Hot reload 🎩</p>*
-
 |      | Komponents                                   |
 | ---- | ---------------------------------------- |
 |  🔶  | Pure **Swift** (no JS, no XML)           |
-|  🏗    | Can be used **Incrementally** in your classic UIKit App |
-|   📐  |Can use **Autolayout or any autolayout** lib for the layout (we like [Stevia](https://github.com/freshOS/Stevia)) |
-| 💉 | Supports **Hot Reload** with [💉 injectionForXcode](http://johnholdsworth.com/injection.html)|
+|   🎨 | **Declarative Api** |
+| 💉 | **Hot Reload** with [ injectionForXcode](http://johnholdsworth.com/injection.html)|
+|  ⚙️ | Diff algorithm running **in background**           |
+|  🏗    | Can be used **Incrementally** in your App |
+|  🕸  | **No** external **Dependencies**           |
+
+
+![Demo](demo.gif)
+*<p align="center">Building a Loading screen with Hot reload 🎩</p>*
+
+
+```swift
+class LoadingVC: UIViewController, StatelessComponent {
+
+    override func loadView() { loadComponent() }
+
+    func render() -> Tree {
+        return
+            View([
+                HorizontalStack(layout: .center, [
+                    Label("Loading..."), ActivityIndicatorView(.gray)
+                ])
+            ])
+    }
+}
+```
+This is all we need to render a loading view !
 
 ## Getting Started
 
@@ -59,7 +80,7 @@ We're not the first to tackle the great endeavor of swift components and here ar
  - [joshaber's Few.swift](https://github.com/joshaber/Few.swift/tree/master/FewDemo)
  - [BendingSpoons' katana](https://github.com/BendingSpoons/katana-swift)
 
-# ⚠️  v 0.2 in the works 🏗
+# ⚠️  v 0.2 🏗
 Please be aware that this is still very experimental 🔬.  
 The actual api can and *will* change.  
 This is not battle-tested and we advise you against using this in Appstore Apps (for now)
