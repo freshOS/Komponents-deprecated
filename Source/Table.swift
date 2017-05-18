@@ -17,19 +17,22 @@ public struct Table: Node, Equatable {
     public var layout: Layout
     public var ref: UnsafeMutablePointer<UITableView>?
     
-    public var cells = [IsComponent]()
+    public var data: () -> [Any] = { return [Any]() }
+    public var configure: (Any) -> IsComponent
+    
     var tableStyle: UITableViewStyle = .plain
     var refreshCallback: (( @escaping EndRefreshingCallback) -> Void)?
     var deleteCallback: ((Int, @escaping ShouldDeleteBlock) -> Void)?
     
-    public init(
+    public init<T>(
         _ tableStyle: UITableViewStyle = .plain,
-        refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,
-        delete: ((Int, @escaping ShouldDeleteBlock) -> Void)? = nil,
         props:((inout TableProps) -> Void)? = nil,
         layout: Layout? = nil,
-        ref: UnsafeMutablePointer<UITableView>? = nil,
-        cells: [IsComponent]) {
+        data: @autoclosure @escaping () -> [T],
+        refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,
+        delete: ((Int, @escaping ShouldDeleteBlock) -> Void)? = nil,
+        configure: @escaping (T) -> IsComponent,
+        ref: UnsafeMutablePointer<UITableView>? = nil) {
         
         if let p = props {
             var prop = TableProps()
@@ -42,9 +45,16 @@ public struct Table: Node, Equatable {
         self.layout = layout ?? Layout()
         self.ref = ref
         self.children = [IsNode]()
-        self.cells = cells
         self.refreshCallback = refresh
         self.deleteCallback = delete
+        self.data = {
+            return data()
+        }
+        self.configure = { d in
+            
+                configure(d as! T)
+            
+        }
     }
 }
 

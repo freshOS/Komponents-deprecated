@@ -144,16 +144,24 @@ func viewForNode(node: IsNode) -> UIView {
         if let rc = node.refreshCallback {
             let refreshControl = BlockBasedUIRefreshControl()
             table.addSubview(refreshControl)
-            refreshControl.setCallback(rc)
+            let newRefreshCallback: ( ( @escaping EndRefreshingCallback) -> Void) = { done in
+                rc {
+                    done()
+                    table.reloadData()
+                    
+                }
+            }
+            refreshControl.setCallback(newRefreshCallback)
         }
         
         table.numberOfRows = {
-            return node.cells.count
+            return node.data().count
         }
         table.cellForRowAt = { tbv, ip in
             if ip.section == 0 {
-                let child = node.cells[ip.row]
-                return ComponentCell(component: child)
+                let child = node.data()[ip.row]
+                let component = node.configure(child)
+                return ComponentCell(component: component)
             }
             return UITableViewCell()
         }
@@ -163,7 +171,7 @@ func viewForNode(node: IsNode) -> UIView {
                 let shouldDeleteBlock = { (b: Bool) in
                     if b {
                         // Remove cell
-                        node.cells.remove(at: ip.row)
+//                        node.cells().remove(at: ip.row)
                         // Delete corresponding row.
                         table.deleteRows(at: [ip], with: .none)
                     } else {

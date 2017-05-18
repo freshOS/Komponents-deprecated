@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Stevia
 import Komponents
 
 public extension UIColor {
@@ -19,33 +18,43 @@ public extension UIColor {
 
 class StaticTableVC: UIViewController, StatelessComponent {
     
+    var fences = ["fence 1", "fence 2", "A cool 3"]
+    
     override func loadView() { loadComponent() }
     
-    func render() -> Tree {
-        let fences = ["fence 1", "fence 2", "A cool 3"]
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Static Table"
+    }
+    
+    func render() -> Tree {
         return
             Table(.grouped,
+                  layout: .fill,
+                  data: self.fences,
                   refresh: refresh,
-                  delete: { i, shouldDelete in
-                    print(i)
-                    shouldDelete(true)
-            },
-//                  style: { $0.separatorStyle = .none },
-                layout: Layout().fillHorizontally().bottom(0).top(100),
-                cells:
-                  fences.map { fence in
-                    FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
-                  }
-            )
+                  delete: delete,
+                  configure : configure
+        )
     }
     
     func refresh(_ done: @escaping () -> Void ) {
         print("Refreshing...")
+        fences = ["fence A", "fence B", "fence C", "fence D"]
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            
             done()
         })
-        
+    }
+    
+    func delete(index: Int, shouldDelete: ((Bool) -> Void)) {
+        print("Deleting...")
+        fences.remove(at: index)
+        shouldDelete(true)
+    }
+    
+    func configure(fence: String) -> IsComponent {
+        return FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
     }
 }
+
+//                  style: { $0.separatorStyle = .none },

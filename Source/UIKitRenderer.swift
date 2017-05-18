@@ -77,6 +77,8 @@ class UIKitRenderer {
         newView.translatesAutoresizingMaskIntoConstraints = false
         if let stackView = view as? UIStackView {
             stackView.addArrangedSubview(newView)
+        } else if let cell = view as? UITableViewCell {
+            cell.contentView.addSubview(newView)
         } else {
             view.addSubview(newView)
         }

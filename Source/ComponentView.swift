@@ -37,7 +37,9 @@ public class ComponentCell: UITableViewCell {
         self.component = component
         super.init(style: .default, reuseIdentifier: "")
         selectionStyle = .none
-        KomponentsEngine().render(component:component, in: self.contentView)
+        let renderer = UIKitRenderer()
+        renderer.render(tree: component.render(), in: self)
+        component.didRender()
     }
     
     required public init?(coder aDecoder: NSCoder) {

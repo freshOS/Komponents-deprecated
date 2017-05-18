@@ -19,30 +19,26 @@ class FenceCell: StatelessComponent {
         self.didActivate = didActivate
     }
     
+    var stack = UIStackView()
+    
     func render() -> Tree {
         return
             View(layout: Layout().height(100).fill(), [
-                HorizontalStack(
-//                    style: stackStyle,
-                    layout: .fill, [
+                HorizontalStack(layout: Layout().fill(padding: 20), ref: &stack, [
                     Circle.render(withLayout: Layout().fillVertically()),
                     Label(wording),
-                    Switch(true,
-                           changed: didActivate
-//                           style: { $0.onTintColor = .green }
-                        )
+                    Switch(true, changed: didActivate)
                 ]),
                 Separator.render()
             ])
     }
     
-    func stackStyle(s: UIStackView) {
-        s.alignment = .center
-        s.spacing = 20
-        s.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        s.isLayoutMarginsRelativeArrangement = true
+    func didRender() {
+        stack.alignment = .center
+        stack.spacing = 20
     }
 }
+
 
 // Circle
 struct Circle {
