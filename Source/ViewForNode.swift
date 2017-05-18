@@ -136,7 +136,7 @@ func viewForNode(node: IsNode) -> UIView {
         return v
     }
     
-    if var node = node as? Table {
+    if let node = node as? Table {
         let table = CallBackTableView(frame: CGRect.zero, style: node.tableStyle)
         table.estimatedRowHeight = 100
         table.rowHeight = UITableViewAutomaticDimension
