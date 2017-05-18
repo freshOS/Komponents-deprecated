@@ -28,7 +28,7 @@ public struct Table: Node, Equatable {
         _ tableStyle: UITableViewStyle = .plain,
         props:((inout TableProps) -> Void)? = nil,
         layout: Layout? = nil,
-        data: @autoclosure @escaping () -> [T],
+        data: @autoclosure @escaping () -> [T]?,
         refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,
         delete: ((Int, @escaping ShouldDeleteBlock) -> Void)? = nil,
         configure: @escaping (T) -> IsComponent,
@@ -46,14 +46,18 @@ public struct Table: Node, Equatable {
         self.ref = ref
         self.children = [IsNode]()
         self.refreshCallback = refresh
+        
         self.deleteCallback = delete
+        
+    
         self.data = {
-            return data()
+            if let d = data() {
+                return d
+            }
+            return [Any]()
         }
         self.configure = { d in
-            
-                configure(d as! T)
-            
+            configure(d as! T)
         }
     }
 }

@@ -28,33 +28,34 @@ class StaticTableVC: UIViewController, StatelessComponent {
     }
     
     func render() -> Tree {
+        weak var weakSelf = self
         return
             Table(.grouped,
                   layout: .fill,
-                  data: self.fences,
-                  refresh: refresh,
-                  delete: delete,
-                  configure : configure
+                  data: weakSelf?.fences,
+                  refresh: { done in
+                    weakSelf?.fakeFetchFences { newFences in
+                        weakSelf?.fences = newFences
+                        done()
+                    }
+                  },
+                  delete: { index, shouldDelete in
+                    weakSelf?.fences.remove(at: index)
+                    shouldDelete(true)
+                  },
+                  configure: { fence in
+                    return FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
+                  }
         )
     }
     
-    func refresh(_ done: @escaping () -> Void ) {
-        print("Refreshing...")
-        fences = ["fence A", "fence B", "fence C", "fence D"]
+    func fakeFetchFences(completion:@escaping ([String]) -> Void ) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            done()
+            completion(["fence A", "fence B", "fence C", "fence D"])
         })
     }
     
-    func delete(index: Int, shouldDelete: ((Bool) -> Void)) {
-        print("Deleting...")
-        fences.remove(at: index)
-        shouldDelete(true)
-    }
-    
-    func configure(fence: String) -> IsComponent {
-        return FenceCell(fence, didActivate: { b in print("did activate \(b) for: \(fence)") })
+    deinit {
+        print("DEstroy StaticTableVC")
     }
 }
-
-//                  style: { $0.separatorStyle = .none },
