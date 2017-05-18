@@ -12,48 +12,51 @@ import Komponents
 
 class TodoVC: UIViewController, Component {
     
-    var reactEngine: KomponentsEngine?
-
-    struct Item {
-        let name: String
-        let time: Date
-    }
-    
     struct State {
         var items = [Item]()
         var newtaskName = ""
     }
     
+    struct Item {
+        let name: String
+        let time: Date
+    }
+    
     var state = State()
     
+    var reactEngine: KomponentsEngine?
+
     override func loadView() { loadComponent() }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Todo"
+    }
     
     func render() -> Tree {
-        title = "Todo"
         return
-            View(
-                color:.gray, [
-                    VerticalStack(layout: Layout().centerHorizontally().top(100), [
-                    Label("TODO"),
-//                    Label("TODO", style : {
-////                        $0.font = UIFont.systemFont(ofSize: 30)
-////                        $0.textAlignment = .center
-//                    }),
+            View([
+                VerticalStack(layout: Layout().centerHorizontally().top(100), [
                     HorizontalStack([
                         Field("My Next Thing",
                               text: self.state.newtaskName,
-                              textChanged: { [weak self] s in
-                                self?.updateState { $0.newtaskName = s }
-                              },
-                              props: { p in
-//                                $0.backgroundColor = .white
-//                                $0.becomeFirstResponder()
+                              textChanged: { [weak self] s in self?.updateState { $0.newtaskName = s }
                         }),
                         Button("Add #\(self.state.items.count+1)",
-                               tap: { [weak self] in self?.addItem() })
+                               tap: { [weak self] in self?.addItem() },
+                               props: { $0.setTitleColor(.red, for: .normal)
+                        })
                     ]),
                     VerticalStack(
-                        self.state.items.map { Label("- \($0.name)") }
+                        self.state.items.map { item in
+                            HorizontalStack([
+                                Label("- \(item.name)"),
+                                Button("X",
+                                       tap: { [weak self] in self?.removeItem(item) },
+                                       props: { $0.setTitleColor(.red, for: .normal) }
+                                )
+                            ])
+                        }
                     )
                 ])
             ])
@@ -65,6 +68,14 @@ class TodoVC: UIViewController, Component {
             updateState {
                 $0.items.append(newItem)
                 $0.newtaskName = ""
+            }
+        }
+    }
+    
+    func removeItem(_ item: Item) {
+        if let index = state.items.index(where: { $0.name == item.name }) {
+            updateState {
+                $0.items.remove(at: index)
             }
         }
     }

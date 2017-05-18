@@ -17,7 +17,6 @@ public struct View: Node, Equatable {
     public var layout: Layout
     public var ref: UnsafeMutablePointer<UIView>?
     
-    // todo add props.
     public init(
         color: UIColor? = nil,
         props:((inout ViewProps) -> Void)? = nil,

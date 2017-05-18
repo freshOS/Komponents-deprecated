@@ -10,23 +10,6 @@ import Stevia
 import UIKit
 import Komponents
 
-// TODO bind to state. email  textChanged
-// TODO Keep Field states by default?
-// TODO exaple navigation
-// TODO how to use ViewController title as used in navigation Stacks?
-// TODO handle a tap gesure regognizer on a view?
-// Delegate pattern needed ?
-// Validate field?
-// TODO how to show an alert?
-// TOdo how to show an action sheet?
-// TODO keep field selection state internally?
-// email return Keyboard -> select pass.
-// Toggle Ok button in nav bar? UIBarButtonItem
-// dismiss keyboard
-// layout externally
-// Cannot inject generic comp?? (injection$Xcode?
-// Functional Component Example
-
 func SignupButton() -> Button {
     return SignupButton(text: "Hello")
     // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
@@ -36,7 +19,6 @@ func SignupButton() -> Button {
 
 func SignupButton(text: String) -> Button {
     return Button(text, props: { p in /*$0.backgroundColor = .red*/ }, layout: Layout().height(80))
-    // TODO hwo to make it so that we can add functionalities?? ex: overide style, layout etc
 }
 
 class LoginVC: UIViewController, Component {

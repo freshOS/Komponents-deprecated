@@ -13,7 +13,7 @@ import Komponents
 class NestedComponentsVC: UIViewController, Component {
     
     var reactEngine: KomponentsEngine?
-    var state: [Int] = [23, 34, 0] //counters
+    var state: [Int] = [0, 0, 0] //counters
     
     override func loadView() { loadComponent() }
     
@@ -31,12 +31,12 @@ class NestedComponentsVC: UIViewController, Component {
                         }),
                         
                         // struct-namespaced functional component
-                        BareCounter.render(color: .red, count: state[1], tap: { [weak self] in
+                        BareCounter.render(color: .green, count: state[1], tap: { [weak self] in
                             self?.updateState { $0[1] += 1 }
                         }),
                         
                         // Self-contained stateful component.
-                        StatefulCounter(color: .yellow),
+                        StatefulCounter(color: .purple),
                         
                         // StateLess component.
                         AStatelessComponent()

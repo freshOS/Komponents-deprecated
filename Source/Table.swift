@@ -22,7 +22,6 @@ public struct Table: Node, Equatable {
     var refreshCallback: (( @escaping EndRefreshingCallback) -> Void)?
     var deleteCallback: ((Int, @escaping ShouldDeleteBlock) -> Void)?
     
-    // todo add props.
     public init(
         _ tableStyle: UITableViewStyle = .plain,
         refresh: ((@escaping EndRefreshingCallback) -> Void)? = nil,

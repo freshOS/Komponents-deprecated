@@ -48,9 +48,8 @@ public struct PageControlProps: Equatable, Hashable {
     public var hashValue: Int {
         return numberOfPages.hashValue
             ^ currentPage.hashValue
-        // TODO include them in diff
-//            ^ pageIndicatorTintColor?.hashValue
-//        ^ currentPageIndicatorTintColor?.hashValue
+            ^ ((pageIndicatorTintColor == nil) ? 0 : pageIndicatorTintColor!.hashValue)
+            ^ ((currentPageIndicatorTintColor == nil) ? 0 : currentPageIndicatorTintColor!.hashValue)
     }
 }
 

@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import MapKit
 
-// TODO ref . referencable protocol??
-
 private var startID = 0
 func generateUniqueId() -> Int {
     startID += 1

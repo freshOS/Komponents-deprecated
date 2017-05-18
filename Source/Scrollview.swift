@@ -17,7 +17,6 @@ public struct ScrollView: Node, Equatable {
     public var layout: Layout
     public var ref: UnsafeMutablePointer<UIScrollView>?
     
-    // todo add props.
     public init(
         props:((inout ScrollViewProps) -> Void)? = nil,
         layout: Layout? = nil,

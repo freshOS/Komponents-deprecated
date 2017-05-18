@@ -18,7 +18,6 @@ public struct Map: Node, Equatable {
     public var layout: Layout
     public var ref: UnsafeMutablePointer<MKMapView>?
     
-    // todo add props.
     public init(
         props:((inout MapProps) -> Void)? = nil,
         layout: Layout? = nil,

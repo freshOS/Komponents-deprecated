@@ -24,23 +24,11 @@ public class KomponentsEngine {
     }
     
     let renderer = UIKitRenderer()
-    
-//    var latestRenderedTree:Tree? // todo put back use one tree per engine
-    
-    var componentTreeMap = [String: Tree]()
-    
-    func latestRenderedTreeForComponent(_ component: IsStatefulComponent) -> Tree? {
-        return componentTreeMap[component.uniqueComponentIdentifier]
-    }
-    
-//    var rootComponent: IsComponent?
+    var latestRenderedTree:Tree?
     public var rootView: UIView?
     
     func render(subComponent: IsComponent) {
-//        if let vc = rootComponent as? UIViewController {
-//            render(component: rootComponent!, in: vc.view)
-//        } else
-    if let rootView = rootView {
+        if let rootView = rootView {
             render(component: subComponent, in: rootView)
         }
     }
@@ -48,7 +36,6 @@ public class KomponentsEngine {
     let backgroundSerialQueue = DispatchQueue(label: "bgQueue", qos: .background)
     
     func render(component: IsComponent, in view: UIView) {
-//        rootComponent = component
         renderer.engine = self
         if let component = component as? IsStatefulComponent {
             backgroundSerialQueue.async {
@@ -65,7 +52,7 @@ public class KomponentsEngine {
                         }
                     }
 
-                    if let latestRenderedTree = self.latestRenderedTreeForComponent(component),
+                    if let latestRenderedTree = self.latestRenderedTree,
                         component.forceRerender() == false {
                         if areTreesEqual(latestRenderedTree, newTree) {
                             print("Nothing changed, do nothing")
@@ -73,14 +60,12 @@ public class KomponentsEngine {
                             let reconcilier = UIKitReconcilier()
                             reconcilier.engine = self
                             reconcilier.mainUpdateChildren(latestRenderedTree, newTree)
-                            
                             // Update tree
-                            self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
-                            
+                            self.latestRenderedTree = newTree
                             self.log(newTree)
                         }
                     } else {
-                        self.componentTreeMap[component.uniqueComponentIdentifier] = newTree
+                        self.latestRenderedTree = newTree
                         DispatchQueue.main.async {
                             if self.rootView == nil { // not a subcomponent
                                 // empty view if previously rendered

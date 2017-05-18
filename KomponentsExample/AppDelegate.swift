@@ -6,9 +6,6 @@
 //  Copyright © 2017 Freshos. All rights reserved.
 //
 
-// TODO stateless component ?
-// TODO ViewLayout with spacies and margins in the childrne's aray ??
-
 import UIKit
 import Komponents
 

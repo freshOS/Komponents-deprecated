@@ -6,7 +6,6 @@
 //  Copyright © 2017 freshOS. All rights reserved.
 //
 
-// TODO all refs make sure
 import Foundation
 
 public struct ActivityIndicatorView: Node, Equatable {
