@@ -58,7 +58,7 @@ class UIKitReconcilier {
                 }
             } else if oldChildNode == nil { // New Node Added
                 if let retChildNode = retChildNode,
-                    let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier] {
+                    let parenView = self.engine?.renderer.nodeIdViewMap[newNode.uniqueIdentifier] {
                     print("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
                     updates.append {
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
