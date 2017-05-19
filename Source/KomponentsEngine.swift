@@ -57,6 +57,7 @@ public class KomponentsEngine {
                         if areTreesEqual(latestRenderedTree, newTree) {
                             if Komponents.logsEnabled {
                                 print("Nothing changed, do nothing")
+                                self.log(latestRenderedTree)
                             }
                         } else {
                             let reconcilier = UIKitReconcilier()
@@ -126,8 +127,7 @@ public class KomponentsEngine {
             if let associatedView = renderer.nodeIdViewMap[tree.uniqueIdentifier] {
                 print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier)) view: \(associatedView)")
             } else {
-                print("no associatedView")
-                print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier))")
+                print("\(str) \(type(of: tree)) (id: \(tree.uniqueIdentifier)) view: ⚠️")
             }
 
             //subcomponenet
