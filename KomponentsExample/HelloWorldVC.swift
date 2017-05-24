@@ -22,8 +22,8 @@ class HelloWorldVC: UIViewController, StatelessComponent {
     
     func render() -> Tree {
         return
-            View([
+            View(
                 Label("Hello World", layout: .center)
-            ])
+            )
     }
 }

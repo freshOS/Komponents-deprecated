@@ -20,7 +20,7 @@ public struct HorizontalStack: Node, Equatable {
     public init(props:((inout StackProps) -> Void)? = nil,
                 layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
-                _ children: [IsNode]) {
+                _ children: IsNode...) {
         
         // Props
         let defaultProps = StackProps()

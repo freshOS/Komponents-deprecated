@@ -24,8 +24,8 @@ class CounterVC: UIViewController, Component {
     
     func render() -> Tree {
         return
-            View([
-                VerticalStack(layout: .center, [
+            View(
+                VerticalStack(layout: .center,
                     Label("Counter : \(state)"),
                     Button("Tap me",
                            tap: { [weak self] in //be careful of the strong Ref ! (document this)
@@ -34,7 +34,7 @@ class CounterVC: UIViewController, Component {
                             $0.text = "Lool"
                             $0.setTitleColor(.red, for:.normal)
                     })
-                ])
-            ])
+                )
+            )
     }
 }

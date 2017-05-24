@@ -36,13 +36,13 @@ class NavigationVC: UIViewController, StatelessComponent {
         
         return
             View(
-                color: UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1), [
-                    VerticalStack(layout: Layout().centered().left(0).right(0),
+                color: UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1),
+                VerticalStack(layout: Layout().centered().left(0).right(0), children:
                         sections.map { wording, vc in
                             return cell(wording: wording, vc: vc)
                         }
                 )
-            ])
+            )
     }
     
     func cell(wording: String, vc: @escaping () -> UIViewController) -> Tree {
@@ -53,17 +53,17 @@ class NavigationVC: UIViewController, StatelessComponent {
         }
         
         return
-            View(layout: Layout().height(50), [
-                View(
+            View(layout: Layout().height(50),
+                 View(
                     color: UIColor(red: 0.89, green: 0.88, blue: 0.9, alpha: 1),
-                    layout: Layout().left(0).right(0).top(0).height(1), []
+                    layout: Layout().left(0).right(0).top(0).height(1)
                 ),
-                Button(
+                 Button(
                     "\(wording)",
                     tap: { [weak self] in self?.push(vc()) },
                     props: buttonProps,
                     layout: .fill
                 )
-            ])
+        )
     }
 }

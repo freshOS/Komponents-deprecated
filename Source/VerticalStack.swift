@@ -20,7 +20,14 @@ public struct VerticalStack: Node, Equatable {
     public init(props:((inout StackProps) -> Void)? = nil,
                 layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIStackView>? = nil,
-                _ children: [IsNode]) {
+                _ children: IsNode...) {
+        self.init(props:props, layout:layout,ref: ref, children: children)
+    }
+    
+    public init(props:((inout StackProps) -> Void)? = nil,
+                layout: Layout? = nil,
+                ref: UnsafeMutablePointer<UIStackView>? = nil,
+                children: [IsNode]) {
         
         // Props
         let defaultProps = StackProps()

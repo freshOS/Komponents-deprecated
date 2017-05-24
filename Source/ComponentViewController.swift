@@ -14,7 +14,7 @@ open class ComponentViewController: UIViewController, Component {
     public var state = true
     
     open func render() -> Tree {
-        return View([])
+        return View()
     }
     
     override open func loadView() {

@@ -33,9 +33,9 @@ class TimerVC: UIViewController, Component {
     
     func render() -> Tree {
         return
-            View([
+            View(
                 Label("\(self.state)", layout: .center)
-            ])
+            )
     }
     
     func tick() {

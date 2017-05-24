@@ -19,11 +19,10 @@ class NestedComponentsVC: UIViewController, Component {
     func render() -> Tree {
         title = "Nested Components"
         return
-            View([
+            View(
                 VerticalStack(
                     props: { $0.spacing = 10 },
-                    layout: .center, [
-                        
+                    layout: .center,
                         // Free function functional Componenent
                         FunctionalCounter(color: .yellow, count: state[0], tap: { [weak self] in
                             self?.updateState { $0[0] += 1 }
@@ -39,7 +38,7 @@ class NestedComponentsVC: UIViewController, Component {
                         
                         // StateLess component.
                         AStatelessComponent()
-                ])
-            ])
+                )
+            )
     }
 }

@@ -22,7 +22,7 @@ public struct View: Node, Equatable {
         props:((inout ViewProps) -> Void)? = nil,
         layout: Layout? = nil,
         ref: UnsafeMutablePointer<UIView>? = nil,
-        _ children: [IsNode]) {
+        _ children: IsNode...) {
         
         var prop = ViewProps()
         if let color = color {

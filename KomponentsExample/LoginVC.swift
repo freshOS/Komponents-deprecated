@@ -39,9 +39,9 @@ class LoginVC: UIViewController, Component {
     var buttonRef = UIButton()
     
     func render() -> Tree {
-        return View([
+        return View(
             VerticalStack(props: { $0.spacing = 8 },
-                          layout: Layout().fillHorizontally().top(80), [
+                          layout: Layout().fillHorizontally().top(80),
                 Field("Email",
                       text: state.email,
                       textChanged: { [weak self] email in self?.updateState { $0.email = email } } ,
@@ -56,16 +56,16 @@ class LoginVC: UIViewController, Component {
                       layout: Layout().height(80),
                       ref : &passwordFieldRef
                 )
-                ]),
-            VerticalStack(layout: Layout().fillHorizontally().bottom(0), [
+                ),
+            VerticalStack(layout: Layout().fillHorizontally().bottom(0),
                 Button(buttonTextForState(state.status),
                        tap: { [weak self] in self?.login() },
 //                       style: loginButtonStyle,
                        layout: Layout().height(80),
                         ref : &buttonRef
                 )
-            ])
-        ])
+            )
+        )
     }
     
 //    func bindTo(property:UnsafeMutablePointer<String>) {

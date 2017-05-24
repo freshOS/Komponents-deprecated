@@ -22,14 +22,14 @@ class FenceCell: StatelessComponent {
     
     func render() -> Tree {
         return
-            View(layout: Layout().height(100).fill(), [
-                HorizontalStack(layout: Layout().fill(padding: 20), ref: &stack, [
+            View(layout: Layout().height(100).fill(),
+                HorizontalStack(layout: Layout().fill(padding: 20), ref: &stack,
                     Circle.render(withLayout: Layout().fillVertically()),
                     Label(wording),
                     Switch(true, changed: didActivate)
-                ]),
+                ),
                 Separator.render()
-            ])
+            )
     }
     
     func didRender() {
@@ -59,6 +59,6 @@ struct Separator {
     static func render() -> Tree {
         return
             View(color: UIColor.black.withAlphaComponent(0.05),
-                 layout: Layout().fillHorizontally().top(0).height(1), [])
+                 layout: Layout().fillHorizontally().top(0).height(1))
     }
 }

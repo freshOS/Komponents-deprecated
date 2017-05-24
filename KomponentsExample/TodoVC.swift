@@ -34,9 +34,9 @@ class TodoVC: UIViewController, Component {
     
     func render() -> Tree {
         return
-            View([
-                VerticalStack(layout: Layout().centerHorizontally().top(100), [
-                    HorizontalStack([
+            View(
+                VerticalStack(layout: Layout().centerHorizontally().top(100),
+                    HorizontalStack(
                         Field("My Next Thing",
                               text: self.state.newtaskName,
                               textChanged: { [weak self] s in self?.updateState { $0.newtaskName = s }
@@ -45,20 +45,20 @@ class TodoVC: UIViewController, Component {
                                tap: { [weak self] in self?.addItem() },
                                props: { $0.setTitleColor(.red, for: .normal)
                         })
-                    ]),
-                    VerticalStack(
+                    ),
+                    VerticalStack(children:
                         self.state.items.map { item in
-                            HorizontalStack([
+                            HorizontalStack(
                                 Label("- \(item.name)"),
                                 Button("X",
                                        tap: { [weak self] in self?.removeItem(item) },
                                        props: { $0.setTitleColor(.red, for: .normal) }
                                 )
-                            ])
+                            )
                         }
                     )
-                ])
-            ])
+                )
+            )
     }
     
     func addItem() {

@@ -20,11 +20,11 @@ class LoopVC: UIViewController, StatelessComponent {
     
     func render() -> Tree {
         return
-            View([
+            View(
                 VerticalStack(props: { $0.spacing = 10 },
-                              layout: .center,
-                    Array(1...10).map { Label("I told you \($0) time !") }
+                              layout: .center, children:
+                        Array(1...10).map { Label("I told you \($0) time !")}
                 )
-            ])
+            )
     }
 }

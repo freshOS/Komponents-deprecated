@@ -16,13 +16,13 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
     func render() -> Tree {
         title = "Default Nodes"
         return
-            View(layout:.fill, [
+            View(layout:.fill,
                 VerticalStack(
                     props: { $0.spacing = 5 },
-                    layout: .center, [
+                    layout: .center,
                     
                     // View
-                    View(color: .red, layout: Layout().height(50), []),
+                    View(color: .red, layout: Layout().height(50)),
 
                     // Label
                     Label("Label !"),
@@ -72,7 +72,7 @@ class DefaultNodesVC: UIViewController, StatelessComponent {
                     // Map
                     Map(layout: Layout().height(100))
                         
-                ])
-        ])
+                )
+        )
     }
 }

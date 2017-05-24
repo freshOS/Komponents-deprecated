@@ -22,18 +22,18 @@ class TestPatch: UIViewController, Component {
         
         if !state {
             return
-                View([
+                View(
                     View(color:.blue, layout:Layout().size(100).top(100).left(10)),
                     View(color: .lightGray,
                          layout: Layout().size(100).top(100).centerHorizontally())
-                ])
+                )
         } else {
             return
-                View([
+                View(
                     View(color:.blue, layout:Layout().size(100).top(100).left(10)),
                     View(color:.lightGray, layout:Layout().size(100).top(100).centerHorizontally()),
                     View(color:.red, layout:Layout().size(100).top(100).right(10))
-                ])
+                )
         }
     }
     
