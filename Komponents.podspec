@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "Komponents"
-    s.version          = "0.2.0"
+    s.version          = "0.2.1"
     s.summary          = "📦 React-inspired UIKit Components"
     s.homepage         = "https://github.com/freshOS/Komponents"
     s.license          = { :type => "MIT", :file => "LICENSE" }
