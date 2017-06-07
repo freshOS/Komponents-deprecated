@@ -1,0 +1,10 @@
+framework module Komponents {
+  umbrella header "Komponents.h"
+
+  export *
+  module * { export * }
+}
+
+module Komponents.Swift {
+    header "Komponents-Swift.h"
+}
