@@ -115,16 +115,23 @@ public struct Layout: Equatable {
             return Layout(top: value, right:-v, bottom: -v, left: value, width: width, height: height,
                           isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
         }
-        
         return Layout(top: value, right:value, bottom: value, left: value, width: width, height: height,
     isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)}
     
     public func fillHorizontally(padding value: Int? = 0) -> Layout {
+        if let v = value, v != 0 {
+            return Layout(top: top, right: -v, bottom: bottom, left: v, width: width, height: height,
+                          isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
+        }
         return Layout(top: top, right: value, bottom: bottom, left: value, width: width, height: height,
         isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
     
     public func fillVertically(padding value: Int? = 0) -> Layout {
+        if let v = value, v != 0 {
+            return Layout(top: v, right: right, bottom: -v, left: left, width: width, height: height,
+                          isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
+        }
         return Layout(top: value, right: right, bottom: value, left: left, width: width, height: height,
         isCenteredHorizontally: isCenteredHorizontally, isCenteredVertically:isCenteredVertically)
     }
