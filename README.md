@@ -6,6 +6,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org)
 [![Build Status](https://www.bitrise.io/app/a6b939ad01d973da/status.svg?token=m51vZDkiiLIhsC6goGvnQw&branch=master)](https://www.bitrise.io/app/a6b939ad01d973da)
+[![codebeat badge](https://codebeat.co/badges/0d90cc56-9e39-47fd-8e90-aec3bf2aa294)](https://codebeat.co/projects/github-com-freshos-komponents-master)
 [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/freshOS/then/blob/master/LICENSE)
 ![Release version](https://img.shields.io/badge/release-0.2-blue.svg)
 
