@@ -44,6 +44,7 @@
 		9992BDA01EC6D0D7005EA9D6 /* Scrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */; };
 		99C6E8321EE94AE200073924 /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C6E8311EE94AE200073924 /* LayoutTests.swift */; };
 		99C6E8331EE94B4200073924 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C397E1EC4A2AD005DAFA8 /* Layout.swift */; };
+		99C6E8371EE956EC00073924 /* Layout+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900D5691EC5FC99009A0673 /* Layout+Autolayout.swift */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
 
@@ -407,6 +408,7 @@
 			files = (
 				9917E5121EB85709005C6092 /* KomponentsTests.swift in Sources */,
 				99C6E8321EE94AE200073924 /* LayoutTests.swift in Sources */,
+				99C6E8371EE956EC00073924 /* Layout+Autolayout.swift in Sources */,
 				99C6E8331EE94B4200073924 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,12 +11,10 @@ import UIKit
 // Translates the Layout Struct into Autolayout layout anchors :)
 func layout(_ newView: UIView, withLayout layout: Layout, inView aView: UIView) {
     
-    
     var view = aView
     if let cell = view as? UITableViewCell {
         view  = cell.contentView
     }
-    
     
     if layout.isCenteredVertically == true {
         newView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true

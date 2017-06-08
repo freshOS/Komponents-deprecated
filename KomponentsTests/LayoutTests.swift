@@ -257,4 +257,158 @@ class LayoutTests: XCTestCase {
         XCTAssertTrue(Layout().centerVertically() == Layout().centerVertically())
         XCTAssertFalse(Layout().centerVertically() == Layout())
     }
+    
+    // Layout + autolayout
+    
+    func testLayoutAutolayoutTop() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().top(11), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, 11)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .top)
+        XCTAssertEqual(c.secondAttribute, .top)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutRight() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().right(13), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, -13)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .right)
+        XCTAssertEqual(c.secondAttribute, .right)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutBottom() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().bottom(52), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, -52)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .bottom)
+        XCTAssertEqual(c.secondAttribute, .bottom)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutLeft() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().left(178), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, 178)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .left)
+        XCTAssertEqual(c.secondAttribute, .left)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutWidth() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().width(27), inView: spv)
+        
+        XCTAssertTrue(v.constraints.count == 1)
+        let c = v.constraints[0]
+        XCTAssertEqual(c.constant, 27)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertNil(c.secondItem)
+        XCTAssertEqual(c.firstAttribute, .width)
+        XCTAssertEqual(c.secondAttribute, .notAnAttribute)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutHeight() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().height(81), inView: spv)
+        
+        XCTAssertTrue(v.constraints.count == 1)
+        let c = v.constraints[0]
+        XCTAssertEqual(c.constant, 81)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertNil(c.secondItem)
+        XCTAssertEqual(c.firstAttribute, .height)
+        XCTAssertEqual(c.secondAttribute, .notAnAttribute)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutCenterVertically() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().centerVertically(), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, 0)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .centerY)
+        XCTAssertEqual(c.secondAttribute, .centerY)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
+    
+    func testLayoutAutolayoutCenterHorizontally() {
+        let v = UIView()
+        let spv = UIView()
+        spv.addSubview(v)
+        layout(v, withLayout: Layout().centerHorizontally(), inView: spv)
+        
+        XCTAssertTrue(spv.constraints.count == 1)
+        let c = spv.constraints[0]
+        XCTAssertEqual(c.constant, 0)
+        XCTAssertEqual(c.firstItem as? UIView, v)
+        XCTAssertEqual(c.secondItem as? UIView, spv)
+        XCTAssertEqual(c.firstAttribute, .centerX)
+        XCTAssertEqual(c.secondAttribute, .centerX)
+        XCTAssertEqual(c.multiplier, 1)
+        XCTAssertEqual(c.relation, .equal)
+        XCTAssertEqual(c.priority, 1000)
+        XCTAssertTrue(c.isActive)
+    }
 }
