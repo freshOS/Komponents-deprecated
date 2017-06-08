@@ -42,6 +42,8 @@
 		9982C81A1ECCA6B30096B688 /* UIKitReconcilier+Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9982C8191ECCA6B30096B688 /* UIKitReconcilier+Patch.swift */; };
 		9992BD9E1EC6CE06005EA9D6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9D1EC6CE06005EA9D6 /* TextView.swift */; };
 		9992BDA01EC6D0D7005EA9D6 /* Scrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */; };
+		99C6E8321EE94AE200073924 /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C6E8311EE94AE200073924 /* LayoutTests.swift */; };
+		99C6E8331EE94B4200073924 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C397E1EC4A2AD005DAFA8 /* Layout.swift */; };
 		99D4958B1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,7 @@
 		998740AB1EB23EFB00750421 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		9992BD9D1EC6CE06005EA9D6 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9992BD9F1EC6D0D7005EA9D6 /* Scrollview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrollview.swift; sourceTree = "<group>"; };
+		99C6E8311EE94AE200073924 /* LayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
 		99D4958A1EB8CC6F00F9AEF4 /* UIKitReconcilier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitReconcilier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +135,7 @@
 			children = (
 				9917E50E1EB856CC005C6092 /* Info.plist */,
 				9917E50F1EB856CC005C6092 /* KomponentsTests.swift */,
+				99C6E8311EE94AE200073924 /* LayoutTests.swift */,
 			);
 			path = KomponentsTests;
 			sourceTree = "<group>";
@@ -402,6 +406,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9917E5121EB85709005C6092 /* KomponentsTests.swift in Sources */,
+				99C6E8321EE94AE200073924 /* LayoutTests.swift in Sources */,
+				99C6E8331EE94B4200073924 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
