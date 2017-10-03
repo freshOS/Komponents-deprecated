@@ -49,13 +49,11 @@ class UIKitReconcilier {
             if retChildNode == nil { // Node removed !
                 if let oldChildNode = oldChildNode {
                     if let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
-                        
                         log("💉 Removing node \(oldChildNode)")
                         updates.append {
                             removedView.removeFromSuperview() // different when its a stackview?
                         }
                     }
-                    iOld -= 1
                 }
             } else if oldChildNode == nil { // New Node Added
                 if let retChildNode = retChildNode,
