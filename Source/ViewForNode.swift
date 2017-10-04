@@ -20,6 +20,7 @@ func viewForNode(node: IsNode) -> UIView {
         v.layer.cornerRadius = node.props.cornerRadius
         v.layer.anchorPoint = node.props.anchorPoint
         v.clipsToBounds = node.props.clipsToBounds
+        v.isUserInteractionEnabled = node.props.isUserInteractionEnabled
         return v
     }
     
