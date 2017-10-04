@@ -15,6 +15,16 @@ class UIKitReconcilier {
     var updates = [()->Void]()
     
     func mainUpdateChildren(_ oldNode: Tree, _ newNode: Tree) {
+        
+        // Update root IDs
+        if type(of: oldNode) == type(of: newNode) { // Same type nodes
+            if var map = self.engine?.renderer.nodeIdViewMap {
+                map[newNode.uniqueIdentifier] = map[oldNode.uniqueIdentifier]
+                map.removeValue(forKey: oldNode.uniqueIdentifier)
+                self.engine?.renderer.nodeIdViewMap = map
+            }
+        }
+        
         updateChildren(oldNode, newNode)
         DispatchQueue.main.async {
             for u in self.updates {
@@ -24,6 +34,7 @@ class UIKitReconcilier {
     }
     
     private func updateChildren(_ oldNode: IsNode, _ newNode: IsNode) {
+        
         let newLength = newNode.children.count
         let oldLength = oldNode.children.count
         let length = max(oldLength, newLength)
@@ -58,16 +69,15 @@ class UIKitReconcilier {
             } else if oldChildNode == nil { // New Node Added
                 if let retChildNode = retChildNode,
                     let parenView = self.engine?.renderer.nodeIdViewMap[newNode.uniqueIdentifier] {
-                    log("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier) )")
+                    log("💉 Adding node \(type(of: retChildNode)) (id:\(retChildNode.uniqueIdentifier))")
                     updates.append {
                         self.engine?.renderer.render(tree: retChildNode, in: parenView)
                     }
-                    iNew -= 1
                 }
             } else if let retChildNode = retChildNode,
             let oldChildNode = oldChildNode, !areTreesEqual(retChildNode, oldChildNode) {
                 // Replacement by non patchable node (different node type.)
-                if let parenView = self.engine?.renderer.nodeIdViewMap[oldNode.uniqueIdentifier],
+                if let parenView = self.engine?.renderer.nodeIdViewMap[newNode.uniqueIdentifier],
                     let removedView = self.engine?.renderer.nodeIdViewMap[oldChildNode.uniqueIdentifier] {
                     log("💉 Replacing node")
                     updates.append {
@@ -76,7 +86,6 @@ class UIKitReconcilier {
                         // remove old node
                         removedView.removeFromSuperview()
                     }
-//                    iNew = iNew - 1 //is this useful?
                 }
             } else if let newChildNode = newChildNode, let oldChildNode = oldChildNode {
                 // Recurse on Children
