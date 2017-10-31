@@ -10,139 +10,171 @@ import Foundation
 import UIKit
 import MapKit
 
-func viewForNode(node: IsNode) -> UIView {
-    
-    if let node = node as? View {
+protocol UIKitRenderable {
+    func uiKitView() -> UIView
+}
+
+extension View: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIView()
-        v.backgroundColor = node.props.backgroundColor
-        v.layer.borderColor = node.props.borderColor.cgColor
-        v.layer.borderWidth = node.props.borderWidth
-        v.layer.cornerRadius = node.props.cornerRadius
-        v.layer.anchorPoint = node.props.anchorPoint
-        v.clipsToBounds = node.props.clipsToBounds
-        v.isUserInteractionEnabled = node.props.isUserInteractionEnabled
+        v.backgroundColor = props.backgroundColor
+        v.layer.borderColor = props.borderColor.cgColor
+        v.layer.borderWidth = props.borderWidth
+        v.layer.cornerRadius = props.cornerRadius
+        v.layer.anchorPoint = props.anchorPoint
+        v.clipsToBounds = props.clipsToBounds
+        v.isUserInteractionEnabled = props.isUserInteractionEnabled
         return v
     }
-    
-    if let node = node as? Label {
+}
+
+extension Label: UIKitRenderable {
+    func uiKitView() -> UIView {
         let l = UILabel()
-        l.text = node.props.text
-        l.textColor = node.props.textColor
-        l.font = node.props.font
-        l.numberOfLines = node.props.numberOfLines
-        l.textAlignment = node.props.textAlignment
+        l.text = props.text
+        l.textColor = props.textColor
+        l.font = props.font
+        l.numberOfLines = props.numberOfLines
+        l.textAlignment = props.textAlignment
         return l
     }
-    
-    if let node = node as? Field {
+}
+
+extension Field: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = BlockBasedUITextField()
-        v.placeholder = node.props.placeholder
-        v.text = node.props.text
+        v.placeholder = props.placeholder
+        v.text = props.text
         return v
     }
-    
-    if let node = node as? TextView {
+}
+
+extension TextView: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = BlockBasedUITextView()
-        v.text = node.props.text
-        v.backgroundColor = node.props.backgroundColor
+        v.text = props.text
+        v.backgroundColor = props.backgroundColor
         return v
     }
-    
-    if let node = node as? Image {
+}
+
+extension Image: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIImageView()
-        v.image = node.props.image
-        v.contentMode = node.props.contentMode
+        v.image = props.image
+        v.contentMode = props.contentMode
         return v
     }
-    
-    if let node = node as? Switch {
+}
+
+extension Switch: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = BlockBasedUISwitch()
-        v.isOn = node.props.isOn
+        v.isOn = props.isOn
         return v
     }
-    
-    if let node = node as? Slider {
+}
+
+extension Slider: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = BlockBasedUISlider()
-        v.value = node.props.value
+        v.value = props.value
         return v
     }
-    
-    if let node = node as? Progress {
+}
+
+extension Progress: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIProgressView()
-        v.progress = node.props.progress
+        v.progress = props.progress
         return v
     }
-    
-    if node is Map {
-        let v = MKMapView()
-        return v
+}
+
+extension Map: UIKitRenderable {
+    func uiKitView() -> UIView {
+        return MKMapView()
     }
-    
-    if let node = node as? PageControl {
+}
+
+extension PageControl: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIPageControl()
-        v.numberOfPages = node.props.numberOfPages
-        v.currentPage = node.props.currentPage
-        v.pageIndicatorTintColor = node.props.pageIndicatorTintColor
-        v.currentPageIndicatorTintColor = node.props.currentPageIndicatorTintColor
+        v.numberOfPages = props.numberOfPages
+        v.currentPage = props.currentPage
+        v.pageIndicatorTintColor = props.pageIndicatorTintColor
+        v.currentPageIndicatorTintColor = props.currentPageIndicatorTintColor
         return v
     }
-    
-    if let node = node as? ActivityIndicatorView {
-        let v = UIActivityIndicatorView(activityIndicatorStyle: node.props.activityIndicatorStyle)
+}
+
+extension ActivityIndicatorView: UIKitRenderable {
+    func uiKitView() -> UIView {
+        let v = UIActivityIndicatorView(activityIndicatorStyle: props.activityIndicatorStyle)
         v.hidesWhenStopped = true
-        if node.props.isHidden {
+        if props.isHidden {
             v.stopAnimating()
         } else {
             v.startAnimating()
         }
         return v
     }
-    
-    if let node = node as? HorizontalStack {
+}
+
+extension HorizontalStack: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIStackView()
         v.axis = .horizontal
-        v.spacing = node.props.spacing
+        v.spacing = props.spacing
         return v
     }
-    if let node = node as? VerticalStack {
+}
+
+extension VerticalStack: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = UIStackView()
         v.axis = .vertical
-        v.spacing = node.props.spacing
+        v.spacing = props.spacing
         return v
     }
-    
-    if let node = node as? Button {
+}
+
+extension Button: UIKitRenderable {
+    func uiKitView() -> UIView {
         let v = BlockBasedUIButton()
-        v.setTitle(node.props.text, for: .normal)
-        v.setTitleColor(node.props.titleColorForNormalState, for: .normal)
-        v.setTitleColor(node.props.titleColorForHighlightedState, for: .highlighted)
+        v.setTitle(props.text, for: .normal)
+        v.setTitleColor(props.titleColorForNormalState, for: .normal)
+        v.setTitleColor(props.titleColorForHighlightedState, for: .highlighted)
         
-        if let backgroundColorForNormalState = node.props.backgroundColorForNormalState {
+        if let backgroundColorForNormalState = props.backgroundColorForNormalState {
             v.setBackgroundColor(backgroundColorForNormalState, for: .normal)
         }
-        if let backgroundForHighlightedState = node.props.backgroundForHighlightedState {
+        if let backgroundForHighlightedState = props.backgroundForHighlightedState {
             v.setBackgroundColor(backgroundForHighlightedState, for: .highlighted)
         }
-        v.isEnabled = node.props.isEnabled
-        v.titleLabel?.font = node.props.font
+        v.isEnabled = props.isEnabled
+        v.titleLabel?.font = props.font
         
-        if let bi = node.props.image {
+        if let bi = props.image {
             v.setBackgroundImage(bi, for: .normal)
         }
         return v
     }
-    
-    if node is ScrollView {
-        let v = UIScrollView()
-        return v
+}
+
+extension ScrollView: UIKitRenderable {
+    func uiKitView() -> UIView {
+        return UIScrollView()
     }
-    
-    if let node = node as? Table {
-        let table = CallBackTableView(frame: CGRect.zero, style: node.tableStyle)
+}
+
+extension Table: UIKitRenderable {
+    func uiKitView() -> UIView {
+        let table = CallBackTableView(frame: CGRect.zero, style: tableStyle)
         table.estimatedRowHeight = 100
         table.rowHeight = UITableViewAutomaticDimension
         
-        if let rc = node.refreshCallback {
+        if let rc = refreshCallback {
             let refreshControl = BlockBasedUIRefreshControl()
             table.addSubview(refreshControl)
             let newRefreshCallback: ( ( @escaping EndRefreshingCallback) -> Void) = { done in
@@ -156,23 +188,23 @@ func viewForNode(node: IsNode) -> UIView {
         }
         
         table.numberOfRows = {
-            return node.data().count
+            return self.data().count
         }
         table.cellForRowAt = { tbv, ip in
             if ip.section == 0 {
-                let child = node.data()[ip.row]
-                let component = node.configure(child)
+                let child = self.data()[ip.row]
+                let component = self.configure(child)
                 return ComponentCell(component: component)
             }
             return UITableViewCell()
         }
         
-        if let deleteCallback = node.deleteCallback {
+        if let deleteCallback = deleteCallback {
             table.didDeleteRowAt = { ip in
                 let shouldDeleteBlock = { (b: Bool) in
                     if b {
                         // Remove cell
-//                        node.cells().remove(at: ip.row)
+                        //                        node.cells().remove(at: ip.row)
                         // Delete corresponding row.
                         table.deleteRows(at: [ip], with: .none)
                     } else {
@@ -184,6 +216,4 @@ func viewForNode(node: IsNode) -> UIView {
         }
         return table
     }
-    
-    return UIView()
 }

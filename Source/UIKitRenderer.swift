@@ -41,7 +41,7 @@ class UIKitRenderer {
         }
         
         // Create a UIKIt view form a node
-        let newView = viewForNode(node: tree)
+        let newView = (tree as? UIKitRenderable)?.uiKitView() ?? UIView()
     
         // Link references
         linkReference(of: tree, to: newView)
