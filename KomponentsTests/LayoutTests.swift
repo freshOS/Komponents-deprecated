@@ -275,7 +275,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .top)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -294,7 +294,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .right)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -313,7 +313,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .bottom)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -332,7 +332,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .left)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -351,7 +351,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .notAnAttribute)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -370,7 +370,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .notAnAttribute)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -389,7 +389,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .centerY)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
     
@@ -408,7 +408,7 @@ class LayoutTests: XCTestCase {
         XCTAssertEqual(c.secondAttribute, .centerX)
         XCTAssertEqual(c.multiplier, 1)
         XCTAssertEqual(c.relation, .equal)
-        XCTAssertEqual(c.priority, 1000)
+        XCTAssertEqual(c.priority, UILayoutPriority(rawValue: UILayoutPriority.RawValue(1000)))
         XCTAssertTrue(c.isActive)
     }
 }

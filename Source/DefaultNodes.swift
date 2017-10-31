@@ -31,6 +31,7 @@ class BlockBasedUITextField: UITextField {
         addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
+    @objc
     func textDidChange(field: UITextField) {
         if let text = field.text {
             actionHandler?(text)
@@ -63,6 +64,7 @@ class BlockBasedUIButton: UIButton {
         addTarget(self, action: #selector(didTap), for: .touchUpInside)
     }
     
+    @objc
     func didTap() {
         actionHandler?()
     }
@@ -100,6 +102,7 @@ class BlockBasedUISlider: UISlider {
         addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
     }
     
+    @objc
     func sliderValueChanged(sender: UISlider) {
         actionHandler?(sender.value)
     }
@@ -114,6 +117,7 @@ class BlockBasedUISwitch: UISwitch {
         addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
     }
     
+    @objc
     func switchValueChanged(sender: UISwitch) {
         actionHandler?(sender.isOn)
     }
@@ -128,6 +132,7 @@ class BlockBasedUIRefreshControl: UIRefreshControl {
         addTarget(self, action: #selector(refreshCallback), for: .valueChanged)
     }
     
+    @objc
     func refreshCallback(sender: UIRefreshControl) {
         actionHandler?({
             self.endRefreshing()
