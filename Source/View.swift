@@ -65,25 +65,49 @@ public func == (lhs: View, rhs: View) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct ViewProps: Equatable, Hashable {
+public protocol HasViewProps {
+    var backgroundColor: UIColor { get }
+    var borderColor: UIColor { get }
+    var borderWidth: CGFloat { get }
+    var cornerRadius: CGFloat { get }
+    var isHidden: Bool { get }
+    var alpha: CGFloat { get }
+    var clipsToBounds: Bool { get }
+    var isUserInteractionEnabled: Bool { get }
+}
+
+extension HasViewProps {
+    var viewPropsHash: Int {
+        return backgroundColor.hashValue
+        ^ borderColor.hashValue
+        ^ borderWidth.hashValue
+        ^ cornerRadius.hashValue
+        ^ isHidden.hashValue
+        ^ alpha.hashValue
+        ^ clipsToBounds.hashValue
+        ^ isUserInteractionEnabled.hashValue
+    }
+}
+
+
+public struct ViewProps: HasViewProps, Equatable, Hashable {
     
+    // HasViewProps
     public var backgroundColor = UIColor.white
     public var borderColor = UIColor.clear
     public var borderWidth: CGFloat = 0
     public var cornerRadius: CGFloat = 0
-    public var anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    public var isHidden = false
+    public var alpha: CGFloat = 1
     public var clipsToBounds = false
     public var isUserInteractionEnabled = true
+    
+    public var anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
     public var hashValue: Int {
-        return backgroundColor.hashValue
-            ^ borderColor.hashValue
-            ^ borderWidth.hashValue
-            ^ cornerRadius.hashValue
+        return viewPropsHash
             ^ anchorPoint.x.hashValue
             ^ anchorPoint.y.hashValue
-            ^ clipsToBounds.hashValue
-            ^ isUserInteractionEnabled.hashValue
     }
 }
 

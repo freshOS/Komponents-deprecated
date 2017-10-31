@@ -40,13 +40,24 @@ public func == (lhs: Image, rhs: Image) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct ImageProps: Equatable, Hashable {
+public struct ImageProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var image = UIImage()
     public var contentMode = UIViewContentMode.scaleToFill
     
     public var hashValue: Int {
-        return image.hashValue
+        return viewPropsHash
+            ^ image.hashValue
             ^ contentMode.hashValue
     }
 }

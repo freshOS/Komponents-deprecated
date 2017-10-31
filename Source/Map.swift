@@ -40,10 +40,20 @@ public func == (lhs: Map, rhs: Map) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct MapProps: Equatable, Hashable {
+public struct MapProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var hashValue: Int {
-        return 0
+        return viewPropsHash
     }
 }
 

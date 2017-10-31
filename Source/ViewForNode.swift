@@ -14,13 +14,21 @@ protocol UIKitRenderable {
     func uiKitView() -> UIView
 }
 
+func fill(view: UIView, withViewProps props: HasViewProps) {
+    view.backgroundColor = props.backgroundColor
+    view.isHidden = props.isHidden
+    view.alpha = props.alpha
+    view.layer.borderColor = props.borderColor.cgColor
+    view.layer.borderWidth = props.borderWidth
+    view.layer.cornerRadius = props.cornerRadius
+    view.clipsToBounds = props.clipsToBounds
+    view.isUserInteractionEnabled = props.isUserInteractionEnabled
+}
+
 extension View: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = UIView()
-        v.backgroundColor = props.backgroundColor
-        v.layer.borderColor = props.borderColor.cgColor
-        v.layer.borderWidth = props.borderWidth
-        v.layer.cornerRadius = props.cornerRadius
+        fill(view: v, withViewProps: props)
         v.layer.anchorPoint = props.anchorPoint
         v.clipsToBounds = props.clipsToBounds
         v.isUserInteractionEnabled = props.isUserInteractionEnabled
@@ -31,6 +39,7 @@ extension View: UIKitRenderable {
 extension Label: UIKitRenderable {
     func uiKitView() -> UIView {
         let l = UILabel()
+        fill(view: l, withViewProps: props)
         l.text = props.text
         l.textColor = props.textColor
         l.font = props.font
@@ -43,6 +52,7 @@ extension Label: UIKitRenderable {
 extension Field: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = BlockBasedUITextField()
+        fill(view: v, withViewProps: props)
         v.placeholder = props.placeholder
         v.text = props.text
         return v
@@ -52,8 +62,8 @@ extension Field: UIKitRenderable {
 extension TextView: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = BlockBasedUITextView()
+        fill(view: v, withViewProps: props)
         v.text = props.text
-        v.backgroundColor = props.backgroundColor
         return v
     }
 }
@@ -61,6 +71,7 @@ extension TextView: UIKitRenderable {
 extension Image: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = UIImageView()
+        fill(view: v, withViewProps: props)
         v.image = props.image
         v.contentMode = props.contentMode
         return v
@@ -70,6 +81,7 @@ extension Image: UIKitRenderable {
 extension Switch: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = BlockBasedUISwitch()
+        fill(view: v, withViewProps: props)
         v.isOn = props.isOn
         return v
     }
@@ -78,6 +90,7 @@ extension Switch: UIKitRenderable {
 extension Slider: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = BlockBasedUISlider()
+        fill(view: v, withViewProps: props)
         v.value = props.value
         return v
     }
@@ -86,6 +99,7 @@ extension Slider: UIKitRenderable {
 extension Progress: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = UIProgressView()
+        fill(view: v, withViewProps: props)
         v.progress = props.progress
         return v
     }
@@ -93,13 +107,16 @@ extension Progress: UIKitRenderable {
 
 extension Map: UIKitRenderable {
     func uiKitView() -> UIView {
-        return MKMapView()
+        let v = MKMapView()
+        fill(view: v, withViewProps: props)
+        return v
     }
 }
 
 extension PageControl: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = UIPageControl()
+        fill(view: v, withViewProps: props)
         v.numberOfPages = props.numberOfPages
         v.currentPage = props.currentPage
         v.pageIndicatorTintColor = props.pageIndicatorTintColor
@@ -111,6 +128,7 @@ extension PageControl: UIKitRenderable {
 extension ActivityIndicatorView: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = UIActivityIndicatorView(activityIndicatorStyle: props.activityIndicatorStyle)
+        fill(view: v, withViewProps: props)
         v.hidesWhenStopped = true
         if props.isHidden {
             v.stopAnimating()
@@ -142,6 +160,7 @@ extension VerticalStack: UIKitRenderable {
 extension Button: UIKitRenderable {
     func uiKitView() -> UIView {
         let v = BlockBasedUIButton()
+        fill(view: v, withViewProps: props)
         v.setTitle(props.text, for: .normal)
         v.setTitleColor(props.titleColorForNormalState, for: .normal)
         v.setTitleColor(props.titleColorForHighlightedState, for: .highlighted)
@@ -164,13 +183,16 @@ extension Button: UIKitRenderable {
 
 extension ScrollView: UIKitRenderable {
     func uiKitView() -> UIView {
-        return UIScrollView()
+        let v = UIScrollView()
+        fill(view: v, withViewProps: props)
+        return v
     }
 }
 
 extension Table: UIKitRenderable {
     func uiKitView() -> UIView {
         let table = CallBackTableView(frame: CGRect.zero, style: tableStyle)
+        fill(view: table, withViewProps: props)
         table.estimatedRowHeight = 100
         table.rowHeight = UITableViewAutomaticDimension
         

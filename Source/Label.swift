@@ -37,7 +37,18 @@ public func == (lhs: Label, rhs: Label) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct LabelProps: Equatable, Hashable {
+public struct LabelProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
+    
     public var text = ""
     public var textColor =  UIColor.black
     public var font: UIFont?
@@ -45,11 +56,12 @@ public struct LabelProps: Equatable, Hashable {
     public var textAlignment = NSTextAlignment.left
     
     public var hashValue: Int {
-        return text.hashValue
+        return viewPropsHash
+            ^ text.hashValue
             ^ textColor.hashValue
-        ^ hashFor(font)
-        ^ numberOfLines.hashValue
-        ^ textAlignment.hashValue
+            ^ hashFor(font)
+            ^ numberOfLines.hashValue
+            ^ textAlignment.hashValue
     }
 }
 

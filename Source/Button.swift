@@ -74,7 +74,17 @@ public func == (lhs: Button, rhs: Button) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct ButtonProps: Hashable, Equatable {
+public struct ButtonProps: HasViewProps, Hashable, Equatable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public init() {
         text = ""
@@ -114,7 +124,8 @@ public struct ButtonProps: Hashable, Equatable {
     }
     
     public var hashValue: Int {
-        return text.hashValue
+        return viewPropsHash
+            ^ text.hashValue
             ^ titleColorForNormalState.hashValue
             ^ titleColorForHighlightedState.hashValue
             ^ isEnabled.hashValue

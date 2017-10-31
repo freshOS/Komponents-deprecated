@@ -35,12 +35,23 @@ public func == (lhs: ActivityIndicatorView, rhs: ActivityIndicatorView) -> Bool 
         && lhs.layout == rhs.layout
 }
 
-public struct ActivityIndicatorViewProps: Equatable, Hashable {
-    var activityIndicatorStyle = UIActivityIndicatorViewStyle.white
+public struct ActivityIndicatorViewProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
     public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
+    
+    var activityIndicatorStyle = UIActivityIndicatorViewStyle.white
+    
     public var hashValue: Int {
-        return activityIndicatorStyle.rawValue
-            ^ isHidden.hashValue
+        return viewPropsHash
+            ^ activityIndicatorStyle.rawValue
     }
 }
 

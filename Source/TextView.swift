@@ -49,13 +49,23 @@ public func == (lhs: TextView, rhs: TextView) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct TextViewProps: Equatable, Hashable {
+public struct TextViewProps: HasViewProps, Equatable, Hashable {
     
-    public var backgroundColor = UIColor.clear
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
+    
     public var text: String = ""
     
     public var hashValue: Int {
-        return text.hashValue ^ backgroundColor.hashValue
+        return viewPropsHash
+        ^ text.hashValue
     }
 }
 

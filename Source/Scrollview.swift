@@ -60,19 +60,22 @@ public func == (lhs: ScrollView, rhs: ScrollView) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct ScrollViewProps: Equatable, Hashable {
+public struct ScrollViewProps: HasViewProps, Equatable, Hashable {
     
+    // HasViewProps
     public var backgroundColor = UIColor.white
     public var borderColor = UIColor.clear
     public var borderWidth: CGFloat = 0
     public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
+    
     public var anchorPoint = CGPoint(x: 0.5, y: 0.5)
     
     public var hashValue: Int {
-        return backgroundColor.hashValue
-            ^ borderColor.hashValue
-            ^ borderWidth.hashValue
-            ^ cornerRadius.hashValue
+        return viewPropsHash
             ^ anchorPoint.x.hashValue
             ^ anchorPoint.y.hashValue
     }

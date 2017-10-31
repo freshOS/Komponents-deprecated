@@ -38,7 +38,17 @@ public func == (lhs: PageControl, rhs: PageControl) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct PageControlProps: Equatable, Hashable {
+public struct PageControlProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var numberOfPages = 0
     public var currentPage = 0
@@ -46,7 +56,8 @@ public struct PageControlProps: Equatable, Hashable {
     public var currentPageIndicatorTintColor: UIColor?
     
     public var hashValue: Int {
-        return numberOfPages.hashValue
+        return viewPropsHash
+            ^ numberOfPages.hashValue
             ^ currentPage.hashValue
             ^ hashFor(pageIndicatorTintColor)
             ^ hashFor(currentPageIndicatorTintColor)

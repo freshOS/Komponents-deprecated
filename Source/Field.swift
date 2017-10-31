@@ -98,13 +98,24 @@ public func == (lhs: Field, rhs: Field) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct FieldProps: Equatable, Hashable {
+public struct FieldProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var placeholder: String = ""
     public var text: String = ""
     
     public var hashValue: Int {
-        return placeholder.hashValue
+        return viewPropsHash
+            ^ placeholder.hashValue
             ^ text.hashValue
     }
 }

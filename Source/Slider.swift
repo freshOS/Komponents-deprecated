@@ -48,12 +48,23 @@ public func == (lhs: Slider, rhs: Slider) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct SliderProps: Equatable, Hashable {
+public struct SliderProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var value: Float = 0
     
     public var hashValue: Int {
-        return value.hashValue
+        return viewPropsHash
+            ^ value.hashValue
     }
 }
 

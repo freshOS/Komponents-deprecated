@@ -48,12 +48,23 @@ public func == (lhs: Switch, rhs: Switch) -> Bool {
         && lhs.layout == rhs.layout
 }
 
-public struct SwitchProps: Equatable, Hashable {
+public struct SwitchProps: HasViewProps, Equatable, Hashable {
+    
+    // HasViewProps
+    public var backgroundColor = UIColor.white
+    public var borderColor = UIColor.clear
+    public var borderWidth: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var isHidden = false
+    public var alpha: CGFloat = 1
+    public var clipsToBounds = false
+    public var isUserInteractionEnabled = true
     
     public var isOn = false
     
     public var hashValue: Int {
-        return isOn.hashValue
+        return viewPropsHash
+            ^ isOn.hashValue
     }
 }
 
