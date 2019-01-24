@@ -53,7 +53,7 @@ public struct ImageProps: HasViewProps, Equatable, Hashable {
     public var isUserInteractionEnabled = true
     
     public var image = UIImage()
-    public var contentMode = UIViewContentMode.scaleToFill
+    public var contentMode = UIView.ContentMode.scaleToFill
     
     public var hashValue: Int {
         return viewPropsHash

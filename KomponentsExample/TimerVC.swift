@@ -38,7 +38,7 @@ class TimerVC: UIViewController, Component {
             ])
     }
     
-    func tick() {
+    @objc func tick() {
         updateState { $0 += 1 }
     }
     

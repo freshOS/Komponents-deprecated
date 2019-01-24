@@ -17,7 +17,7 @@ struct LoginState {
     func isFormvalid() -> Bool { return emailValid == . valid && passwordValid == .valid }
     private mutating func validate() {
         emailValid = email.contains("@") ? .valid : .invalid
-        passwordValid = password.characters.count >= 6 ? .valid : .invalid
+        passwordValid = password.count >= 6 ? .valid : .invalid
         status = .unknown
     }
 }

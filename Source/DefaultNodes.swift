@@ -69,7 +69,7 @@ class BlockBasedUIButton: UIButton {
         actionHandler?()
     }
     
-    public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+    public func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
         let img = UIImage(color: color, size: CGSize(width: 1.0, height: 1.0))
         setBackgroundImage(img, for: state)
     }
@@ -154,7 +154,7 @@ class CallBackTableView: UITableView, UITableViewDataSource, UITableViewDelegate
     var didSelectRowAt: ((IndexPath) -> Void)?
     var didDeleteRowAt: ((IndexPath) -> Void)?
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         dataSource = self
         delegate = self
@@ -184,7 +184,7 @@ class CallBackTableView: UITableView, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCellEditingStyle,
+                   commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             didDeleteRowAt?(indexPath)

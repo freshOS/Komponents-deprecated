@@ -20,12 +20,12 @@ public struct Table: Node, Equatable {
     public var data: () -> [Any] = { return [Any]() }
     public var configure: (Any) -> IsComponent
     
-    var tableStyle: UITableViewStyle = .plain
+    var tableStyle: UITableView.Style = .plain
     var refreshCallback: (( @escaping EndRefreshingCallback) -> Void)?
     var deleteCallback: ((Int, @escaping ShouldDeleteBlock) -> Void)?
     
     public init<T>(
-        _ tableStyle: UITableViewStyle = .plain,
+        _ tableStyle: UITableView.Style = .plain,
         props:((inout TableProps) -> Void)? = nil,
         layout: Layout? = nil,
         data: @autoclosure @escaping () -> [T]?,
@@ -79,7 +79,7 @@ public struct TableProps: HasViewProps, Equatable, Hashable {
     public var clipsToBounds = false
     public var isUserInteractionEnabled = true
     
-    public var tableStyle: UITableViewStyle = .plain
+    public var tableStyle: UITableView.Style = .plain
 
     public var hashValue: Int {
         return viewPropsHash

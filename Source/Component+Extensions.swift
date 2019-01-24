@@ -96,7 +96,7 @@ public func notificationContains(notification: Notification, object: Any ) -> Bo
         for o in arrayOfInjectedObjects {
             let registeredClassName = String(describing: type(of: object))
             var injectedClassName = String(describing: o)
-            let s = injectedClassName.characters.split(separator: ".").map(String.init)
+            let s = injectedClassName.split(separator: ".").map(String.init)
             if let last = s.last {
                 injectedClassName = last
             }

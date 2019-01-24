@@ -17,7 +17,7 @@ public struct ActivityIndicatorView: Node, Equatable {
     public var layout: Layout
     let ref: UnsafeMutablePointer<UIActivityIndicatorView>?
     
-    public init(_ activityIndicatorStyle: UIActivityIndicatorViewStyle = .white,
+    public init(_ activityIndicatorStyle: UIActivityIndicatorView.Style = .white,
                 props:((inout ActivityIndicatorViewProps) -> Void)? = nil,
                 layout: Layout? = nil,
                 ref: UnsafeMutablePointer<UIActivityIndicatorView>? = nil) {
@@ -47,7 +47,7 @@ public struct ActivityIndicatorViewProps: HasViewProps, Equatable, Hashable {
     public var clipsToBounds = false
     public var isUserInteractionEnabled = true
     
-    var activityIndicatorStyle = UIActivityIndicatorViewStyle.white
+    var activityIndicatorStyle = UIActivityIndicatorView.Style.white
     
     public var hashValue: Int {
         return viewPropsHash

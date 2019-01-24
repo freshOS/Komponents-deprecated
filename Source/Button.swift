@@ -95,7 +95,7 @@ public struct ButtonProps: HasViewProps, Hashable, Equatable {
     public var font: UIFont?
     public var isEnabled = true
     
-    public mutating func setTitleColor(_ color: UIColor, for state: UIControlState) {
+    public mutating func setTitleColor(_ color: UIColor, for state: UIControl.State) {
         if state == .normal {
             titleColorForNormalState = color
         }
@@ -107,7 +107,7 @@ public struct ButtonProps: HasViewProps, Hashable, Equatable {
     internal var titleColorForNormalState: UIColor = .white
     internal var titleColorForHighlightedState: UIColor = .white
     
-    public mutating func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+    public mutating func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
         if state == .normal {
             backgroundColorForNormalState = color
         }

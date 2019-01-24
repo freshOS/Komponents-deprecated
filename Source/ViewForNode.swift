@@ -127,7 +127,7 @@ extension PageControl: UIKitRenderable {
 
 extension ActivityIndicatorView: UIKitRenderable {
     func uiKitView() -> UIView {
-        let v = UIActivityIndicatorView(activityIndicatorStyle: props.activityIndicatorStyle)
+        let v = UIActivityIndicatorView(style: props.activityIndicatorStyle)
         fill(view: v, withViewProps: props)
         v.hidesWhenStopped = true
         if props.isHidden {
@@ -194,7 +194,7 @@ extension Table: UIKitRenderable {
         let table = CallBackTableView(frame: CGRect.zero, style: tableStyle)
         fill(view: table, withViewProps: props)
         table.estimatedRowHeight = 100
-        table.rowHeight = UITableViewAutomaticDimension
+        table.rowHeight = UITableView.automaticDimension
         
         if let rc = refreshCallback {
             let refreshControl = BlockBasedUIRefreshControl()
