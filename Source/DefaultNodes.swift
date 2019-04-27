@@ -77,7 +77,7 @@ class BlockBasedUIButton: UIButton {
 
 public extension UIImage {
     /// Create an square image fill with color
-    public convenience init(color: UIColor, size: CGSize) {
+    convenience init(color: UIColor, size: CGSize) {
         var rect = CGRect.zero
         rect.size = size
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)

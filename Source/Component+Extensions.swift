@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public extension IsStatefulComponent {
-    public var uniqueComponentIdentifier: String {
+    var uniqueComponentIdentifier: String {
         return "\(ObjectIdentifier(self).hashValue)"
     }
 }
@@ -62,7 +62,7 @@ public extension IsStatefulComponent where Self: UIViewController {
 }
 
 public extension IsStatefulComponent {
-    public func supportInjection() {
+    func supportInjection() {
         NotificationCenter.default
             .addObserver(forName: NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION"),
                          object: nil,

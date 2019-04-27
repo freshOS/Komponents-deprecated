@@ -72,7 +72,7 @@ class TodoVC: UIViewController, Component {
     }
     
     func removeItem(_ item: Item) {
-        if let index = state.items.index(where: { $0.name == item.name }) {
+        if let index = state.items.firstIndex(where: { $0.name == item.name }) {
             updateState {
                 $0.items.remove(at: index)
             }
