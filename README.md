@@ -1,5 +1,7 @@
 ![Komponents](banner.png)
 
+⚠️ Swift UI is out so this is now **deprecated** in favor of the official alternative. This will no longer be maintained. This was a fun experiment 😎
+
 # Komponents
 [![Language: Swift 3](https://img.shields.io/badge/language-swift3-f48041.svg?style=flat)](https://developer.apple.com/swift)
 ![Platform: iOS 9+](https://img.shields.io/badge/platform-iOS%209%2B-blue.svg?style=flat)
